@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hidaya — Your Quran. Your Journey. Your Hidaya.</title>
+<meta name="description" content="Quran Hidaya — read, listen, memorize and connect with the Quran.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#f5b83d;--gold2:#ffd36a;--white:#fff;--cream:#f7f1e7;--dark:#0b0a09;--muted:rgba(255,255,255,.84)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"DM Sans",Arial,sans-serif;background:#090807;color:#fff}body{overflow-x:hidden}
+.hero{position:relative;min-height:809px;height:100vh;max-height:900px;isolation:isolate;background-image:url('./assets/hero-mosque-bg.png');background-size:cover;background-position:center center;background-repeat:no-repeat;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,3,2,.58) 0%,rgba(4,3,2,.25) 38%,rgba(4,3,2,.04) 65%,rgba(4,3,2,.05) 100%)}
+.wrap{width:min(1540px,calc(100% - 80px));margin:auto;position:relative;height:100%}
+.nav{height:112px;display:flex;align-items:center;gap:34px;position:relative;z-index:20}
+.logo{width:126px;height:126px;margin-top:10px;border-radius:18px;background:linear-gradient(145deg,#74130f,#3b0707);border:1px solid rgba(255,202,77,.38);box-shadow:0 12px 35px rgba(0,0,0,.35);display:flex;flex-direction:column;justify-content:center;align-items:center;line-height:1;color:#ffd45f;flex:none}
+.logo .en{font-family:"Playfair Display",serif;font-size:27px;font-weight:700}.logo .ar{font-size:24px;margin-top:7px;font-weight:700}
+.links{display:flex;align-items:center;gap:36px;margin-left:2px}.links a{color:#fff;text-decoration:none;font-size:15px;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}.lang,.download{height:48px;border-radius:26px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-family:"DM Sans",Arial,sans-serif;font-size:14px;line-height:1;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}.lang{padding:0 18px;gap:8px;background:rgba(20,18,16,.72);border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;box-shadow:0 8px 22px rgba(0,0,0,.16);backdrop-filter:blur(8px);cursor:pointer}.lang .globe{font-size:15px;opacity:.9}.lang .chev{font-size:12px;opacity:.8;margin-left:1px}.download{padding:0 23px;border:1px solid rgba(255,215,125,.55);background:linear-gradient(135deg,#ffd875 0%,#f3b62f 100%);color:#17120a;text-decoration:none;font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.28)}.lang:hover,.download:hover{transform:translateY(-1px)}.download:hover{box-shadow:0 13px 30px rgba(0,0,0,.34)}
+.hero-grid{height:calc(100% - 112px);display:grid;grid-template-columns:minmax(520px,49%) minmax(520px,51%);align-items:center;position:relative}
+.copy{position:relative;z-index:10;max-width:650px;padding:8px 0 30px}.eyebrow{font-size:17px;letter-spacing:5px;color:#f2b832;font-weight:700;margin-bottom:18px;text-shadow:0 2px 10px rgba(0,0,0,.65)}
+h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);line-height:.96;letter-spacing:-2.5px;margin:0 0 25px;font-weight:800;text-shadow:0 5px 22px rgba(0,0,0,.38)}h1 span{color:var(--gold)}
+.sub{font-size:20px;line-height:1.45;color:#f7f5f0;max-width:610px;margin:0 0 30px;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.stores{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}.store{height:62px;min-width:205px;padding:0 22px;border:1px solid rgba(255,255,255,.85);border-radius:10px;background:rgba(0,0,0,.48);color:#fff;text-decoration:none;display:flex;align-items:center;gap:12px;box-shadow:0 8px 22px rgba(0,0,0,.22);backdrop-filter:blur(3px)}.store .small{font-size:10px;display:block;line-height:1.1;letter-spacing:.2px}.store .big{font-size:20px;line-height:1.1;font-weight:700;display:block}.play-icon{width:29px;height:29px;display:grid;place-items:center;font-size:25px;color:#fff}.apple-icon{font-size:31px;line-height:1}
+.stats{display:flex;align-items:center;gap:0;max-width:680px}.stat{min-width:140px;padding:0 20px;display:flex;align-items:center;gap:10px;border-right:1px solid rgba(255,255,255,.28)}.stat:first-child{padding-left:0}.stat:last-child{border-right:0}.stat-icon{font-size:28px;color:var(--gold);line-height:1}.stat strong{display:block;font-size:21px;line-height:1.05}.stat small{display:block;color:rgba(255,255,255,.86);font-size:12px;margin-top:5px}
+.phones{height:100%;position:relative;display:flex;align-items:center;justify-content:center;gap:4px;z-index:8;padding:30px 10px 20px 0}.phone{position:relative;width:min(286px,25vw);aspect-ratio:739/1600;border-radius:40px;padding:7px;background:linear-gradient(145deg,#4d4d4d,#111 32%,#2b2b2b 70%,#0b0b0b);box-shadow:0 28px 50px rgba(0,0,0,.55),0 8px 16px rgba(0,0,0,.45),inset 1px 1px 2px rgba(255,255,255,.5),inset -2px -2px 5px rgba(0,0,0,.8);transform-style:preserve-3d;overflow:visible}.phone:before{content:"";position:absolute;inset:2px;border-radius:38px;border:1px solid rgba(255,255,255,.28);pointer-events:none;z-index:3}.phone:after{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:32%;height:22px;border-radius:0 0 15px 15px;background:#080808;z-index:5;box-shadow:0 1px 1px rgba(255,255,255,.08)}.phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:34px;background:#111}.phone.left{transform:translateY(15px) rotate(-5.2deg) rotateY(2deg);z-index:2}.phone.right{transform:translate(5px,-10px) rotate(5.2deg) rotateY(-2deg);z-index:3}
+.phone-floor{position:absolute;bottom:7%;left:50%;transform:translateX(-50%);width:560px;height:110px;background:radial-gradient(ellipse,rgba(0,0,0,.65),rgba(0,0,0,0) 70%);filter:blur(7px);z-index:0;pointer-events:none}
+.mobile-nav{display:none}
+@media (max-width:1250px){.wrap{width:min(1160px,calc(100% - 48px))}.nav{gap:24px}.links{gap:23px}.hero-grid{grid-template-columns:52% 48%}.phone{width:min(245px,23vw)}h1{font-size:clamp(50px,5vw,70px)}.sub{font-size:17px}.stat{min-width:118px;padding:0 13px}.stat strong{font-size:18px}}
+@media (max-width:900px){.hero{min-height:1080px;height:auto;max-height:none;background-position:center top}.hero:after{background:linear-gradient(180deg,rgba(4,3,2,.45),rgba(4,3,2,.72) 60%,rgba(4,3,2,.48))}.wrap{width:calc(100% - 36px)}.nav{height:88px}.logo{width:82px;height:82px;border-radius:14px;margin-top:0}.logo .en{font-size:19px}.logo .ar{font-size:17px;margin-top:4px}.links,.nav-right{display:none}.mobile-nav{margin-left:auto;display:flex;gap:10px}.mobile-nav button{width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(20,18,16,.68);color:#fff;font-size:20px}.hero-grid{height:auto;display:flex;flex-direction:column;align-items:stretch;padding-top:24px}.copy{max-width:650px;padding:0 0 12px}.eyebrow{font-size:12px;letter-spacing:3.2px;margin-bottom:13px}h1{font-size:clamp(45px,11vw,65px);line-height:.98;letter-spacing:-1.6px;margin-bottom:18px}.sub{font-size:16px;max-width:550px;margin-bottom:23px}.stores{margin-bottom:24px}.store{height:54px;min-width:170px;padding:0 15px}.store .big{font-size:16px}.stats{display:grid;grid-template-columns:1fr 1fr;max-width:520px;row-gap:15px}.stat{border-right:0;padding:0 8px 0 0;min-width:0}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.25)}.phones{height:560px;width:100%;padding:10px 0 45px;gap:0;align-items:flex-end}.phone{width:min(42vw,245px);border-radius:32px;padding:6px}.phone:before{border-radius:30px}.phone img{border-radius:27px}.phone.left{transform:translate(15px,10px) rotate(-5deg)}.phone.right{transform:translate(-5px,0) rotate(5deg)}.phone-floor{bottom:7%;width:90%;height:70px}}
+@media (max-width:520px){.hero{min-height:1050px}.wrap{width:calc(100% - 28px)}.nav{height:76px}.logo{width:70px;height:70px}.logo .en{font-size:16px}.logo .ar{font-size:14px}.hero-grid{padding-top:18px}.eyebrow{font-size:10px;letter-spacing:2.5px}h1{font-size:43px}.sub{font-size:15px}.stores{gap:9px}.store{min-width:0;flex:1;height:52px;padding:0 11px}.store .big{font-size:14px}.store .small{font-size:8px}.stats{grid-template-columns:1fr 1fr;gap:12px 8px}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.22)}.stat-icon{font-size:22px}.stat strong{font-size:17px}.stat small{font-size:10px}.phones{height:490px;padding-bottom:28px}.phone{width:44vw;max-width:205px;border-radius:27px}.phone img{border-radius:23px}.phone:before{border-radius:25px}.phone:after{height:17px}.phone.left{transform:translate(10px,12px) rotate(-4deg)}.phone.right{transform:translate(-7px,0) rotate(4deg)}}
+</style>
+</head>
+<body>
+<section class="hero" aria-label="Hidaya hero">
+  <div class="wrap">
+    <header class="nav">
+      <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
+      <nav class="links" aria-label="Primary navigation"><a href="#features">Features</a><a href="#about">About</a><a href="#screenshots">Screenshots</a><a href="#faq">FAQ</a></nav>
+      <div class="nav-right"><button class="lang" type="button"><span class="globe">◎</span><span>English</span><span class="chev">⌄</span></button><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App <span aria-hidden="true">↓</span></a></div>
+      <div class="mobile-nav"><button aria-label="Language">◉</button><button aria-label="Menu">☰</button></div>
+    </header>
+    <div class="hero-grid">
+      <div class="copy">
+        <div class="eyebrow">YOUR ISLAMIC COMPANION</div>
+        <h1>Your Quran.<br>Your Journey.<br><span>Your Hidaya.</span></h1>
+        <p class="sub">Read, listen, learn and connect with the Quran — wherever your journey takes you.</p>
+        <div class="stores">
+          <a class="store" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener"><span class="play-icon">▶</span><span><span class="small">GET IT ON</span><span class="big">Google Play</span></span></a>
+          <a class="store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener"><span class="apple-icon">●</span><span><span class="small">DOWNLOAD ON THE</span><span class="big">App Store</span></span></a>
+        </div>
+        <div class="stats" aria-label="Hidaya statistics">
+          <div class="stat"><span class="stat-icon">⇩</span><span><strong>1M+</strong><small>Downloads</small></span></div>
+          <div class="stat"><span class="stat-icon">♟</span><span><strong>350K+</strong><small>Active Users</small></span></div>
+          <div class="stat"><span class="stat-icon">◎</span><span><strong>8</strong><small>Languages</small></span></div>
+          <div class="stat"><span class="stat-icon">☆</span><span><strong>4.7</strong><small>App Rating</small></span></div>
+        </div>
+      </div>
+      <div class="phones" aria-label="Hidaya app screenshots">
+        <div class="phone-floor"></div>
+        <div class="phone left"><img src="./assets/qibla-screen.jpg" alt="Hidaya Qibla screen"></div>
+        <div class="phone right"><img src="./assets/ehfaz-screen.jpg" alt="Hidaya Quran memorization screen"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
