@@ -389,6 +389,7 @@ button,a{-webkit-tap-highlight-color:transparent}
       <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
         <a href="#about">About</a>
         <a href="#prayer-times">Prayer Times</a>
+        <a href="#qibla">Qibla</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#faq">FAQ</a>
         <a class="mobile-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App ↓</a>
@@ -728,9 +729,13 @@ button,a{-webkit-tap-highlight-color:transparent}
   if(!openBtn||!modal) return;
 
   const KAABA={lat:21.422487,lon:39.826206};
-  let stream=null, heading=null, qiblaBearing=null, watchId=null, orientationHandler=null;
+  let stream=null, heading=null, qiblaBearing=null, watchId=null;
+  let absoluteSeen=false, orientationStarted=false, sensorTimer=null;
+  let lastRenderHeading=null;
 
   const norm=n=>((n%360)+360)%360;
+  const signedDelta=(target,current)=>((target-current+540)%360)-180;
+
   function bearingToKaaba(lat,lon){
     const p1=lat*Math.PI/180,p2=KAABA.lat*Math.PI/180;
     const dl=(KAABA.lon-lon)*Math.PI/180;
@@ -738,75 +743,152 @@ button,a{-webkit-tap-highlight-color:transparent}
     const x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
     return norm(Math.atan2(y,x)*180/Math.PI);
   }
-  function setStatus(msg,error){statusEl.textContent=msg;statusEl.classList.toggle('error',!!error)}
+
+  function setStatus(msg,error,success){
+    statusEl.textContent=msg;
+    statusEl.classList.toggle('error',!!error);
+    statusEl.classList.toggle('success',!!success);
+  }
+
   function render(){
     if(qiblaBearing!=null) bearingEl.textContent=Math.round(qiblaBearing)+'°';
     if(qiblaBearing==null||heading==null) return;
-    const delta=norm(qiblaBearing-heading);
-    arrow.style.transform='rotate('+delta+'deg)';
-    const distance=Math.min(delta,360-delta);
-    setStatus(distance<8?'You are facing the Qibla.':'Rotate your phone until the gold arrow points straight ahead.');
-  }
-  function handleOrientation(e){
-    let h=null;
-    if(typeof e.webkitCompassHeading==='number' && isFinite(e.webkitCompassHeading)){
-      h=e.webkitCompassHeading;
-    }else if(typeof e.alpha==='number' && isFinite(e.alpha)){
-      h=360-e.alpha;
-      if(e.absolute===false && screen.orientation && typeof screen.orientation.angle==='number'){
-        h+=screen.orientation.angle;
-      }
+
+    const delta=signedDelta(qiblaBearing,heading);
+    const distance=Math.abs(delta);
+    const smoothHeading=lastRenderHeading==null?heading:(lastRenderHeading + signedDelta(heading,lastRenderHeading)*0.28);
+    lastRenderHeading=smoothHeading;
+    const smoothDelta=signedDelta(qiblaBearing,smoothHeading);
+
+    arrow.style.transform='rotate('+smoothDelta.toFixed(2)+'deg)';
+
+    if(distance<=8){
+      setStatus('You are facing the Qibla.',false,true);
+    }else if(absoluteSeen){
+      setStatus('Rotate your phone until the gold arrow points straight ahead.',false,false);
+    }else{
+      setStatus('Compass active. Slowly rotate your phone.',false,false);
     }
-    if(h!=null){heading=norm(h);render();}
   }
+
+  function headingFromEvent(e){
+    // iPhone / iPad Safari exposes a calibrated compass heading directly.
+    if(typeof e.webkitCompassHeading==='number' && isFinite(e.webkitCompassHeading)){
+      return norm(e.webkitCompassHeading);
+    }
+
+    if(typeof e.alpha!=='number' || !isFinite(e.alpha)) return null;
+
+    // Absolute events are referenced to Earth's coordinate frame.
+    // alpha increases clockwise from the device coordinate system, so
+    // converting it to a compass heading uses 360 - alpha.
+    if(e.absolute===true || e.type==='deviceorientationabsolute'){
+      absoluteSeen=true;
+      return norm(360-e.alpha);
+    }
+
+    // Some Android Chrome builds expose absolute=true on the normal event;
+    // otherwise a non-absolute event is not reliable enough to claim North.
+    return null;
+  }
+
+  function handleOrientation(e){
+    const h=headingFromEvent(e);
+    if(h==null) return;
+    heading=h;
+    render();
+  }
+
   async function requestOrientation(){
-    if(typeof DeviceOrientationEvent==='undefined') throw new Error('This device does not provide a compass sensor.');
+    if(typeof DeviceOrientationEvent==='undefined'){
+      throw new Error('This device does not provide a compass sensor.');
+    }
+
     if(typeof DeviceOrientationEvent.requestPermission==='function'){
       const permission=await DeviceOrientationEvent.requestPermission(true);
-      if(permission!=='granted') throw new Error('Motion permission was not granted.');
+      if(permission!=='granted') throw new Error('Motion and compass permission was not granted.');
     }
+
+    // Listen to both. Prefer absolute data whenever the browser provides it.
     window.addEventListener('deviceorientationabsolute',handleOrientation,true);
     window.addEventListener('deviceorientation',handleOrientation,true);
-    orientationHandler=true;
+    orientationStarted=true;
+    absoluteSeen=false;
+
+    clearTimeout(sensorTimer);
+    sensorTimer=setTimeout(()=>{
+      if(modal.classList.contains('open') && heading==null){
+        setStatus('Compass data is not available. Make sure sensor access is allowed and move the phone in a small figure-eight, then rotate slowly.',true,false);
+      }
+    },2800);
   }
+
   function getLocation(){
     return new Promise((resolve,reject)=>{
       if(!navigator.geolocation) return reject(new Error('Location is not supported by this browser.'));
       navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
     });
   }
+
   async function startCamera(){
-    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('Camera access is not supported in this browser.');
-    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+      throw new Error('Camera access is not supported in this browser.');
+    }
+    stream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:{exact:'environment'},width:{ideal:1920},height:{ideal:1080}},
+      audio:false
+    });
     video.srcObject=stream;
     await video.play();
   }
+
   function stop(){
+    clearTimeout(sensorTimer);
     if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
     if(watchId!=null){navigator.geolocation.clearWatch(watchId);watchId=null;}
-    window.removeEventListener('deviceorientationabsolute',handleOrientation,true);
-    window.removeEventListener('deviceorientation',handleOrientation,true);
-    heading=null;qiblaBearing=null;
+    if(orientationStarted){
+      window.removeEventListener('deviceorientationabsolute',handleOrientation,true);
+      window.removeEventListener('deviceorientation',handleOrientation,true);
+      orientationStarted=false;
+    }
+    heading=null;qiblaBearing=null;absoluteSeen=false;lastRenderHeading=null;
+    arrow.style.transform='rotate(0deg)';
     video.srcObject=null;
     modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
   }
+
   async function start(){
     modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
-    setStatus('Requesting camera, location and compass access…');locationEl.textContent='Finding your location…';
+    setStatus('Requesting camera, location and compass access…');
+    locationEl.textContent='Finding your location…';
+    bearingEl.textContent='--°';
+
     try{
-      const [position]=await Promise.all([getLocation(),startCamera(),requestOrientation()]);
+      // Permissions are requested from the user's tap on Find Qibla.
+      const [position]=await Promise.all([
+        getLocation(),
+        startCamera(),
+        requestOrientation()
+      ]);
+
       qiblaBearing=bearingToKaaba(position.coords.latitude,position.coords.longitude);
       locationEl.textContent='Location detected';
       bearingEl.textContent=Math.round(qiblaBearing)+'°';
+      setStatus('Compass active. Slowly rotate your phone.');
       render();
-      watchId=navigator.geolocation.watchPosition(pos=>{qiblaBearing=bearingToKaaba(pos.coords.latitude,pos.coords.longitude);render();},()=>{}, {enableHighAccuracy:true,maximumAge:300000,timeout:15000});
+
+      watchId=navigator.geolocation.watchPosition(pos=>{
+        qiblaBearing=bearingToKaaba(pos.coords.latitude,pos.coords.longitude);
+        render();
+      },()=>{}, {enableHighAccuracy:true,maximumAge:300000,timeout:15000});
     }catch(err){
       const msg=err&&err.message?err.message:'Permission was not granted.';
-      setStatus(msg+' You can close this view and try again.',true);
+      setStatus(msg+' You can close this view and try again.',true,false);
       locationEl.textContent='Permission required';
     }
   }
+
   openBtn.addEventListener('click',start);
   closeBtn.addEventListener('click',stop);
   modal.addEventListener('click',e=>{if(e.target===modal) stop();});
