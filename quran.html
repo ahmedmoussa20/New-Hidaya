@@ -1,16 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Hidaya — Your Quran. Your Journey. Your Hidaya.</title>
-<meta name="description" content="Quran Hidaya — read, listen, memorize and connect with the Quran.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="./assets/hero-mosque-bg.png" fetchpriority="high">
-<link rel="preload" as="image" href="./assets/app-store-logo.png">
-<link rel="preload" as="image" href="./assets/google-play-logo.png">
+<meta content="Quran Hidaya — read, listen, memorize and connect with the Quran." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="./assets/hero-mosque-bg.png" rel="preload"/>
+<link as="image" href="./assets/app-store-logo.png" rel="preload"/>
+<link as="image" href="./assets/google-play-logo.png" rel="preload"/>
 <style>
 :root{--gold:#f5b83d;--gold2:#ffd36a;--white:#fff;--cream:#f7f1e7;--dark:#0b0a09;--muted:rgba(255,255,255,.84)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"DM Sans",Arial,sans-serif;background:#090807;color:#fff}body{overflow-x:hidden}
@@ -1002,140 +1004,56 @@ body.rtl .quran-search input{text-align:right}
 .quran-journey{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin:0 auto 24px;max-width:1100px}.quran-journey-card{padding:26px;border:1px solid rgba(245,184,61,.28);border-radius:22px;background:radial-gradient(circle at 85% 20%,rgba(245,184,61,.16),transparent 38%),linear-gradient(145deg,rgba(37,29,22,.96),rgba(11,9,8,.98));box-shadow:0 20px 50px rgba(0,0,0,.28)}.qj-label{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:800}.qj-title{font:800 28px/1.15 'Playfair Display',serif;margin-top:10px}.qj-sub{color:rgba(255,255,255,.55);font-size:13px;margin-top:7px}.qj-btn{margin-top:20px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(245,184,61,.48);background:linear-gradient(135deg,#ffd875,#f3b62f);color:#17120a;font:800 13px 'DM Sans',sans-serif;cursor:pointer}.quran-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quran-quick{border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.035);color:#fff;padding:15px;text-align:left;cursor:pointer;min-height:94px;transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}.quran-quick span{display:block;font-size:20px;color:var(--gold);margin-bottom:8px}.quran-quick strong{display:block;font-size:13px}.quran-quick small{display:block;color:rgba(255,255,255,.45);font-size:10px;margin-top:4px}.quran-featured-head{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:26px auto 10px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2.5px}.quran-featured-head small{color:rgba(255,255,255,.35);font-weight:500;letter-spacing:0}.quran-featured{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;max-width:1100px;margin:0 auto 28px;padding:2px 1px 8px}.quran-featured::-webkit-scrollbar{display:none}.quran-featured button{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));color:#fff;text-align:left;cursor:pointer}.quran-featured button b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured button small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.standalone-page .quran-heading{margin-bottom:22px}.standalone-page .quran-panel{max-width:1100px;margin:auto}
 @media(max-width:700px){.standalone-nav .wrap{width:calc(100% - 28px)}.standalone-nav .nav{height:76px}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:0}.quran-journey{display:block;margin-bottom:18px}.quran-journey-card{padding:20px;border-radius:19px}.qj-title{font-size:25px}.quran-quick-grid{margin-top:10px;gap:8px}.quran-quick{min-height:88px;padding:13px;border-radius:15px}.quran-featured-head{margin-top:20px}.quran-featured{margin-bottom:20px}.standalone-page .quran-heading h2{font-size:37px}.standalone-page .quran-lead{font-size:13px}.standalone-page .quran-section{padding-top:56px}}
 @media(max-width:380px){.quran-quick strong{font-size:12px}.quran-quick small{font-size:9px}.quran-featured button{min-width:140px}.qj-title{font-size:23px}}
-</style></head><body class="standalone-page"><div class="standalone-nav"><div class="wrap"><header class="nav">
-      <a class="logo" href="index.html" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="index.html#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="index.html#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></nav>
-      <div class="nav-right"><div class="lang-wrap"><button class="lang" type="button" id="langToggle"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App <span aria-hidden="true">↓</span></a></div>
-      <div class="mobile-nav"><div class="mobile-lang"><button type="button" aria-label="Language" id="mobileLangToggle">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
-      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="index.html#about" data-i18n="nav_about">About</a>
-        <a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a>
-        <a href="#qibla" data-i18n="nav_qibla">Qibla</a>
-        <a href="quran.html" data-i18n="nav_quran">Quran</a>
-        <a href="index.html#screenshots" data-i18n="nav_screenshots">Screenshots</a>
-        <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
-        <a class="mobile-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App ↓</a>
-      </div>
-    </header></div></div><section class="quran-section" id="quran" aria-label="Hidaya Quran">
-  <div class="quran-wrap">
-    <div class="quran-heading">
-      <div class="quran-kicker" data-i18n="quran_kicker">THE HOLY QURAN</div>
-      <h2 data-i18n-html="quran_title">Read. Listen. <span>Reflect.</span></h2>
-      <p class="quran-lead" data-i18n="quran_lead">Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.</p>
-    </div>
-    <div class="quran-journey">
-      <div class="quran-journey-card">
-        <div class="qj-label">CONTINUE READING</div>
-        <div class="qj-title" id="quranContinueTitle">Start your Quran journey</div>
-        <div class="qj-sub" id="quranContinueSub">Begin with Al-Fatihah</div>
-        <button type="button" class="qj-btn" id="quranContinueBtn">Open Surah <span>→</span></button>
-      </div>
-      <div class="quran-quick-grid">
-        <button type="button" class="quran-quick" id="quranReadQuick"><span>📖</span><strong>Read Quran</strong><small>Choose a Surah</small></button>
-        <button type="button" class="quran-quick" id="quranListenQuick"><span>🎧</span><strong>Listen</strong><small>Play the Surah</small></button>
-        <button type="button" class="quran-quick" id="quranSearchQuick"><span>⌕</span><strong>Search Ayah</strong><small>Find within Surah</small></button>
-        <button type="button" class="quran-quick" id="quranTopQuick"><span>☾</span><strong>Featured</strong><small>Popular Surahs</small></button>
-      </div>
-      <div class="quran-featured-head"><span>FEATURED SURAHS</span><small>Swipe to explore</small></div>
-      <div class="quran-featured" id="quranFeatured">
-        <button type="button" data-surah="1"><b>Al-Fatihah</b><small>7 verses</small></button>
-        <button type="button" data-surah="36"><b>Yasin</b><small>83 verses</small></button>
-        <button type="button" data-surah="18"><b>Al-Kahf</b><small>110 verses</small></button>
-        <button type="button" data-surah="67"><b>Al-Mulk</b><small>30 verses</small></button>
-        <button type="button" data-surah="112"><b>Al-Ikhlas</b><small>4 verses</small></button>
-      </div>
-    </div>
-    <div class="quran-panel">
-      <div class="quran-topbar">
-        <div class="quran-select-wrap"><select class="quran-select" id="quranSurahSelect" aria-label="Select Surah"><option>Loading Surahs…</option></select></div>
-        <div class="quran-search"><input id="quranSearch" type="search" data-i18n-placeholder="quran_search" placeholder="Search in this Surah"></div>
-        <button class="quran-play-all" id="quranPlayAll" type="button" data-i18n="quran_play_all">▶ Play Surah</button>
-      </div>
-      <div class="quran-meta">
-        <div><div class="quran-surah-name" id="quranSurahName">Al-Fatihah</div><div class="quran-surah-ar" id="quranSurahArabic">الفاتحة</div><div class="quran-surah-info" id="quranSurahInfo">7 verses</div></div>
-        <div class="quran-nav"><button type="button" id="quranPrev" data-i18n="quran_prev">← Previous</button><button type="button" id="quranNext" data-i18n="quran_next">Next →</button></div>
-      </div>
-      <div class="quran-verses" id="quranVerses"><div class="quran-loading" data-i18n="quran_loading">Loading Quran…</div></div>
-      <div class="quran-status" id="quranStatus"></div>
-    </div>
-  </div>
-</section><script>
-(function(){
-  const API='https://api.alquran.cloud/v1';
-  const select=document.getElementById('quranSurahSelect');
-  const versesEl=document.getElementById('quranVerses');
-  const nameEl=document.getElementById('quranSurahName');
-  const arNameEl=document.getElementById('quranSurahArabic');
-  const infoEl=document.getElementById('quranSurahInfo');
-  const searchEl=document.getElementById('quranSearch');
-  const statusEl=document.getElementById('quranStatus');
-  const playAll=document.getElementById('quranPlayAll');
-  const prev=document.getElementById('quranPrev');
-  const next=document.getElementById('quranNext');
-  if(!select||!versesEl)return;
-  let surahs=[]; let current=Number(localStorage.getItem('hidayaLastSurah')||1); let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'en';
-  const ui={
-    en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_quran:'Quran',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',start_kicker:'YOUR HIDAYA JOURNEY',start_title:'Start Your<br><span>Journey</span>',start_lead:'Choose where you want to begin.',start_quran:'Quran',start_quran_sub:'Read. Listen. Reflect.',start_prayer:'Prayer Times',start_prayer_sub:'Never miss a prayer',start_qibla:'Qibla',start_qibla_sub:'Find your direction',start_appstore_small:'Download on the',start_google_small:'Get it on',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
-    ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_quran:'القرآن',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',start_kicker:'رحلتك مع هداية',start_title:'ابدأ <br><span>رحلتك</span>',start_lead:'اختر من أين تريد أن تبدأ.',start_quran:'القرآن',start_quran_sub:'اقرأ. استمع. تدبّر.',start_prayer:'مواقيت الصلاة',start_prayer_sub:'لا تفوّت صلاتك',start_qibla:'القبلة',start_qibla_sub:'اعرف اتجاه القبلة',start_athkar:'الأذكار والدعاء',start_athkar_sub:'كن أقرب إلى الله',start_radio:'إذاعة هداية',start_radio_sub:'قرآن وأناشيد',start_kids:'الأطفال',start_kids_sub:'قصص ودعاء وتعلّم',start_learn:'تعلم القرآن',start_learn_sub:'خطوة بخطوة',start_appstore_small:'حمّل من',start_google_small:'احصل عليه من',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
-  };
-  function lang(){return currentLang==='ar'?'ar':'en'}
-  function t(k){return ui[lang()][k]||ui.en[k]||k}
-  function setStatus(msg,error=false){statusEl.textContent=msg||'';statusEl.classList.toggle('error',!!error)}
-  function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-  function applyLanguage(){
-    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(ui[lang()][k]!=null)el.textContent=ui[lang()][k]});
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(ui[lang()][k]!=null)el.innerHTML=ui[lang()][k]});
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(ui[lang()][k]!=null)el.placeholder=ui[lang()][k]});
-    document.documentElement.lang=lang();document.documentElement.dir=lang()==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',lang()==='ar');
-    const label=document.getElementById('langLabel');if(label)label.textContent=lang()==='ar'?'العربية':'English';
-    document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang()));
-    renderSurahOptions();renderVerses();
-  }
-  function renderSurahOptions(){if(!surahs.length)return;const old=select.value;select.innerHTML=surahs.map(x=>`<option value="${x.number}">${x.number}. ${escapeHtml(lang()==='ar'?x.name:x.englishName)} — ${escapeHtml(x.englishName)}</option>`).join('');select.value=String(current);}
-  async function loadSurahs(){try{const r=await fetch(API+'/surah',{cache:'force-cache'});const j=await r.json();if(j.code!==200)throw Error();surahs=j.data||[];renderSurahOptions();await loadSurah(current);}catch(e){versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}}
-  async function loadSurah(num){
-    current=Number(num);searchEl.value='';versesEl.innerHTML='<div class="quran-loading">'+escapeHtml(t('quran_loading'))+'</div>';setStatus('');stopAudio();
-    try{
-      const [arR,trR]=await Promise.all([fetch(API+'/surah/'+current+'/ar.alafasy'),fetch(API+'/surah/'+current+'/'+(lang()==='ar'?'ar.muyassar':'en.sahih'))]);
-      const [arJ,trJ]=await Promise.all([arR.json(),trR.json()]);
-      if(arJ.code!==200||trJ.code!==200)throw Error();
-      verses=arJ.data.ayahs.map((a,i)=>({number:a.numberInSurah,text:a.text,audio:a.audio,translation:(trJ.data.ayahs[i]||{}).text||''}));
-      audioList=verses.map(v=>v.audio).filter(Boolean);
-      nameEl.textContent=lang()==='ar'?arJ.data.name:arJ.data.englishName;
-      arNameEl.textContent=arJ.data.name;
-      infoEl.textContent=(lang()==='ar'?arJ.data.numberOfAyahs+' آيات':arJ.data.numberOfAyahs+' verses')+' · '+(arJ.data.revelationType||'');
-      renderVerses();
-    }catch(e){verses=[];versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}
-  }
-  function renderVerses(){
-    if(!verses.length)return;
-    const q=(searchEl.value||'').trim().toLowerCase();
-    const filtered=verses.filter(v=>!q||v.text.toLowerCase().includes(q)||v.translation.toLowerCase().includes(q));
-    if(!filtered.length){versesEl.innerHTML='<div class="quran-empty">'+(lang()==='ar'?'لا توجد نتائج في هذه السورة.':'No matching verses in this Surah.')+'</div>';return;}
-    versesEl.innerHTML=filtered.map(v=>`<article class="quran-verse"><div class="quran-verse-top"><span class="quran-number">${v.number}</span><div class="quran-verse-actions"><button type="button" title="Play" aria-label="Play verse" data-play="${v.number}">▶</button></div></div><div class="quran-verse-arabic">${escapeHtml(v.text)}</div><div class="quran-verse-translation">${escapeHtml(v.translation)}</div></article>`).join('');
-    versesEl.querySelectorAll('[data-play]').forEach(btn=>btn.addEventListener('click',()=>{const n=Number(btn.dataset.play);const idx=verses.findIndex(v=>v.number===n);if(idx>=0)playFrom(idx)}));
-  }
-  function playFrom(index){audioIndex=index;playCurrent()}
-  function playCurrent(){if(audioIndex<0||audioIndex>=verses.length)return;const src=verses[audioIndex].audio;if(!src){audioIndex++;return playCurrent()}player.src=src;player.play().catch(()=>{});}
-  function stopAudio(){player.pause();player.removeAttribute('src');audioIndex=-1}
-  player.addEventListener('ended',()=>{audioIndex++;if(audioIndex<verses.length)playCurrent();else audioIndex=-1});
-  select.addEventListener('change',()=>{localStorage.setItem('hidayaLastSurah',select.value);loadSurah(select.value)});
-  prev.addEventListener('click',()=>{if(current>1)loadSurah(current-1)});
-  next.addEventListener('click',()=>{if(current<114)loadSurah(current+1)});
-  playAll.addEventListener('click',()=>{if(audioIndex>=0&&!player.paused){stopAudio();playAll.textContent=t('quran_play_all');return}audioIndex=0;playCurrent();playAll.textContent=lang()==='ar'?'■ إيقاف':'■ Stop'});
-  searchEl.addEventListener('input',renderVerses);
-  window.addEventListener('hidayaLanguageChanged',()=>{currentLang=localStorage.getItem('hidayaLang')||'en';applyLanguage();loadSurah(current)});
-  applyLanguage();loadSurahs();
-  document.querySelectorAll('#quranFeatured [data-surah]').forEach(btn=>btn.addEventListener('click',()=>{select.value=btn.dataset.surah;select.dispatchEvent(new Event('change'));document.querySelector('.quran-panel')?.scrollIntoView({behavior:'smooth',block:'start'});}));
-  document.getElementById('quranContinueBtn')?.addEventListener('click',()=>{select.value=String(current);select.dispatchEvent(new Event('change'));document.querySelector('.quran-panel')?.scrollIntoView({behavior:'smooth',block:'start'});});
-  document.getElementById('quranReadQuick')?.addEventListener('click',()=>document.querySelector('.quran-panel')?.scrollIntoView({behavior:'smooth',block:'start'}));
-  document.getElementById('quranListenQuick')?.addEventListener('click',()=>{document.querySelector('.quran-panel')?.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>playAll.click(),350);});
-  document.getElementById('quranSearchQuick')?.addEventListener('click',()=>{document.querySelector('.quran-panel')?.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>searchEl.focus(),350);});
-  const cTitle=document.getElementById('quranContinueTitle'),cSub=document.getElementById('quranContinueSub');
-  if(cTitle&&localStorage.getItem('hidayaLastSurah')){const n=Number(localStorage.getItem('hidayaLastSurah'));const names={1:'Al-Fatihah',18:'Al-Kahf',36:'Yasin',67:'Al-Mulk',112:'Al-Ikhlas'};cTitle.textContent=names[n]||('Surah '+n);cSub.textContent='Continue your Quran reading';}
+</style>
+<style>
+.qj-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.quran-quick,.quran-featured a{display:block;text-decoration:none;color:#fff}.quran-featured a{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));text-align:left;cursor:pointer}.quran-featured a b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured a small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.quran-quick{transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}
+</style>
+</head><body class="standalone-page"><div class="standalone-nav"><div class="wrap"><header class="nav">
+<a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
+<nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav>
+<div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div>
+<div class="mobile-nav"><div class="mobile-lang"><button aria-label="Language" id="mobileLangToggle" type="button">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" id="mobileMenuToggle" type="button">☰</button></div>
+<div aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
+<a data-i18n="nav_about" href="index.html#about">About</a>
+<a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a>
+<a data-i18n="nav_qibla" href="#qibla">Qibla</a>
+<a data-i18n="nav_quran" href="quran.html">Quran</a>
+<a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a>
+<a data-i18n="nav_faq" href="index.html#faq">FAQ</a>
+<a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a>
+</div>
+</header></div></div><section aria-label="Hidaya Quran" class="quran-section" id="quran">
+<div class="quran-wrap">
+<div class="quran-heading">
+<div class="quran-kicker" data-i18n="quran_kicker">THE HOLY QURAN</div>
+<h2 data-i18n-html="quran_title">Read. Listen. <span>Reflect.</span></h2>
+<p class="quran-lead" data-i18n="quran_lead">Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.</p>
+</div>
+<div class="quran-journey">
+<div class="quran-journey-card">
+<div class="qj-label">CONTINUE READING</div>
+<div class="qj-title" id="quranContinueTitle">Start your Quran journey</div>
+<div class="qj-sub" id="quranContinueSub">Begin with Al-Fatihah</div>
+<a class="qj-btn" href="read-quran.html">Open Quran <span>→</span></a>
+</div>
+<div class="quran-quick-grid">
+<a class="quran-quick" href="read-quran.html"><span>📖</span><strong>Read Quran</strong><small>Open Mushaf</small></a>
+<a class="quran-quick" href="read-quran.html?play=1"><span>🎧</span><strong>Listen</strong><small>Play the Surah</small></a>
+<a class="quran-quick" href="read-quran.html#search"><span>⌕</span><strong>Search Ayah</strong><small>Find in Quran</small></a>
+<a class="quran-quick" href="read-quran.html"><span>☾</span><strong>Featured</strong><small>Open Mushaf</small></a>
+</div>
+<div class="quran-featured-head"><span>FEATURED SURAHS</span><small>Swipe to explore</small></div>
+<div class="quran-featured" id="quranFeatured">
+<a href="read-quran.html?page=1"><b>Al-Fatihah</b><small>Page 1</small></a>
+<a href="read-quran.html?page=440"><b>Yasin</b><small>Page 440</small></a>
+<a href="read-quran.html?page=293"><b>Al-Kahf</b><small>Page 293</small></a>
+<a href="read-quran.html?page=562"><b>Al-Mulk</b><small>Page 562</small></a>
+<a href="read-quran.html?page=604"><b>An-Nas</b><small>Page 604</small></a>
+</div>
+</div>
 
-})();
-</script><script>
+</div>
+</section><script>
 (function(){
   const toggle=document.getElementById('mobileMenuToggle');
   const menu=document.getElementById('mobileMenu');
