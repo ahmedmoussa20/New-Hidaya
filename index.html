@@ -298,6 +298,78 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 @media(max-width:460px){.prayer-times-wrap{width:calc(100% - 28px)}.prayer-title{font-size:40px}.prayer-grid{grid-template-columns:1fr}.prayer-next{min-height:310px}.prayer-next-name{font-size:46px}.prayer-countdown strong{font-size:42px}.prayer-timeline{margin-top:30px}.prayer-timeline-items{gap:3px}.prayer-timeline-dot{width:12px;height:12px}.prayer-timeline-item.active .prayer-timeline-dot{width:17px;height:17px}.prayer-location{padding:17px}.prayer-bottom-label{font-size:11px}}
 
 
+
+/* =========================
+   MOBILE START YOUR JOURNEY HERO
+   ========================= */
+.mobile-start{display:none}
+@media(max-width:700px){
+  .hero{min-height:100svh;height:auto;max-height:none;padding-bottom:0;background-position:center top;background-size:auto 100%;}
+  .hero:after{background:linear-gradient(180deg,rgba(5,4,3,.30) 0%,rgba(5,4,3,.18) 20%,rgba(5,4,3,.50) 45%,rgba(5,4,3,.97) 73%,#080706 100%)}
+  .hero-grid{display:none}
+  .mobile-start{display:block;position:relative;z-index:10;padding:10px 0 28px;min-height:calc(100svh - 76px)}
+  .mobile-start-head{text-align:center;margin:0 auto 18px;max-width:390px;padding:0 4px}
+  .mobile-start-kicker{font-size:9px;letter-spacing:3.2px;color:var(--gold);font-weight:800;text-transform:uppercase;margin-bottom:7px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .mobile-start-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(43px,12vw,58px);line-height:.92;letter-spacing:-1.7px;margin:0;color:#fff;text-shadow:0 5px 22px rgba(0,0,0,.55)}
+  .mobile-start-title span{display:block;color:var(--gold)}
+  .mobile-start-lead{font-size:13px;line-height:1.45;color:rgba(255,255,255,.78);margin:11px 0 0}
+  .mobile-start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 auto;max-width:430px}
+  .start-card{min-width:0;min-height:126px;padding:12px 8px 10px;border:1px solid rgba(245,184,61,.28);border-radius:16px;background:linear-gradient(145deg,rgba(26,20,15,.90),rgba(7,6,5,.94));box-shadow:0 12px 28px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.05);color:#fff;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(8px);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+  .start-card:before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.65}
+  .start-card:active{transform:scale(.97);border-color:rgba(245,184,61,.65)}
+  .start-icon{width:52px;height:52px;border-radius:15px;border:1px solid rgba(245,184,61,.28);background:radial-gradient(circle at 35% 30%,rgba(245,184,61,.18),rgba(245,184,61,.035) 65%);display:grid;place-items:center;color:var(--gold);font-size:28px;box-shadow:0 8px 20px rgba(0,0,0,.25);flex:none}
+  .start-card h3{font-family:"Playfair Display",Georgia,serif;font-size:15px;line-height:1.05;margin:8px 0 2px;color:#fff}
+  .start-card p{font-size:8.5px;line-height:1.25;color:rgba(255,255,255,.55);margin:0;min-height:21px}
+  .start-arrow{position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(245,184,61,.32);display:grid;place-items:center;color:var(--gold);font-size:14px;background:rgba(0,0,0,.28)}
+  [dir="rtl"] .start-arrow{right:auto;left:7px}
+  .start-card.wide{grid-column:1/-1;min-height:76px;display:grid;grid-template-columns:62px 1fr 30px;gap:10px;align-items:center;text-align:left;padding:9px 14px}
+  [dir="rtl"] .start-card.wide{text-align:right;grid-template-columns:30px 1fr 62px}
+  .start-card.wide .start-icon{width:54px;height:54px}
+  .start-card.wide .start-copy{min-width:0}
+  .start-card.wide h3{font-size:17px;margin:0 0 3px}
+  .start-card.wide p{font-size:10px;min-height:0}
+  .start-card.wide .start-arrow{position:static;width:30px;height:30px;font-size:17px}
+  .start-downloads{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px auto 0;max-width:430px}
+  .start-download{height:51px;border:1px solid rgba(255,211,106,.72);border-radius:13px;background:linear-gradient(145deg,rgba(8,7,6,.96),rgba(18,14,10,.96));color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.30)}
+  .start-download .download-icon{font-size:23px;color:#fff;line-height:1}
+  .start-download small{display:block;font-size:7px;line-height:1.05;letter-spacing:.3px;color:rgba(255,255,255,.68);text-transform:uppercase}
+  .start-download strong{display:block;font-size:13px;line-height:1.05}
+  .mobile-start-grid.three-only{grid-template-columns:repeat(3,1fr);max-width:430px;gap:9px}
+  .mobile-start-grid.three-only .start-card{min-height:142px;padding:13px 8px 11px}
+  .mobile-start-grid.three-only .start-icon{width:58px;height:58px;border-radius:17px;margin-bottom:2px}
+  .mobile-start-grid.three-only .start-icon svg{width:38px;height:38px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 8px rgba(245,184,61,.22))}
+  .mobile-start-grid.three-only .start-icon-quran svg{stroke-width:1.8}
+  .mobile-start-grid.three-only .start-icon-prayer svg{stroke-width:1.8}
+  .mobile-start-grid.three-only .start-icon-qibla svg{stroke-width:1.9}
+  .mobile-start-grid.three-only .start-card h3{font-size:15px;margin:7px 0 3px}
+  .mobile-start-grid.three-only .start-card p{font-size:8.5px}
+  .official-store-buttons{gap:9px;margin-top:14px}
+  .official-store{padding:0 10px;overflow:hidden;background:rgba(0,0,0,.9);border-color:rgba(245,184,61,.75)}
+  .official-store img{display:block;width:100%;height:31px;object-fit:contain;object-position:center}
+  .official-store:first-child img{height:30px}
+  .official-store:nth-child(2) img{height:36px}
+  .start-scroll{width:28px;height:28px;margin:14px auto 0;border:0;background:none;color:var(--gold);font-size:26px;line-height:1;animation:startBounce 1.7s ease-in-out infinite}
+  @keyframes startBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+}
+@media(max-width:380px){
+  .mobile-start{padding-top:4px}
+  .mobile-start-head{margin-bottom:13px}
+  .mobile-start-title{font-size:40px}
+  .mobile-start-lead{font-size:12px;margin-top:8px}
+  .mobile-start-grid{gap:6px}
+  .start-card{min-height:116px;padding:10px 6px 9px;border-radius:14px}
+  .start-icon{width:46px;height:46px;font-size:24px;border-radius:13px}
+  .start-card h3{font-size:13px}
+  .start-card p{font-size:7.5px}
+  .start-card.wide{min-height:70px;grid-template-columns:54px 1fr 27px;gap:7px;padding:8px 10px}
+  [dir="rtl"] .start-card.wide{grid-template-columns:27px 1fr 54px}
+  .start-card.wide .start-icon{width:48px;height:48px}
+  .start-card.wide h3{font-size:15px}
+  .start-card.wide p{font-size:9px}
+  .start-download{height:47px}
+  .start-download strong{font-size:12px}
+}
+
 /* =========================
    MOBILE UX / RESPONSIVE POLISH
    ========================= */
@@ -492,6 +564,40 @@ body.rtl .quran-search input{text-align:right}
         <div class="phone left"><img src="./assets/qibla-screen.jpg" alt="Hidaya Qibla screen"></div>
         <div class="phone right"><img src="./assets/ehfaz-screen.jpg" alt="Hidaya Quran memorization screen"></div>
       </div>
+    </div>
+
+    <!-- Mobile first-screen quick start -->
+    <div class="mobile-start" aria-label="Start your Hidaya journey">
+      <div class="mobile-start-head">
+        <div class="mobile-start-kicker" data-i18n="start_kicker">YOUR HIDAYA JOURNEY</div>
+        <h2 class="mobile-start-title" data-i18n-html="start_title">Start Your<br><span>Journey</span></h2>
+        <p class="mobile-start-lead" data-i18n="start_lead">Choose where you want to begin.</p>
+      </div>
+
+      <div class="mobile-start-grid three-only">
+        <a class="start-card" href="#quran">
+          <span class="start-icon start-icon-quran" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 14c9-4 17-3 20 1v35c-4-4-11-5-20-1z"/><path d="M52 14c-9-4-17-3-20 1v35c4-4 11-5 20-1z"/><path d="M32 15v35"/><path d="M18 21c5-2 9-1 12 1M46 21c-5-2-9-1-12 1"/></svg></span>
+          <span><h3 data-i18n="start_quran">Quran</h3><p data-i18n="start_quran_sub">Read. Listen. Reflect.</p></span><span class="start-arrow">›</span>
+        </a>
+        <a class="start-card" href="#prayer-times">
+          <span class="start-icon start-icon-prayer" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 51h44M15 51V35h34v16M21 35V27l11-11 11 11v8M27 35v-8h10v8M12 27h40M25 51V40h14v11"/><path d="M32 10v6M28 13h8"/></svg></span>
+          <span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span>
+        </a>
+        <a class="start-card" href="#qibla">
+          <span class="start-icon start-icon-qibla" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="21"/><circle cx="32" cy="32" r="3"/><path d="M37 20l-4 14-10 5 4-14z"/><path d="M32 7v5M32 52v5M7 32h5M52 32h5"/></svg></span>
+          <span><h3 data-i18n="start_qibla">Qibla</h3><p data-i18n="start_qibla_sub">Find your direction</p></span><span class="start-arrow">›</span>
+        </a>
+      </div>
+
+      <div class="start-downloads official-store-buttons">
+        <a class="start-download official-store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener" aria-label="Download Hidaya from the App Store">
+          <img src="./assets/app-store-logo.png" alt="App Store">
+        </a>
+        <a class="start-download official-store" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" aria-label="Get Hidaya on Google Play">
+          <img src="./assets/google-play-logo.png" alt="Google Play">
+        </a>
+      </div>
+      <button class="start-scroll" type="button" aria-label="Scroll down" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})">⌄</button>
     </div>
   </div>
 </section>
@@ -934,8 +1040,8 @@ body.rtl .quran-search input{text-align:right}
   if(!select||!versesEl)return;
   let surahs=[]; let current=1; let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'en';
   const ui={
-    en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_quran:'Quran',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
-    ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_quran:'القرآن',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
+    en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_quran:'Quran',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',start_kicker:'YOUR HIDAYA JOURNEY',start_title:'Start Your<br><span>Journey</span>',start_lead:'Choose where you want to begin.',start_quran:'Quran',start_quran_sub:'Read. Listen. Reflect.',start_prayer:'Prayer Times',start_prayer_sub:'Never miss a prayer',start_qibla:'Qibla',start_qibla_sub:'Find your direction',start_appstore_small:'Download on the',start_google_small:'Get it on',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
+    ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_quran:'القرآن',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',start_kicker:'رحلتك مع هداية',start_title:'ابدأ <br><span>رحلتك</span>',start_lead:'اختر من أين تريد أن تبدأ.',start_quran:'القرآن',start_quran_sub:'اقرأ. استمع. تدبّر.',start_prayer:'مواقيت الصلاة',start_prayer_sub:'لا تفوّت صلاتك',start_qibla:'القبلة',start_qibla_sub:'اعرف اتجاه القبلة',start_athkar:'الأذكار والدعاء',start_athkar_sub:'كن أقرب إلى الله',start_radio:'إذاعة هداية',start_radio_sub:'قرآن وأناشيد',start_kids:'الأطفال',start_kids_sub:'قصص ودعاء وتعلّم',start_learn:'تعلم القرآن',start_learn_sub:'خطوة بخطوة',start_appstore_small:'حمّل من',start_google_small:'احصل عليه من',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
   };
   function lang(){return currentLang==='ar'?'ar':'en'}
   function t(k){return ui[lang()][k]||ui.en[k]||k}
