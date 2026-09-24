@@ -264,31 +264,38 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 /* =========================
    PRAYER TIMES / PREMIUM DIGITAL
    ========================= */
-.prayer-times-section{position:relative;overflow:hidden;padding:120px 0 125px;background:radial-gradient(circle at 50% 10%,rgba(245,184,61,.13),transparent 30%),radial-gradient(circle at 10% 70%,rgba(35,91,71,.12),transparent 30%),linear-gradient(180deg,#080706 0%,#0f0c09 50%,#080706 100%);isolation:isolate}
-.prayer-times-section:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(30deg,rgba(245,184,61,.11) 12%,transparent 12.5%,transparent 87%,rgba(245,184,61,.11) 87.5%,rgba(245,184,61,.11)),linear-gradient(150deg,rgba(245,184,61,.07) 12%,transparent 12.5%,transparent 87%,rgba(245,184,61,.07) 87.5%,rgba(245,184,61,.07));background-size:84px 146px;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+
+/* =========================
+   PREMIUM PRAYER TIMES
+   ========================= */
+.prayer-times-section{position:relative;overflow:hidden;padding:118px 0 110px;background:#080706 url('./assets/hero-mosque-bg.png') center/cover no-repeat;isolation:isolate}
+.prayer-times-section:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(5,4,3,.98) 0%,rgba(7,5,3,.92) 34%,rgba(8,6,4,.76) 64%,rgba(8,6,4,.88) 100%)}
+.prayer-times-section:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 76% 36%,rgba(245,184,61,.18),transparent 26%),linear-gradient(180deg,rgba(5,4,3,.16),rgba(5,4,3,.72) 78%,#080706 100%)}
+.prayer-times-section .prayer-pattern{position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(30deg,rgba(245,184,61,.12) 12%,transparent 12.5%,transparent 87%,rgba(245,184,61,.12) 87.5%,rgba(245,184,61,.12)),linear-gradient(150deg,rgba(245,184,61,.08) 12%,transparent 12.5%,transparent 87%,rgba(245,184,61,.08) 87.5%,rgba(245,184,61,.08));background-size:84px 146px;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
 .prayer-times-wrap{width:min(1380px,calc(100% - 80px));margin:auto;position:relative;z-index:2}
-.prayer-head{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;margin-bottom:45px}
+.prayer-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:38px}
 .prayer-kicker{color:var(--gold);font-size:11px;letter-spacing:4px;font-weight:800;margin-bottom:14px;text-transform:uppercase}
-.prayer-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(43px,5vw,68px);line-height:1.02;letter-spacing:-1.8px;margin:0;color:#fff}.prayer-title span{color:var(--gold)}
-.prayer-lead{max-width:570px;margin:16px 0 0;color:rgba(255,255,255,.62);font-size:16px;line-height:1.65}
-.prayer-location{min-width:270px;padding:16px 18px;border:1px solid rgba(245,184,61,.22);border-radius:18px;background:rgba(255,255,255,.035);backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.22)}
-.prayer-location-label{font-size:10px;letter-spacing:2.5px;color:rgba(255,255,255,.42);text-transform:uppercase}.prayer-location-name{font-size:17px;font-weight:700;margin-top:5px}.prayer-location-date{font-size:12px;color:rgba(255,255,255,.48);margin-top:4px}
-.prayer-location button{margin-top:12px;border:0;background:none;color:var(--gold);font:600 12px "DM Sans",Arial;cursor:pointer;padding:0}
+.prayer-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(43px,5vw,68px);line-height:1.02;letter-spacing:-1.8px;margin:0;color:#fff;max-width:760px}.prayer-title span{color:var(--gold)}
+.prayer-lead{max-width:650px;margin:17px 0 0;color:rgba(255,255,255,.68);font-size:16px;line-height:1.7}
+.prayer-location{min-width:355px;padding:20px 21px;border:1px solid rgba(245,184,61,.28);border-radius:20px;background:rgba(8,7,6,.55);backdrop-filter:blur(18px);box-shadow:0 20px 55px rgba(0,0,0,.32)}
+.prayer-location-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.prayer-location-label{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.43);text-transform:uppercase}.prayer-location-pin{color:var(--gold);font-size:20px}
+.prayer-location-name{font-size:17px;font-weight:700;margin-top:7px}.prayer-location-date{font-size:12px;color:rgba(255,255,255,.52);margin-top:5px}.prayer-location button{margin-top:14px;border:0;background:none;color:var(--gold);font:600 12px "DM Sans",Arial;cursor:pointer;padding:0}.prayer-location button:hover{text-decoration:underline}
+.prayer-next{position:relative;min-height:265px;margin:0 0 22px;padding:32px 36px;border:1px solid rgba(245,184,61,.62);border-radius:30px;overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;align-items:center;box-shadow:0 30px 90px rgba(0,0,0,.42),0 0 45px rgba(245,184,61,.07);background:linear-gradient(90deg,rgba(8,7,6,.97) 0%,rgba(8,7,6,.88) 42%,rgba(8,7,6,.38) 100%),url('./assets/hero-mosque-bg.png') right center/cover no-repeat}
+.prayer-next:before{content:"";position:absolute;left:-100px;bottom:-120px;width:310px;height:310px;border-radius:50%;background:rgba(245,184,61,.10);filter:blur(55px);pointer-events:none}.prayer-next:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 45%,rgba(245,184,61,.05),transparent 65%)}
+.prayer-next-left,.prayer-next-right{position:relative;z-index:2}.prayer-next-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:800}.prayer-next-name{font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,5vw,68px);line-height:1;margin-top:10px}.prayer-next-time{font-size:14px;color:rgba(255,255,255,.58);margin-top:11px}.prayer-next-time strong{color:#fff;font-size:16px}.prayer-countdown{text-align:left}.prayer-countdown small{display:block;color:rgba(255,255,255,.48);font-size:10px;letter-spacing:3px;text-transform:uppercase}.prayer-countdown strong{display:block;color:#fff;font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,5vw,66px);line-height:1.05;letter-spacing:2px;margin-top:9px}.prayer-countdown-caption{margin-top:10px;color:rgba(255,255,255,.45);font-size:11px}
 .prayer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.prayer-card{position:relative;min-height:235px;padding:24px 22px;border:1px solid rgba(245,184,61,.16);border-radius:24px;background:linear-gradient(145deg,rgba(31,26,21,.88),rgba(10,9,8,.94));box-shadow:0 20px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);overflow:hidden;transition:.25s ease}
-.prayer-card:before{content:"";position:absolute;inset:auto -35px -50px auto;width:130px;height:130px;border-radius:50%;background:rgba(245,184,61,.06);filter:blur(5px)}
-.prayer-card:hover{transform:translateY(-5px);border-color:rgba(245,184,61,.42)}
-.prayer-card.active{border-color:rgba(245,184,61,.72);box-shadow:0 25px 65px rgba(0,0,0,.36),0 0 35px rgba(245,184,61,.10),inset 0 1px 0 rgba(255,215,125,.12)}
-.prayer-card.active:after{content:"NOW";position:absolute;top:16px;right:16px;padding:5px 8px;border-radius:8px;background:rgba(245,184,61,.12);color:var(--gold);font-size:8px;font-weight:800;letter-spacing:2px}
-.prayer-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(245,184,61,.28);background:rgba(245,184,61,.045);color:var(--gold);font-size:19px;margin-bottom:27px}.prayer-card.active .prayer-icon{background:rgba(245,184,61,.10);box-shadow:0 0 25px rgba(245,184,61,.10)}
-.prayer-name{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.52);font-weight:700}.prayer-time{font-family:"Playfair Display",Georgia,serif;font-size:34px;line-height:1.1;color:#fff;margin-top:8px}.prayer-period{font-size:11px;color:rgba(255,255,255,.38);margin-top:7px}
-.prayer-next{margin-top:18px;padding:24px 26px;border-radius:24px;border:1px solid rgba(245,184,61,.24);background:linear-gradient(110deg,rgba(245,184,61,.09),rgba(255,255,255,.025));display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
-.prayer-next-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:800}.prayer-next-name{font-family:"Playfair Display",Georgia,serif;font-size:25px;margin-top:5px}.prayer-countdown{text-align:right}.prayer-countdown small{display:block;color:rgba(255,255,255,.38);font-size:10px;letter-spacing:2px;text-transform:uppercase}.prayer-countdown strong{display:block;color:var(--gold);font-size:28px;letter-spacing:1px;margin-top:4px}
-.prayer-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}.prayer-btn{border:1px solid rgba(245,184,61,.24);background:rgba(255,255,255,.035);color:#fff;border-radius:13px;padding:11px 15px;font:600 12px "DM Sans",Arial;cursor:pointer;transition:.2s ease}.prayer-btn:hover{border-color:rgba(245,184,61,.55);background:rgba(245,184,61,.07)}
-.prayer-status{min-height:18px;margin-top:10px;text-align:right;color:rgba(255,255,255,.42);font-size:11px}.prayer-status.error{color:#e9a6a6}
-@media(max-width:1000px){.prayer-head{align-items:flex-start;flex-direction:column}.prayer-location{width:100%}.prayer-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.prayer-times-section{padding:88px 0 95px}.prayer-times-wrap{width:calc(100% - 36px)}.prayer-grid{grid-template-columns:1fr 1fr}.prayer-card{min-height:205px;padding:21px 18px}.prayer-time{font-size:29px}.prayer-next{align-items:flex-start;flex-direction:column}.prayer-countdown{text-align:left}.prayer-actions{justify-content:flex-start;flex-wrap:wrap}}
-@media(max-width:460px){.prayer-times-wrap{width:calc(100% - 28px)}.prayer-grid{grid-template-columns:1fr}.prayer-card{min-height:185px}.prayer-next-name{font-size:22px}.prayer-countdown strong{font-size:24px}}
+.prayer-card{position:relative;min-height:178px;padding:25px 21px 22px;border:1px solid rgba(245,184,61,.20);border-radius:20px;background:linear-gradient(145deg,rgba(27,22,17,.90),rgba(9,8,7,.92));box-shadow:0 18px 48px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.035);overflow:hidden;transition:.25s ease}
+.prayer-card:before{content:"";position:absolute;right:-45px;bottom:-60px;width:140px;height:140px;border-radius:50%;background:rgba(245,184,61,.055);filter:blur(3px)}.prayer-card:hover{transform:translateY(-4px);border-color:rgba(245,184,61,.42)}
+.prayer-card.active{border-color:var(--gold);box-shadow:0 20px 55px rgba(0,0,0,.36),0 0 34px rgba(245,184,61,.13),inset 0 1px 0 rgba(255,215,125,.12);background:linear-gradient(145deg,rgba(43,32,19,.96),rgba(11,9,7,.96))}.prayer-card.active:after{content:"NEXT";position:absolute;right:15px;top:15px;padding:5px 8px;border-radius:999px;background:var(--gold);color:#21170a;font-size:8px;font-weight:900;letter-spacing:1.5px}
+.prayer-icon{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(245,184,61,.30);background:rgba(245,184,61,.045);color:var(--gold);font-size:20px;margin-bottom:24px}.prayer-card.active .prayer-icon{background:rgba(245,184,61,.10);box-shadow:0 0 24px rgba(245,184,61,.13)}
+.prayer-name{font-family:"Playfair Display",Georgia,serif;font-size:19px;color:#fff}.prayer-time{font-family:"Playfair Display",Georgia,serif;font-size:25px;line-height:1.1;color:#fff;margin-top:7px}.prayer-period{font-size:10px;color:rgba(255,255,255,.38);margin-top:7px}
+.prayer-timeline{position:relative;margin:38px 22px 12px;padding-top:2px}.prayer-timeline-line{position:absolute;left:2%;right:2%;top:8px;height:2px;background:linear-gradient(90deg,rgba(245,184,61,.7),rgba(245,184,61,.22));border-radius:999px}.prayer-timeline-items{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.prayer-timeline-item{text-align:center;position:relative}.prayer-timeline-dot{width:15px;height:15px;margin:0 auto 10px;border-radius:50%;border:3px solid #6e5a35;background:#17130e;box-shadow:0 0 0 4px rgba(8,7,6,.9)}.prayer-timeline-item.active .prayer-timeline-dot{width:20px;height:20px;margin-top:-2px;margin-bottom:7px;border-color:var(--gold);background:var(--gold);box-shadow:0 0 0 5px rgba(245,184,61,.12),0 0 25px rgba(245,184,61,.35)}.prayer-timeline-name{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55)}.prayer-timeline-item.active .prayer-timeline-name{color:var(--gold);font-weight:800}
+.prayer-bottom{margin-top:34px;padding:18px 22px;border:1px solid rgba(245,184,61,.22);border-radius:20px;background:rgba(13,11,9,.68);backdrop-filter:blur(14px);display:grid;grid-template-columns:1.1fr 1fr auto;align-items:center;gap:0;box-shadow:0 20px 50px rgba(0,0,0,.30)}
+.prayer-bottom-item{display:flex;align-items:center;gap:13px;padding:0 22px;min-height:48px}.prayer-bottom-item:first-child{padding-left:0}.prayer-bottom-item+.prayer-bottom-item{border-left:1px solid rgba(255,255,255,.09)}.prayer-bottom-icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--gold);border:1px solid rgba(245,184,61,.22);background:rgba(245,184,61,.055);font-size:18px}.prayer-bottom-label{font-size:12px;color:#fff;font-weight:700}.prayer-bottom-sub{font-size:10px;color:rgba(255,255,255,.40);margin-top:4px}.prayer-btn{border:1px solid rgba(245,184,61,.45);background:rgba(245,184,61,.06);color:#fff;border-radius:999px;padding:12px 17px;font:600 12px "DM Sans",Arial;cursor:pointer;transition:.2s ease;white-space:nowrap}.prayer-btn:hover{border-color:var(--gold);background:rgba(245,184,61,.13)}
+.prayer-actions{display:none}.prayer-status{min-height:18px;margin-top:10px;text-align:right;color:rgba(255,255,255,.42);font-size:11px}.prayer-status.error{color:#e9a6a6}
+@media(max-width:1000px){.prayer-head{align-items:flex-start;flex-direction:column}.prayer-location{width:100%;min-width:0}.prayer-next{grid-template-columns:1fr}.prayer-countdown{margin-top:20px}.prayer-grid{grid-template-columns:repeat(3,1fr)}.prayer-bottom{grid-template-columns:1fr;gap:10px}.prayer-bottom-item{padding:10px 0!important}.prayer-bottom-item+.prayer-bottom-item{border-left:0;border-top:1px solid rgba(255,255,255,.09)}}
+@media(max-width:700px){.prayer-times-section{padding:88px 0 92px}.prayer-times-wrap{width:calc(100% - 36px)}.prayer-next{padding:27px 24px;min-height:330px;background-position:65% center}.prayer-grid{grid-template-columns:1fr 1fr}.prayer-card{min-height:178px;padding:21px 18px}.prayer-timeline{margin-left:0;margin-right:0;overflow:hidden}.prayer-timeline-line{left:4%;right:4%}.prayer-timeline-name{font-size:8px;letter-spacing:1px}.prayer-bottom{padding:17px 18px}}
+@media(max-width:460px){.prayer-times-wrap{width:calc(100% - 28px)}.prayer-title{font-size:40px}.prayer-grid{grid-template-columns:1fr}.prayer-next{min-height:310px}.prayer-next-name{font-size:46px}.prayer-countdown strong{font-size:42px}.prayer-timeline{margin-top:30px}.prayer-timeline-items{gap:3px}.prayer-timeline-dot{width:12px;height:12px}.prayer-timeline-item.active .prayer-timeline-dot{width:17px;height:17px}.prayer-location{padding:17px}.prayer-bottom-label{font-size:11px}}
 
 </style>
 </head>
@@ -427,18 +434,33 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
      PRAYER TIMES / ALADHAN
      ========================= -->
 <section class="prayer-times-section" id="prayer-times" aria-label="Hidaya prayer times">
+  <div class="prayer-pattern"></div>
   <div class="prayer-times-wrap">
     <div class="prayer-head">
       <div>
-        <div class="prayer-kicker">PRAYER &amp; WORSHIP</div>
-        <h2 class="prayer-title">Stay Connected <span>Every Day</span></h2>
-        <p class="prayer-lead">Accurate prayer times for your location, with a clear view of the next prayer and a live countdown.</p>
+        <div class="prayer-kicker">PRAYER TIMES</div>
+        <h2 class="prayer-title">Stay Connected <span>With Every Prayer</span></h2>
+        <p class="prayer-lead">Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.</p>
       </div>
       <div class="prayer-location">
-        <div class="prayer-location-label">Your Location</div>
+        <div class="prayer-location-top">
+          <div class="prayer-location-label">Your Location</div>
+          <div class="prayer-location-pin">⌖</div>
+        </div>
         <div class="prayer-location-name" id="hidayaPrayerLocation">Cairo, Egypt</div>
         <div class="prayer-location-date" id="hidayaPrayerDate">Loading date…</div>
-        <button type="button" id="hidayaUseLocation">⌖ Use my location</button>
+        <button type="button" id="hidayaUseLocation">Use my location →</button>
+      </div>
+    </div>
+
+    <div class="prayer-next">
+      <div class="prayer-next-left">
+        <div class="prayer-next-label">Next Prayer</div>
+        <div class="prayer-next-name" id="hidayaNextPrayer">Loading…</div>
+        <div class="prayer-next-time">Your next prayer is <strong id="hidayaNextPrayerTime">--:--</strong></div>
+      </div>
+      <div class="prayer-next-right">
+        <div class="prayer-countdown"><small>Time remaining</small><strong id="hidayaCountdown">--:--:--</strong><div class="prayer-countdown-caption">Until the next prayer begins</div></div>
       </div>
     </div>
 
@@ -450,11 +472,31 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
       <article class="prayer-card" data-prayer="Isha"><div class="prayer-icon">✦</div><div class="prayer-name">Isha</div><div class="prayer-time" id="hidayaIsha">--:--</div><div class="prayer-period">Night prayer</div></article>
     </div>
 
-    <div class="prayer-next">
-      <div><div class="prayer-next-label">Next Prayer</div><div class="prayer-next-name" id="hidayaNextPrayer">Loading…</div></div>
-      <div class="prayer-countdown"><small>Time remaining</small><strong id="hidayaCountdown">--:--:--</strong></div>
+    <div class="prayer-timeline" aria-hidden="true">
+      <div class="prayer-timeline-line"></div>
+      <div class="prayer-timeline-items">
+        <div class="prayer-timeline-item" data-timeline-prayer="Fajr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Fajr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Dhuhr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Dhuhr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Asr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Asr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Maghrib"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Maghrib</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Isha"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Isha</div></div>
+      </div>
     </div>
-    <div class="prayer-actions"><button class="prayer-btn" type="button" id="hidayaChangeCity">Change city</button><button class="prayer-btn" type="button" id="hidayaRefreshPrayer">↻ Refresh</button></div>
+
+    <div class="prayer-bottom">
+      <div class="prayer-bottom-item">
+        <div class="prayer-bottom-icon">⌖</div>
+        <div><div class="prayer-bottom-label" id="hidayaBottomLocation">Cairo, Egypt</div><div class="prayer-bottom-sub">Accurate times based on your location</div></div>
+      </div>
+      <div class="prayer-bottom-item">
+        <div class="prayer-bottom-icon">⚙</div>
+        <div><div class="prayer-bottom-label">Calculation Method</div><div class="prayer-bottom-sub">Egyptian General Authority of Survey</div></div>
+      </div>
+      <div class="prayer-bottom-item">
+        <button class="prayer-btn" type="button" id="hidayaRefreshPrayer">↻ &nbsp; Refresh Times</button>
+      </div>
+    </div>
+    <div class="prayer-actions"><button class="prayer-btn" type="button" id="hidayaChangeCity">Change city</button></div>
     <div class="prayer-status" id="hidayaPrayerStatus" role="status"></div>
   </div>
 </section>
@@ -521,14 +563,17 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
       const tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);const p=parseTime(times.Fajr);if(p){tomorrow.setHours(p.h,p.m,0,0);next=tomorrow;next.name='Fajr';}
     }
     document.querySelectorAll('.prayer-card').forEach(c=>c.classList.toggle('active',next&&c.dataset.prayer===next.name));
-    if(!next){els.next.textContent='Prayer times unavailable';els.countdown.textContent='--:--:--';return}
-    els.next.textContent=next.name+' · '+format12(times[next.name]);
+    document.querySelectorAll('[data-timeline-prayer]').forEach(c=>c.classList.toggle('active',next&&c.dataset.timelinePrayer===next.name));
+    const nextTimeEl=document.getElementById('hidayaNextPrayerTime');
+    if(!next){els.next.textContent='Prayer times unavailable';els.countdown.textContent='--:--:--';if(nextTimeEl)nextTimeEl.textContent='--:--';return}
+    els.next.textContent=next.name;
+    if(nextTimeEl)nextTimeEl.textContent=format12(times[next.name]);
     const diff=Math.max(0,next-new Date());const sec=Math.floor(diff/1000);els.countdown.textContent=pad(Math.floor(sec/3600))+':'+pad(Math.floor(sec/60)%60)+':'+pad(sec%60);
   }
   async function loadByCoords(lat,lon,label){
     setStatus('Updating prayer times…');
     const url=API+'?latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&method='+method+'&school=0';
-    try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('API request failed');const j=await r.json();if(!j.data||!j.data.timings)throw new Error('Invalid API response');Object.assign(times,j.data.timings);meta=j.data.meta||{};els.location.textContent=label||meta.timezone||'Your location';renderTimes();updateNext();setStatus('');localStorage.setItem('hidayaPrayerLocation',JSON.stringify({lat,lon,label:els.location.textContent}));}
+    try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('API request failed');const j=await r.json();if(!j.data||!j.data.timings)throw new Error('Invalid API response');Object.assign(times,j.data.timings);meta=j.data.meta||{};els.location.textContent=label||meta.timezone||'Your location';const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=els.location.textContent;renderTimes();updateNext();setStatus('');localStorage.setItem('hidayaPrayerLocation',JSON.stringify({lat,lon,label:els.location.textContent}));}
     catch(e){setStatus('Could not load prayer times. Please try again.',true);}
   }
   function loadCairo(){loadByCoords(30.0444,31.2357,'Cairo, Egypt')}
@@ -538,7 +583,7 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
   }
   document.getElementById('hidayaUseLocation').addEventListener('click',useLocation);
   document.getElementById('hidayaRefreshPrayer').addEventListener('click',()=>{const saved=JSON.parse(localStorage.getItem('hidayaPrayerLocation')||'null');saved?loadByCoords(saved.lat,saved.lon,saved.label):loadCairo();});
-  document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
+  document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
   updateDate(); loadCairo(); clearInterval(timer); timer=setInterval(()=>{updateDate();updateNext();},1000);
 })();
 </script>
