@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="./assets/hero-mosque-bg.png" fetchpriority="high">
+<link rel="preload" as="image" href="./assets/app-store-logo.png">
+<link rel="preload" as="image" href="./assets/google-play-logo.png">
 <style>
 :root{--gold:#f5b83d;--gold2:#ffd36a;--white:#fff;--cream:#f7f1e7;--dark:#0b0a09;--muted:rgba(255,255,255,.84)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"DM Sans",Arial,sans-serif;background:#090807;color:#fff}body{overflow-x:hidden}
@@ -31,6 +34,126 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 @media (max-width:1250px){.wrap{width:min(1160px,calc(100% - 48px))}.nav{gap:24px}.links{gap:23px}.hero-grid{grid-template-columns:52% 48%}.phone{width:min(245px,23vw)}h1{font-size:clamp(50px,5vw,70px)}.sub{font-size:17px}.stat{min-width:118px;padding:0 13px}.stat strong{font-size:18px}}
 @media (max-width:900px){.hero{min-height:1080px;height:auto;max-height:none;background-position:center top}.hero:after{background:linear-gradient(180deg,rgba(4,3,2,.45),rgba(4,3,2,.72) 60%,rgba(4,3,2,.48))}.wrap{width:calc(100% - 36px)}.nav{height:88px}.logo{width:82px;height:82px;border-radius:14px;margin-top:0}.logo .en{font-size:19px}.logo .ar{font-size:17px;margin-top:4px}.links,.nav-right{display:none}.mobile-nav{margin-left:auto;display:flex;gap:10px}.mobile-nav button{width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(20,18,16,.68);color:#fff;font-size:20px}.hero-grid{height:auto;display:flex;flex-direction:column;align-items:stretch;padding-top:24px}.copy{max-width:650px;padding:0 0 12px}.eyebrow{font-size:12px;letter-spacing:3.2px;margin-bottom:13px}h1{font-size:clamp(45px,11vw,65px);line-height:.98;letter-spacing:-1.6px;margin-bottom:18px}.sub{font-size:16px;max-width:550px;margin-bottom:23px}.stores{margin-bottom:24px}.store{height:54px;min-width:170px;padding:0 15px}.store .big{font-size:16px}.stats{display:grid;grid-template-columns:1fr 1fr;max-width:520px;row-gap:15px}.stat{border-right:0;padding:0 8px 0 0;min-width:0}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.25)}.phones{height:560px;width:100%;padding:10px 0 45px;gap:0;align-items:flex-end}.phone{width:min(42vw,245px);border-radius:32px;padding:6px}.phone:before{border-radius:30px}.phone img{border-radius:27px}.phone.left{transform:translate(15px,10px) rotate(-5deg)}.phone.right{transform:translate(-5px,0) rotate(5deg)}.phone-floor{bottom:7%;width:90%;height:70px}}
 @media (max-width:520px){.hero{min-height:1050px}.wrap{width:calc(100% - 28px)}.nav{height:76px}.logo{width:70px;height:70px}.logo .en{font-size:16px}.logo .ar{font-size:14px}.hero-grid{padding-top:18px}.eyebrow{font-size:10px;letter-spacing:2.5px}h1{font-size:43px}.sub{font-size:15px}.stores{gap:9px}.store{min-width:0;flex:1;height:52px;padding:0 11px}.store .big{font-size:14px}.store .small{font-size:8px}.stats{grid-template-columns:1fr 1fr;gap:12px 8px}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.22)}.stat-icon{font-size:22px}.stat strong{font-size:17px}.stat small{font-size:10px}.phones{height:490px;padding-bottom:28px}.phone{width:44vw;max-width:205px;border-radius:27px}.phone img{border-radius:23px}.phone:before{border-radius:25px}.phone:after{height:17px}.phone.left{transform:translate(10px,12px) rotate(-4deg)}.phone.right{transform:translate(-7px,0) rotate(4deg)}}
+
+
+/* =========================
+   MOBILE HERO MICRO-INTERACTIONS
+   ========================= */
+@media(max-width:700px){
+  .mobile-start-grid.three-only .start-card{
+    will-change:transform,box-shadow,border-color;
+    transition:transform .22s cubic-bezier(.2,.8,.2,1),
+               border-color .22s ease,
+               box-shadow .22s ease,
+               background .22s ease;
+  }
+  .mobile-start-grid.three-only .start-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:radial-gradient(circle at 50% 20%,rgba(245,184,61,.13),transparent 52%);
+    opacity:0;
+    transition:opacity .22s ease;
+    pointer-events:none;
+  }
+  .mobile-start-grid.three-only .start-card:hover,
+  .mobile-start-grid.three-only .start-card:focus-visible{
+    transform:translateY(-4px);
+    border-color:rgba(245,184,61,.78);
+    box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 24px rgba(245,184,61,.10),inset 0 1px 0 rgba(255,255,255,.07);
+    outline:none;
+  }
+  .mobile-start-grid.three-only .start-card:hover::after,
+  .mobile-start-grid.three-only .start-card:focus-visible::after{opacity:1}
+  .mobile-start-grid.three-only .start-card:hover .start-icon,
+  .mobile-start-grid.three-only .start-card:focus-visible .start-icon{
+    box-shadow:0 0 24px rgba(245,184,61,.16),inset 0 1px 0 rgba(255,255,255,.08);
+    transform:translateY(-1px);
+  }
+  .mobile-start-grid.three-only .start-icon{
+    transition:transform .22s ease,box-shadow .22s ease;
+  }
+  .mobile-start-grid.three-only .start-arrow{
+    transition:transform .22s ease,background .22s ease,border-color .22s ease;
+  }
+  .mobile-start-grid.three-only .start-card:hover .start-arrow,
+  .mobile-start-grid.three-only .start-card:focus-visible .start-arrow{
+    transform:translateX(2px);
+    background:rgba(245,184,61,.12);
+    border-color:rgba(245,184,61,.8);
+  }
+  [dir="rtl"] .mobile-start-grid.three-only .start-card:hover .start-arrow,
+  [dir="rtl"] .mobile-start-grid.three-only .start-card:focus-visible .start-arrow{transform:translateX(-2px)}
+
+  .official-store{
+    position:relative;
+    cursor:pointer;
+    touch-action:manipulation;
+    will-change:transform,box-shadow;
+    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .official-store::after{
+    content:"";
+    position:absolute;
+    inset:1px;
+    border-radius:inherit;
+    background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.11) 50%,transparent 75%);
+    transform:translateX(-120%);
+    transition:transform .55s ease;
+    pointer-events:none;
+  }
+  .official-store:hover,
+  .official-store:focus-visible{
+    transform:translateY(-3px);
+    border-color:var(--gold2);
+    box-shadow:0 16px 32px rgba(0,0,0,.42),0 0 24px rgba(245,184,61,.11);
+    outline:none;
+  }
+  .official-store:hover::after,
+  .official-store:focus-visible::after{transform:translateX(120%)}
+  .official-store:active{transform:scale(.975)}
+  .official-store img{transition:transform .2s ease,filter .2s ease}
+  .official-store:hover img,.official-store:focus-visible img{transform:scale(1.025)}
+
+  .start-scroll-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    flex:0 0 auto;
+  }
+  .start-scroll-label{
+    color:rgba(255,255,255,.48);
+    font-size:8px;
+    letter-spacing:2.6px;
+    text-transform:uppercase;
+    line-height:1;
+  }
+  .start-scroll{margin:0 auto -1px}
+
+  .mobile-start.is-entering .mobile-start-head,
+  .mobile-start.is-entering .mobile-start-grid,
+  .mobile-start.is-entering .start-downloads,
+  .mobile-start.is-entering .start-scroll-wrap{
+    animation:hidayaHeroIn .65s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .mobile-start.is-entering .mobile-start-grid{animation-delay:.12s}
+  .mobile-start.is-entering .start-downloads{animation-delay:.22s}
+  .mobile-start.is-entering .start-scroll-wrap{animation-delay:.34s}
+  @keyframes hidayaHeroIn{
+    from{opacity:0;transform:translateY(12px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .mobile-start.is-entering .mobile-start-head,
+    .mobile-start.is-entering .mobile-start-grid,
+    .mobile-start.is-entering .start-downloads,
+    .mobile-start.is-entering .start-scroll-wrap{animation:none}
+    .mobile-start-grid.three-only .start-card,.official-store{transition:none}
+  }
+}
 
 /* =========================
    ABOUT / HIDAYA ECOSYSTEM
@@ -781,7 +904,7 @@ body.rtl .quran-search input{text-align:right}
           <img src="./assets/google-play-logo.png" alt="Google Play">
         </a>
       </div>
-      <button class="start-scroll" type="button" aria-label="Scroll down" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})">⌄</button>
+      <div class="start-scroll-wrap"><button class="start-scroll" type="button" aria-label="Scroll to explore" onclick="document.querySelector('.about')?.scrollIntoView({behavior:'smooth',block:'start'})">⌄</button><span class="start-scroll-label" data-i18n="start_scroll">Scroll to explore</span></div>
     </div>
   </div>
 </section>
@@ -1431,5 +1554,41 @@ body.rtl .quran-search input{text-align:right}
   </div>
 </section>
 
+
+<script>
+(function(){
+  const hero=document.querySelector('.mobile-start');
+  if(!hero) return;
+  requestAnimationFrame(()=>hero.classList.add('is-entering'));
+
+  // Give in-page hero links a smooth, intentional focus/scroll experience.
+  hero.querySelectorAll('.start-card[href^="#"]').forEach(card=>{
+    card.addEventListener('click',function(e){
+      const target=document.querySelector(this.getAttribute('href'));
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(()=>target.setAttribute('tabindex','-1'),450);
+      setTimeout(()=>target.focus({preventScroll:true}),470);
+    });
+  });
+
+  // Store badges: preload is already declared; keep interactions accessible.
+  hero.querySelectorAll('.official-store').forEach(link=>{
+    link.addEventListener('keydown',e=>{
+      if(e.key==='Enter' || e.key===' '){
+        e.preventDefault();
+        link.click();
+      }
+    });
+  });
+
+  // Lazy-load below-the-fold images without touching the Hero assets.
+  document.querySelectorAll('img:not(.phone img):not(.official-store img)').forEach(img=>{
+    if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
+    if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
+  });
+})();
+</script>
 </body>
 </html>
