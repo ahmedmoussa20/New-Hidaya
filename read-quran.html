@@ -1029,6 +1029,7 @@ body.rtl .quran-search input{text-align:right}
 .reading-only-tools .play-page-hide{display:none}
 @media(max-width:700px){.reader-mode-switch{margin-bottom:10px}.audio-only-panel{padding:19px;border-radius:17px}.audio-only-head{display:block}.audio-only-title{font-size:25px}.audio-only-controls{display:grid;grid-template-columns:1fr 1fr}.audio-only-controls button{padding:0 10px}.audio-only-controls button.primary{grid-column:1/-1}}
 @media(max-width:380px){.reader-mode-btn{font-size:10px}.audio-only-title{font-size:23px}.audio-only-sub{font-size:11px}}
+.mushaf-image-wrap{width:100%;background:#f4ecd9;display:flex;justify-content:center;align-items:flex-start}.mushaf-page-image{display:block;width:100%;height:auto;max-width:900px}.mushaf-page-inner:has(.mushaf-page-image){padding:0;min-height:0}.mushaf-page:has(.mushaf-page-image){background:#f4ecd9}.mode-hidden{display:none!important}
 </style></head><body class="standalone-page"><div class="standalone-nav"><div class="wrap"><header class="nav">
       <a class="logo" href="index.html" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
       <nav class="links" aria-label="Primary navigation"><a href="index.html#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="index.html#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></nav>
@@ -1153,6 +1154,21 @@ body.rtl .quran-search input{text-align:right}
   const autoNextSurah=document.getElementById('autoNextSurah');
   if(!pageSelect||!content)return;
   const arDigits=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+  const lang=()=>((localStorage.getItem('hidayaLang')||'en')==='ar'?'ar':'en');
+  const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  function setStatus(msg=''){if(status)status.textContent=msg||'';}
+  function updateUi(){
+    if(pageSelect && !pageSelect.options.length){
+      pageSelect.innerHTML=Array.from({length:totalPages},(_,i)=>`<option value="${i+1}">${lang()==='ar'?'الصفحة ':'Page '}${i+1}</option>`).join('');
+    }
+    if(pageSelect)pageSelect.value=String(page);
+    if(pageNumber)pageNumber.textContent=arDigits(page);
+    if(counter)counter.textContent=`${page} / ${totalPages}`;
+    readingModeBtn?.classList.toggle('active',readerMode==='reading');
+    audioModeBtn?.classList.toggle('active',readerMode==='audio');
+    if(audioPanel)audioPanel.hidden=readerMode!=='audio';
+    document.querySelector('.reading-only-tools')?.classList.toggle('mode-hidden',readerMode==='audio');
+  }
   let page=Number(new URLSearchParams(location.search).get('page'))||Number(localStorage.getItem('hidayaQuranPage'))||1;
   page=Math.min(totalPages,Math.max(1,page));
   let pageData=null; let audio=new Audio(); audio.preload='metadata';
@@ -1194,18 +1210,44 @@ body.rtl .quran-search input{text-align:right}
     n=Math.max(1,Math.min(114,Number(n)||1));
     audioSurahNumber=n;localStorage.setItem('hidayaAudioSurah',String(n));
     if(audioSurahSelect)audioSurahSelect.value=String(n);
-    stop(false);
+    audio.pause();
+    audio.removeAttribute('src');
+    const src=`https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/${String(n).padStart(3,'0')}.mp3`;
+    audio.src=src;
+    audio.preload='metadata';
     setAudioStatus(lang()==='ar'?'جاري تشغيل السورة…':'Playing Surah…');
-    const src=`https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${n}.mp3`;
-    audio.src=src;audio.load();updateMediaSession(n);
-    audio.play().then(()=>{setAudioStatus(lang()==='ar'?'التلاوة تعمل الآن':'Recitation is playing');updateAudioButton()}).catch(err=>{setAudioStatus(lang()==='ar'?'تعذر تشغيل الصوت. اضغط تشغيل مرة أخرى.':'Audio could not start. Tap Play again.');updateAudioButton();console.warn('Hidaya audio play failed',err)});
+    updateMediaSession(n);
+    const p=audio.play();
+    if(p&&typeof p.then==='function')p.then(()=>{
+      setAudioStatus(lang()==='ar'?'التلاوة تعمل الآن':'Recitation is playing');
+      try{if('mediaSession' in navigator)navigator.mediaSession.playbackState='playing'}catch(e){}
+      updateAudioButton();
+    }).catch(err=>{
+      setAudioStatus(lang()==='ar'?'تعذر تشغيل الصوت. اضغط تشغيل مرة أخرى.':'Audio could not start. Press Play again.');
+      updateAudioButton();
+      console.warn('Hidaya audio play failed',err);
+    });
   }
-  function stop(clearSrc=true){audio.pause();if(clearSrc){audio.removeAttribute('src');audio.load()}audioIndex=-1;try{if('mediaSession' in navigator)navigator.mediaSession.playbackState='none'}catch(e){}updateAudioButton()}
+  function stop(){audio.pause();audio.removeAttribute('src');audioIndex=-1;content.querySelectorAll('.playing').forEach(x=>x.classList.remove('playing'));try{if('mediaSession' in navigator)navigator.mediaSession.playbackState='none'}catch(e){}updateAudioButton()}
 
-  async function loadPage(p){page=p;localStorage.setItem('hidayaQuranPage',String(page));pageSelect.value=page;content.innerHTML='<div class="mushaf-loading">Loading…</div>';setStatus(lang()==='ar'?`جاري تحميل الصفحة ${arDigits(page)}…`:`Loading page ${page}…`);stop();try{const r=await fetch(`${API}/page/${page}/quran-uthmani`,{cache:'force-cache'});const j=await r.json();if(j.code!==200)throw Error('API');pageData=j.data;renderPage();setStatus('')}catch(e){content.innerHTML='<div class="mushaf-loading">Could not load this page. Please try again.</div>';setStatus(lang()==='ar'?'تعذر تحميل الصفحة. حاول مرة أخرى.':'Could not load this page. Please try again.')}}
-  function renderPage(){const ayahs=pageData?.ayahs||[];if(!ayahs.length){content.innerHTML='<div class="mushaf-loading">No verses found.</div>';return}let html='';let lastSurah=null;ayahs.forEach(a=>{if(a.surah?.number!==lastSurah){lastSurah=a.surah.number;html+=`<div class="mushaf-surah-title"><strong>${esc(a.surah.name)}</strong><small>${esc(a.surah.englishName||'')} · ${esc(a.surah.revelationType||'')}</small></div>`;if(a.numberInSurah===1&&a.surah.number!==9)html+=`<div class="mushaf-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>`}html+=`<span class="mushaf-ayah" data-ayah="${a.number}">${esc(a.text)} <span class="mushaf-ayah-num">${arDigits(a.numberInSurah)}</span></span> `});content.innerHTML=`<div class="mushaf-text">${html}</div>`;bookmarkBtn.classList.toggle('mushaf-marked',localStorage.getItem('hidayaQuranBookmarkPage')===String(page))}
+  async function loadPage(p){
+    page=Math.min(totalPages,Math.max(1,Number(p)||1));
+    localStorage.setItem('hidayaQuranPage',String(page));
+    pageSelect.value=String(page);
+    pageNumber.textContent=arDigits(page);
+    counter.textContent=`${page} / ${totalPages}`;
+    content.innerHTML='<div class="mushaf-loading">Loading Quran page…</div>';
+    setStatus(lang()==='ar'?`جاري تحميل الصفحة ${arDigits(page)}…`:`Loading page ${page}…`);
+    stop();
+    renderPage();
+    setStatus('');
+  }
+  function renderPage(){
+    const imgUrl=`https://api.islamic.app/v1/mushaf/page/${page}.svg?font=uthmani&theme=light&width=900`;
+    content.innerHTML=`<div class="mushaf-image-wrap"><img class="mushaf-page-image" src="${imgUrl}" alt="Quran Mushaf page ${page}" loading="eager" decoding="async" onerror="this.closest('.mushaf-image-wrap').innerHTML='<div class=\"mushaf-loading\">Could not load Quran page. Please try again.</div>'"></div>`;
+    bookmarkBtn.classList.toggle('mushaf-marked',localStorage.getItem('hidayaQuranBookmarkPage')===String(page));
+  }
   async function playAyah(globalNumber,el){try{content.querySelectorAll('.playing').forEach(x=>x.classList.remove('playing'));el?.classList.add('playing');audio.src=`https://cdn.islamic.network/quran/audio/64/ar.alafasy/${globalNumber}.mp3`;await audio.play();audio.onended=()=>el?.classList.remove('playing')}catch(e){}}
-  function stop(){audio.pause();audio.removeAttribute('src');audioIndex=-1;content.querySelectorAll('.playing').forEach(x=>x.classList.remove('playing'))}
   function playPage(){const a=pageData?.ayahs||[];if(!a.length)return;if(!audio.paused){stop();return}let i=0;const run=()=>{if(i>=a.length)return;const el=content.querySelector(`[data-ayah="${a[i].number}"]`);content.querySelectorAll('.playing').forEach(x=>x.classList.remove('playing'));el?.classList.add('playing');audio.src=a[i].audio||`https://cdn.islamic.network/quran/audio/64/ar.alafasy/${a[i].number}.mp3`;audio.play().catch(()=>{});audio.onended=()=>{i++;run()}};run()}
   pageSelect.addEventListener('change',()=>loadPage(Number(pageSelect.value)));prev.addEventListener('click',()=>{if(page>1)loadPage(page-1)});next.addEventListener('click',()=>{if(page<totalPages)loadPage(page+1)});bookmarkBtn.addEventListener('click',()=>{localStorage.setItem('hidayaQuranBookmarkPage',String(page));bookmarkBtn.classList.add('mushaf-marked');});playPageBtn.addEventListener('click',playPage);searchBtn.addEventListener('click',()=>{searchBox.hidden=!searchBox.hidden;if(!searchBox.hidden)searchInput.focus()});doSearch.addEventListener('click',()=>{const q=searchInput.value.trim();if(!q)return;setStatus(lang()==='ar'?'البحث العام يحتاج إلى تحميل نتائج البحث.':'Global search results will be added here.');});readingModeBtn?.addEventListener('click',()=>setMode('reading'));audioModeBtn?.addEventListener('click',()=>setMode('audio'));audioPlayBtn?.addEventListener('click',()=>{if(audio.paused)loadAndPlaySurah(Number(audioSurahSelect?.value||audioSurahNumber));else{audio.pause();updateAudioButton();try{if('mediaSession' in navigator)navigator.mediaSession.playbackState='paused'}catch(e){}}});audioStopBtn?.addEventListener('click',()=>{stop();setAudioStatus(lang()==='ar'?'تم إيقاف التلاوة':'Recitation stopped');});audioSurahSelect?.addEventListener('change',()=>{audioSurahNumber=Number(audioSurahSelect.value)||1;localStorage.setItem('hidayaAudioSurah',String(audioSurahNumber));stop();setAudioStatus('');});autoNextSurah?.addEventListener('change',()=>{autoNext=autoNextSurah.checked;localStorage.setItem('hidayaAutoNextSurah',autoNext?'1':'0');});audio.addEventListener('play',updateAudioButton);audio.addEventListener('pause',updateAudioButton);audio.addEventListener('ended',()=>{if(autoNext&&audioSurahNumber<114)loadAndPlaySurah(audioSurahNumber+1);else{setAudioStatus(lang()==='ar'?'انتهت السورة':'Surah finished');updateAudioButton();try{if('mediaSession' in navigator)navigator.mediaSession.playbackState='none'}catch(e){}}});window.addEventListener('keydown',e=>{if(readerMode==='reading'){if(e.key==='ArrowLeft'&&lang()!=='ar')next.click();if(e.key==='ArrowRight'&&lang()!=='ar')prev.click()}});window.addEventListener('hidayaLanguageChanged',()=>{updateUi();if(readerMode==='audio'){audioSurahSelect.innerHTML='';loadAudioSurahList()}else loadPage(page)});updateUi();setupMediaSession();setMode(readerMode);
   if(location.hash==='#search'){searchBox.hidden=false;setTimeout(()=>searchInput.focus(),300)}
