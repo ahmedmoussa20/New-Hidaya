@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1008,7 +1009,17 @@ body.rtl .quran-search input{text-align:right}
 <style>
 .qj-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.quran-quick,.quran-featured a{display:block;text-decoration:none;color:#fff}.quran-featured a{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));text-align:left;cursor:pointer}.quran-featured a b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured a small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.quran-quick{transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}
 </style>
-</head><body class="standalone-page"><div class="standalone-nav"><div class="wrap"><header class="nav">
+<style>
+.quran-gateway{min-height:calc(100vh - 88px);display:flex;align-items:center;padding:80px 0 90px}
+.gateway-heading{text-align:center;max-width:720px;margin:0 auto 38px}.gateway-heading h2{font-size:clamp(42px,6vw,72px);line-height:1.02}.gateway-heading .quran-lead{max-width:520px;margin:18px auto 0}
+.quran-choice-grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.quran-choice{position:relative;min-height:300px;padding:34px;border-radius:28px;border:1px solid rgba(245,184,61,.18);overflow:hidden;text-decoration:none;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 25px 70px rgba(0,0,0,.25);transition:transform .25s ease,border-color .25s ease}
+.quran-choice:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(245,184,61,.16),transparent 38%);pointer-events:none}.quran-choice:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,7,.04) 20%,rgba(8,8,7,.9) 100%);pointer-events:none}
+.read-choice{background:linear-gradient(135deg,#153b32,#071511)}.listen-choice{background:linear-gradient(135deg,#49361d,#171109)}
+.quran-choice:hover{transform:translateY(-5px);border-color:rgba(245,184,61,.5)}
+.choice-icon,.choice-copy,.choice-arrow{position:relative;z-index:2}.choice-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(245,184,61,.22);font-size:27px;margin-bottom:auto}.choice-copy{margin-top:50px}.choice-kicker{font-size:10px;letter-spacing:.22em;color:#f5b83d;font-weight:700}.quran-choice h3{font:700 31px 'Playfair Display',serif;margin:8px 0 8px}.quran-choice p{max-width:390px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.7;margin:0}.choice-arrow{position:absolute;right:28px;bottom:28px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#f5b83d;color:#17120a;font-size:22px}
+@media(max-width:700px){.quran-gateway{min-height:auto;padding:58px 0 72px}.gateway-heading{text-align:left;margin-bottom:26px}.gateway-heading h2{font-size:43px}.gateway-heading .quran-lead{margin-left:0;font-size:13px}.quran-choice-grid{grid-template-columns:1fr;gap:14px}.quran-choice{min-height:225px;padding:24px;border-radius:22px}.quran-choice h3{font-size:26px}.quran-choice p{font-size:12px;max-width:290px}.choice-copy{margin-top:30px}.choice-arrow{right:20px;bottom:20px;width:43px;height:43px}}
+</style></head><body class="standalone-page"><div class="standalone-nav"><div class="wrap"><header class="nav">
 <a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
 <nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav>
 <div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div>
@@ -1022,36 +1033,25 @@ body.rtl .quran-search input{text-align:right}
 <a data-i18n="nav_faq" href="index.html#faq">FAQ</a>
 <a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a>
 </div>
-</header></div></div><section aria-label="Hidaya Quran" class="quran-section" id="quran">
+</header></div></div><section aria-label="Hidaya Quran" class="quran-section quran-gateway" id="quran">
 <div class="quran-wrap">
-<div class="quran-heading">
-<div class="quran-kicker" data-i18n="quran_kicker">THE HOLY QURAN</div>
-<h2 data-i18n-html="quran_title">Read. Listen. <span>Reflect.</span></h2>
-<p class="quran-lead" data-i18n="quran_lead">Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.</p>
+<div class="quran-heading gateway-heading">
+<div class="quran-kicker">THE HOLY QURAN</div>
+<h2>Your Quran.<br/><span>Your Journey.</span></h2>
+<p class="quran-lead">Choose how you want to experience the Holy Quran.</p>
 </div>
-<div class="quran-journey">
-<div class="quran-journey-card">
-<div class="qj-label">CONTINUE READING</div>
-<div class="qj-title" id="quranContinueTitle">Start your Quran journey</div>
-<div class="qj-sub" id="quranContinueSub">Begin with Al-Fatihah</div>
-<a class="qj-btn" href="read-quran.html">Open Quran <span>→</span></a>
+<div class="quran-choice-grid">
+<a class="quran-choice read-choice" href="read-quran.html">
+<div class="choice-icon">📖</div>
+<div class="choice-copy"><div class="choice-kicker">READ</div><h3>Read the Quran</h3><p>Open the Mushaf and read page by page in a calm, focused experience.</p></div>
+<span class="choice-arrow">→</span>
+</a>
+<a class="quran-choice listen-choice" href="listen-quran.html">
+<div class="choice-icon">🎧</div>
+<div class="choice-copy"><div class="choice-kicker">LISTEN</div><h3>Listen to the Quran</h3><p>Listen to beautiful recitations with a simple, dedicated audio experience.</p></div>
+<span class="choice-arrow">→</span>
+</a>
 </div>
-<div class="quran-quick-grid">
-<a class="quran-quick" href="read-quran.html"><span>📖</span><strong>Read Quran</strong><small>Open Mushaf</small></a>
-<a class="quran-quick" href="read-quran.html?play=1"><span>🎧</span><strong>Listen</strong><small>Play the Surah</small></a>
-<a class="quran-quick" href="read-quran.html#search"><span>⌕</span><strong>Search Ayah</strong><small>Find in Quran</small></a>
-<a class="quran-quick" href="read-quran.html"><span>☾</span><strong>Featured</strong><small>Open Mushaf</small></a>
-</div>
-<div class="quran-featured-head"><span>FEATURED SURAHS</span><small>Swipe to explore</small></div>
-<div class="quran-featured" id="quranFeatured">
-<a href="read-quran.html?page=1"><b>Al-Fatihah</b><small>Page 1</small></a>
-<a href="read-quran.html?page=440"><b>Yasin</b><small>Page 440</small></a>
-<a href="read-quran.html?page=293"><b>Al-Kahf</b><small>Page 293</small></a>
-<a href="read-quran.html?page=562"><b>Al-Mulk</b><small>Page 562</small></a>
-<a href="read-quran.html?page=604"><b>An-Nas</b><small>Page 604</small></a>
-</div>
-</div>
-
 </div>
 </section><script>
 (function(){
