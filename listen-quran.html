@@ -1042,21 +1042,10 @@ body.rtl .quran-search input{text-align:right}
 <div class="listen-top"><a class="reader-back" href="quran.html">← <span>Back to Quran</span></a><div class="quran-kicker">LISTEN TO THE QURAN</div></div>
 <div class="listen-shell">
 <div class="listen-art"><div class="listen-logo">☾</div><div class="listen-art-caption">HIDAYA<br/><span>QURAN AUDIO</span></div></div>
-<div class="listen-info"><div class="choice-kicker">NOW PLAYING</div><h1 id="surahTitle">Al-Fatihah</h1><p id="surahArabic">سورة الفاتحة</p><div class="reciter">Mishary Alafasy</div></div>
+<div class="listen-info"><div class="choice-kicker">NOW PLAYING</div><h1 id="surahTitle">Al-Fatihah</h1><p id="surahArabic">سورة الفاتحة</p><div class="reciter" id="reciterLabel">Mishary Alafasy</div></div>
 <div class="listen-progress"><input aria-label="Audio progress" id="seek" max="100" min="0" type="range" value="0"/><div class="time-row"><span id="currentTime">0:00</span><span id="duration">0:00</span></div></div>
 <div class="player-controls"><button aria-label="Previous Surah" id="prevAudio">‹</button><button aria-label="Play" class="play-main" id="playAudio">▶</button><button aria-label="Next Surah" id="nextAudio">›</button></div>
-<div class="listen-selects"><label>Surah<select id="surahSelect"></select></label><label>Reciter<select id="reciterSelect">
-<option value="ar.alafasy">Mishary Alafasy</option>
-<option value="ar.husary">Mahmoud Khalil Al-Husary</option>
-<option value="ar.minshawi">Mohamed Siddiq Al-Minshawi</option>
-<option value="ar.sudais">Abdul Rahman Al-Sudais</option>
-<option value="ar.shuraim">Saud Al-Shuraim</option>
-<option value="ar.abdulbasit">Abdul Basit Abdul Samad</option>
-<option value="ar.ajamy">Ahmed ibn Ali Al-Ajamy</option>
-<option value="ar.muhammadayoub">Muhammad Ayyoub</option>
-<option value="ar.hudhaify">Ali Al-Hudhaify</option>
-<option value="ar.muhammadjibreel">Muhammad Jibreel</option>
-</select></label></div>
+<div class="listen-selects"><label>Surah<select id="surahSelect"></select></label><label>Reciter<select id="reciterSelect"><option value="">Loading reciters…</option></select></label></div>
 <label class="auto-next"><input checked="" id="autoNext" type="checkbox"/> <span>Play next Surah automatically</span></label>
 <div class="up-next"><div class="up-head"><strong>Up Next</strong><span id="nextLabel">Al-Baqarah</span></div><div class="up-row"><span id="nextNum">2</span><div><b id="nextName">Al-Baqarah</b><small id="nextArabic">سورة البقرة</small></div><span class="up-arrow">→</span></div></div>
 <div aria-live="polite" class="audio-status" id="audioStatus"></div>
@@ -1064,61 +1053,113 @@ body.rtl .quran-search input{text-align:right}
 </div></section>
 <script>
 (function(){
- const API='https://api.alquran.cloud/v1', audio=new Audio(); audio.preload='metadata';
- const RECITER_KEY='hidayaAudioReciter';
- const RECITERS={
-  'ar.alafasy':'Mishary Alafasy',
-  'ar.husary':'Mahmoud Khalil Al-Husary',
-  'ar.minshawi':'Mohamed Siddiq Al-Minshawi',
-  'ar.sudais':'Abdul Rahman Al-Sudais',
-  'ar.shuraim':'Saud Al-Shuraim',
-  'ar.abdulbasit':'Abdul Basit Abdul Samad',
-  'ar.ajamy':'Ahmed ibn Ali Al-Ajamy',
-  'ar.muhammadayoub':'Muhammad Ayyoub',
-  'ar.hudhaify':'Ali Al-Hudhaify',
-  'ar.muhammadjibreel':'Muhammad Jibreel'
- };
- const sel=document.getElementById('surahSelect'), reciterSel=document.getElementById('reciterSelect'), play=document.getElementById('playAudio'), seek=document.getElementById('seek'), cur=document.getElementById('currentTime'), dur=document.getElementById('duration'), title=document.getElementById('surahTitle'), arabic=document.getElementById('surahArabic'), status=document.getElementById('audioStatus'), auto=document.getElementById('autoNext'), nextName=document.getElementById('nextName'), nextArabic=document.getElementById('nextArabic'), nextNum=document.getElementById('nextNum'), reciterLabel=document.querySelector('.reciter');
+ const API='https://api.alquran.cloud/v1';
+ const MP3API='https://mp3quran.net/api/v3/reciters?language=eng';
+ const audio=new Audio(); audio.preload='metadata'; audio.crossOrigin='anonymous';
+ const sel=document.getElementById('surahSelect'), reciterSel=document.getElementById('reciterSelect'), reciterLabel=document.getElementById('reciterLabel'), play=document.getElementById('playAudio'), seek=document.getElementById('seek'), cur=document.getElementById('currentTime'), dur=document.getElementById('duration'), title=document.getElementById('surahTitle'), arabic=document.getElementById('surahArabic'), status=document.getElementById('audioStatus'), auto=document.getElementById('autoNext'), nextName=document.getElementById('nextName'), nextArabic=document.getElementById('nextArabic'), nextNum=document.getElementById('nextNum');
  let n=Number(localStorage.getItem('hidayaAudioSurah'))||1;
- let reciter=localStorage.getItem(RECITER_KEY)||'ar.alafasy';
+ let reciters=[];
+ let selectedRead=null;
+ const RECITER_PREF='hidayaAudioReciter';
  const esc=s=>String(s).replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m]));
  const fmt=s=>{s=Math.max(0,Math.floor(s||0));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`};
- async function init(){
-  try{
-   const r=await fetch(`${API}/surah`,{cache:'force-cache'}),j=await r.json();
+ const clean=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'');
+
+ async function loadSurahs(){
+   const r=await fetch(`${API}/surah`,{cache:'force-cache'});
+   const j=await r.json();
    sel.innerHTML=j.data.map(x=>`<option value="${x.number}" data-ar="${esc(x.name)}">${x.number}. ${esc(x.englishName)}</option>`).join('');
-  }catch(e){
-   sel.innerHTML='<option value="1" data-ar="سورة الفاتحة">1. Al-Fatihah</option>';
-  }
-  if(reciterSel){
-   reciterSel.value=RECITERS[reciter]?reciter:'ar.alafasy';
-   reciter=reciterSel.value;
-   if(reciterLabel)reciterLabel.textContent=RECITERS[reciter];
-  }
-  sel.value=String(n);
-  updateMeta();
- };
- function updateMeta(){const opt=sel.selectedOptions[0];if(!opt)return; n=Number(opt.value); localStorage.setItem('hidayaAudioSurah',String(n)); title.textContent=opt.textContent.replace(/^\d+\.\s*/,''); arabic.textContent=opt.dataset.ar||''; const next=n<114?n+1:1; const no=[...sel.options].find(o=>Number(o.value)===next); if(no){nextNum.textContent=next;nextName.textContent=no.textContent.replace(/^\d+\.\s*/,'');nextArabic.textContent=no.dataset.ar||'';}}
- function load(playNow=false){
-  audio.pause();
-  audio.removeAttribute('src');
-  audio.src=`https://cdn.islamic.network/quran/audio-surah/128/${reciter}/${n}.mp3`;
-  audio.load();
-  updateMeta();
-  if(reciterLabel)reciterLabel.textContent=RECITERS[reciter]||'Mishary Alafasy';
-  status.textContent=playNow?'Loading recitation…':'';
-  if(playNow)audio.play().catch(()=>status.textContent='Press Play to start the recitation.');
+   if(![...sel.options].some(o=>Number(o.value)===n)) n=1;
+   sel.value=String(n); updateMeta();
  }
- sel.addEventListener('change',()=>{n=Number(sel.value);load(false)});
- if(reciterSel)reciterSel.addEventListener('change',()=>{
-  reciter=RECITERS[reciterSel.value]?reciterSel.value:'ar.alafasy';
-  localStorage.setItem(RECITER_KEY,reciter);
-  if(reciterLabel)reciterLabel.textContent=RECITERS[reciter];
-  load(!audio.paused);
+
+ function chooseMoshaf(rec){
+   const list=Array.isArray(rec?.moshaf)?rec.moshaf:[];
+   return list.find(x=>Number(x.surah_total)>=114 && x.server) || list.find(x=>x.server) || null;
+ }
+
+ function wantedName(rec){
+   const name=clean(rec?.name);
+   const targets=[
+     ['mishary','Mishary Alafasy'],
+     ['mahmoudkhalilalhusary','Mahmoud Khalil Al-Husary'],
+     ['mohamedsiddiqalminshawy','Mohamed Siddiq Al-Minshawy'],
+     ['abdurrahmaanas-sudais','Abdurrahmaan As-Sudais'],
+     ['saudash-shuraym','Saud Ash-Shuraym'],
+     ['abdulbasitabdulsamad','Abdul Basit Abdul Samad'],
+     ['ahmedibnali-alajamy','Ahmed ibn Ali al-Ajamy'],
+     ['muhammadayyoub','Muhammad Ayyoub'],
+     ['ali-alhudhaify','Ali Al-Hudhaify'],
+     ['muhammadjibreel','Muhammad Jibreel']
+   ];
+   for(const [key,label] of targets){if(name.includes(clean(key)) || name.includes(clean(label)) || (key.includes('sudais')&&name.includes('sudais')) || (key.includes('shuraym')&&name.includes('shuraym'))) return label;}
+   return null;
+ }
+
+ async function loadReciters(){
+   reciterSel.innerHTML='<option value="">Loading reciters…</option>';
+   try{
+     const r=await fetch(MP3API,{cache:'no-store'});
+     if(!r.ok) throw new Error('Reciters API failed');
+     const j=await r.json();
+     const all=Array.isArray(j.reciters)?j.reciters:[];
+     const wantedLabels=new Set(['Mishary Alafasy','Mahmoud Khalil Al-Husary','Mohamed Siddiq Al-Minshawy','Abdurrahmaan As-Sudais','Saud Ash-Shuraym','Abdul Basit Abdul Samad','Ahmed ibn Ali al-Ajamy','Muhammad Ayyoub','Ali Al-Hudhaify','Muhammad Jibreel']);
+     reciters=all.map(r=>{const label=wantedName(r);const m=chooseMoshaf(r);return label&&m?{id:String(r.id),label,server:m.server,moshaf:m}:null}).filter(Boolean);
+     const unique=[]; const seen=new Set(); for(const r of reciters){if(!seen.has(r.label)){seen.add(r.label);unique.push(r)}} reciters=unique;
+     if(!reciters.length) throw new Error('No matching reciters');
+     reciterSel.innerHTML=reciters.map((r,i)=>`<option value="${esc(r.id)}">${esc(r.label)}</option>`).join('');
+     const saved=localStorage.getItem(RECITER_PREF);
+     const match=reciters.find(r=>r.id===saved) || reciters[0];
+     reciterSel.value=match.id; selectedRead=match; reciterLabel.textContent=match.label;
+   }catch(e){
+     status.textContent='Could not load reciters. Please try again.';
+     reciterSel.innerHTML='<option value="">Reciters unavailable</option>';
+     throw e;
+   }
+ }
+
+ function updateMeta(){
+   const opt=sel.selectedOptions[0]; if(!opt)return;
+   n=Number(opt.value); localStorage.setItem('hidayaAudioSurah',String(n));
+   title.textContent=opt.textContent.replace(/^\d+\.\s*/,'');
+   arabic.textContent=opt.dataset.ar||'';
+   const next=n<114?n+1:1;
+   const no=[...sel.options].find(o=>Number(o.value)===next);
+   if(no){nextNum.textContent=next;nextName.textContent=no.textContent.replace(/^\d+\.\s*/,'');nextArabic.textContent=no.dataset.ar||'';}
+ }
+
+ function buildUrl(){
+   if(!selectedRead?.server) return '';
+   const base=selectedRead.server.endsWith('/')?selectedRead.server:selectedRead.server+'/';
+   return `${base}${String(n).padStart(3,'0')}.mp3`;
+ }
+
+ function load(playNow=false){
+   audio.pause();
+   const url=buildUrl();
+   if(!url){status.textContent='Audio source is unavailable.';return;}
+   audio.src=url; audio.load(); updateMeta();
+   status.textContent=playNow?'Loading recitation…':'';
+   if(playNow) audio.play().catch(()=>status.textContent='Press Play to start the recitation.');
+ }
+
+ reciterSel.addEventListener('change',()=>{
+   const found=reciters.find(r=>r.id===reciterSel.value);
+   if(!found)return;
+   selectedRead=found; localStorage.setItem(RECITER_PREF,found.id); reciterLabel.textContent=found.label; load(false);
  });
- play.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause());
- document.getElementById('prevAudio').addEventListener('click',()=>{n=n>1?n-1:114;sel.value=String(n);load(true)});document.getElementById('nextAudio').addEventListener('click',()=>{n=n<114?n+1:1;sel.value=String(n);load(true)});
- audio.addEventListener('play',()=>{play.textContent='❚❚';status.textContent='Recitation is playing';});audio.addEventListener('pause',()=>{play.textContent='▶'});audio.addEventListener('loadedmetadata',()=>{dur.textContent=fmt(audio.duration)});audio.addEventListener('timeupdate',()=>{cur.textContent=fmt(audio.currentTime);seek.value=audio.duration?(audio.currentTime/audio.duration*100):0});seek.addEventListener('input',()=>{if(audio.duration)audio.currentTime=Number(seek.value)/100*audio.duration});audio.addEventListener('ended',()=>{if(auto.checked){n=n<114?n+1:1;sel.value=String(n);load(true)}else{play.textContent='▶';status.textContent='Surah finished'}});
- init().then(()=>load(false));
+ sel.addEventListener('change',()=>{n=Number(sel.value);load(false)});
+ play.addEventListener('click',()=>audio.paused?audio.play().catch(()=>status.textContent='Press Play to start the recitation.'):audio.pause());
+ document.getElementById('prevAudio').addEventListener('click',()=>{n=n>1?n-1:114;sel.value=String(n);load(true)});
+ document.getElementById('nextAudio').addEventListener('click',()=>{n=n<114?n+1:1;sel.value=String(n);load(true)});
+ audio.addEventListener('play',()=>{play.textContent='❚❚';status.textContent='Recitation is playing';});
+ audio.addEventListener('pause',()=>{play.textContent='▶'});
+ audio.addEventListener('loadedmetadata',()=>{dur.textContent=fmt(audio.duration);status.textContent='Ready to play';});
+ audio.addEventListener('timeupdate',()=>{cur.textContent=fmt(audio.currentTime);seek.value=audio.duration?(audio.currentTime/audio.duration*100):0});
+ audio.addEventListener('error',()=>{status.textContent='This recitation could not be loaded. Please choose another reciter.';play.textContent='▶';});
+ seek.addEventListener('input',()=>{if(audio.duration)audio.currentTime=Number(seek.value)/100*audio.duration});
+ audio.addEventListener('ended',()=>{if(auto.checked){n=n<114?n+1:1;sel.value=String(n);load(true)}else{play.textContent='▶';status.textContent='Surah finished'}});
+
+ Promise.all([loadSurahs(),loadReciters()]).then(()=>load(false)).catch(()=>{});
 })();
 </script></body></html>
