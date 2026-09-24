@@ -830,6 +830,171 @@ body.rtl .quran-search input{text-align:right}
 @media(max-width:900px){.quran-section{padding:88px 0 95px}.quran-wrap{width:calc(100% - 36px)}.quran-topbar{grid-template-columns:1fr 1fr}.quran-play-all{grid-column:1/-1}.quran-meta{align-items:start;flex-direction:column}.quran-nav{width:100%}.quran-nav button{flex:1}.quran-verse-arabic{font-size:27px;line-height:1.95}}
 @media(max-width:520px){.quran-section{padding:76px 0 82px}.quran-wrap{width:calc(100% - 28px)}.quran-heading h2{font-size:39px}.quran-lead{font-size:14px}.quran-panel{border-radius:20px}.quran-topbar{grid-template-columns:1fr;padding:15px}.quran-play-all{grid-column:auto}.quran-meta{padding:19px 16px 8px}.quran-surah-name{font-size:29px}.quran-surah-ar{font-size:25px}.quran-verses{padding:4px 13px 20px;max-height:620px}.quran-verse{padding:22px 2px}.quran-verse-arabic{font-size:25px;line-height:2}.quran-verse-translation{font-size:13px}.quran-verse-top{margin-bottom:10px}}
 
+
+/* =========================
+   PRAYER TIMES / MOBILE-FIRST REDESIGN
+   ========================= */
+@media(max-width:520px){
+  .prayer-times-section{
+    padding:68px 0 74px;
+    background-position:center top;
+  }
+  .prayer-times-section:before{
+    background:linear-gradient(180deg,rgba(5,4,3,.96) 0%,rgba(7,5,3,.90) 45%,rgba(8,6,4,.97) 100%);
+  }
+  .prayer-times-section:after{
+    background:radial-gradient(circle at 50% 35%,rgba(245,184,61,.14),transparent 34%),linear-gradient(180deg,rgba(5,4,3,.05),rgba(5,4,3,.82) 76%,#080706 100%);
+  }
+  .prayer-times-wrap{width:calc(100% - 28px)}
+  .prayer-head{
+    display:block;
+    margin-bottom:18px;
+  }
+  .prayer-kicker{font-size:9px;letter-spacing:3px;margin-bottom:8px}
+  .prayer-title{
+    font-size:36px;
+    line-height:1.05;
+    letter-spacing:-.8px;
+    max-width:330px;
+  }
+  .prayer-lead{
+    font-size:13px;
+    line-height:1.55;
+    margin-top:9px;
+    max-width:340px;
+  }
+  .prayer-location{
+    min-width:0;
+    width:100%;
+    box-sizing:border-box;
+    margin-top:16px;
+    padding:12px 14px;
+    border-radius:16px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-areas:"top button" "name button" "date button";
+    align-items:center;
+    column-gap:12px;
+    background:rgba(8,7,6,.68);
+  }
+  .prayer-location-top{grid-area:top;justify-content:flex-start;gap:8px}
+  .prayer-location-label{font-size:8px;letter-spacing:2px}
+  .prayer-location-pin{font-size:16px}
+  .prayer-location-name{grid-area:name;font-size:15px;margin-top:2px}
+  .prayer-location-date{grid-area:date;font-size:10px;margin-top:2px}
+  .prayer-location button{
+    grid-area:button;
+    margin:0;
+    padding:9px 10px;
+    border:1px solid rgba(245,184,61,.28);
+    border-radius:999px;
+    background:rgba(245,184,61,.06);
+    font-size:10px;
+    white-space:nowrap;
+  }
+
+  /* The next prayer is the main focus on mobile. */
+  .prayer-next{
+    min-height:0;
+    margin:0 0 14px;
+    padding:23px 18px 20px;
+    border-radius:23px;
+    display:block;
+    text-align:center;
+    background:linear-gradient(180deg,rgba(7,6,5,.80),rgba(7,6,5,.48)),url('./assets/hero-mosque-bg.png') center/cover no-repeat;
+    box-shadow:0 22px 55px rgba(0,0,0,.40),0 0 35px rgba(245,184,61,.06);
+  }
+  .prayer-next-left{display:block}
+  .prayer-next-label{font-size:9px;letter-spacing:3px}
+  .prayer-next-name{font-size:42px;line-height:1;margin-top:7px}
+  .prayer-next-time{font-size:12px;margin-top:8px}
+  .prayer-next-time strong{font-size:15px}
+  .prayer-next-right{margin-top:16px}
+  .prayer-countdown{text-align:center}
+  .prayer-countdown small{font-size:8px;letter-spacing:2.3px}
+  .prayer-countdown strong{
+    font-size:34px;
+    letter-spacing:1px;
+    margin-top:7px;
+    color:#fff;
+    text-shadow:0 0 22px rgba(245,184,61,.16);
+  }
+  .prayer-countdown-caption{font-size:10px;margin-top:6px}
+
+  /* Replace five large cards with one compact horizontal timeline. */
+  .prayer-grid{display:none}
+  .prayer-timeline{
+    margin:0 0 14px;
+    padding:18px 8px 15px;
+    overflow:hidden;
+    border:1px solid rgba(245,184,61,.20);
+    border-radius:20px;
+    background:rgba(10,9,7,.72);
+    box-shadow:0 16px 40px rgba(0,0,0,.28);
+  }
+  .prayer-timeline-line{left:10%;right:10%;top:34px;height:1px;background:rgba(245,184,61,.26)}
+  .prayer-timeline-items{min-width:0;grid-template-columns:repeat(5,1fr);gap:0}
+  .prayer-timeline-item{min-width:0}
+  .prayer-timeline-dot{
+    width:10px;height:10px;
+    margin:0 auto 9px;
+    border:2px solid rgba(255,255,255,.36);
+    box-shadow:0 0 0 4px rgba(10,9,7,.92);
+  }
+  .prayer-timeline-item.active .prayer-timeline-dot{
+    width:13px;height:13px;
+    margin-top:-1px;margin-bottom:7px;
+    border-width:2px;
+    box-shadow:0 0 0 4px rgba(245,184,61,.10),0 0 18px rgba(245,184,61,.35);
+  }
+  .prayer-timeline-name{
+    font-size:9px;
+    letter-spacing:.2px;
+    text-transform:none;
+    color:rgba(255,255,255,.52);
+  }
+  .prayer-timeline-item.active .prayer-timeline-name{color:var(--gold)}
+  .prayer-timeline-time{
+    margin-top:4px;
+    font-size:9px;
+    color:rgba(255,255,255,.72);
+    white-space:nowrap;
+  }
+  .prayer-timeline-item.active .prayer-timeline-time{color:#fff;font-weight:800}
+
+  .prayer-bottom{
+    margin-top:0;
+    padding:11px 13px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .prayer-bottom-item{min-height:38px;padding:0;gap:8px}
+  .prayer-bottom-item:nth-child(2){display:none}
+  .prayer-bottom-icon{width:32px;height:32px;font-size:13px}
+  .prayer-bottom-label{font-size:10px}
+  .prayer-bottom-sub{font-size:8px;line-height:1.3}
+  .prayer-bottom-item:last-child{display:none}
+  .prayer-actions{margin-top:9px;display:grid;grid-template-columns:1fr}
+  .prayer-actions .prayer-btn{min-height:40px;padding:9px 12px;font-size:10px}
+  .prayer-status{min-height:16px;padding:7px 0 0;font-size:10px}
+}
+
+@media(max-width:380px){
+  .prayer-times-section{padding:60px 0 66px}
+  .prayer-title{font-size:33px}
+  .prayer-lead{font-size:12px}
+  .prayer-location{padding:10px 12px}
+  .prayer-location-name{font-size:14px}
+  .prayer-next{padding:20px 15px 18px}
+  .prayer-next-name{font-size:38px}
+  .prayer-countdown strong{font-size:30px}
+  .prayer-timeline{padding-left:5px;padding-right:5px}
+  .prayer-timeline-name,.prayer-timeline-time{font-size:8px}
+}
+
 </style>
 </head>
 <body>
@@ -1074,11 +1239,11 @@ body.rtl .quran-search input{text-align:right}
     <div class="prayer-timeline" aria-hidden="true">
       <div class="prayer-timeline-line"></div>
       <div class="prayer-timeline-items">
-        <div class="prayer-timeline-item" data-timeline-prayer="Fajr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Fajr</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Dhuhr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Dhuhr</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Asr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Asr</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Maghrib"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Maghrib</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Isha"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Isha</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Fajr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Fajr</div><div class="prayer-timeline-time" data-timeline-time="Fajr">--:--</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Dhuhr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Dhuhr</div><div class="prayer-timeline-time" data-timeline-time="Dhuhr">--:--</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Asr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Asr</div><div class="prayer-timeline-time" data-timeline-time="Asr">--:--</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Maghrib"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Maghrib</div><div class="prayer-timeline-time" data-timeline-time="Maghrib">--:--</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Isha"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Isha</div><div class="prayer-timeline-time" data-timeline-time="Isha">--:--</div></div>
       </div>
     </div>
 
@@ -1178,7 +1343,11 @@ body.rtl .quran-search input{text-align:right}
   function dateKey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
   function updateDate(){const d=new Date();els.date.textContent=d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short',year:'numeric'})}
   function renderTimes(){
-    prayerNames.forEach(n=>{const el=document.getElementById('hidaya'+n);if(el)el.textContent=format12(times[n]);});
+    prayerNames.forEach(n=>{
+      const formatted=format12(times[n]);
+      const el=document.getElementById('hidaya'+n);if(el)el.textContent=formatted;
+      const tl=document.querySelector('[data-timeline-time="'+n+'"]');if(tl)tl.textContent=formatted;
+    });
     updateDate();
   }
   function updateNext(){
