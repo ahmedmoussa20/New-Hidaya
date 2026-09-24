@@ -304,15 +304,15 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
    ========================= */
 .mobile-start{display:none}
 @media(max-width:700px){
-  .hero{min-height:100svh;height:auto;max-height:none;padding-bottom:0;background-position:center top;background-size:auto 100%;}
+  .hero{min-height:100svh;height:auto;max-height:none;padding-bottom:0;background-position:center center;background-size:cover;}
   .hero:after{background:linear-gradient(180deg,rgba(5,4,3,.30) 0%,rgba(5,4,3,.18) 20%,rgba(5,4,3,.50) 45%,rgba(5,4,3,.97) 73%,#080706 100%)}
   .hero-grid{display:none}
-  .mobile-start{display:block;position:relative;z-index:10;padding:10px 0 28px;min-height:calc(100svh - 76px)}
-  .mobile-start-head{text-align:center;margin:0 auto 18px;max-width:390px;padding:0 4px}
+  .mobile-start{display:block;position:relative;z-index:10;padding:4px 0 18px;min-height:calc(100svh - 76px);display:flex;flex-direction:column;justify-content:flex-start;}
+  .mobile-start-head{text-align:center;margin:0 auto 12px;max-width:390px;padding:0 4px}
   .mobile-start-kicker{font-size:9px;letter-spacing:3.2px;color:var(--gold);font-weight:800;text-transform:uppercase;margin-bottom:7px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-  .mobile-start-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(43px,12vw,58px);line-height:.92;letter-spacing:-1.7px;margin:0;color:#fff;text-shadow:0 5px 22px rgba(0,0,0,.55)}
+  .mobile-start-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(39px,10.5vw,52px);line-height:.92;letter-spacing:-1.7px;margin:0;color:#fff;text-shadow:0 5px 22px rgba(0,0,0,.55)}
   .mobile-start-title span{display:block;color:var(--gold)}
-  .mobile-start-lead{font-size:13px;line-height:1.45;color:rgba(255,255,255,.78);margin:11px 0 0}
+  .mobile-start-lead{font-size:12px;line-height:1.35;color:rgba(255,255,255,.78);margin:8px 0 0}
   .mobile-start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 auto;max-width:430px}
   .start-card{min-width:0;min-height:126px;padding:12px 8px 10px;border:1px solid rgba(245,184,61,.28);border-radius:16px;background:linear-gradient(145deg,rgba(26,20,15,.90),rgba(7,6,5,.94));box-shadow:0 12px 28px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.05);color:#fff;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(8px);transition:transform .2s ease,border-color .2s ease,background .2s ease}
   .start-card:before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.65}
@@ -330,27 +330,44 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
   .start-card.wide p{font-size:10px;min-height:0}
   .start-card.wide .start-arrow{position:static;width:30px;height:30px;font-size:17px}
   .start-downloads{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px auto 0;max-width:430px}
-  .start-download{height:51px;border:1px solid rgba(255,211,106,.72);border-radius:13px;background:linear-gradient(145deg,rgba(8,7,6,.96),rgba(18,14,10,.96));color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.30)}
+  .start-download{height:45px;border:1px solid rgba(255,211,106,.72);border-radius:13px;background:linear-gradient(145deg,rgba(8,7,6,.96),rgba(18,14,10,.96));color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.30)}
   .start-download .download-icon{font-size:23px;color:#fff;line-height:1}
   .start-download small{display:block;font-size:7px;line-height:1.05;letter-spacing:.3px;color:rgba(255,255,255,.68);text-transform:uppercase}
   .start-download strong{display:block;font-size:13px;line-height:1.05}
   .mobile-start-grid.three-only{grid-template-columns:repeat(3,1fr);max-width:430px;gap:9px}
-  .mobile-start-grid.three-only .start-card{min-height:142px;padding:13px 8px 11px}
-  .mobile-start-grid.three-only .start-icon{width:58px;height:58px;border-radius:17px;margin-bottom:2px}
-  .mobile-start-grid.three-only .start-icon svg{width:38px;height:38px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 8px rgba(245,184,61,.22))}
+  .mobile-start-grid.three-only .start-card{min-height:122px;padding:10px 6px 9px}
+  .mobile-start-grid.three-only .start-icon{width:50px;height:50px;border-radius:15px;margin-bottom:0}
+  .mobile-start-grid.three-only .start-icon svg{width:32px;height:32px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 8px rgba(245,184,61,.22))}
   .mobile-start-grid.three-only .start-icon-quran svg{stroke-width:1.8}
   .mobile-start-grid.three-only .start-icon-prayer svg{stroke-width:1.8}
   .mobile-start-grid.three-only .start-icon-qibla svg{stroke-width:1.9}
-  .mobile-start-grid.three-only .start-card h3{font-size:15px;margin:7px 0 3px}
-  .mobile-start-grid.three-only .start-card p{font-size:8.5px}
-  .official-store-buttons{gap:9px;margin-top:14px}
+  .mobile-start-grid.three-only .start-card h3{font-size:14px;margin:5px 0 2px}
+  .mobile-start-grid.three-only .start-card p{font-size:8px;line-height:1.2}
+  .official-store-buttons{gap:8px;margin-top:10px}
   .official-store{padding:0 10px;overflow:hidden;background:rgba(0,0,0,.9);border-color:rgba(245,184,61,.75)}
-  .official-store img{display:block;width:100%;height:31px;object-fit:contain;object-position:center}
-  .official-store:first-child img{height:30px}
-  .official-store:nth-child(2) img{height:36px}
-  .start-scroll{width:28px;height:28px;margin:14px auto 0;border:0;background:none;color:var(--gold);font-size:26px;line-height:1;animation:startBounce 1.7s ease-in-out infinite}
+  .official-store img{display:block;width:100%;height:27px;object-fit:contain;object-position:center}
+  .official-store:first-child img{height:27px}
+  .official-store:nth-child(2) img{height:31px}
+  .start-scroll{width:28px;height:28px;margin:7px auto 0;border:0;background:none;color:var(--gold);font-size:26px;line-height:1;animation:startBounce 1.7s ease-in-out infinite}
   @keyframes startBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 }
+@media (min-width:381px) and (max-width:520px){
+  .nav{height:72px}
+  .logo{width:66px;height:66px}
+  .mobile-nav button{width:42px;height:42px}
+  .mobile-start{padding-top:2px;padding-bottom:12px}
+  .mobile-start-kicker{font-size:8px;letter-spacing:2.8px}
+  .mobile-start-title{font-size:40px}
+  .mobile-start-head{margin-bottom:10px}
+  .mobile-start-grid.three-only{gap:7px}
+  .mobile-start-grid.three-only .start-card{min-height:116px}
+  .mobile-start-grid.three-only .start-icon{width:48px;height:48px}
+  .mobile-start-grid.three-only .start-icon svg{width:30px;height:30px}
+  .mobile-start-grid.three-only .start-card h3{font-size:13px}
+  .mobile-start-grid.three-only .start-card p{font-size:7.5px}
+  .official-store-buttons{margin-top:9px}
+}
+
 @media(max-width:380px){
   .mobile-start{padding-top:4px}
   .mobile-start-head{margin-bottom:13px}
