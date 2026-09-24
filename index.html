@@ -297,6 +297,65 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 @media(max-width:700px){.prayer-times-section{padding:88px 0 92px}.prayer-times-wrap{width:calc(100% - 36px)}.prayer-next{padding:27px 24px;min-height:330px;background-position:65% center}.prayer-grid{grid-template-columns:1fr 1fr}.prayer-card{min-height:178px;padding:21px 18px}.prayer-timeline{margin-left:0;margin-right:0;overflow:hidden}.prayer-timeline-line{left:4%;right:4%}.prayer-timeline-name{font-size:8px;letter-spacing:1px}.prayer-bottom{padding:17px 18px}}
 @media(max-width:460px){.prayer-times-wrap{width:calc(100% - 28px)}.prayer-title{font-size:40px}.prayer-grid{grid-template-columns:1fr}.prayer-next{min-height:310px}.prayer-next-name{font-size:46px}.prayer-countdown strong{font-size:42px}.prayer-timeline{margin-top:30px}.prayer-timeline-items{gap:3px}.prayer-timeline-dot{width:12px;height:12px}.prayer-timeline-item.active .prayer-timeline-dot{width:17px;height:17px}.prayer-location{padding:17px}.prayer-bottom-label{font-size:11px}}
 
+
+/* =========================
+   MOBILE UX / RESPONSIVE POLISH
+   ========================= */
+html{scroll-behavior:smooth;scroll-padding-top:88px;overflow-x:hidden}
+body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a{-webkit-tap-highlight-color:transparent}
+.mobile-menu{display:none}
+@media(max-width:900px){
+  .nav{position:relative;z-index:100}
+  .mobile-nav{position:relative;z-index:101}
+  .mobile-nav button{touch-action:manipulation}
+  .mobile-menu{position:absolute;top:calc(100% + 10px);left:0;right:0;display:none;padding:10px;border:1px solid rgba(245,184,61,.22);border-radius:18px;background:rgba(9,8,7,.97);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);z-index:99}
+  .mobile-menu.open{display:grid;gap:4px}
+  .mobile-menu a{display:flex;align-items:center;min-height:48px;padding:0 15px;border-radius:12px;color:rgba(255,255,255,.82);text-decoration:none;font-size:14px;font-weight:600}
+  .mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(245,184,61,.08);color:#f5b83d;outline:none}
+  .mobile-menu .mobile-download{margin-top:5px;justify-content:center;border:1px solid rgba(245,184,61,.3);color:#f5b83d;background:rgba(245,184,61,.05)}
+  .hero{overflow:hidden}
+  .copy,.hero-grid,.about-wrap,.screenshots-wrap,.prayer-times-wrap{min-width:0}
+  .stores{width:100%}
+  .store{touch-action:manipulation}
+}
+@media(max-width:520px){
+  html{scroll-padding-top:76px}
+  .wrap,.about-wrap,.screenshots-wrap,.prayer-times-wrap{width:calc(100% - 28px)}
+  .hero{min-height:auto;padding-bottom:26px}
+  .hero-grid{padding-top:12px}
+  .copy{padding-bottom:4px}
+  h1{font-size:clamp(38px,11vw,46px);max-width:100%;overflow-wrap:anywhere}
+  .sub{max-width:100%;line-height:1.65}
+  .stores{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .store{width:100%;min-width:0}
+  .stats{width:100%;max-width:none}
+  .phones{height:430px;padding-top:8px}
+  .phone{width:43vw;max-width:190px}
+  .about-heading,.screenshots-heading{max-width:100%}
+  .feature-card{min-width:0}
+  .prayer-times-section{padding:76px 0 80px}
+  .prayer-head{gap:24px;margin-bottom:28px}
+  .prayer-title{font-size:clamp(35px,10vw,42px);letter-spacing:-1px}
+  .prayer-lead{font-size:14px}
+  .prayer-location{min-width:0;width:100%;padding:16px}
+  .prayer-next{width:100%;box-sizing:border-box;overflow:hidden;background-position:68% center}
+  .prayer-next-name{font-size:42px;line-height:1}
+  .prayer-countdown strong{font-size:38px;letter-spacing:0}
+  .prayer-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .prayer-btn{width:100%;padding:12px 8px;min-height:46px}
+  .prayer-grid{gap:9px}
+  .prayer-card{min-height:155px;padding:18px 15px}
+  .prayer-card h3{font-size:18px}
+  .prayer-time{font-size:27px}
+  .prayer-timeline{overflow-x:auto;overflow-y:hidden;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .prayer-timeline-items{min-width:520px}
+  .prayer-bottom{margin-top:12px}
+  .shot-stage{height:560px;overflow:visible}
+  .shot-card{max-width:250px}
+  .shot-arrow{touch-action:manipulation}
+}
 </style>
 </head>
 <body>
@@ -306,7 +365,14 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
       <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
       <nav class="links" aria-label="Primary navigation"><a href="#about">About</a><a href="#prayer-times">Prayer Times</a><a href="#screenshots">Screenshots</a><a href="#faq">FAQ</a></nav>
       <div class="nav-right"><button class="lang" type="button"><span class="globe">◎</span><span>English</span><span class="chev">⌄</span></button><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App <span aria-hidden="true">↓</span></a></div>
-      <div class="mobile-nav"><button aria-label="Language">◉</button><button aria-label="Menu">☰</button></div>
+      <div class="mobile-nav"><button type="button" aria-label="Language">◉</button><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="#about">About</a>
+        <a href="#prayer-times">Prayer Times</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#faq">FAQ</a>
+        <a class="mobile-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App ↓</a>
+      </div>
     </header>
     <div class="hero-grid">
       <div class="copy">
@@ -585,6 +651,22 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
   document.getElementById('hidayaRefreshPrayer').addEventListener('click',()=>{const saved=JSON.parse(localStorage.getItem('hidayaPrayerLocation')||'null');saved?loadByCoords(saved.lat,saved.lon,saved.label):loadCairo();});
   document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
   updateDate(); loadCairo(); clearInterval(timer); timer=setInterval(()=>{updateDate();updateNext();},1000);
+})();
+</script>
+
+
+<script>
+(function(){
+  const toggle=document.getElementById('mobileMenuToggle');
+  const menu=document.getElementById('mobileMenu');
+  if(!toggle || !menu) return;
+  function closeMenu(){menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');toggle.textContent='☰';}
+  function openMenu(){menu.classList.add('open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close menu');toggle.textContent='×';}
+  toggle.addEventListener('click',()=>menu.classList.contains('open')?closeMenu():openMenu());
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('click',e=>{if(menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeMenu();});
+  window.addEventListener('resize',()=>{if(window.innerWidth>900) closeMenu();});
 })();
 </script>
 
