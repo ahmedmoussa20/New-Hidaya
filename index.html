@@ -996,20 +996,25 @@ body.rtl .quran-search input{text-align:right}
 }
 
 </style>
-</head>
-<body>
+<style>
+/* Standalone feature pages */
+.standalone-page{min-height:100vh;background:#080706;color:#fff}.standalone-nav{position:sticky;top:0;z-index:100;background:rgba(8,7,6,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,184,61,.10)}.standalone-nav .nav{height:88px}.standalone-nav .wrap{width:min(1380px,calc(100% - 56px));margin:auto}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:calc(100vh - 88px)}
+.quran-journey{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin:0 auto 24px;max-width:1100px}.quran-journey-card{padding:26px;border:1px solid rgba(245,184,61,.28);border-radius:22px;background:radial-gradient(circle at 85% 20%,rgba(245,184,61,.16),transparent 38%),linear-gradient(145deg,rgba(37,29,22,.96),rgba(11,9,8,.98));box-shadow:0 20px 50px rgba(0,0,0,.28)}.qj-label{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:800}.qj-title{font:800 28px/1.15 'Playfair Display',serif;margin-top:10px}.qj-sub{color:rgba(255,255,255,.55);font-size:13px;margin-top:7px}.qj-btn{margin-top:20px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(245,184,61,.48);background:linear-gradient(135deg,#ffd875,#f3b62f);color:#17120a;font:800 13px 'DM Sans',sans-serif;cursor:pointer}.quran-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quran-quick{border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.035);color:#fff;padding:15px;text-align:left;cursor:pointer;min-height:94px;transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}.quran-quick span{display:block;font-size:20px;color:var(--gold);margin-bottom:8px}.quran-quick strong{display:block;font-size:13px}.quran-quick small{display:block;color:rgba(255,255,255,.45);font-size:10px;margin-top:4px}.quran-featured-head{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:26px auto 10px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2.5px}.quran-featured-head small{color:rgba(255,255,255,.35);font-weight:500;letter-spacing:0}.quran-featured{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;max-width:1100px;margin:0 auto 28px;padding:2px 1px 8px}.quran-featured::-webkit-scrollbar{display:none}.quran-featured button{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));color:#fff;text-align:left;cursor:pointer}.quran-featured button b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured button small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.standalone-page .quran-heading{margin-bottom:22px}.standalone-page .quran-panel{max-width:1100px;margin:auto}
+@media(max-width:700px){.standalone-nav .wrap{width:calc(100% - 28px)}.standalone-nav .nav{height:76px}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:0}.quran-journey{display:block;margin-bottom:18px}.quran-journey-card{padding:20px;border-radius:19px}.qj-title{font-size:25px}.quran-quick-grid{margin-top:10px;gap:8px}.quran-quick{min-height:88px;padding:13px;border-radius:15px}.quran-featured-head{margin-top:20px}.quran-featured{margin-bottom:20px}.standalone-page .quran-heading h2{font-size:37px}.standalone-page .quran-lead{font-size:13px}.standalone-page .quran-section{padding-top:56px}}
+@media(max-width:380px){.quran-quick strong{font-size:12px}.quran-quick small{font-size:9px}.quran-featured button{min-width:140px}.qj-title{font-size:23px}}
+</style></head><body>
 <section class="hero" aria-label="Hidaya hero">
   <div class="wrap">
     <header class="nav">
       <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="#prayer-times" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="#quran" data-i18n="nav_quran">Quran</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
+      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
       <div class="nav-right"><div class="lang-wrap"><button class="lang" type="button" id="langToggle"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App <span aria-hidden="true">↓</span></a></div>
       <div class="mobile-nav"><div class="mobile-lang"><button type="button" aria-label="Language" id="mobileLangToggle">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
       <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
         <a href="#about" data-i18n="nav_about">About</a>
-        <a href="#prayer-times" data-i18n="nav_prayer">Prayer Times</a>
+        <a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a>
         <a href="#qibla" data-i18n="nav_qibla">Qibla</a>
-        <a href="#quran" data-i18n="nav_quran">Quran</a>
+        <a href="quran.html" data-i18n="nav_quran">Quran</a>
         <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
         <a class="mobile-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App ↓</a>
@@ -1047,11 +1052,11 @@ body.rtl .quran-search input{text-align:right}
       </div>
 
       <div class="mobile-start-grid three-only">
-        <a class="start-card" href="#quran">
+        <a class="start-card" href="quran.html">
           <span class="start-icon start-icon-quran" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 14c9-4 17-3 20 1v35c-4-4-11-5-20-1z"/><path d="M52 14c-9-4-17-3-20 1v35c4-4 11-5 20-1z"/><path d="M32 15v35"/><path d="M18 21c5-2 9-1 12 1M46 21c-5-2-9-1-12 1"/></svg></span>
           <span><h3 data-i18n="start_quran">Quran</h3><p data-i18n="start_quran_sub">Read. Listen. Reflect.</p></span><span class="start-arrow">›</span>
         </a>
-        <a class="start-card" href="#prayer-times">
+        <a class="start-card" href="prayer-times.html">
           <span class="start-icon start-icon-prayer" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 51h44M15 51V35h34v16M21 35V27l11-11 11 11v8M27 35v-8h10v8M12 27h40M25 51V40h14v11"/><path d="M32 10v6M28 13h8"/></svg></span>
           <span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span>
         </a>
@@ -1195,104 +1200,6 @@ body.rtl .quran-search input{text-align:right}
 </div>
 
 <!-- =========================
-     PRAYER TIMES / ALADHAN
-     ========================= -->
-<section class="prayer-times-section" id="prayer-times" aria-label="Hidaya prayer times">
-  <div class="prayer-pattern"></div>
-  <div class="prayer-times-wrap">
-    <div class="prayer-head">
-      <div>
-        <div class="prayer-kicker" data-i18n="prayer_kicker">PRAYER TIMES</div>
-        <h2 class="prayer-title" data-i18n-html="prayer_title">Stay Connected <span>With Every Prayer</span></h2>
-        <p class="prayer-lead" data-i18n="prayer_lead">Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.</p>
-      </div>
-      <div class="prayer-location">
-        <div class="prayer-location-top">
-          <div class="prayer-location-label">Your Location</div>
-          <div class="prayer-location-pin">⌖</div>
-        </div>
-        <div class="prayer-location-name" id="hidayaPrayerLocation">Cairo, Egypt</div>
-        <div class="prayer-location-date" id="hidayaPrayerDate">Loading date…</div>
-        <button type="button" id="hidayaUseLocation">Use my location →</button>
-      </div>
-    </div>
-
-    <div class="prayer-next">
-      <div class="prayer-next-left">
-        <div class="prayer-next-label">Next Prayer</div>
-        <div class="prayer-next-name" id="hidayaNextPrayer">Loading…</div>
-        <div class="prayer-next-time">Your next prayer is <strong id="hidayaNextPrayerTime">--:--</strong></div>
-      </div>
-      <div class="prayer-next-right">
-        <div class="prayer-countdown"><small>Time remaining</small><strong id="hidayaCountdown">--:--:--</strong><div class="prayer-countdown-caption">Until the next prayer begins</div></div>
-      </div>
-    </div>
-
-    <div class="prayer-grid" id="hidayaPrayerGrid" aria-live="polite">
-      <article class="prayer-card" data-prayer="Fajr"><div class="prayer-icon">☾</div><div class="prayer-name">Fajr</div><div class="prayer-time" id="hidayaFajr">--:--</div><div class="prayer-period">Dawn prayer</div></article>
-      <article class="prayer-card" data-prayer="Dhuhr"><div class="prayer-icon">☀</div><div class="prayer-name">Dhuhr</div><div class="prayer-time" id="hidayaDhuhr">--:--</div><div class="prayer-period">Midday prayer</div></article>
-      <article class="prayer-card" data-prayer="Asr"><div class="prayer-icon">◒</div><div class="prayer-name">Asr</div><div class="prayer-time" id="hidayaAsr">--:--</div><div class="prayer-period">Afternoon prayer</div></article>
-      <article class="prayer-card" data-prayer="Maghrib"><div class="prayer-icon">◐</div><div class="prayer-name">Maghrib</div><div class="prayer-time" id="hidayaMaghrib">--:--</div><div class="prayer-period">Sunset prayer</div></article>
-      <article class="prayer-card" data-prayer="Isha"><div class="prayer-icon">✦</div><div class="prayer-name">Isha</div><div class="prayer-time" id="hidayaIsha">--:--</div><div class="prayer-period">Night prayer</div></article>
-    </div>
-
-    <div class="prayer-timeline" aria-hidden="true">
-      <div class="prayer-timeline-line"></div>
-      <div class="prayer-timeline-items">
-        <div class="prayer-timeline-item" data-timeline-prayer="Fajr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Fajr</div><div class="prayer-timeline-time" data-timeline-time="Fajr">--:--</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Dhuhr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Dhuhr</div><div class="prayer-timeline-time" data-timeline-time="Dhuhr">--:--</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Asr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Asr</div><div class="prayer-timeline-time" data-timeline-time="Asr">--:--</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Maghrib"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Maghrib</div><div class="prayer-timeline-time" data-timeline-time="Maghrib">--:--</div></div>
-        <div class="prayer-timeline-item" data-timeline-prayer="Isha"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Isha</div><div class="prayer-timeline-time" data-timeline-time="Isha">--:--</div></div>
-      </div>
-    </div>
-
-    <div class="prayer-bottom">
-      <div class="prayer-bottom-item">
-        <div class="prayer-bottom-icon">⌖</div>
-        <div><div class="prayer-bottom-label" id="hidayaBottomLocation">Cairo, Egypt</div><div class="prayer-bottom-sub">Accurate times based on your location</div></div>
-      </div>
-      <div class="prayer-bottom-item">
-        <div class="prayer-bottom-icon">⚙</div>
-        <div><div class="prayer-bottom-label">Calculation Method</div><div class="prayer-bottom-sub">Egyptian General Authority of Survey</div></div>
-      </div>
-      <div class="prayer-bottom-item">
-        <button class="prayer-btn" type="button" id="hidayaRefreshPrayer">↻ &nbsp; Refresh Times</button>
-      </div>
-    </div>
-    <div class="prayer-actions"><button class="prayer-btn" type="button" id="hidayaChangeCity">Change city</button></div>
-    <div class="prayer-status" id="hidayaPrayerStatus" role="status"></div>
-  </div>
-</section>
-
-
-<!-- =========================
-     QURAN / AL QURAN CLOUD
-     ========================= -->
-<section class="quran-section" id="quran" aria-label="Hidaya Quran">
-  <div class="quran-wrap">
-    <div class="quran-heading">
-      <div class="quran-kicker" data-i18n="quran_kicker">THE HOLY QURAN</div>
-      <h2 data-i18n-html="quran_title">Read. Listen. <span>Reflect.</span></h2>
-      <p class="quran-lead" data-i18n="quran_lead">Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.</p>
-    </div>
-    <div class="quran-panel">
-      <div class="quran-topbar">
-        <div class="quran-select-wrap"><select class="quran-select" id="quranSurahSelect" aria-label="Select Surah"><option>Loading Surahs…</option></select></div>
-        <div class="quran-search"><input id="quranSearch" type="search" data-i18n-placeholder="quran_search" placeholder="Search in this Surah"></div>
-        <button class="quran-play-all" id="quranPlayAll" type="button" data-i18n="quran_play_all">▶ Play Surah</button>
-      </div>
-      <div class="quran-meta">
-        <div><div class="quran-surah-name" id="quranSurahName">Al-Fatihah</div><div class="quran-surah-ar" id="quranSurahArabic">الفاتحة</div><div class="quran-surah-info" id="quranSurahInfo">7 verses</div></div>
-        <div class="quran-nav"><button type="button" id="quranPrev" data-i18n="quran_prev">← Previous</button><button type="button" id="quranNext" data-i18n="quran_next">Next →</button></div>
-      </div>
-      <div class="quran-verses" id="quranVerses"><div class="quran-loading" data-i18n="quran_loading">Loading Quran…</div></div>
-      <div class="quran-status" id="quranStatus"></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================
      SCREENSHOTS / AUTO CAROUSEL
      ========================= -->
 <section class="screenshots" id="screenshots" aria-label="Hidaya app screenshots">
@@ -1326,61 +1233,7 @@ body.rtl .quran-search input{text-align:right}
 </section>
 
 
-<script>
-(function(){
-  const API='https://api.aladhan.com/v1/timings';
-  const method=5;
-  const prayerNames=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
-  const els={
-    location:document.getElementById('hidayaPrayerLocation'),date:document.getElementById('hidayaPrayerDate'),
-    next:document.getElementById('hidayaNextPrayer'),countdown:document.getElementById('hidayaCountdown'),status:document.getElementById('hidayaPrayerStatus')
-  };
-  const times={}; let timer=null; let meta={};
-  const pad=n=>String(n).padStart(2,'0');
-  function setStatus(msg,error=false){els.status.textContent=msg||'';els.status.classList.toggle('error',error)}
-  function parseTime(t){const m=String(t||'').match(/^(\d{1,2}):(\d{2})/);return m?{h:+m[1],m:+m[2]}:null}
-  function format12(t){const p=parseTime(t);if(!p)return '--:--';let h=p.h%12||12;return h+':'+pad(p.m)+' '+(p.h>=12?'PM':'AM')}
-  function dateKey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
-  function updateDate(){const d=new Date();els.date.textContent=d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short',year:'numeric'})}
-  function renderTimes(){
-    prayerNames.forEach(n=>{
-      const formatted=format12(times[n]);
-      const el=document.getElementById('hidaya'+n);if(el)el.textContent=formatted;
-      const tl=document.querySelector('[data-timeline-time="'+n+'"]');if(tl)tl.textContent=formatted;
-    });
-    updateDate();
-  }
-  function updateNext(){
-    const now=new Date(); let next=null; let nextDate=new Date(now);
-    prayerNames.forEach(n=>{const p=parseTime(times[n]);if(!p)return;const d=new Date(now);d.setHours(p.h,p.m,0,0);if(d<=now)return; if(!next||d<next){next=d;next.name=n;}});
-    if(!next){
-      const tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);const p=parseTime(times.Fajr);if(p){tomorrow.setHours(p.h,p.m,0,0);next=tomorrow;next.name='Fajr';}
-    }
-    document.querySelectorAll('.prayer-card').forEach(c=>c.classList.toggle('active',next&&c.dataset.prayer===next.name));
-    document.querySelectorAll('[data-timeline-prayer]').forEach(c=>c.classList.toggle('active',next&&c.dataset.timelinePrayer===next.name));
-    const nextTimeEl=document.getElementById('hidayaNextPrayerTime');
-    if(!next){els.next.textContent='Prayer times unavailable';els.countdown.textContent='--:--:--';if(nextTimeEl)nextTimeEl.textContent='--:--';return}
-    els.next.textContent=next.name;
-    if(nextTimeEl)nextTimeEl.textContent=format12(times[next.name]);
-    const diff=Math.max(0,next-new Date());const sec=Math.floor(diff/1000);els.countdown.textContent=pad(Math.floor(sec/3600))+':'+pad(Math.floor(sec/60)%60)+':'+pad(sec%60);
-  }
-  async function loadByCoords(lat,lon,label){
-    setStatus('Updating prayer times…');
-    const url=API+'?latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&method='+method+'&school=0';
-    try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('API request failed');const j=await r.json();if(!j.data||!j.data.timings)throw new Error('Invalid API response');Object.assign(times,j.data.timings);meta=j.data.meta||{};els.location.textContent=label||meta.timezone||'Your location';const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=els.location.textContent;renderTimes();updateNext();setStatus('');localStorage.setItem('hidayaPrayerLocation',JSON.stringify({lat,lon,label:els.location.textContent}));}
-    catch(e){setStatus('Could not load prayer times. Please try again.',true);}
-  }
-  function loadCairo(){loadByCoords(30.0444,31.2357,'Cairo, Egypt')}
-  function useLocation(){
-    if(!navigator.geolocation){setStatus('Location is not supported by this browser.',true);return}
-    setStatus('Requesting your location…');navigator.geolocation.getCurrentPosition(p=>loadByCoords(p.coords.latitude,p.coords.longitude,'Your location'),()=>setStatus('Location permission was not granted. Showing Cairo.',true),{enableHighAccuracy:true,timeout:10000,maximumAge:300000});
-  }
-  document.getElementById('hidayaUseLocation').addEventListener('click',useLocation);
-  document.getElementById('hidayaRefreshPrayer').addEventListener('click',()=>{const saved=JSON.parse(localStorage.getItem('hidayaPrayerLocation')||'null');saved?loadByCoords(saved.lat,saved.lon,saved.label):loadCairo();});
-  document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
-  updateDate(); loadCairo(); clearInterval(timer); timer=setInterval(()=>{updateDate();updateNext();},1000);
-})();
-</script>
+
 
 
 <script>
@@ -1500,75 +1353,7 @@ body.rtl .quran-search input{text-align:right}
 </script>
 
 
-<script>
-(function(){
-  const API='https://api.alquran.cloud/v1';
-  const select=document.getElementById('quranSurahSelect');
-  const versesEl=document.getElementById('quranVerses');
-  const nameEl=document.getElementById('quranSurahName');
-  const arNameEl=document.getElementById('quranSurahArabic');
-  const infoEl=document.getElementById('quranSurahInfo');
-  const searchEl=document.getElementById('quranSearch');
-  const statusEl=document.getElementById('quranStatus');
-  const playAll=document.getElementById('quranPlayAll');
-  const prev=document.getElementById('quranPrev');
-  const next=document.getElementById('quranNext');
-  if(!select||!versesEl)return;
-  let surahs=[]; let current=1; let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'en';
-  const ui={
-    en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_quran:'Quran',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',start_kicker:'YOUR HIDAYA JOURNEY',start_title:'Start Your<br><span>Journey</span>',start_lead:'Choose where you want to begin.',start_quran:'Quran',start_quran_sub:'Read. Listen. Reflect.',start_prayer:'Prayer Times',start_prayer_sub:'Never miss a prayer',start_qibla:'Qibla',start_qibla_sub:'Find your direction',start_appstore_small:'Download on the',start_google_small:'Get it on',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
-    ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_quran:'القرآن',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',start_kicker:'رحلتك مع هداية',start_title:'ابدأ <br><span>رحلتك</span>',start_lead:'اختر من أين تريد أن تبدأ.',start_quran:'القرآن',start_quran_sub:'اقرأ. استمع. تدبّر.',start_prayer:'مواقيت الصلاة',start_prayer_sub:'لا تفوّت صلاتك',start_qibla:'القبلة',start_qibla_sub:'اعرف اتجاه القبلة',start_athkar:'الأذكار والدعاء',start_athkar_sub:'كن أقرب إلى الله',start_radio:'إذاعة هداية',start_radio_sub:'قرآن وأناشيد',start_kids:'الأطفال',start_kids_sub:'قصص ودعاء وتعلّم',start_learn:'تعلم القرآن',start_learn_sub:'خطوة بخطوة',start_appstore_small:'حمّل من',start_google_small:'احصل عليه من',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
-  };
-  function lang(){return currentLang==='ar'?'ar':'en'}
-  function t(k){return ui[lang()][k]||ui.en[k]||k}
-  function setStatus(msg,error=false){statusEl.textContent=msg||'';statusEl.classList.toggle('error',!!error)}
-  function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-  function applyLanguage(){
-    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(ui[lang()][k]!=null)el.textContent=ui[lang()][k]});
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(ui[lang()][k]!=null)el.innerHTML=ui[lang()][k]});
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(ui[lang()][k]!=null)el.placeholder=ui[lang()][k]});
-    document.documentElement.lang=lang();document.documentElement.dir=lang()==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',lang()==='ar');
-    const label=document.getElementById('langLabel');if(label)label.textContent=lang()==='ar'?'العربية':'English';
-    document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang()));
-    renderSurahOptions();renderVerses();
-  }
-  function renderSurahOptions(){if(!surahs.length)return;const old=select.value;select.innerHTML=surahs.map(x=>`<option value="${x.number}">${x.number}. ${escapeHtml(lang()==='ar'?x.name:x.englishName)} — ${escapeHtml(x.englishName)}</option>`).join('');select.value=String(current);}
-  async function loadSurahs(){try{const r=await fetch(API+'/surah',{cache:'force-cache'});const j=await r.json();if(j.code!==200)throw Error();surahs=j.data||[];renderSurahOptions();await loadSurah(current);}catch(e){versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}}
-  async function loadSurah(num){
-    current=Number(num);searchEl.value='';versesEl.innerHTML='<div class="quran-loading">'+escapeHtml(t('quran_loading'))+'</div>';setStatus('');stopAudio();
-    try{
-      const [arR,trR]=await Promise.all([fetch(API+'/surah/'+current+'/ar.alafasy'),fetch(API+'/surah/'+current+'/'+(lang()==='ar'?'ar.muyassar':'en.sahih'))]);
-      const [arJ,trJ]=await Promise.all([arR.json(),trR.json()]);
-      if(arJ.code!==200||trJ.code!==200)throw Error();
-      verses=arJ.data.ayahs.map((a,i)=>({number:a.numberInSurah,text:a.text,audio:a.audio,translation:(trJ.data.ayahs[i]||{}).text||''}));
-      audioList=verses.map(v=>v.audio).filter(Boolean);
-      nameEl.textContent=lang()==='ar'?arJ.data.name:arJ.data.englishName;
-      arNameEl.textContent=arJ.data.name;
-      infoEl.textContent=(lang()==='ar'?arJ.data.numberOfAyahs+' آيات':arJ.data.numberOfAyahs+' verses')+' · '+(arJ.data.revelationType||'');
-      renderVerses();
-    }catch(e){verses=[];versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}
-  }
-  function renderVerses(){
-    if(!verses.length)return;
-    const q=(searchEl.value||'').trim().toLowerCase();
-    const filtered=verses.filter(v=>!q||v.text.toLowerCase().includes(q)||v.translation.toLowerCase().includes(q));
-    if(!filtered.length){versesEl.innerHTML='<div class="quran-empty">'+(lang()==='ar'?'لا توجد نتائج في هذه السورة.':'No matching verses in this Surah.')+'</div>';return;}
-    versesEl.innerHTML=filtered.map(v=>`<article class="quran-verse"><div class="quran-verse-top"><span class="quran-number">${v.number}</span><div class="quran-verse-actions"><button type="button" title="Play" aria-label="Play verse" data-play="${v.number}">▶</button></div></div><div class="quran-verse-arabic">${escapeHtml(v.text)}</div><div class="quran-verse-translation">${escapeHtml(v.translation)}</div></article>`).join('');
-    versesEl.querySelectorAll('[data-play]').forEach(btn=>btn.addEventListener('click',()=>{const n=Number(btn.dataset.play);const idx=verses.findIndex(v=>v.number===n);if(idx>=0)playFrom(idx)}));
-  }
-  function playFrom(index){audioIndex=index;playCurrent()}
-  function playCurrent(){if(audioIndex<0||audioIndex>=verses.length)return;const src=verses[audioIndex].audio;if(!src){audioIndex++;return playCurrent()}player.src=src;player.play().catch(()=>{});}
-  function stopAudio(){player.pause();player.removeAttribute('src');audioIndex=-1}
-  player.addEventListener('ended',()=>{audioIndex++;if(audioIndex<verses.length)playCurrent();else audioIndex=-1});
-  select.addEventListener('change',()=>loadSurah(select.value));
-  prev.addEventListener('click',()=>{if(current>1)loadSurah(current-1)});
-  next.addEventListener('click',()=>{if(current<114)loadSurah(current+1)});
-  playAll.addEventListener('click',()=>{if(audioIndex>=0&&!player.paused){stopAudio();playAll.textContent=t('quran_play_all');return}audioIndex=0;playCurrent();playAll.textContent=lang()==='ar'?'■ إيقاف':'■ Stop'});
-  searchEl.addEventListener('input',renderVerses);
-  window.addEventListener('hidayaLanguageChanged',()=>{currentLang=localStorage.getItem('hidayaLang')||'en';applyLanguage();loadSurah(current)});
-  applyLanguage();loadSurahs();
-})();
-</script>
+
 
 <script>
 (function(){
@@ -1759,5 +1544,4 @@ body.rtl .quran-search input{text-align:right}
   });
 })();
 </script>
-</body>
-</html>
+</body></html>
