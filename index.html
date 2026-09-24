@@ -356,6 +356,26 @@ button,a{-webkit-tap-highlight-color:transparent}
   .shot-card{max-width:250px}
   .shot-arrow{touch-action:manipulation}
 }
+
+/* =========================
+   QIBLA AR CAMERA
+   ========================= */
+.qibla-feature-action{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;border-radius:999px;border:1px solid rgba(245,184,61,.35);background:rgba(245,184,61,.06);color:var(--gold);font:700 12px "DM Sans",Arial,sans-serif;cursor:pointer;transition:.2s ease}
+.qibla-feature-action:hover{background:rgba(245,184,61,.12);border-color:rgba(245,184,61,.62);transform:translateY(-1px)}
+.qibla-modal{position:fixed;inset:0;z-index:9999;display:none;background:#050403;color:#fff}
+.qibla-modal.open{display:block}
+.qibla-camera{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#090807}
+.qibla-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.06) 35%,rgba(0,0,0,.18) 65%,rgba(0,0,0,.82));pointer-events:none}
+.qibla-top{position:absolute;top:0;left:0;right:0;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;z-index:3}
+.qibla-top-copy small{display:block;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px}.qibla-top-copy strong{font-family:"Playfair Display",Georgia,serif;font-size:25px}.qibla-close{width:44px;height:44px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(10,9,8,.62);color:#fff;font-size:25px;cursor:pointer;backdrop-filter:blur(10px)}
+.qibla-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(340px,78vw);text-align:center;z-index:3;pointer-events:none}
+.qibla-ring{width:min(250px,58vw);aspect-ratio:1;margin:0 auto 22px;border:1px solid rgba(245,184,61,.34);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(245,184,61,.08),rgba(0,0,0,.08) 58%,rgba(0,0,0,.28));box-shadow:0 0 0 18px rgba(245,184,61,.025),0 0 55px rgba(245,184,61,.12)}
+.qibla-ring:before,.qibla-ring:after{content:"";position:absolute;inset:14px;border:1px dashed rgba(245,184,61,.24);border-radius:50%}.qibla-ring:after{inset:31px;border-style:solid;border-color:rgba(255,255,255,.08)}
+.qibla-arrow{width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:78px solid var(--gold);filter:drop-shadow(0 0 14px rgba(245,184,61,.65));transform-origin:50% 82%;transition:transform .08s linear;position:relative}.qibla-arrow:after{content:"";position:absolute;left:-6px;top:58px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.75)}
+.qibla-direction{font-size:14px;color:rgba(255,255,255,.76)}.qibla-direction strong{display:block;color:#fff;font-size:18px;margin-top:4px}.qibla-status{margin-top:8px;color:rgba(255,255,255,.52);font-size:12px;line-height:1.5}.qibla-status.error{color:#ffb2a8}
+.qibla-bottom{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:3;width:min(560px,calc(100% - 32px));padding:15px 18px;border:1px solid rgba(245,184,61,.22);border-radius:18px;background:rgba(9,8,7,.72);backdrop-filter:blur(16px);text-align:center}.qibla-bottom small{display:block;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:1.6px;text-transform:uppercase}.qibla-bottom strong{display:block;color:var(--gold);font-size:15px;margin-top:4px}.qibla-note{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:7px}
+@media(max-width:600px){.qibla-top{padding:16px}.qibla-top-copy strong{font-size:21px}.qibla-center{top:48%}.qibla-ring{margin-bottom:17px}.qibla-bottom{bottom:14px;padding:13px 14px}.qibla-arrow{border-left-width:14px;border-right-width:14px;border-bottom-width:65px}}
+
 </style>
 </head>
 <body>
@@ -363,7 +383,7 @@ button,a{-webkit-tap-highlight-color:transparent}
   <div class="wrap">
     <header class="nav">
       <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="#about">About</a><a href="#prayer-times">Prayer Times</a><a href="#screenshots">Screenshots</a><a href="#faq">FAQ</a></nav>
+      <nav class="links" aria-label="Primary navigation"><a href="#about">About</a><a href="#prayer-times">Prayer Times</a><a href="#qibla">Qibla</a><a href="#screenshots">Screenshots</a><a href="#faq">FAQ</a></nav>
       <div class="nav-right"><button class="lang" type="button"><span class="globe">◎</span><span>English</span><span class="chev">⌄</span></button><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App <span aria-hidden="true">↓</span></a></div>
       <div class="mobile-nav"><button type="button" aria-label="Language">◉</button><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
       <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
@@ -466,8 +486,9 @@ button,a{-webkit-tap-highlight-color:transparent}
 
       <article class="feature-card">
         <div class="feature-top"><span class="feature-num">08</span><span class="feature-icon">⌖</span></div>
-        <h3>Qibla</h3>
+        <h3 id="qibla">Qibla</h3>
         <p>Determine the direction of the Qibla accurately, wherever you are.</p>
+        <button class="qibla-feature-action" type="button" id="openQibla">Find Qibla <span aria-hidden="true">↗</span></button>
       </article>
 
       <article class="feature-card">
@@ -495,6 +516,28 @@ button,a{-webkit-tap-highlight-color:transparent}
 </section>
 
 
+
+<!-- =========================
+     QIBLA AR CAMERA
+     ========================= -->
+<div class="qibla-modal" id="qiblaModal" aria-hidden="true">
+  <video class="qibla-camera" id="qiblaCamera" autoplay muted playsinline></video>
+  <div class="qibla-shade"></div>
+  <div class="qibla-top">
+    <div class="qibla-top-copy"><small>QIBLA</small><strong>Find Your Direction</strong></div>
+    <button class="qibla-close" type="button" id="closeQibla" aria-label="Close Qibla">×</button>
+  </div>
+  <div class="qibla-center">
+    <div class="qibla-ring"><div class="qibla-arrow" id="qiblaArrow" aria-hidden="true"></div></div>
+    <div class="qibla-direction">Qibla bearing <strong id="qiblaBearing">--°</strong></div>
+    <div class="qibla-status" id="qiblaStatus">Allow camera, location and motion access to use the live Qibla compass.</div>
+  </div>
+  <div class="qibla-bottom">
+    <small>Location</small>
+    <strong id="qiblaLocation">Finding your location…</strong>
+    <span class="qibla-note">Hold your phone upright and slowly rotate until the gold arrow points straight ahead.</span>
+  </div>
+</div>
 
 <!-- =========================
      PRAYER TIMES / ALADHAN
@@ -670,6 +713,106 @@ button,a{-webkit-tap-highlight-color:transparent}
 })();
 </script>
 
+
+
+<script>
+(function(){
+  const openBtn=document.getElementById('openQibla');
+  const modal=document.getElementById('qiblaModal');
+  const closeBtn=document.getElementById('closeQibla');
+  const video=document.getElementById('qiblaCamera');
+  const arrow=document.getElementById('qiblaArrow');
+  const bearingEl=document.getElementById('qiblaBearing');
+  const statusEl=document.getElementById('qiblaStatus');
+  const locationEl=document.getElementById('qiblaLocation');
+  if(!openBtn||!modal) return;
+
+  const KAABA={lat:21.422487,lon:39.826206};
+  let stream=null, heading=null, qiblaBearing=null, watchId=null, orientationHandler=null;
+
+  const norm=n=>((n%360)+360)%360;
+  function bearingToKaaba(lat,lon){
+    const p1=lat*Math.PI/180,p2=KAABA.lat*Math.PI/180;
+    const dl=(KAABA.lon-lon)*Math.PI/180;
+    const y=Math.sin(dl)*Math.cos(p2);
+    const x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
+    return norm(Math.atan2(y,x)*180/Math.PI);
+  }
+  function setStatus(msg,error){statusEl.textContent=msg;statusEl.classList.toggle('error',!!error)}
+  function render(){
+    if(qiblaBearing!=null) bearingEl.textContent=Math.round(qiblaBearing)+'°';
+    if(qiblaBearing==null||heading==null) return;
+    const delta=norm(qiblaBearing-heading);
+    arrow.style.transform='rotate('+delta+'deg)';
+    const distance=Math.min(delta,360-delta);
+    setStatus(distance<8?'You are facing the Qibla.':'Rotate your phone until the gold arrow points straight ahead.');
+  }
+  function handleOrientation(e){
+    let h=null;
+    if(typeof e.webkitCompassHeading==='number' && isFinite(e.webkitCompassHeading)){
+      h=e.webkitCompassHeading;
+    }else if(typeof e.alpha==='number' && isFinite(e.alpha)){
+      h=360-e.alpha;
+      if(e.absolute===false && screen.orientation && typeof screen.orientation.angle==='number'){
+        h+=screen.orientation.angle;
+      }
+    }
+    if(h!=null){heading=norm(h);render();}
+  }
+  async function requestOrientation(){
+    if(typeof DeviceOrientationEvent==='undefined') throw new Error('This device does not provide a compass sensor.');
+    if(typeof DeviceOrientationEvent.requestPermission==='function'){
+      const permission=await DeviceOrientationEvent.requestPermission(true);
+      if(permission!=='granted') throw new Error('Motion permission was not granted.');
+    }
+    window.addEventListener('deviceorientationabsolute',handleOrientation,true);
+    window.addEventListener('deviceorientation',handleOrientation,true);
+    orientationHandler=true;
+  }
+  function getLocation(){
+    return new Promise((resolve,reject)=>{
+      if(!navigator.geolocation) return reject(new Error('Location is not supported by this browser.'));
+      navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
+    });
+  }
+  async function startCamera(){
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('Camera access is not supported in this browser.');
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    video.srcObject=stream;
+    await video.play();
+  }
+  function stop(){
+    if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
+    if(watchId!=null){navigator.geolocation.clearWatch(watchId);watchId=null;}
+    window.removeEventListener('deviceorientationabsolute',handleOrientation,true);
+    window.removeEventListener('deviceorientation',handleOrientation,true);
+    heading=null;qiblaBearing=null;
+    video.srcObject=null;
+    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  async function start(){
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    setStatus('Requesting camera, location and compass access…');locationEl.textContent='Finding your location…';
+    try{
+      const [position]=await Promise.all([getLocation(),startCamera(),requestOrientation()]);
+      qiblaBearing=bearingToKaaba(position.coords.latitude,position.coords.longitude);
+      locationEl.textContent='Location detected';
+      bearingEl.textContent=Math.round(qiblaBearing)+'°';
+      render();
+      watchId=navigator.geolocation.watchPosition(pos=>{qiblaBearing=bearingToKaaba(pos.coords.latitude,pos.coords.longitude);render();},()=>{}, {enableHighAccuracy:true,maximumAge:300000,timeout:15000});
+    }catch(err){
+      const msg=err&&err.message?err.message:'Permission was not granted.';
+      setStatus(msg+' You can close this view and try again.',true);
+      locationEl.textContent='Permission required';
+    }
+  }
+  openBtn.addEventListener('click',start);
+  closeBtn.addEventListener('click',stop);
+  modal.addEventListener('click',e=>{if(e.target===modal) stop();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')) stop();});
+})();
+</script>
 
 <script>
 (function(){
