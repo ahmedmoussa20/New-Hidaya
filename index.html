@@ -8,9 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="./assets/hero-mosque-bg.png" fetchpriority="high">
-<link rel="preload" as="image" href="./assets/app-store-logo.png">
-<link rel="preload" as="image" href="./assets/google-play-logo.png">
 <style>
 :root{--gold:#f5b83d;--gold2:#ffd36a;--white:#fff;--cream:#f7f1e7;--dark:#0b0a09;--muted:rgba(255,255,255,.84)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"DM Sans",Arial,sans-serif;background:#090807;color:#fff}body{overflow-x:hidden}
@@ -34,126 +31,6 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 @media (max-width:1250px){.wrap{width:min(1160px,calc(100% - 48px))}.nav{gap:24px}.links{gap:23px}.hero-grid{grid-template-columns:52% 48%}.phone{width:min(245px,23vw)}h1{font-size:clamp(50px,5vw,70px)}.sub{font-size:17px}.stat{min-width:118px;padding:0 13px}.stat strong{font-size:18px}}
 @media (max-width:900px){.hero{min-height:1080px;height:auto;max-height:none;background-position:center top}.hero:after{background:linear-gradient(180deg,rgba(4,3,2,.45),rgba(4,3,2,.72) 60%,rgba(4,3,2,.48))}.wrap{width:calc(100% - 36px)}.nav{height:88px}.logo{width:82px;height:82px;border-radius:14px;margin-top:0}.logo .en{font-size:19px}.logo .ar{font-size:17px;margin-top:4px}.links,.nav-right{display:none}.mobile-nav{margin-left:auto;display:flex;gap:10px}.mobile-nav button{width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(20,18,16,.68);color:#fff;font-size:20px}.hero-grid{height:auto;display:flex;flex-direction:column;align-items:stretch;padding-top:24px}.copy{max-width:650px;padding:0 0 12px}.eyebrow{font-size:12px;letter-spacing:3.2px;margin-bottom:13px}h1{font-size:clamp(45px,11vw,65px);line-height:.98;letter-spacing:-1.6px;margin-bottom:18px}.sub{font-size:16px;max-width:550px;margin-bottom:23px}.stores{margin-bottom:24px}.store{height:54px;min-width:170px;padding:0 15px}.store .big{font-size:16px}.stats{display:grid;grid-template-columns:1fr 1fr;max-width:520px;row-gap:15px}.stat{border-right:0;padding:0 8px 0 0;min-width:0}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.25)}.phones{height:560px;width:100%;padding:10px 0 45px;gap:0;align-items:flex-end}.phone{width:min(42vw,245px);border-radius:32px;padding:6px}.phone:before{border-radius:30px}.phone img{border-radius:27px}.phone.left{transform:translate(15px,10px) rotate(-5deg)}.phone.right{transform:translate(-5px,0) rotate(5deg)}.phone-floor{bottom:7%;width:90%;height:70px}}
 @media (max-width:520px){.hero{min-height:1050px}.wrap{width:calc(100% - 28px)}.nav{height:76px}.logo{width:70px;height:70px}.logo .en{font-size:16px}.logo .ar{font-size:14px}.hero-grid{padding-top:18px}.eyebrow{font-size:10px;letter-spacing:2.5px}h1{font-size:43px}.sub{font-size:15px}.stores{gap:9px}.store{min-width:0;flex:1;height:52px;padding:0 11px}.store .big{font-size:14px}.store .small{font-size:8px}.stats{grid-template-columns:1fr 1fr;gap:12px 8px}.stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.22)}.stat-icon{font-size:22px}.stat strong{font-size:17px}.stat small{font-size:10px}.phones{height:490px;padding-bottom:28px}.phone{width:44vw;max-width:205px;border-radius:27px}.phone img{border-radius:23px}.phone:before{border-radius:25px}.phone:after{height:17px}.phone.left{transform:translate(10px,12px) rotate(-4deg)}.phone.right{transform:translate(-7px,0) rotate(4deg)}}
-
-
-/* =========================
-   MOBILE HERO MICRO-INTERACTIONS
-   ========================= */
-@media(max-width:700px){
-  .mobile-start-grid.three-only .start-card{
-    will-change:transform,box-shadow,border-color;
-    transition:transform .22s cubic-bezier(.2,.8,.2,1),
-               border-color .22s ease,
-               box-shadow .22s ease,
-               background .22s ease;
-  }
-  .mobile-start-grid.three-only .start-card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    background:radial-gradient(circle at 50% 20%,rgba(245,184,61,.13),transparent 52%);
-    opacity:0;
-    transition:opacity .22s ease;
-    pointer-events:none;
-  }
-  .mobile-start-grid.three-only .start-card:hover,
-  .mobile-start-grid.three-only .start-card:focus-visible{
-    transform:translateY(-4px);
-    border-color:rgba(245,184,61,.78);
-    box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 24px rgba(245,184,61,.10),inset 0 1px 0 rgba(255,255,255,.07);
-    outline:none;
-  }
-  .mobile-start-grid.three-only .start-card:hover::after,
-  .mobile-start-grid.three-only .start-card:focus-visible::after{opacity:1}
-  .mobile-start-grid.three-only .start-card:hover .start-icon,
-  .mobile-start-grid.three-only .start-card:focus-visible .start-icon{
-    box-shadow:0 0 24px rgba(245,184,61,.16),inset 0 1px 0 rgba(255,255,255,.08);
-    transform:translateY(-1px);
-  }
-  .mobile-start-grid.three-only .start-icon{
-    transition:transform .22s ease,box-shadow .22s ease;
-  }
-  .mobile-start-grid.three-only .start-arrow{
-    transition:transform .22s ease,background .22s ease,border-color .22s ease;
-  }
-  .mobile-start-grid.three-only .start-card:hover .start-arrow,
-  .mobile-start-grid.three-only .start-card:focus-visible .start-arrow{
-    transform:translateX(2px);
-    background:rgba(245,184,61,.12);
-    border-color:rgba(245,184,61,.8);
-  }
-  [dir="rtl"] .mobile-start-grid.three-only .start-card:hover .start-arrow,
-  [dir="rtl"] .mobile-start-grid.three-only .start-card:focus-visible .start-arrow{transform:translateX(-2px)}
-
-  .official-store{
-    position:relative;
-    cursor:pointer;
-    touch-action:manipulation;
-    will-change:transform,box-shadow;
-    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
-  }
-  .official-store::after{
-    content:"";
-    position:absolute;
-    inset:1px;
-    border-radius:inherit;
-    background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.11) 50%,transparent 75%);
-    transform:translateX(-120%);
-    transition:transform .55s ease;
-    pointer-events:none;
-  }
-  .official-store:hover,
-  .official-store:focus-visible{
-    transform:translateY(-3px);
-    border-color:var(--gold2);
-    box-shadow:0 16px 32px rgba(0,0,0,.42),0 0 24px rgba(245,184,61,.11);
-    outline:none;
-  }
-  .official-store:hover::after,
-  .official-store:focus-visible::after{transform:translateX(120%)}
-  .official-store:active{transform:scale(.975)}
-  .official-store img{transition:transform .2s ease,filter .2s ease}
-  .official-store:hover img,.official-store:focus-visible img{transform:scale(1.025)}
-
-  .start-scroll-wrap{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:2px;
-    flex:0 0 auto;
-  }
-  .start-scroll-label{
-    color:rgba(255,255,255,.48);
-    font-size:8px;
-    letter-spacing:2.6px;
-    text-transform:uppercase;
-    line-height:1;
-  }
-  .start-scroll{margin:0 auto -1px}
-
-  .mobile-start.is-entering .mobile-start-head,
-  .mobile-start.is-entering .mobile-start-grid,
-  .mobile-start.is-entering .start-downloads,
-  .mobile-start.is-entering .start-scroll-wrap{
-    animation:hidayaHeroIn .65s cubic-bezier(.2,.8,.2,1) both;
-  }
-  .mobile-start.is-entering .mobile-start-grid{animation-delay:.12s}
-  .mobile-start.is-entering .start-downloads{animation-delay:.22s}
-  .mobile-start.is-entering .start-scroll-wrap{animation-delay:.34s}
-  @keyframes hidayaHeroIn{
-    from{opacity:0;transform:translateY(12px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .mobile-start.is-entering .mobile-start-head,
-    .mobile-start.is-entering .mobile-start-grid,
-    .mobile-start.is-entering .start-downloads,
-    .mobile-start.is-entering .start-scroll-wrap{animation:none}
-    .mobile-start-grid.three-only .start-card,.official-store{transition:none}
-  }
-}
 
 /* =========================
    ABOUT / HIDAYA ECOSYSTEM
@@ -423,258 +300,60 @@ h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(56px,5vw,86px);l
 
 
 /* =========================
-   MOBILE START YOUR JOURNEY HERO — BALANCED LAYOUT
+   MOBILE START YOUR JOURNEY HERO
    ========================= */
 .mobile-start{display:none}
 @media(max-width:700px){
-  .hero{
-    min-height:100svh;
-    height:100svh;
-    max-height:none;
-    padding-bottom:0;
-    background-position:center center;
-    background-size:cover;
-  }
-  .hero:after{
-    background:linear-gradient(180deg,
-      rgba(5,4,3,.28) 0%,
-      rgba(5,4,3,.16) 20%,
-      rgba(5,4,3,.40) 43%,
-      rgba(5,4,3,.88) 72%,
-      rgba(5,4,3,.98) 100%);
-  }
+  .hero{min-height:100svh;height:auto;max-height:none;padding-bottom:0;background-position:center top;background-size:auto 100%;}
+  .hero:after{background:linear-gradient(180deg,rgba(5,4,3,.30) 0%,rgba(5,4,3,.18) 20%,rgba(5,4,3,.50) 45%,rgba(5,4,3,.97) 73%,#080706 100%)}
   .hero-grid{display:none}
-
-  .mobile-start{
-    display:flex;
-    position:relative;
-    z-index:10;
-    min-height:calc(100svh - 72px);
-    height:calc(100svh - 72px);
-    padding:8px 0 10px;
-    flex-direction:column;
-    justify-content:space-between;
-    overflow:hidden;
-  }
-
-  .mobile-start-head{
-    text-align:center;
-    margin:0 auto;
-    width:100%;
-    max-width:390px;
-    padding:0 4px;
-    flex:0 0 auto;
-  }
-  .mobile-start-kicker{
-    font-size:9px;
-    letter-spacing:3.2px;
-    color:var(--gold);
-    font-weight:800;
-    text-transform:uppercase;
-    margin-bottom:8px;
-    text-shadow:0 2px 10px rgba(0,0,0,.7);
-  }
-  .mobile-start-title{
-    font-family:"Playfair Display",Georgia,serif;
-    font-size:clamp(40px,10.8vw,48px);
-    line-height:.91;
-    letter-spacing:-1.8px;
-    margin:0;
-    color:#fff;
-    text-shadow:0 5px 22px rgba(0,0,0,.55);
-  }
+  .mobile-start{display:block;position:relative;z-index:10;padding:10px 0 28px;min-height:calc(100svh - 76px)}
+  .mobile-start-head{text-align:center;margin:0 auto 18px;max-width:390px;padding:0 4px}
+  .mobile-start-kicker{font-size:9px;letter-spacing:3.2px;color:var(--gold);font-weight:800;text-transform:uppercase;margin-bottom:7px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .mobile-start-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(43px,12vw,58px);line-height:.92;letter-spacing:-1.7px;margin:0;color:#fff;text-shadow:0 5px 22px rgba(0,0,0,.55)}
   .mobile-start-title span{display:block;color:var(--gold)}
-  .mobile-start-lead{
-    font-size:12px;
-    line-height:1.35;
-    color:rgba(255,255,255,.80);
-    margin:10px 0 0;
-  }
-
-  .mobile-start-grid.three-only{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:8px;
-    width:100%;
-    max-width:430px;
-    margin:0 auto;
-    flex:0 0 auto;
-  }
-  .mobile-start-grid.three-only .start-card{
-    min-width:0;
-    min-height:145px;
-    height:145px;
-    padding:12px 6px 10px;
-    border:1px solid rgba(245,184,61,.34);
-    border-radius:18px;
-    background:linear-gradient(145deg,rgba(27,21,16,.92),rgba(7,6,5,.95));
-    box-shadow:0 14px 32px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.05);
-    color:#fff;
-    text-decoration:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    backdrop-filter:blur(8px);
-    transition:transform .2s ease,border-color .2s ease;
-  }
-  .mobile-start-grid.three-only .start-card:before{
-    content:"";
-    position:absolute;
-    left:12%;right:12%;top:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    opacity:.7;
-  }
-  .mobile-start-grid.three-only .start-card:active{
-    transform:scale(.975);
-    border-color:rgba(245,184,61,.72);
-  }
-  .mobile-start-grid.three-only .start-icon{
-    width:58px;
-    height:58px;
-    border-radius:17px;
-    margin:2px 0 9px;
-    border:1px solid rgba(245,184,61,.42);
-    background:radial-gradient(circle at 35% 30%,rgba(245,184,61,.18),rgba(245,184,61,.035) 68%);
-    display:grid;
-    place-items:center;
-    flex:none;
-    box-shadow:0 8px 22px rgba(0,0,0,.25);
-  }
-  .mobile-start-grid.three-only .start-icon svg{
-    width:34px;height:34px;
-    fill:none;
-    stroke:var(--gold);
-    stroke-width:2;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 3px 8px rgba(245,184,61,.22));
-  }
-  .mobile-start-grid.three-only .start-icon-quran svg{stroke-width:1.8}
-  .mobile-start-grid.three-only .start-icon-prayer svg{stroke-width:1.8}
-  .mobile-start-grid.three-only .start-icon-qibla svg{stroke-width:1.9}
-  .mobile-start-grid.three-only .start-card > span:nth-child(2){display:block;min-width:0;width:100%}
-  .mobile-start-grid.three-only .start-card h3{
-    font-family:"Playfair Display",Georgia,serif;
-    font-size:15px;
-    line-height:1.05;
-    margin:0 0 4px;
-    color:#fff;
-    white-space:nowrap;
-  }
-  .mobile-start-grid.three-only .start-card p{
-    font-size:8.5px;
-    line-height:1.25;
-    color:rgba(255,255,255,.62);
-    margin:0;
-    min-height:21px;
-  }
-  .mobile-start-grid.three-only .start-arrow{
-    position:absolute;
-    right:7px;
-    bottom:7px;
-    width:24px;height:24px;
-    border-radius:50%;
-    border:1px solid rgba(245,184,61,.45);
-    display:grid;
-    place-items:center;
-    color:var(--gold);
-    font-size:15px;
-    line-height:1;
-    background:rgba(0,0,0,.30);
-  }
-  [dir="rtl"] .mobile-start-grid.three-only .start-arrow{right:auto;left:7px}
-
-  .start-downloads.official-store-buttons{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:9px;
-    width:100%;
-    max-width:430px;
-    margin:0 auto;
-    flex:0 0 auto;
-  }
-  .official-store{
-    height:54px;
-    min-width:0;
-    padding:0 9px;
-    border:1px solid rgba(255,211,106,.82);
-    border-radius:15px;
-    background:rgba(4,4,4,.88);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    box-shadow:0 12px 25px rgba(0,0,0,.35);
-  }
-  .official-store img{
-    display:block;
-    width:100%;
-    height:36px;
-    object-fit:contain;
-    object-position:center;
-  }
-  .official-store:first-child img{height:35px}
-  .official-store:nth-child(2) img{height:39px}
-
-  .start-scroll{
-    width:32px;height:32px;
-    margin:0 auto;
-    border:0;
-    background:none;
-    color:var(--gold);
-    font-size:28px;
-    line-height:1;
-    flex:0 0 32px;
-    animation:startBounce 1.7s ease-in-out infinite;
-  }
+  .mobile-start-lead{font-size:13px;line-height:1.45;color:rgba(255,255,255,.78);margin:11px 0 0}
+  .mobile-start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 auto;max-width:430px}
+  .start-card{min-width:0;min-height:126px;padding:12px 8px 10px;border:1px solid rgba(245,184,61,.28);border-radius:16px;background:linear-gradient(145deg,rgba(26,20,15,.90),rgba(7,6,5,.94));box-shadow:0 12px 28px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.05);color:#fff;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(8px);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+  .start-card:before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.65}
+  .start-card:active{transform:scale(.97);border-color:rgba(245,184,61,.65)}
+  .start-icon{width:52px;height:52px;border-radius:15px;border:1px solid rgba(245,184,61,.28);background:radial-gradient(circle at 35% 30%,rgba(245,184,61,.18),rgba(245,184,61,.035) 65%);display:grid;place-items:center;color:var(--gold);font-size:28px;box-shadow:0 8px 20px rgba(0,0,0,.25);flex:none}
+  .start-card h3{font-family:"Playfair Display",Georgia,serif;font-size:15px;line-height:1.05;margin:8px 0 2px;color:#fff}
+  .start-card p{font-size:8.5px;line-height:1.25;color:rgba(255,255,255,.55);margin:0;min-height:21px}
+  .start-arrow{position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(245,184,61,.32);display:grid;place-items:center;color:var(--gold);font-size:14px;background:rgba(0,0,0,.28)}
+  [dir="rtl"] .start-arrow{right:auto;left:7px}
+  .start-card.wide{grid-column:1/-1;min-height:76px;display:grid;grid-template-columns:62px 1fr 30px;gap:10px;align-items:center;text-align:left;padding:9px 14px}
+  [dir="rtl"] .start-card.wide{text-align:right;grid-template-columns:30px 1fr 62px}
+  .start-card.wide .start-icon{width:54px;height:54px}
+  .start-card.wide .start-copy{min-width:0}
+  .start-card.wide h3{font-size:17px;margin:0 0 3px}
+  .start-card.wide p{font-size:10px;min-height:0}
+  .start-card.wide .start-arrow{position:static;width:30px;height:30px;font-size:17px}
+  .start-downloads{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px auto 0;max-width:430px}
+  .start-download{height:51px;border:1px solid rgba(255,211,106,.72);border-radius:13px;background:linear-gradient(145deg,rgba(8,7,6,.96),rgba(18,14,10,.96));color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.30)}
+  .start-download .download-icon{font-size:23px;color:#fff;line-height:1}
+  .start-download small{display:block;font-size:7px;line-height:1.05;letter-spacing:.3px;color:rgba(255,255,255,.68);text-transform:uppercase}
+  .start-download strong{display:block;font-size:13px;line-height:1.05}
+  .start-scroll{width:28px;height:28px;margin:14px auto 0;border:0;background:none;color:var(--gold);font-size:26px;line-height:1;animation:startBounce 1.7s ease-in-out infinite}
   @keyframes startBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 }
-
-@media (min-width:381px) and (max-width:520px){
-  .mobile-start{
-    min-height:calc(100svh - 72px);
-    height:calc(100svh - 72px);
-    padding-top:7px;
-    padding-bottom:8px;
-  }
-  .mobile-start-kicker{font-size:8.5px;letter-spacing:2.9px}
-  .mobile-start-title{font-size:41px}
-  .mobile-start-lead{font-size:11.5px;margin-top:9px}
-  .mobile-start-grid.three-only{gap:7px}
-  .mobile-start-grid.three-only .start-card{height:140px;min-height:140px;border-radius:17px;padding-top:11px}
-  .mobile-start-grid.three-only .start-icon{width:55px;height:55px;border-radius:16px;margin-bottom:8px}
-  .mobile-start-grid.three-only .start-icon svg{width:32px;height:32px}
-  .mobile-start-grid.three-only .start-card h3{font-size:14px}
-  .mobile-start-grid.three-only .start-card p{font-size:8px}
-  .official-store{height:51px;border-radius:14px}
-  .official-store img{height:33px}
-  .official-store:first-child img{height:32px}
-  .official-store:nth-child(2) img{height:36px}
-}
-
 @media(max-width:380px){
-  .mobile-start{
-    min-height:calc(100svh - 76px);
-    height:calc(100svh - 76px);
-    padding:6px 0 8px;
-  }
-  .mobile-start-kicker{font-size:8px;letter-spacing:2.6px}
-  .mobile-start-title{font-size:38px}
-  .mobile-start-lead{font-size:11px;margin-top:8px}
-  .mobile-start-grid.three-only{gap:5px}
-  .mobile-start-grid.three-only .start-card{height:130px;min-height:130px;border-radius:15px;padding:9px 4px 8px}
-  .mobile-start-grid.three-only .start-icon{width:50px;height:50px;border-radius:14px;margin-bottom:7px}
-  .mobile-start-grid.three-only .start-icon svg{width:29px;height:29px}
-  .mobile-start-grid.three-only .start-card h3{font-size:12.5px}
-  .mobile-start-grid.three-only .start-card p{font-size:7.2px}
-  .official-store{height:48px;border-radius:13px;padding:0 7px}
-  .official-store img{height:30px}
-  .official-store:first-child img{height:29px}
-  .official-store:nth-child(2) img{height:33px}
+  .mobile-start{padding-top:4px}
+  .mobile-start-head{margin-bottom:13px}
+  .mobile-start-title{font-size:40px}
+  .mobile-start-lead{font-size:12px;margin-top:8px}
+  .mobile-start-grid{gap:6px}
+  .start-card{min-height:116px;padding:10px 6px 9px;border-radius:14px}
+  .start-icon{width:46px;height:46px;font-size:24px;border-radius:13px}
+  .start-card h3{font-size:13px}
+  .start-card p{font-size:7.5px}
+  .start-card.wide{min-height:70px;grid-template-columns:54px 1fr 27px;gap:7px;padding:8px 10px}
+  [dir="rtl"] .start-card.wide{grid-template-columns:27px 1fr 54px}
+  .start-card.wide .start-icon{width:48px;height:48px}
+  .start-card.wide h3{font-size:15px}
+  .start-card.wide p{font-size:9px}
+  .start-download{height:47px}
+  .start-download strong{font-size:12px}
 }
 
 /* =========================
@@ -830,213 +509,24 @@ body.rtl .quran-search input{text-align:right}
 @media(max-width:900px){.quran-section{padding:88px 0 95px}.quran-wrap{width:calc(100% - 36px)}.quran-topbar{grid-template-columns:1fr 1fr}.quran-play-all{grid-column:1/-1}.quran-meta{align-items:start;flex-direction:column}.quran-nav{width:100%}.quran-nav button{flex:1}.quran-verse-arabic{font-size:27px;line-height:1.95}}
 @media(max-width:520px){.quran-section{padding:76px 0 82px}.quran-wrap{width:calc(100% - 28px)}.quran-heading h2{font-size:39px}.quran-lead{font-size:14px}.quran-panel{border-radius:20px}.quran-topbar{grid-template-columns:1fr;padding:15px}.quran-play-all{grid-column:auto}.quran-meta{padding:19px 16px 8px}.quran-surah-name{font-size:29px}.quran-surah-ar{font-size:25px}.quran-verses{padding:4px 13px 20px;max-height:620px}.quran-verse{padding:22px 2px}.quran-verse-arabic{font-size:25px;line-height:2}.quran-verse-translation{font-size:13px}.quran-verse-top{margin-bottom:10px}}
 
-
-/* =========================
-   PRAYER TIMES / MOBILE-FIRST REDESIGN
-   ========================= */
-@media(max-width:520px){
-  .prayer-times-section{
-    padding:68px 0 74px;
-    background-position:center top;
-  }
-  .prayer-times-section:before{
-    background:linear-gradient(180deg,rgba(5,4,3,.96) 0%,rgba(7,5,3,.90) 45%,rgba(8,6,4,.97) 100%);
-  }
-  .prayer-times-section:after{
-    background:radial-gradient(circle at 50% 35%,rgba(245,184,61,.14),transparent 34%),linear-gradient(180deg,rgba(5,4,3,.05),rgba(5,4,3,.82) 76%,#080706 100%);
-  }
-  .prayer-times-wrap{width:calc(100% - 28px)}
-  .prayer-head{
-    display:block;
-    margin-bottom:18px;
-  }
-  .prayer-kicker{font-size:9px;letter-spacing:3px;margin-bottom:8px}
-  .prayer-title{
-    font-size:36px;
-    line-height:1.05;
-    letter-spacing:-.8px;
-    max-width:330px;
-  }
-  .prayer-lead{
-    font-size:13px;
-    line-height:1.55;
-    margin-top:9px;
-    max-width:340px;
-  }
-  .prayer-location{
-    min-width:0;
-    width:100%;
-    box-sizing:border-box;
-    margin-top:16px;
-    padding:12px 14px;
-    border-radius:16px;
-    display:grid;
-    grid-template-columns:1fr auto;
-    grid-template-areas:"top button" "name button" "date button";
-    align-items:center;
-    column-gap:12px;
-    background:rgba(8,7,6,.68);
-  }
-  .prayer-location-top{grid-area:top;justify-content:flex-start;gap:8px}
-  .prayer-location-label{font-size:8px;letter-spacing:2px}
-  .prayer-location-pin{font-size:16px}
-  .prayer-location-name{grid-area:name;font-size:15px;margin-top:2px}
-  .prayer-location-date{grid-area:date;font-size:10px;margin-top:2px}
-  .prayer-location button{
-    grid-area:button;
-    margin:0;
-    padding:9px 10px;
-    border:1px solid rgba(245,184,61,.28);
-    border-radius:999px;
-    background:rgba(245,184,61,.06);
-    font-size:10px;
-    white-space:nowrap;
-  }
-
-  /* The next prayer is the main focus on mobile. */
-  .prayer-next{
-    min-height:0;
-    margin:0 0 14px;
-    padding:23px 18px 20px;
-    border-radius:23px;
-    display:block;
-    text-align:center;
-    background:linear-gradient(180deg,rgba(7,6,5,.80),rgba(7,6,5,.48)),url('./assets/hero-mosque-bg.png') center/cover no-repeat;
-    box-shadow:0 22px 55px rgba(0,0,0,.40),0 0 35px rgba(245,184,61,.06);
-  }
-  .prayer-next-left{display:block}
-  .prayer-next-label{font-size:9px;letter-spacing:3px}
-  .prayer-next-name{font-size:42px;line-height:1;margin-top:7px}
-  .prayer-next-time{font-size:12px;margin-top:8px}
-  .prayer-next-time strong{font-size:15px}
-  .prayer-next-right{margin-top:16px}
-  .prayer-countdown{text-align:center}
-  .prayer-countdown small{font-size:8px;letter-spacing:2.3px}
-  .prayer-countdown strong{
-    font-size:34px;
-    letter-spacing:1px;
-    margin-top:7px;
-    color:#fff;
-    text-shadow:0 0 22px rgba(245,184,61,.16);
-  }
-  .prayer-countdown-caption{font-size:10px;margin-top:6px}
-
-  /* Replace five large cards with one compact horizontal timeline. */
-  .prayer-grid{display:none}
-  .prayer-timeline{
-    margin:0 0 14px;
-    padding:18px 8px 15px;
-    overflow:hidden;
-    border:1px solid rgba(245,184,61,.20);
-    border-radius:20px;
-    background:rgba(10,9,7,.72);
-    box-shadow:0 16px 40px rgba(0,0,0,.28);
-  }
-  .prayer-timeline-line{left:10%;right:10%;top:34px;height:1px;background:rgba(245,184,61,.26)}
-  .prayer-timeline-items{min-width:0;grid-template-columns:repeat(5,1fr);gap:0}
-  .prayer-timeline-item{min-width:0}
-  .prayer-timeline-dot{
-    width:10px;height:10px;
-    margin:0 auto 9px;
-    border:2px solid rgba(255,255,255,.36);
-    box-shadow:0 0 0 4px rgba(10,9,7,.92);
-  }
-  .prayer-timeline-item.active .prayer-timeline-dot{
-    width:13px;height:13px;
-    margin-top:-1px;margin-bottom:7px;
-    border-width:2px;
-    box-shadow:0 0 0 4px rgba(245,184,61,.10),0 0 18px rgba(245,184,61,.35);
-  }
-  .prayer-timeline-name{
-    font-size:9px;
-    letter-spacing:.2px;
-    text-transform:none;
-    color:rgba(255,255,255,.52);
-  }
-  .prayer-timeline-item.active .prayer-timeline-name{color:var(--gold)}
-  .prayer-timeline-time{
-    margin-top:4px;
-    font-size:9px;
-    color:rgba(255,255,255,.72);
-    white-space:nowrap;
-  }
-  .prayer-timeline-item.active .prayer-timeline-time{color:#fff;font-weight:800}
-
-  .prayer-bottom{
-    margin-top:0;
-    padding:11px 13px;
-    border-radius:16px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-  }
-  .prayer-bottom-item{min-height:38px;padding:0;gap:8px}
-  .prayer-bottom-item:nth-child(2){display:none}
-  .prayer-bottom-icon{width:32px;height:32px;font-size:13px}
-  .prayer-bottom-label{font-size:10px}
-  .prayer-bottom-sub{font-size:8px;line-height:1.3}
-  .prayer-bottom-item:last-child{display:none}
-  .prayer-actions{margin-top:9px;display:grid;grid-template-columns:1fr}
-  .prayer-actions .prayer-btn{min-height:40px;padding:9px 12px;font-size:10px}
-  .prayer-status{min-height:16px;padding:7px 0 0;font-size:10px}
-}
-
-@media(max-width:380px){
-  .prayer-times-section{padding:60px 0 66px}
-  .prayer-title{font-size:33px}
-  .prayer-lead{font-size:12px}
-  .prayer-location{padding:10px 12px}
-  .prayer-location-name{font-size:14px}
-  .prayer-next{padding:20px 15px 18px}
-  .prayer-next-name{font-size:38px}
-  .prayer-countdown strong{font-size:30px}
-  .prayer-timeline{padding-left:5px;padding-right:5px}
-  .prayer-timeline-name,.prayer-timeline-time{font-size:8px}
-}
-
+.hifz-nav{color:#f5b83d!important;font-weight:700!important;padding:8px 13px;border:1px solid rgba(245,184,61,.5);border-radius:999px;background:rgba(245,184,61,.07);box-shadow:0 0 18px rgba(245,184,61,.06)}
+.hifz-nav::before{content:"✦";font-size:10px;margin-right:5px}.mobile-hifz{color:#f5b83d!important;font-weight:700!important}
 </style>
-<style>
-/* Standalone feature pages */
-.standalone-page{min-height:100vh;background:#080706;color:#fff}.standalone-nav{position:sticky;top:0;z-index:100;background:rgba(8,7,6,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,184,61,.10)}.standalone-nav .nav{height:88px}.standalone-nav .wrap{width:min(1380px,calc(100% - 56px));margin:auto}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:calc(100vh - 88px)}
-.quran-journey{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin:0 auto 24px;max-width:1100px}.quran-journey-card{padding:26px;border:1px solid rgba(245,184,61,.28);border-radius:22px;background:radial-gradient(circle at 85% 20%,rgba(245,184,61,.16),transparent 38%),linear-gradient(145deg,rgba(37,29,22,.96),rgba(11,9,8,.98));box-shadow:0 20px 50px rgba(0,0,0,.28)}.qj-label{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:800}.qj-title{font:800 28px/1.15 'Playfair Display',serif;margin-top:10px}.qj-sub{color:rgba(255,255,255,.55);font-size:13px;margin-top:7px}.qj-btn{margin-top:20px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(245,184,61,.48);background:linear-gradient(135deg,#ffd875,#f3b62f);color:#17120a;font:800 13px 'DM Sans',sans-serif;cursor:pointer}.quran-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quran-quick{border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.035);color:#fff;padding:15px;text-align:left;cursor:pointer;min-height:94px;transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}.quran-quick span{display:block;font-size:20px;color:var(--gold);margin-bottom:8px}.quran-quick strong{display:block;font-size:13px}.quran-quick small{display:block;color:rgba(255,255,255,.45);font-size:10px;margin-top:4px}.quran-featured-head{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:26px auto 10px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2.5px}.quran-featured-head small{color:rgba(255,255,255,.35);font-weight:500;letter-spacing:0}.quran-featured{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;max-width:1100px;margin:0 auto 28px;padding:2px 1px 8px}.quran-featured::-webkit-scrollbar{display:none}.quran-featured button{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));color:#fff;text-align:left;cursor:pointer}.quran-featured button b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured button small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.standalone-page .quran-heading{margin-bottom:22px}.standalone-page .quran-panel{max-width:1100px;margin:auto}
-@media(max-width:700px){.standalone-nav .wrap{width:calc(100% - 28px)}.standalone-nav .nav{height:76px}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:0}.quran-journey{display:block;margin-bottom:18px}.quran-journey-card{padding:20px;border-radius:19px}.qj-title{font-size:25px}.quran-quick-grid{margin-top:10px;gap:8px}.quran-quick{min-height:88px;padding:13px;border-radius:15px}.quran-featured-head{margin-top:20px}.quran-featured{margin-bottom:20px}.standalone-page .quran-heading h2{font-size:37px}.standalone-page .quran-lead{font-size:13px}.standalone-page .quran-section{padding-top:56px}}
-@media(max-width:380px){.quran-quick strong{font-size:12px}.quran-quick small{font-size:9px}.quran-featured button{min-width:140px}.qj-title{font-size:23px}}
-</style><style>
-
-/* Hidaya Motion System — unified page/navigation motion */
-@view-transition { navigation: auto; }
-::view-transition-group(root){ animation-duration:.38s; animation-timing-function:cubic-bezier(.22,.61,.36,1); }
-::view-transition-old(root){ animation: hidaya-page-out .26s cubic-bezier(.4,0,1,1) both; }
-::view-transition-new(root){ animation: hidaya-page-in .38s cubic-bezier(.22,.61,.36,1) both; }
-@keyframes hidaya-page-out{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(-8px)}}
-@keyframes hidaya-page-in{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-html.hidaya-motion-back ::view-transition-old(root){animation-name:hidaya-page-out-back;}
-html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-in-back;}
-@keyframes hidaya-page-out-back{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(8px)}}
-@keyframes hidaya-page-in-back{from{opacity:.0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.hidaya-page-back{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;padding:8px 12px;border:1px solid rgba(245,184,61,.25);border-radius:999px;color:#f5b83d;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.02em;transition:transform .2s ease,background .2s ease,border-color .2s ease;position:relative;z-index:4;}
-.hidaya-page-back:hover{transform:translateX(-3px);background:rgba(245,184,61,.07);border-color:rgba(245,184,61,.55);}
-.hidaya-page-back:active{transform:translateX(-1px) scale(.98);}
-@media(max-width:700px){.hidaya-page-back{margin:8px 12px 0;font-size:11px;padding:7px 11px;}}
-@media(prefers-reduced-motion:reduce){
-  ::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important;}
-  .hidaya-page-back{transition:none!important;}
-}
-
-</style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script></head><body>
+</head>
+<body>
 <section class="hero" aria-label="Hidaya hero">
   <div class="wrap">
     <header class="nav">
       <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="index.html#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
+      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="#prayer-times" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="#quran" data-i18n="nav_quran">Quran</a><a href="hifz.html" class="hifz-nav" data-i18n="nav_hifz">Hifz</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
       <div class="nav-right"><div class="lang-wrap"><button class="lang" type="button" id="langToggle"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App <span aria-hidden="true">↓</span></a></div>
       <div class="mobile-nav"><div class="mobile-lang"><button type="button" aria-label="Language" id="mobileLangToggle">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
       <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
         <a href="#about" data-i18n="nav_about">About</a>
-        <a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a>
-        <a href="index.html#qibla" data-i18n="nav_qibla">Qibla</a>
-        <a href="quran.html" data-i18n="nav_quran">Quran</a>
+        <a href="#prayer-times" data-i18n="nav_prayer">Prayer Times</a>
+        <a href="#qibla" data-i18n="nav_qibla">Qibla</a>
+        <a href="#quran" data-i18n="nav_quran">Quran</a>
+        <a href="hifz.html" class="mobile-hifz" data-i18n="nav_hifz">Hifz ✦</a>
         <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
         <a class="mobile-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App ↓</a>
@@ -1073,30 +563,29 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
         <p class="mobile-start-lead" data-i18n="start_lead">Choose where you want to begin.</p>
       </div>
 
-      <div class="mobile-start-grid three-only">
-        <a class="start-card" href="quran.html">
-          <span class="start-icon start-icon-quran" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 14c9-4 17-3 20 1v35c-4-4-11-5-20-1z"/><path d="M52 14c-9-4-17-3-20 1v35c4-4 11-5 20-1z"/><path d="M32 15v35"/><path d="M18 21c5-2 9-1 12 1M46 21c-5-2-9-1-12 1"/></svg></span>
-          <span><h3 data-i18n="start_quran">Quran</h3><p data-i18n="start_quran_sub">Read. Listen. Reflect.</p></span><span class="start-arrow">›</span>
-        </a>
-        <a class="start-card" href="prayer-times.html">
-          <span class="start-icon start-icon-prayer" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 51h44M15 51V35h34v16M21 35V27l11-11 11 11v8M27 35v-8h10v8M12 27h40M25 51V40h14v11"/><path d="M32 10v6M28 13h8"/></svg></span>
-          <span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span>
-        </a>
-        <a class="start-card" href="index.html#qibla">
-          <span class="start-icon start-icon-qibla" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="21"/><circle cx="32" cy="32" r="3"/><path d="M37 20l-4 14-10 5 4-14z"/><path d="M32 7v5M32 52v5M7 32h5M52 32h5"/></svg></span>
-          <span><h3 data-i18n="start_qibla">Qibla</h3><p data-i18n="start_qibla_sub">Find your direction</p></span><span class="start-arrow">›</span>
+      <div class="mobile-start-grid">
+        <a class="start-card" href="#quran"><span class="start-icon">◈</span><span><h3 data-i18n="start_quran">Quran</h3><p data-i18n="start_quran_sub">Read. Listen. Reflect.</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card" href="#prayer-times"><span class="start-icon">☼</span><span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card" href="#qibla"><span class="start-icon">⌖</span><span><h3 data-i18n="start_qibla">Qibla</h3><p data-i18n="start_qibla_sub">Find your direction</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card" href="#about"><span class="start-icon">✦</span><span><h3 data-i18n="start_athkar">Athkar &amp; Duas</h3><p data-i18n="start_athkar_sub">Be closer to Allah</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card" href="#about"><span class="start-icon">◉</span><span><h3 data-i18n="start_radio">Hidaya Radio</h3><p data-i18n="start_radio_sub">Quran &amp; Nasheeds</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card" href="#about"><span class="start-icon">♧</span><span><h3 data-i18n="start_kids">Kids</h3><p data-i18n="start_kids_sub">Stories. Duas. Learning.</p></span><span class="start-arrow">›</span></a>
+        <a class="start-card wide" href="#about">
+          <span class="start-icon">◇</span>
+          <span class="start-copy"><h3 data-i18n="start_learn">Learn Quran</h3><p data-i18n="start_learn_sub">Step by step</p></span>
+          <span class="start-arrow">›</span>
         </a>
       </div>
 
-      <div class="start-downloads official-store-buttons">
-        <a class="start-download official-store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener" aria-label="Download Hidaya from the App Store">
-          <img src="./assets/app-store-logo.png" alt="App Store">
+      <div class="start-downloads">
+        <a class="start-download" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener">
+          <span class="download-icon">●</span><span><small data-i18n="start_appstore_small">Download on the</small><strong>App Store</strong></span>
         </a>
-        <a class="start-download official-store" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" aria-label="Get Hidaya on Google Play">
-          <img src="./assets/google-play-logo.png" alt="Google Play">
+        <a class="start-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">
+          <span class="download-icon">▶</span><span><small data-i18n="start_google_small">Get it on</small><strong>Google Play</strong></span>
         </a>
       </div>
-      <div class="start-scroll-wrap"><button class="start-scroll" type="button" aria-label="Scroll to explore" onclick="document.querySelector('.about')?.scrollIntoView({behavior:'smooth',block:'start'})">⌄</button><span class="start-scroll-label" data-i18n="start_scroll">Scroll to explore</span></div>
+      <button class="start-scroll" type="button" aria-label="Scroll down" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})">⌄</button>
     </div>
   </div>
 </section>
@@ -1222,6 +711,104 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
 </div>
 
 <!-- =========================
+     PRAYER TIMES / ALADHAN
+     ========================= -->
+<section class="prayer-times-section" id="prayer-times" aria-label="Hidaya prayer times">
+  <div class="prayer-pattern"></div>
+  <div class="prayer-times-wrap">
+    <div class="prayer-head">
+      <div>
+        <div class="prayer-kicker" data-i18n="prayer_kicker">PRAYER TIMES</div>
+        <h2 class="prayer-title" data-i18n-html="prayer_title">Stay Connected <span>With Every Prayer</span></h2>
+        <p class="prayer-lead" data-i18n="prayer_lead">Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.</p>
+      </div>
+      <div class="prayer-location">
+        <div class="prayer-location-top">
+          <div class="prayer-location-label">Your Location</div>
+          <div class="prayer-location-pin">⌖</div>
+        </div>
+        <div class="prayer-location-name" id="hidayaPrayerLocation">Cairo, Egypt</div>
+        <div class="prayer-location-date" id="hidayaPrayerDate">Loading date…</div>
+        <button type="button" id="hidayaUseLocation">Use my location →</button>
+      </div>
+    </div>
+
+    <div class="prayer-next">
+      <div class="prayer-next-left">
+        <div class="prayer-next-label">Next Prayer</div>
+        <div class="prayer-next-name" id="hidayaNextPrayer">Loading…</div>
+        <div class="prayer-next-time">Your next prayer is <strong id="hidayaNextPrayerTime">--:--</strong></div>
+      </div>
+      <div class="prayer-next-right">
+        <div class="prayer-countdown"><small>Time remaining</small><strong id="hidayaCountdown">--:--:--</strong><div class="prayer-countdown-caption">Until the next prayer begins</div></div>
+      </div>
+    </div>
+
+    <div class="prayer-grid" id="hidayaPrayerGrid" aria-live="polite">
+      <article class="prayer-card" data-prayer="Fajr"><div class="prayer-icon">☾</div><div class="prayer-name">Fajr</div><div class="prayer-time" id="hidayaFajr">--:--</div><div class="prayer-period">Dawn prayer</div></article>
+      <article class="prayer-card" data-prayer="Dhuhr"><div class="prayer-icon">☀</div><div class="prayer-name">Dhuhr</div><div class="prayer-time" id="hidayaDhuhr">--:--</div><div class="prayer-period">Midday prayer</div></article>
+      <article class="prayer-card" data-prayer="Asr"><div class="prayer-icon">◒</div><div class="prayer-name">Asr</div><div class="prayer-time" id="hidayaAsr">--:--</div><div class="prayer-period">Afternoon prayer</div></article>
+      <article class="prayer-card" data-prayer="Maghrib"><div class="prayer-icon">◐</div><div class="prayer-name">Maghrib</div><div class="prayer-time" id="hidayaMaghrib">--:--</div><div class="prayer-period">Sunset prayer</div></article>
+      <article class="prayer-card" data-prayer="Isha"><div class="prayer-icon">✦</div><div class="prayer-name">Isha</div><div class="prayer-time" id="hidayaIsha">--:--</div><div class="prayer-period">Night prayer</div></article>
+    </div>
+
+    <div class="prayer-timeline" aria-hidden="true">
+      <div class="prayer-timeline-line"></div>
+      <div class="prayer-timeline-items">
+        <div class="prayer-timeline-item" data-timeline-prayer="Fajr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Fajr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Dhuhr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Dhuhr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Asr"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Asr</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Maghrib"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Maghrib</div></div>
+        <div class="prayer-timeline-item" data-timeline-prayer="Isha"><div class="prayer-timeline-dot"></div><div class="prayer-timeline-name">Isha</div></div>
+      </div>
+    </div>
+
+    <div class="prayer-bottom">
+      <div class="prayer-bottom-item">
+        <div class="prayer-bottom-icon">⌖</div>
+        <div><div class="prayer-bottom-label" id="hidayaBottomLocation">Cairo, Egypt</div><div class="prayer-bottom-sub">Accurate times based on your location</div></div>
+      </div>
+      <div class="prayer-bottom-item">
+        <div class="prayer-bottom-icon">⚙</div>
+        <div><div class="prayer-bottom-label">Calculation Method</div><div class="prayer-bottom-sub">Egyptian General Authority of Survey</div></div>
+      </div>
+      <div class="prayer-bottom-item">
+        <button class="prayer-btn" type="button" id="hidayaRefreshPrayer">↻ &nbsp; Refresh Times</button>
+      </div>
+    </div>
+    <div class="prayer-actions"><button class="prayer-btn" type="button" id="hidayaChangeCity">Change city</button></div>
+    <div class="prayer-status" id="hidayaPrayerStatus" role="status"></div>
+  </div>
+</section>
+
+
+<!-- =========================
+     QURAN / AL QURAN CLOUD
+     ========================= -->
+<section class="quran-section" id="quran" aria-label="Hidaya Quran">
+  <div class="quran-wrap">
+    <div class="quran-heading">
+      <div class="quran-kicker" data-i18n="quran_kicker">THE HOLY QURAN</div>
+      <h2 data-i18n-html="quran_title">Read. Listen. <span>Reflect.</span></h2>
+      <p class="quran-lead" data-i18n="quran_lead">Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.</p>
+    </div>
+    <div class="quran-panel">
+      <div class="quran-topbar">
+        <div class="quran-select-wrap"><select class="quran-select" id="quranSurahSelect" aria-label="Select Surah"><option>Loading Surahs…</option></select></div>
+        <div class="quran-search"><input id="quranSearch" type="search" data-i18n-placeholder="quran_search" placeholder="Search in this Surah"></div>
+        <button class="quran-play-all" id="quranPlayAll" type="button" data-i18n="quran_play_all">▶ Play Surah</button>
+      </div>
+      <div class="quran-meta">
+        <div><div class="quran-surah-name" id="quranSurahName">Al-Fatihah</div><div class="quran-surah-ar" id="quranSurahArabic">الفاتحة</div><div class="quran-surah-info" id="quranSurahInfo">7 verses</div></div>
+        <div class="quran-nav"><button type="button" id="quranPrev" data-i18n="quran_prev">← Previous</button><button type="button" id="quranNext" data-i18n="quran_next">Next →</button></div>
+      </div>
+      <div class="quran-verses" id="quranVerses"><div class="quran-loading" data-i18n="quran_loading">Loading Quran…</div></div>
+      <div class="quran-status" id="quranStatus"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
      SCREENSHOTS / AUTO CAROUSEL
      ========================= -->
 <section class="screenshots" id="screenshots" aria-label="Hidaya app screenshots">
@@ -1255,7 +842,57 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
 </section>
 
 
-
+<script>
+(function(){
+  const API='https://api.aladhan.com/v1/timings';
+  const method=5;
+  const prayerNames=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+  const els={
+    location:document.getElementById('hidayaPrayerLocation'),date:document.getElementById('hidayaPrayerDate'),
+    next:document.getElementById('hidayaNextPrayer'),countdown:document.getElementById('hidayaCountdown'),status:document.getElementById('hidayaPrayerStatus')
+  };
+  const times={}; let timer=null; let meta={};
+  const pad=n=>String(n).padStart(2,'0');
+  function setStatus(msg,error=false){els.status.textContent=msg||'';els.status.classList.toggle('error',error)}
+  function parseTime(t){const m=String(t||'').match(/^(\d{1,2}):(\d{2})/);return m?{h:+m[1],m:+m[2]}:null}
+  function format12(t){const p=parseTime(t);if(!p)return '--:--';let h=p.h%12||12;return h+':'+pad(p.m)+' '+(p.h>=12?'PM':'AM')}
+  function dateKey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+  function updateDate(){const d=new Date();els.date.textContent=d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short',year:'numeric'})}
+  function renderTimes(){
+    prayerNames.forEach(n=>{const el=document.getElementById('hidaya'+n);if(el)el.textContent=format12(times[n]);});
+    updateDate();
+  }
+  function updateNext(){
+    const now=new Date(); let next=null; let nextDate=new Date(now);
+    prayerNames.forEach(n=>{const p=parseTime(times[n]);if(!p)return;const d=new Date(now);d.setHours(p.h,p.m,0,0);if(d<=now)return; if(!next||d<next){next=d;next.name=n;}});
+    if(!next){
+      const tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);const p=parseTime(times.Fajr);if(p){tomorrow.setHours(p.h,p.m,0,0);next=tomorrow;next.name='Fajr';}
+    }
+    document.querySelectorAll('.prayer-card').forEach(c=>c.classList.toggle('active',next&&c.dataset.prayer===next.name));
+    document.querySelectorAll('[data-timeline-prayer]').forEach(c=>c.classList.toggle('active',next&&c.dataset.timelinePrayer===next.name));
+    const nextTimeEl=document.getElementById('hidayaNextPrayerTime');
+    if(!next){els.next.textContent='Prayer times unavailable';els.countdown.textContent='--:--:--';if(nextTimeEl)nextTimeEl.textContent='--:--';return}
+    els.next.textContent=next.name;
+    if(nextTimeEl)nextTimeEl.textContent=format12(times[next.name]);
+    const diff=Math.max(0,next-new Date());const sec=Math.floor(diff/1000);els.countdown.textContent=pad(Math.floor(sec/3600))+':'+pad(Math.floor(sec/60)%60)+':'+pad(sec%60);
+  }
+  async function loadByCoords(lat,lon,label){
+    setStatus('Updating prayer times…');
+    const url=API+'?latitude='+encodeURIComponent(lat)+'&longitude='+encodeURIComponent(lon)+'&method='+method+'&school=0';
+    try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('API request failed');const j=await r.json();if(!j.data||!j.data.timings)throw new Error('Invalid API response');Object.assign(times,j.data.timings);meta=j.data.meta||{};els.location.textContent=label||meta.timezone||'Your location';const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=els.location.textContent;renderTimes();updateNext();setStatus('');localStorage.setItem('hidayaPrayerLocation',JSON.stringify({lat,lon,label:els.location.textContent}));}
+    catch(e){setStatus('Could not load prayer times. Please try again.',true);}
+  }
+  function loadCairo(){loadByCoords(30.0444,31.2357,'Cairo, Egypt')}
+  function useLocation(){
+    if(!navigator.geolocation){setStatus('Location is not supported by this browser.',true);return}
+    setStatus('Requesting your location…');navigator.geolocation.getCurrentPosition(p=>loadByCoords(p.coords.latitude,p.coords.longitude,'Your location'),()=>setStatus('Location permission was not granted. Showing Cairo.',true),{enableHighAccuracy:true,timeout:10000,maximumAge:300000});
+  }
+  document.getElementById('hidayaUseLocation').addEventListener('click',useLocation);
+  document.getElementById('hidayaRefreshPrayer').addEventListener('click',()=>{const saved=JSON.parse(localStorage.getItem('hidayaPrayerLocation')||'null');saved?loadByCoords(saved.lat,saved.lon,saved.label):loadCairo();});
+  document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
+  updateDate(); loadCairo(); clearInterval(timer); timer=setInterval(()=>{updateDate();updateNext();},1000);
+})();
+</script>
 
 
 <script>
@@ -1375,7 +1012,75 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
 </script>
 
 
-
+<script>
+(function(){
+  const API='https://api.alquran.cloud/v1';
+  const select=document.getElementById('quranSurahSelect');
+  const versesEl=document.getElementById('quranVerses');
+  const nameEl=document.getElementById('quranSurahName');
+  const arNameEl=document.getElementById('quranSurahArabic');
+  const infoEl=document.getElementById('quranSurahInfo');
+  const searchEl=document.getElementById('quranSearch');
+  const statusEl=document.getElementById('quranStatus');
+  const playAll=document.getElementById('quranPlayAll');
+  const prev=document.getElementById('quranPrev');
+  const next=document.getElementById('quranNext');
+  if(!select||!versesEl)return;
+  let surahs=[]; let current=1; let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'en';
+  const ui={
+    en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_hifz:'Hifz',nav_quran:'Quran',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',start_kicker:'YOUR HIDAYA JOURNEY',start_title:'Start Your<br><span>Journey</span>',start_lead:'Choose where you want to begin.',start_quran:'Quran',start_quran_sub:'Read. Listen. Reflect.',start_prayer:'Prayer Times',start_prayer_sub:'Never miss a prayer',start_qibla:'Qibla',start_qibla_sub:'Find your direction',start_athkar:'Athkar & Duas',start_athkar_sub:'Be closer to Allah',start_radio:'Hidaya Radio',start_radio_sub:'Quran & Nasheeds',start_kids:'Kids',start_kids_sub:'Stories. Duas. Learning.',start_learn:'Learn Quran',start_learn_sub:'Step by step',start_appstore_small:'Download on the',start_google_small:'Get it on',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
+    ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_hifz:'احفظ',nav_quran:'القرآن',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',start_kicker:'رحلتك مع هداية',start_title:'ابدأ <br><span>رحلتك</span>',start_lead:'اختر من أين تريد أن تبدأ.',start_quran:'القرآن',start_quran_sub:'اقرأ. استمع. تدبّر.',start_prayer:'مواقيت الصلاة',start_prayer_sub:'لا تفوّت صلاتك',start_qibla:'القبلة',start_qibla_sub:'اعرف اتجاه القبلة',start_athkar:'الأذكار والدعاء',start_athkar_sub:'كن أقرب إلى الله',start_radio:'إذاعة هداية',start_radio_sub:'قرآن وأناشيد',start_kids:'الأطفال',start_kids_sub:'قصص ودعاء وتعلّم',start_learn:'تعلم القرآن',start_learn_sub:'خطوة بخطوة',start_appstore_small:'حمّل من',start_google_small:'احصل عليه من',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
+  };
+  function lang(){return currentLang==='ar'?'ar':'en'}
+  function t(k){return ui[lang()][k]||ui.en[k]||k}
+  function setStatus(msg,error=false){statusEl.textContent=msg||'';statusEl.classList.toggle('error',!!error)}
+  function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function applyLanguage(){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(ui[lang()][k]!=null)el.textContent=ui[lang()][k]});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(ui[lang()][k]!=null)el.innerHTML=ui[lang()][k]});
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(ui[lang()][k]!=null)el.placeholder=ui[lang()][k]});
+    document.documentElement.lang=lang();document.documentElement.dir=lang()==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',lang()==='ar');
+    const label=document.getElementById('langLabel');if(label)label.textContent=lang()==='ar'?'العربية':'English';
+    document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang()));
+    renderSurahOptions();renderVerses();
+  }
+  function renderSurahOptions(){if(!surahs.length)return;const old=select.value;select.innerHTML=surahs.map(x=>`<option value="${x.number}">${x.number}. ${escapeHtml(lang()==='ar'?x.name:x.englishName)} — ${escapeHtml(x.englishName)}</option>`).join('');select.value=String(current);}
+  async function loadSurahs(){try{const r=await fetch(API+'/surah',{cache:'force-cache'});const j=await r.json();if(j.code!==200)throw Error();surahs=j.data||[];renderSurahOptions();await loadSurah(current);}catch(e){versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}}
+  async function loadSurah(num){
+    current=Number(num);searchEl.value='';versesEl.innerHTML='<div class="quran-loading">'+escapeHtml(t('quran_loading'))+'</div>';setStatus('');stopAudio();
+    try{
+      const [arR,trR]=await Promise.all([fetch(API+'/surah/'+current+'/ar.alafasy'),fetch(API+'/surah/'+current+'/'+(lang()==='ar'?'ar.muyassar':'en.sahih'))]);
+      const [arJ,trJ]=await Promise.all([arR.json(),trR.json()]);
+      if(arJ.code!==200||trJ.code!==200)throw Error();
+      verses=arJ.data.ayahs.map((a,i)=>({number:a.numberInSurah,text:a.text,audio:a.audio,translation:(trJ.data.ayahs[i]||{}).text||''}));
+      audioList=verses.map(v=>v.audio).filter(Boolean);
+      nameEl.textContent=lang()==='ar'?arJ.data.name:arJ.data.englishName;
+      arNameEl.textContent=arJ.data.name;
+      infoEl.textContent=(lang()==='ar'?arJ.data.numberOfAyahs+' آيات':arJ.data.numberOfAyahs+' verses')+' · '+(arJ.data.revelationType||'');
+      renderVerses();
+    }catch(e){verses=[];versesEl.innerHTML='<div class="quran-empty">'+escapeHtml(t('quran_error'))+'</div>';setStatus(t('quran_error'),true)}
+  }
+  function renderVerses(){
+    if(!verses.length)return;
+    const q=(searchEl.value||'').trim().toLowerCase();
+    const filtered=verses.filter(v=>!q||v.text.toLowerCase().includes(q)||v.translation.toLowerCase().includes(q));
+    if(!filtered.length){versesEl.innerHTML='<div class="quran-empty">'+(lang()==='ar'?'لا توجد نتائج في هذه السورة.':'No matching verses in this Surah.')+'</div>';return;}
+    versesEl.innerHTML=filtered.map(v=>`<article class="quran-verse"><div class="quran-verse-top"><span class="quran-number">${v.number}</span><div class="quran-verse-actions"><button type="button" title="Play" aria-label="Play verse" data-play="${v.number}">▶</button></div></div><div class="quran-verse-arabic">${escapeHtml(v.text)}</div><div class="quran-verse-translation">${escapeHtml(v.translation)}</div></article>`).join('');
+    versesEl.querySelectorAll('[data-play]').forEach(btn=>btn.addEventListener('click',()=>{const n=Number(btn.dataset.play);const idx=verses.findIndex(v=>v.number===n);if(idx>=0)playFrom(idx)}));
+  }
+  function playFrom(index){audioIndex=index;playCurrent()}
+  function playCurrent(){if(audioIndex<0||audioIndex>=verses.length)return;const src=verses[audioIndex].audio;if(!src){audioIndex++;return playCurrent()}player.src=src;player.play().catch(()=>{});}
+  function stopAudio(){player.pause();player.removeAttribute('src');audioIndex=-1}
+  player.addEventListener('ended',()=>{audioIndex++;if(audioIndex<verses.length)playCurrent();else audioIndex=-1});
+  select.addEventListener('change',()=>loadSurah(select.value));
+  prev.addEventListener('click',()=>{if(current>1)loadSurah(current-1)});
+  next.addEventListener('click',()=>{if(current<114)loadSurah(current+1)});
+  playAll.addEventListener('click',()=>{if(audioIndex>=0&&!player.paused){stopAudio();playAll.textContent=t('quran_play_all');return}audioIndex=0;playCurrent();playAll.textContent=lang()==='ar'?'■ إيقاف':'■ Stop'});
+  searchEl.addEventListener('input',renderVerses);
+  window.addEventListener('hidayaLanguageChanged',()=>{currentLang=localStorage.getItem('hidayaLang')||'en';applyLanguage();loadSurah(current)});
+  applyLanguage();loadSurahs();
+})();
+</script>
 
 <script>
 (function(){
@@ -1530,95 +1235,5 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
   </div>
 </section>
 
-
-<script>
-(function(){
-  const hero=document.querySelector('.mobile-start');
-  if(!hero) return;
-  requestAnimationFrame(()=>hero.classList.add('is-entering'));
-
-  // Give in-page hero links a smooth, intentional focus/scroll experience.
-  hero.querySelectorAll('.start-card[href^="#"]').forEach(card=>{
-    card.addEventListener('click',function(e){
-      const target=document.querySelector(this.getAttribute('href'));
-      if(!target) return;
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth',block:'start'});
-      setTimeout(()=>target.setAttribute('tabindex','-1'),450);
-      setTimeout(()=>target.focus({preventScroll:true}),470);
-    });
-  });
-
-  // Store badges: preload is already declared; keep interactions accessible.
-  hero.querySelectorAll('.official-store').forEach(link=>{
-    link.addEventListener('keydown',e=>{
-      if(e.key==='Enter' || e.key===' '){
-        e.preventDefault();
-        link.click();
-      }
-    });
-  });
-
-  // Lazy-load below-the-fold images without touching the Hero assets.
-  document.querySelectorAll('img:not(.phone img):not(.official-store img)').forEach(img=>{
-    if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
-    if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
-  });
-})();
-</script>
-
-<script>
-(function(){
-  const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-  const isHome=current===''||current==='index.html';
-  const key='hidayaMotionPrevious';
-  const dirKey='hidayaMotionDirection';
-  const normalize=(href)=>{
-    try{return new URL(href,location.href)}catch(e){return null}
-  };
-  const internal=(a)=>{
-    if(!a||!a.href) return false;
-    const u=normalize(a.getAttribute('href'));
-    if(!u||u.origin!==location.origin) return false;
-    if(a.target==='_blank') return false;
-    const path=(u.pathname.split('/').pop()||'index.html').toLowerCase();
-    return path.endsWith('.html') && path!==current;
-  };
-  document.addEventListener('click',function(e){
-    const a=e.target.closest&&e.target.closest('a');
-    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
-    // Back buttons have their own handler; do not let this forward-navigation
-    // listener overwrite the stored previous page with the page we are leaving.
-    if(a.hasAttribute('data-hidaya-back')) return;
-    if(internal(a)){
-      try{sessionStorage.setItem(key,current||'index.html');sessionStorage.setItem(dirKey,'forward');}catch(_){ }
-    }
-  },true);
-  window.hidayaGoBack=function(fallback){
-    const safeFallback=fallback||'index.html';
-    let target=safeFallback;
-    try{
-      const stored=sessionStorage.getItem(key);
-      target=(stored && stored!==current) ? stored : safeFallback;
-      sessionStorage.removeItem(key);
-      sessionStorage.setItem(dirKey,'back');
-    }catch(_){ }
-    location.href=target;
-  };
-  const back=document.querySelector('[data-hidaya-back]');
-  if(back){
-    back.addEventListener('click',function(e){
-      e.preventDefault();
-      window.hidayaGoBack(back.getAttribute('data-fallback')||'index.html');
-    });
-  }
-  try{
-    const direction=sessionStorage.getItem(dirKey);
-    if(direction==='back') document.documentElement.classList.add('hidaya-motion-back');
-    sessionStorage.removeItem(dirKey);
-  }catch(_){ }
-  if('scrollRestoration' in history) history.scrollRestoration='auto';
-})();
-</script>
-
-</body></html>
+</body>
+</html>
