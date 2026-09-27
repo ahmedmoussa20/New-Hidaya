@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <title>Hidaya — Read the Holy Quran</title>
-<meta name="description" content="Hidaya Quran Reader — a high-quality, page-by-page Mushaf reading experience.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<meta content="Hidaya Quran Reader — a high-quality, page-by-page Mushaf reading experience." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{--gold:#f5b83d;--gold2:#ffd875;--bg:#080706;--panel:#15110d;--line:rgba(245,184,61,.20);--muted:rgba(255,255,255,.60);--cream:#f5eedf}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:"DM Sans",Arial,sans-serif;overflow-x:hidden}button,select,input{font:inherit}button{cursor:pointer}
@@ -332,76 +332,65 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
 </style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script></head>
 <body>
 <div class="bg"></div>
-<div class="standalone-nav"><div class="wrap"><header class="nav">
-<a class="logo" href="index.html" aria-label="Hidaya home"><b>Hidaya</b><span>هداية</span></a>
-<nav class="links" aria-label="Primary navigation"><a href="index.html#about">About</a><a href="prayer-times.html">Prayer Times</a><a href="index.html#qibla">Qibla</a><a href="quran.html">Quran</a><a href="index.html#screenshots">Screenshots</a><a href="index.html#faq">FAQ</a></nav>
-<div class="nav-right"><button class="lang" id="langBtn" type="button">English⌄</button><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App ↓</a></div>
-<button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open menu">☰</button>
-</header></div></div><a class="hidaya-page-back" href="quran.html" data-hidaya-back data-fallback="quran.html" aria-label="Back to Quran">← <span>Back to Quran</span></a>
+<div class="standalone-nav"><div class="wrap"><header class="nav"><a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a><nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="hifz-nav" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav><div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div><div class="mobile-nav"><div class="mobile-lang"><button aria-label="Language" id="mobileLangToggle" type="button">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" id="mobileMenuToggle" type="button">☰</button></div><div aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="mobile-hifz" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a><a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a></div></header></div></div><a aria-label="Back to Quran" class="hidaya-page-back" data-fallback="quran.html" data-hidaya-back="" href="quran.html">← <span>Back to Quran</span></a>
 <main class="wrap">
 <section class="hero"><div class="kicker">QURAN READER</div><h1>Read the <span>Holy Quran</span></h1><p>A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.</p></section>
-
-<div class="mobile-reader-bar" aria-label="Mobile Quran reader controls">
-  <button class="mobile-reader-btn" id="mobileSurahBtn" type="button" aria-label="Choose Surah">☰ <span>Surah</span></button>
-  <button class="mobile-reader-btn" id="mobileJuzBtn" type="button" aria-label="Choose Juz">Juz</button>
-  <div class="mobile-page-box">
-    <label for="mobilePageInput">Page</label>
-    <input id="mobilePageInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="Page number">
-  </div>
-  <button class="mobile-reader-btn settings-trigger" id="readerSettingsBtn" type="button" aria-label="Reader settings">⚙</button>
+<div aria-label="Mobile Quran reader controls" class="mobile-reader-bar">
+<button aria-label="Choose Surah" class="mobile-reader-btn" id="mobileSurahBtn" type="button">☰ <span>Surah</span></button>
+<button aria-label="Choose Juz" class="mobile-reader-btn" id="mobileJuzBtn" type="button">Juz</button>
+<div class="mobile-page-box">
+<label for="mobilePageInput">Page</label>
+<input aria-label="Page number" id="mobilePageInput" inputmode="numeric" max="604" min="1" type="number" value="1"/>
 </div>
-
+<button aria-label="Reader settings" class="mobile-reader-btn settings-trigger" id="readerSettingsBtn" type="button">⚙</button>
+</div>
 <div class="reader-drawer-backdrop" id="readerDrawerBackdrop"></div>
-<aside class="reader-drawer" id="readerDrawer" aria-label="Reader options" aria-hidden="true">
-  <div class="drawer-head">
-    <div>
-      <small>READER OPTIONS</small>
-      <strong>Reading settings</strong>
-    </div>
-    <button id="closeReaderDrawer" type="button" aria-label="Close reader options">×</button>
-  </div>
-
-  <div class="drawer-section">
-    <span class="drawer-label">Navigation</span>
-    <button class="drawer-action" id="drawerSurahBtn" type="button">📖 Choose Surah <span>›</span></button>
-    <button class="drawer-action" id="drawerJuzBtn" type="button">◈ Choose Juz <span>›</span></button>
-    <button class="drawer-action" id="drawerBookmarkBtn" type="button">🔖 Bookmark current page <span id="drawerBookmarkState">○</span></button>
-  </div>
-
-  <div class="drawer-section">
-    <span class="drawer-label">Reading</span>
-    <button class="drawer-action" id="drawerSearchBtn" type="button">⌕ Search Quran <span>›</span></button>
-    <button class="drawer-action" id="drawerNightBtn" type="button">☾ Night mode <span id="drawerNightState">Off</span></button>
-    <button class="drawer-action" id="drawerFullscreenBtn" type="button">⛶ Fullscreen reading <span>›</span></button>
-  </div>
-
-  <div class="drawer-section drawer-tip">
-    <span class="drawer-label">Tip</span>
-    <p>Swipe left or right to move between pages. The reading area stays focused on the Mushaf.</p>
-  </div>
-</aside>
-
-<div class="controls" aria-label="Quran reader controls">
-<div class="field surah"><label for="surahSelect">SURAH</label><select id="surahSelect" aria-label="Surah"></select></div>
-<div class="field juz"><label for="juzSelect">JUZ</label><select id="juzSelect" aria-label="Juz"></select></div>
-<div class="field page"><label for="pageInput">PAGE</label><input id="pageInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="Page number"></div>
-<button class="tool" id="goPage" type="button">Go</button>
-<button class="tool bookmark" id="bookmarkBtn" type="button" title="Bookmark current page">🔖</button>
-<button class="tool" id="searchBtn" type="button" title="Search Quran">⌕ Search</button>
-<button class="tool night" id="nightBtn" type="button" title="Night mode">☾ Night</button>
-<button class="tool full" id="fullscreenBtn" type="button" title="Fullscreen">⛶ Fullscreen</button>
+<aside aria-hidden="true" aria-label="Reader options" class="reader-drawer" id="readerDrawer">
+<div class="drawer-head">
+<div>
+<small>READER OPTIONS</small>
+<strong>Reading settings</strong>
 </div>
-<div class="search-panel" id="searchPanel"><input id="searchInput" type="search" placeholder="Search the Quran…"><button id="searchExternal" type="button">Search</button><button class="external" id="openMushaf" type="button">Open Search</button></div>
+<button aria-label="Close reader options" id="closeReaderDrawer" type="button">×</button>
+</div>
+<div class="drawer-section">
+<span class="drawer-label">Navigation</span>
+<button class="drawer-action" id="drawerSurahBtn" type="button">📖 Choose Surah <span>›</span></button>
+<button class="drawer-action" id="drawerJuzBtn" type="button">◈ Choose Juz <span>›</span></button>
+<button class="drawer-action" id="drawerBookmarkBtn" type="button">🔖 Bookmark current page <span id="drawerBookmarkState">○</span></button>
+</div>
+<div class="drawer-section">
+<span class="drawer-label">Reading</span>
+<button class="drawer-action" id="drawerSearchBtn" type="button">⌕ Search Quran <span>›</span></button>
+<button class="drawer-action" id="drawerNightBtn" type="button">☾ Night mode <span id="drawerNightState">Off</span></button>
+<button class="drawer-action" id="drawerFullscreenBtn" type="button">⛶ Fullscreen reading <span>›</span></button>
+</div>
+<div class="drawer-section drawer-tip">
+<span class="drawer-label">Tip</span>
+<p>Swipe left or right to move between pages. The reading area stays focused on the Mushaf.</p>
+</div>
+</aside>
+<div aria-label="Quran reader controls" class="controls">
+<div class="field surah"><label for="surahSelect">SURAH</label><select aria-label="Surah" id="surahSelect"></select></div>
+<div class="field juz"><label for="juzSelect">JUZ</label><select aria-label="Juz" id="juzSelect"></select></div>
+<div class="field page"><label for="pageInput">PAGE</label><input aria-label="Page number" id="pageInput" inputmode="numeric" max="604" min="1" type="number" value="1"/></div>
+<button class="tool" id="goPage" type="button">Go</button>
+<button class="tool bookmark" id="bookmarkBtn" title="Bookmark current page" type="button">🔖</button>
+<button class="tool" id="searchBtn" title="Search Quran" type="button">⌕ Search</button>
+<button class="tool night" id="nightBtn" title="Night mode" type="button">☾ Night</button>
+<button class="tool full" id="fullscreenBtn" title="Fullscreen" type="button">⛶ Fullscreen</button>
+</div>
+<div class="search-panel" id="searchPanel"><input id="searchInput" placeholder="Search the Quran…" type="search"/><button id="searchExternal" type="button">Search</button><button class="external" id="openMushaf" type="button">Open Search</button></div>
 <div class="reader-layout">
 <aside class="side"><div class="side-head">Surahs</div><div class="surah-list" id="surahList"></div></aside>
-<section class="viewer-frame" id="viewerFrame" aria-label="Quran Mushaf viewer">
+<section aria-label="Quran Mushaf viewer" class="viewer-frame" id="viewerFrame">
 <div class="viewer-top"><span id="viewerLabel">Madinah Mushaf · Hafs</span><span id="viewerPageTop">Page 1 / 604</span></div>
-<div class="viewer-stage" id="viewerStage"><div class="viewer-loading" id="loading">Loading high-quality Mushaf page…</div><img id="mushafImage" class="mushaf-image" alt="Quran Mushaf page" draggable="false"><div class="viewer-error" id="error"><div><strong>We couldn't load the page image.</strong><br><span>Use the official Mushaf viewer fallback below.</span><br><button id="fallbackBtn" type="button">Open Mushaf page</button></div></div></div>
-<div class="viewer-bottom"><button class="nav-btn" id="prevBtn" type="button" aria-label="Previous page">←</button><div class="page-pill"><span id="pageCounter">1 / 604</span><small>Quran pages</small></div><button class="nav-btn" id="nextBtn" type="button" aria-label="Next page">→</button></div>
+<div class="viewer-stage" id="viewerStage"><div class="viewer-loading" id="loading">Loading high-quality Mushaf page…</div><img alt="Quran Mushaf page" class="mushaf-image" draggable="false" id="mushafImage"/><div class="viewer-error" id="error"><div><strong>We couldn't load the page image.</strong><br/><span>Use the official Mushaf viewer fallback below.</span><br/><button id="fallbackBtn" type="button">Open Mushaf page</button></div></div></div>
+<div class="viewer-bottom"><button aria-label="Previous page" class="nav-btn" id="prevBtn" type="button">←</button><div class="page-pill"><span id="pageCounter">1 / 604</span><small>Quran pages</small></div><button aria-label="Next page" class="nav-btn" id="nextBtn" type="button">→</button></div>
 </section>
 <aside class="info"><div class="info-head">Current Page</div><div class="info-card"><small>Page</small><strong id="infoPage">1</strong><span>of 604 pages</span></div><div class="info-card"><small>Surah</small><strong id="infoSurah">Al-Fatihah</strong><span id="infoSurahAr">الفاتحة</span></div><div class="info-card"><small>Bookmark</small><strong id="infoBookmark">Not saved</strong><span>Saved on this device</span></div><div class="info-card"><small>Quick Navigation</small><div class="quick"><button id="infoPrev">Previous</button><button id="infoNext">Next</button><button id="bookmarkInfo">Bookmark</button><button id="infoTop">Top</button></div></div></aside>
 </div>
-<p class="note">Mushaf pages are served as Hafs/KFQC high-resolution SVG pages with a fallback to <a href="https://alquran.cloud/mushaf/1" target="_blank" rel="noopener">Al Quran Cloud's 604-page Mushaf</a>. The reader does not load or replace your separate Listen Quran page.</p>
+<p class="note">Mushaf pages are served as Hafs/KFQC high-resolution SVG pages with a fallback to <a href="https://alquran.cloud/mushaf/1" rel="noopener" target="_blank">Al Quran Cloud's 604-page Mushaf</a>. The reader does not load or replace your separate Listen Quran page.</p>
 </main>
 <script>
 (function(){
@@ -493,7 +482,6 @@ $('langBtn').addEventListener('click',()=>{const ar=document.documentElement.lan
 fillControls();const urlPage=Number(new URLSearchParams(location.search).get('page'));if(urlPage)page=clamp(urlPage);setPage(page,false);
 })();
 </script>
-
 <script>
 (function(){
   const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
@@ -547,6 +535,5 @@ fillControls();const urlPage=Number(new URLSearchParams(location.search).get('pa
   if('scrollRestoration' in history) history.scrollRestoration='auto';
 })();
 </script>
-
 </body>
 </html>
