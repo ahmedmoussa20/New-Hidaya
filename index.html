@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -513,6 +512,102 @@ body.rtl .quran-search input{text-align:right}
 .hifz-nav{color:#f5b83d!important;font-weight:700!important;padding:8px 13px;border:1px solid rgba(245,184,61,.5);border-radius:999px;background:rgba(245,184,61,.07);box-shadow:0 0 18px rgba(245,184,61,.06)}
 .hifz-nav::before{content:"✦";font-size:10px;margin-right:5px}.mobile-hifz{color:#f5b83d!important;font-weight:700!important}
 </style>
+
+<style id="mobile-start-layout-final">
+/* Final mobile Start Your Journey layout — matched to the approved mobile reference */
+@media (max-width:700px){
+  .hero{min-height:100svh;height:auto;max-height:none;padding-bottom:0;background-position:center top;background-size:cover;}
+  .mobile-start{display:block;min-height:calc(100svh - 76px);padding:10px 0 30px;}
+  .mobile-start-head{max-width:420px;margin:0 auto 20px;padding:0;text-align:center;}
+  .mobile-start-kicker{font-size:10px;letter-spacing:3.5px;margin-bottom:9px;}
+  .mobile-start-title{font-size:clamp(43px,11vw,58px);line-height:.92;letter-spacing:-1.7px;}
+  .mobile-start-lead{font-size:15px;line-height:1.4;margin:12px 0 0;color:rgba(255,255,255,.86);}
+
+  .mobile-start-grid{
+    width:100%;
+    max-width:760px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin:0 auto;
+  }
+  .start-card,
+  .start-card.wide{
+    grid-column:auto;
+    min-height:178px;
+    height:178px;
+    padding:16px 13px 12px;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+  }
+  .start-card.wide{display:flex;}
+  .start-icon,
+  .start-card.wide .start-icon{
+    width:62px;height:62px;
+    min-width:62px;
+    border-radius:18px;
+    font-size:31px;
+    margin-bottom:10px;
+  }
+  .start-card > span:nth-child(2){display:block;min-width:0;}
+  .start-card h3,
+  .start-card.wide h3{font-size:21px;line-height:1.05;margin:0 0 5px;}
+  .start-card p,
+  .start-card.wide p{font-size:12px;line-height:1.28;min-height:0;margin:0;color:rgba(255,255,255,.62);}
+  .start-arrow,
+  .start-card.wide .start-arrow{
+    position:absolute;
+    right:9px;bottom:9px;
+    width:31px;height:31px;
+    font-size:19px;
+  }
+  [dir="rtl"] .start-arrow{right:auto;left:9px}
+
+  .start-downloads{
+    width:100%;
+    max-width:760px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin:18px auto 0;
+  }
+  .start-download{
+    width:100%;
+    height:60px;
+    border-radius:16px;
+    justify-content:center;
+    gap:12px;
+  }
+  .start-download .download-icon{width:32px;text-align:center;font-size:28px;}
+  .start-download .download-icon-img{width:42px;height:42px;object-fit:contain;flex:none;}
+  .start-download small{font-size:9px;line-height:1.05;}
+  .start-download strong{font-size:19px;line-height:1.08;}
+  .start-scroll{margin:18px auto 0;font-size:29px;}
+}
+
+@media (max-width:380px){
+  .mobile-start{padding-top:5px;padding-bottom:24px;}
+  .mobile-start-head{margin-bottom:16px;}
+  .mobile-start-title{font-size:40px;}
+  .mobile-start-lead{font-size:13px;margin-top:9px;}
+  .mobile-start-grid{gap:8px;}
+  .start-card,.start-card.wide{min-height:158px;height:158px;padding:13px 9px 10px;border-radius:17px;}
+  .start-icon,.start-card.wide .start-icon{width:54px;height:54px;min-width:54px;border-radius:16px;font-size:27px;margin-bottom:8px;}
+  .start-card h3,.start-card.wide h3{font-size:18px;}
+  .start-card p,.start-card.wide p{font-size:10px;}
+  .start-arrow,.start-card.wide .start-arrow{width:27px;height:27px;right:7px;bottom:7px;font-size:17px;}
+  .start-downloads{margin-top:14px;gap:8px;}
+  .start-download{height:54px;border-radius:14px;}
+  .start-download strong{font-size:17px;}
+  .start-download .download-icon-img{width:38px;height:38px;}
+  .start-download small{font-size:8px;}
+  .start-scroll{margin-top:13px;font-size:26px;}
+}
+</style>
+
 </head>
 <body><section aria-label="Hidaya hero" class="hero">
 <div class="wrap">
@@ -549,10 +644,10 @@ body.rtl .quran-search input{text-align:right}
 <div class="mobile-start-grid"><a class="start-card" href="index.html#qibla"><span class="start-icon">⌖</span><span><h3 data-i18n="start_qibla">Qibla</h3><p data-i18n="start_qibla_sub">Find your direction</p></span><span class="start-arrow">›</span></a><a class="start-card" href="hifz.html"><span class="start-icon">✦</span><span><h3 data-i18n="start_hifz">Hifz</h3><p data-i18n="start_hifz_sub">Memorize the Quran, ayah by ayah</p></span><span class="start-arrow">›</span></a><a class="start-card" href="prayer-times.html"><span class="start-icon">☼</span><span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span></a><a class="start-card" href="quran.html"><span class="start-icon">◈</span><span><h3 data-i18n="start_quran">Quran</h3><p data-i18n="start_quran_sub">Read. Listen. Reflect.</p></span><span class="start-arrow">›</span></a></div>
 <div class="start-downloads">
 <a class="start-download" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" rel="noopener" target="_blank">
-<span class="download-icon">●</span><span><small data-i18n="start_appstore_small">Download on the</small><strong>App Store</strong></span>
+<img class="download-icon-img" src="./assets/app-store-logo.png" alt="App Store"/><span><small data-i18n="start_appstore_small">Download on the</small><strong>App Store</strong></span>
 </a>
 <a class="start-download" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">
-<span class="download-icon">▶</span><span><small data-i18n="start_google_small">Get it on</small><strong>Google Play</strong></span>
+<img class="download-icon-img" src="./assets/google-play-logo.png" alt="Google Play"/><span><small data-i18n="start_google_small">Get it on</small><strong>Google Play</strong></span>
 </a>
 </div>
 <button aria-label="Scroll down" class="start-scroll" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})" type="button">⌄</button>
