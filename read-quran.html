@@ -22,6 +22,287 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 .note{max-width:920px;margin:16px auto 70px;text-align:center;color:rgba(255,255,255,.34);font-size:10px;line-height:1.7}.note a{color:var(--gold);text-decoration:none}
 .search-panel{display:none;max-width:720px;margin:10px auto 0;padding:10px;border:1px solid var(--line);border-radius:16px;background:rgba(13,10,8,.94)}.search-panel.open{display:flex;gap:8px}.search-panel input{flex:1;height:42px;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:#0e0c0a;color:#fff;padding:0 12px;outline:0}.search-panel button{height:42px;padding:0 14px;border:0;border-radius:11px;background:var(--gold);color:#17120a;font-weight:800}.search-panel .external{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff}
 .fullscreen .standalone-nav,.fullscreen .hero,.fullscreen .controls,.fullscreen .side,.fullscreen .info,.fullscreen .note{display:none}.fullscreen .reader-layout{display:block;margin:0}.fullscreen .viewer-frame{position:fixed;inset:0;z-index:9999;border-radius:0}.fullscreen .viewer-stage{height:calc(100vh - 102px);min-height:0;overflow:auto;align-items:flex-start}.fullscreen .mushaf-image{min-height:0;max-height:100%;max-width:100%;width:auto;height:auto;margin:auto}.fullscreen .viewer-loading,.fullscreen .viewer-error{inset:44px 0 58px}.fullscreen .viewer-bottom{position:absolute;left:0;right:0;bottom:0}
+
+/* Mobile-first reading layer: secondary actions live in a side drawer */
+.mobile-reader-bar,.reader-drawer,.reader-drawer-backdrop{display:none}
+
+@media(max-width:850px){
+  .mobile-reader-bar{
+    display:grid;
+    grid-template-columns:auto auto 1fr auto;
+    gap:7px;
+    align-items:center;
+    margin:8px 0 10px;
+    padding:7px;
+    border:1px solid rgba(245,184,61,.18);
+    border-radius:16px;
+    background:rgba(13,10,8,.92);
+    backdrop-filter:blur(18px);
+    position:sticky;
+    top:8px;
+    z-index:30;
+    box-shadow:0 12px 35px rgba(0,0,0,.30)
+  }
+  .mobile-reader-btn{
+    height:42px;
+    min-width:42px;
+    padding:0 11px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    font-size:11px;
+    font-weight:800
+  }
+  .mobile-reader-btn:hover,.mobile-reader-btn:active{
+    border-color:rgba(245,184,61,.55);
+    color:var(--gold);
+    background:rgba(245,184,61,.07)
+  }
+  .mobile-reader-btn.settings-trigger{
+    font-size:18px;
+    width:42px;
+    padding:0
+  }
+  .mobile-page-box{
+    height:42px;
+    min-width:0;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    background:rgba(255,255,255,.035);
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    gap:7px
+  }
+  .mobile-page-box label{
+    font-size:8px;
+    letter-spacing:1px;
+    color:rgba(255,255,255,.38);
+    text-transform:uppercase
+  }
+  .mobile-page-box input{
+    width:100%;
+    min-width:0;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    font-size:12px;
+    font-weight:800
+  }
+
+  .reader-drawer-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(0,0,0,.58);
+    backdrop-filter:blur(3px)
+  }
+  .reader-drawer-backdrop.open{display:block}
+
+  .reader-drawer{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    width:min(360px,88vw);
+    z-index:90;
+    padding:18px;
+    background:#0e0b09;
+    border-left:1px solid rgba(245,184,61,.22);
+    box-shadow:-25px 0 70px rgba(0,0,0,.55);
+    overflow:auto
+  }
+  .reader-drawer.open{display:block}
+  .drawer-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:15px;
+    padding:4px 0 18px;
+    border-bottom:1px solid rgba(255,255,255,.08)
+  }
+  .drawer-head small{
+    display:block;
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:2px;
+    font-weight:800
+  }
+  .drawer-head strong{
+    display:block;
+    margin-top:6px;
+    font-size:20px
+  }
+  .drawer-head button{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    font-size:23px
+  }
+  .drawer-section{
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.07)
+  }
+  .drawer-label{
+    display:block;
+    margin-bottom:9px;
+    color:rgba(255,255,255,.38);
+    font-size:9px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    font-weight:800
+  }
+  .drawer-action{
+    width:100%;
+    min-height:48px;
+    margin-top:7px;
+    padding:0 13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    text-align:left;
+    font-size:12px;
+    font-weight:700
+  }
+  .drawer-action:hover,.drawer-action.active{
+    border-color:rgba(245,184,61,.45);
+    background:rgba(245,184,61,.07);
+    color:var(--gold)
+  }
+  .drawer-action span{color:rgba(255,255,255,.35)}
+  .drawer-tip{border-bottom:0}
+  .drawer-tip p{
+    margin:0;
+    color:rgba(255,255,255,.50);
+    font-size:11px;
+    line-height:1.7
+  }
+
+  /* The old desktop control strip becomes secondary on mobile. */
+  .controls{
+    display:none
+  }
+
+  .search-panel{
+    margin-top:8px;
+    position:relative;
+    z-index:25
+  }
+
+  /* Reader gets almost all available mobile height. */
+  .reader-layout{margin-top:0}
+  .viewer-frame{
+    border-radius:16px;
+    min-height:0
+  }
+  .viewer-stage{
+    height:calc(100svh - 190px);
+    min-height:430px;
+    overflow:auto;
+    padding:0;
+    align-items:flex-start;
+    justify-content:center;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch
+  }
+  .mushaf-image{
+    width:auto;
+    max-width:100%;
+    height:auto;
+    max-height:100%;
+    min-height:0;
+    object-fit:contain;
+    object-position:center top;
+    flex:0 0 auto
+  }
+  .viewer-bottom{
+    height:54px
+  }
+
+  /* Search stays available, but is opened from the drawer. */
+  .search-panel.open{display:flex}
+
+  /* Fullscreen is now a dedicated reading canvas, not a stretched page box. */
+  body.fullscreen .mobile-reader-bar,
+  body.fullscreen .standalone-nav,
+  body.fullscreen .hero,
+  body.fullscreen .controls,
+  body.fullscreen .side,
+  body.fullscreen .info,
+  body.fullscreen .note{
+    display:none
+  }
+  body.fullscreen .reader-layout{
+    display:block;
+    margin:0
+  }
+  body.fullscreen .viewer-frame{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    min-height:0;
+    z-index:9999;
+    border:0;
+    border-radius:0;
+    box-shadow:none
+  }
+  body.fullscreen .viewer-top{
+    height:42px
+  }
+  body.fullscreen .viewer-stage{
+    height:calc(100dvh - 96px);
+    min-height:0;
+    overflow:hidden;
+    align-items:center;
+    justify-content:center
+  }
+  body.fullscreen .mushaf-image{
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+    margin:0 auto
+  }
+  body.fullscreen .viewer-bottom{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:54px
+  }
+}
+
+@media(max-width:520px){
+  .mobile-reader-bar{
+    grid-template-columns:auto auto 1fr auto;
+    margin-top:5px
+  }
+  .mobile-reader-btn{
+    padding:0 9px;
+    font-size:10px
+  }
+  .mobile-reader-btn span{display:none}
+  .mobile-page-box{padding:0 8px}
+  .viewer-stage{
+    height:calc(100svh - 180px);
+    min-height:410px
+  }
+  body.fullscreen .viewer-stage{
+    height:calc(100dvh - 96px)
+  }
+}
+
 @media(max-width:1180px){.reader-layout{grid-template-columns:210px minmax(0,1fr)}.info{display:none}.controls{grid-template-columns:1.2fr 1fr .8fr repeat(4,auto)}}
 @media(max-width:850px){.wrap{width:calc(100% - 28px)}.nav{height:76px}.links,.nav-right{display:none}.mobile-toggle{display:block;margin-left:auto;width:44px;height:44px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(15,12,10,.72);color:#fff;font-size:19px}.hero{padding:38px 0 20px}.hero p{font-size:14px}.controls{grid-template-columns:1fr 1fr;gap:7px;padding:10px;border-radius:18px}.field.page{grid-column:1/-1}.tool{min-width:0}.reader-layout{display:block;margin-top:10px}.side{display:none}.viewer-frame{border-radius:17px;min-height:0}.viewer-stage{height:calc(100vh - 285px);min-height:480px;padding:0;overflow:auto;touch-action:pan-y;align-items:flex-start}.mushaf-image{width:auto;max-width:100%;min-height:0;height:auto;max-height:100%;object-fit:contain;object-position:center top}.mushaf-fallback{height:100%;min-height:480px}.viewer-bottom{height:56px}.page-pill{min-width:105px}.note{margin-bottom:40px}.search-panel{margin-top:8px}.fullscreen .viewer-stage{height:calc(100vh - 102px)}}
 @media(max-width:520px){.logo{width:62px;height:62px;border-radius:13px}.logo b{font-size:16px}.logo span{font-size:12px}.hero h1{font-size:39px}.kicker{font-size:9px;letter-spacing:3px}.controls{grid-template-columns:1fr 1fr}.field.surah{grid-column:1/-1}.field.juz{grid-column:1}.field.page{grid-column:2}.tool{height:44px;font-size:10px}.tool.full{grid-column:1}.tool.night{grid-column:2}.viewer-top{height:40px}.viewer-stage{height:calc(100svh - 300px);min-height:430px;overflow:auto}.mushaf-image{max-height:100%;max-width:100%}.viewer-bottom{height:54px}.nav-btn{width:40px;height:38px}.page-pill{font-size:11px}.search-panel.open{flex-wrap:wrap}.search-panel input{flex-basis:100%}.search-panel button{flex:1}.note{font-size:9px}}
@@ -37,6 +318,47 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 </header></div></div>
 <main class="wrap">
 <section class="hero"><div class="kicker">QURAN READER</div><h1>Read the <span>Holy Quran</span></h1><p>A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.</p></section>
+
+<div class="mobile-reader-bar" aria-label="Mobile Quran reader controls">
+  <button class="mobile-reader-btn" id="mobileSurahBtn" type="button" aria-label="Choose Surah">☰ <span>Surah</span></button>
+  <button class="mobile-reader-btn" id="mobileJuzBtn" type="button" aria-label="Choose Juz">Juz</button>
+  <div class="mobile-page-box">
+    <label for="mobilePageInput">Page</label>
+    <input id="mobilePageInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="Page number">
+  </div>
+  <button class="mobile-reader-btn settings-trigger" id="readerSettingsBtn" type="button" aria-label="Reader settings">⚙</button>
+</div>
+
+<div class="reader-drawer-backdrop" id="readerDrawerBackdrop"></div>
+<aside class="reader-drawer" id="readerDrawer" aria-label="Reader options" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <small>READER OPTIONS</small>
+      <strong>Reading settings</strong>
+    </div>
+    <button id="closeReaderDrawer" type="button" aria-label="Close reader options">×</button>
+  </div>
+
+  <div class="drawer-section">
+    <span class="drawer-label">Navigation</span>
+    <button class="drawer-action" id="drawerSurahBtn" type="button">📖 Choose Surah <span>›</span></button>
+    <button class="drawer-action" id="drawerJuzBtn" type="button">◈ Choose Juz <span>›</span></button>
+    <button class="drawer-action" id="drawerBookmarkBtn" type="button">🔖 Bookmark current page <span id="drawerBookmarkState">○</span></button>
+  </div>
+
+  <div class="drawer-section">
+    <span class="drawer-label">Reading</span>
+    <button class="drawer-action" id="drawerSearchBtn" type="button">⌕ Search Quran <span>›</span></button>
+    <button class="drawer-action" id="drawerNightBtn" type="button">☾ Night mode <span id="drawerNightState">Off</span></button>
+    <button class="drawer-action" id="drawerFullscreenBtn" type="button">⛶ Fullscreen reading <span>›</span></button>
+  </div>
+
+  <div class="drawer-section drawer-tip">
+    <span class="drawer-label">Tip</span>
+    <p>Swipe left or right to move between pages. The reading area stays focused on the Mushaf.</p>
+  </div>
+</aside>
+
 <div class="controls" aria-label="Quran reader controls">
 <div class="field surah"><label for="surahSelect">SURAH</label><select id="surahSelect" aria-label="Surah"></select></div>
 <div class="field juz"><label for="juzSelect">JUZ</label><select id="juzSelect" aria-label="Juz"></select></div>
@@ -82,7 +404,7 @@ function arDigits(n){return String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]
 function setPage(n,push=true){page=clamp(n);localStorage.setItem(PAGE_KEY,String(page));pageInput.value=page;pageCounter.textContent=`${page} / ${TOTAL}`;pageTop.textContent=`Page ${page} / ${TOTAL}`;$('infoPage').textContent=page;const idx=currentSurahIndex();$('infoSurah').textContent=surahs[idx][0];$('infoSurahAr').textContent=surahs[idx][1];surahSelect.value=String(idx+1);juzSelect.value=String(currentJuz());document.querySelectorAll('#surahList button').forEach((b,i)=>b.classList.toggle('active',i===idx));updateBookmark();loadPageImage();if(push){const u=new URL(location.href);u.searchParams.set('page',page);history.replaceState({page},'',u)}}
 function currentJuz(){let j=1;for(let i=0;i<juzPages.length;i++){if(juzPages[i]<=page)j=i+1;else break}return j}
 function fillControls(){surahSelect.innerHTML=surahs.map((s,i)=>`<option value="${i+1}">${i+1}. ${s[0]} — ${s[1]}</option>`).join('');juzSelect.innerHTML=juzPages.map((p,i)=>`<option value="${i+1}">Juz ${i+1}</option>`).join('');surahList.innerHTML=surahs.map((s,i)=>`<button type="button" data-index="${i}"><em>${i+1}</em><span>${s[0]}</span><small>${s[1]}</small></button>`).join('');surahList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setPage(pageForSurah(Number(b.dataset.index)+1))))}
-function updateBookmark(){const marked=localStorage.getItem(BOOKMARK_KEY)===String(page);$('bookmarkBtn').classList.toggle('marked',marked);$('infoBookmark').textContent=marked?'Saved':'Not saved'}
+function updateBookmark(){const marked=localStorage.getItem(BOOKMARK_KEY)===String(page);$('bookmarkBtn').classList.toggle('marked',marked);$('infoBookmark').textContent=marked?'Saved':'Not saved';if(typeof updateDrawerStates==='function')updateDrawerStates()}
 function toggleBookmark(){if(localStorage.getItem(BOOKMARK_KEY)===String(page)){localStorage.removeItem(BOOKMARK_KEY)}else{localStorage.setItem(BOOKMARK_KEY,String(page))}updateBookmark()}
 function imageUrl(p){return `https://cdn.quran.ws/svg/pages/v1.1.1/hafs-kfqc/${String(p).padStart(3,"0")}.svg`}
 function fitMushafPage(){
@@ -105,11 +427,45 @@ function openFallback(){const src=`https://alquran.cloud/mushaf/${page}`;window.
 function goNext(){if(page<TOTAL)setPage(page+1)}function goPrev(){if(page>1)setPage(page-1)}
 $('prevBtn').addEventListener('click',goPrev);$('nextBtn').addEventListener('click',goNext);$('infoPrev').addEventListener('click',goPrev);$('infoNext').addEventListener('click',goNext);pageInput.addEventListener('change',()=>setPage(pageInput.value));$('goPage').addEventListener('click',()=>setPage(pageInput.value));surahSelect.addEventListener('change',()=>setPage(pageForSurah(Number(surahSelect.value))));juzSelect.addEventListener('change',()=>setPage(juzPages[Number(juzSelect.value)-1]));$('bookmarkBtn').addEventListener('click',toggleBookmark);$('bookmarkInfo').addEventListener('click',toggleBookmark);$('fallbackBtn').addEventListener('click',openFallback);$('infoTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 $('searchBtn').addEventListener('click',()=>{$('searchPanel').classList.toggle('open');if($('searchPanel').classList.contains('open'))$('searchInput').focus()});$('searchExternal').addEventListener('click',()=>{const q=$('searchInput').value.trim();if(q)window.open(`https://alquran.cloud/search?q=${encodeURIComponent(q)}`,'_blank','noopener,noreferrer');else window.open('https://alquran.cloud/search','_blank','noopener,noreferrer')});$('openMushaf').addEventListener('click',openFallback);
-$('nightBtn').addEventListener('click',()=>{document.body.classList.toggle('night');localStorage.setItem(NIGHT_KEY,document.body.classList.contains('night')?'1':'0')});if(localStorage.getItem(NIGHT_KEY)==='1')document.body.classList.add('night');
+$('nightBtn').addEventListener('click',()=>{document.body.classList.toggle('night');localStorage.setItem(NIGHT_KEY,document.body.classList.contains('night')?'1':'0');if(typeof updateDrawerStates==='function')updateDrawerStates()});if(localStorage.getItem(NIGHT_KEY)==='1')document.body.classList.add('night');
 $('fullscreenBtn').addEventListener('click',()=>{document.body.classList.toggle('fullscreen');if(document.body.classList.contains('fullscreen')){if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{})}else if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{})});document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.body.classList.remove('fullscreen')});
-window.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if(e.key==='ArrowLeft')goNext();if(e.key==='ArrowRight')goPrev();if(e.key==='Escape'&&document.body.classList.contains('fullscreen')){document.body.classList.remove('fullscreen')}});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&readerDrawer.classList.contains('open')){closeReaderDrawer();return}if(e.target.matches('input,select,textarea'))return;if(e.key==='ArrowLeft')goNext();if(e.key==='ArrowRight')goPrev();if(e.key==='Escape'&&document.body.classList.contains('fullscreen')){document.body.classList.remove('fullscreen')}});
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(fitMushafPage,80)});window.addEventListener('orientationchange',()=>setTimeout(fitMushafPage,120));
 let touchX=0,touchY=0;const stage=$('viewerStage');stage.addEventListener('touchstart',e=>{const t=e.changedTouches[0];touchX=t.clientX;touchY=t.clientY},{passive:true});stage.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.clientX-touchX,dy=t.clientY-touchY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){if(dx<0)goNext();else goPrev()}},{passive:true});
+
+const readerDrawer=$('readerDrawer'),readerDrawerBackdrop=$('readerDrawerBackdrop');
+const mobilePageInput=$('mobilePageInput');
+function openReaderDrawer(){
+  readerDrawer.classList.add('open');
+  readerDrawerBackdrop.classList.add('open');
+  readerDrawer.setAttribute('aria-hidden','false');
+  updateDrawerStates();
+}
+function closeReaderDrawer(){
+  readerDrawer.classList.remove('open');
+  readerDrawerBackdrop.classList.remove('open');
+  readerDrawer.setAttribute('aria-hidden','true');
+}
+function updateDrawerStates(){
+  const marked=localStorage.getItem(BOOKMARK_KEY)===String(page);
+  $('drawerBookmarkState').textContent=marked?'Saved':'○';
+  $('drawerNightState').textContent=document.body.classList.contains('night')?'On':'Off';
+  mobilePageInput.value=page;
+}
+$('readerSettingsBtn').addEventListener('click',openReaderDrawer);
+$('closeReaderDrawer').addEventListener('click',closeReaderDrawer);
+readerDrawerBackdrop.addEventListener('click',closeReaderDrawer);
+$('mobileSurahBtn').addEventListener('click',()=>{openReaderDrawer();setTimeout(()=>surahSelect.focus(),80)});
+$('mobileJuzBtn').addEventListener('click',()=>{openReaderDrawer();setTimeout(()=>juzSelect.focus(),80)});
+$('drawerSurahBtn').addEventListener('click',()=>{closeReaderDrawer();surahSelect.focus()});
+$('drawerJuzBtn').addEventListener('click',()=>{closeReaderDrawer();juzSelect.focus()});
+$('drawerBookmarkBtn').addEventListener('click',()=>{toggleBookmark();updateDrawerStates()});
+$('drawerSearchBtn').addEventListener('click',()=>{closeReaderDrawer();$('searchPanel').classList.add('open');$('searchInput').focus()});
+$('drawerNightBtn').addEventListener('click',()=>{$('nightBtn').click();updateDrawerStates()});
+$('drawerFullscreenBtn').addEventListener('click',()=>{closeReaderDrawer();$('fullscreenBtn').click()});
+mobilePageInput.addEventListener('change',()=>setPage(mobilePageInput.value));
+mobilePageInput.addEventListener('keydown',e=>{if(e.key==='Enter'){setPage(mobilePageInput.value);mobilePageInput.blur()}});
+
 $('mobileToggle').addEventListener('click',()=>{const open=document.querySelector('.mobile-menu');if(open)open.remove();else{const m=document.createElement('div');m.className='mobile-menu';m.style.cssText='position:fixed;top:82px;right:14px;left:14px;z-index:200;padding:10px;border:1px solid rgba(245,184,61,.2);border-radius:16px;background:#0d0b09;box-shadow:0 20px 50px rgba(0,0,0,.5);display:grid;gap:4px';m.innerHTML='<a href="index.html#about" style="color:#fff;text-decoration:none;padding:12px">About</a><a href="prayer-times.html" style="color:#fff;text-decoration:none;padding:12px">Prayer Times</a><a href="index.html#qibla" style="color:#fff;text-decoration:none;padding:12px">Qibla</a><a href="quran.html" style="color:#fff;text-decoration:none;padding:12px">Quran</a><a href="index.html#screenshots" style="color:#fff;text-decoration:none;padding:12px">Screenshots</a><a href="index.html#faq" style="color:#fff;text-decoration:none;padding:12px">FAQ</a>';document.body.appendChild(m)}});
 $('langBtn').addEventListener('click',()=>{const ar=document.documentElement.lang!=='ar';document.documentElement.lang=ar?'ar':'en';document.documentElement.dir=ar?'rtl':'ltr';$('langBtn').textContent=ar?'العربية⌄':'English⌄';document.querySelector('.hero p').textContent=ar?'تجربة هادئة وعالية الجودة لقراءة المصحف، مع تنقّل سريع بين الصفحات، واللمس، والحفظ، ووضع ملء الشاشة والوضع الليلي.':'A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.'});
 fillControls();const urlPage=Number(new URLSearchParams(location.search).get('page'));if(urlPage)page=clamp(urlPage);setPage(page,false);
