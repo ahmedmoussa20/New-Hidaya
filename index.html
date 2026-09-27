@@ -1002,18 +1002,40 @@ body.rtl .quran-search input{text-align:right}
 .quran-journey{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin:0 auto 24px;max-width:1100px}.quran-journey-card{padding:26px;border:1px solid rgba(245,184,61,.28);border-radius:22px;background:radial-gradient(circle at 85% 20%,rgba(245,184,61,.16),transparent 38%),linear-gradient(145deg,rgba(37,29,22,.96),rgba(11,9,8,.98));box-shadow:0 20px 50px rgba(0,0,0,.28)}.qj-label{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:800}.qj-title{font:800 28px/1.15 'Playfair Display',serif;margin-top:10px}.qj-sub{color:rgba(255,255,255,.55);font-size:13px;margin-top:7px}.qj-btn{margin-top:20px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(245,184,61,.48);background:linear-gradient(135deg,#ffd875,#f3b62f);color:#17120a;font:800 13px 'DM Sans',sans-serif;cursor:pointer}.quran-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quran-quick{border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.035);color:#fff;padding:15px;text-align:left;cursor:pointer;min-height:94px;transition:.2s}.quran-quick:hover{transform:translateY(-2px);border-color:rgba(245,184,61,.35)}.quran-quick span{display:block;font-size:20px;color:var(--gold);margin-bottom:8px}.quran-quick strong{display:block;font-size:13px}.quran-quick small{display:block;color:rgba(255,255,255,.45);font-size:10px;margin-top:4px}.quran-featured-head{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:26px auto 10px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2.5px}.quran-featured-head small{color:rgba(255,255,255,.35);font-weight:500;letter-spacing:0}.quran-featured{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;max-width:1100px;margin:0 auto 28px;padding:2px 1px 8px}.quran-featured::-webkit-scrollbar{display:none}.quran-featured button{min-width:150px;padding:15px;border-radius:16px;border:1px solid rgba(245,184,61,.14);background:linear-gradient(145deg,rgba(31,25,20,.85),rgba(12,10,9,.95));color:#fff;text-align:left;cursor:pointer}.quran-featured button b{display:block;font:700 15px 'Playfair Display',serif}.quran-featured button small{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:5px}.standalone-page .quran-heading{margin-bottom:22px}.standalone-page .quran-panel{max-width:1100px;margin:auto}
 @media(max-width:700px){.standalone-nav .wrap{width:calc(100% - 28px)}.standalone-nav .nav{height:76px}.standalone-page .quran-section,.standalone-page .prayer-times-section{min-height:0}.quran-journey{display:block;margin-bottom:18px}.quran-journey-card{padding:20px;border-radius:19px}.qj-title{font-size:25px}.quran-quick-grid{margin-top:10px;gap:8px}.quran-quick{min-height:88px;padding:13px;border-radius:15px}.quran-featured-head{margin-top:20px}.quran-featured{margin-bottom:20px}.standalone-page .quran-heading h2{font-size:37px}.standalone-page .quran-lead{font-size:13px}.standalone-page .quran-section{padding-top:56px}}
 @media(max-width:380px){.quran-quick strong{font-size:12px}.quran-quick small{font-size:9px}.quran-featured button{min-width:140px}.qj-title{font-size:23px}}
-</style></head><body>
+</style><style>
+
+/* Hidaya Motion System — unified page/navigation motion */
+@view-transition { navigation: auto; }
+::view-transition-group(root){ animation-duration:.38s; animation-timing-function:cubic-bezier(.22,.61,.36,1); }
+::view-transition-old(root){ animation: hidaya-page-out .26s cubic-bezier(.4,0,1,1) both; }
+::view-transition-new(root){ animation: hidaya-page-in .38s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes hidaya-page-out{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(-8px)}}
+@keyframes hidaya-page-in{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+html.hidaya-motion-back ::view-transition-old(root){animation-name:hidaya-page-out-back;}
+html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-in-back;}
+@keyframes hidaya-page-out-back{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(8px)}}
+@keyframes hidaya-page-in-back{from{opacity:.0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.hidaya-page-back{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;padding:8px 12px;border:1px solid rgba(245,184,61,.25);border-radius:999px;color:#f5b83d;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.02em;transition:transform .2s ease,background .2s ease,border-color .2s ease;position:relative;z-index:4;}
+.hidaya-page-back:hover{transform:translateX(-3px);background:rgba(245,184,61,.07);border-color:rgba(245,184,61,.55);}
+.hidaya-page-back:active{transform:translateX(-1px) scale(.98);}
+@media(max-width:700px){.hidaya-page-back{margin:8px 12px 0;font-size:11px;padding:7px 11px;}}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important;}
+  .hidaya-page-back{transition:none!important;}
+}
+
+</style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script></head><body>
 <section class="hero" aria-label="Hidaya hero">
   <div class="wrap">
     <header class="nav">
       <a class="logo" href="#" aria-label="Hidaya home"><span class="en">Hidaya</span><span class="ar">هداية</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
+      <nav class="links" aria-label="Primary navigation"><a href="#about" data-i18n="nav_about">About</a><a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a><a href="index.html#qibla" data-i18n="nav_qibla">Qibla</a><a href="quran.html" data-i18n="nav_quran">Quran</a><a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a><a href="#faq" data-i18n="nav_faq">FAQ</a></nav>
       <div class="nav-right"><div class="lang-wrap"><button class="lang" type="button" id="langToggle"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" data-i18n="download_app">Download App <span aria-hidden="true">↓</span></a></div>
       <div class="mobile-nav"><div class="mobile-lang"><button type="button" aria-label="Language" id="mobileLangToggle">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button type="button" data-lang="en">English</button><button type="button" data-lang="ar">العربية</button></div></div><button type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="mobileMenuToggle">☰</button></div>
       <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
         <a href="#about" data-i18n="nav_about">About</a>
         <a href="prayer-times.html" data-i18n="nav_prayer">Prayer Times</a>
-        <a href="#qibla" data-i18n="nav_qibla">Qibla</a>
+        <a href="index.html#qibla" data-i18n="nav_qibla">Qibla</a>
         <a href="quran.html" data-i18n="nav_quran">Quran</a>
         <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
@@ -1060,7 +1082,7 @@ body.rtl .quran-search input{text-align:right}
           <span class="start-icon start-icon-prayer" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 51h44M15 51V35h34v16M21 35V27l11-11 11 11v8M27 35v-8h10v8M12 27h40M25 51V40h14v11"/><path d="M32 10v6M28 13h8"/></svg></span>
           <span><h3 data-i18n="start_prayer">Prayer Times</h3><p data-i18n="start_prayer_sub">Never miss a prayer</p></span><span class="start-arrow">›</span>
         </a>
-        <a class="start-card" href="#qibla">
+        <a class="start-card" href="index.html#qibla">
           <span class="start-icon start-icon-qibla" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="21"/><circle cx="32" cy="32" r="3"/><path d="M37 20l-4 14-10 5 4-14z"/><path d="M32 7v5M32 52v5M7 32h5M52 32h5"/></svg></span>
           <span><h3 data-i18n="start_qibla">Qibla</h3><p data-i18n="start_qibla_sub">Find your direction</p></span><span class="start-arrow">›</span>
         </a>
@@ -1544,4 +1566,50 @@ body.rtl .quran-search input{text-align:right}
   });
 })();
 </script>
+
+<script>
+(function(){
+  const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const isHome=current===''||current==='index.html';
+  const key='hidayaMotionPrevious';
+  const dirKey='hidayaMotionDirection';
+  const normalize=(href)=>{
+    try{return new URL(href,location.href)}catch(e){return null}
+  };
+  const internal=(a)=>{
+    if(!a||!a.href) return false;
+    const u=normalize(a.getAttribute('href'));
+    if(!u||u.origin!==location.origin) return false;
+    if(a.target==='_blank') return false;
+    const path=(u.pathname.split('/').pop()||'index.html').toLowerCase();
+    return path.endsWith('.html') && path!==current;
+  };
+  document.addEventListener('click',function(e){
+    const a=e.target.closest&&e.target.closest('a');
+    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(internal(a)){
+      try{sessionStorage.setItem(key,current||'index.html');sessionStorage.setItem(dirKey,'forward');}catch(_){ }
+    }
+  },true);
+  window.hidayaGoBack=function(fallback){
+    let target=fallback||'index.html';
+    try{target=sessionStorage.getItem(key)||target;sessionStorage.removeItem(key);sessionStorage.setItem(dirKey,'back');}catch(_){ }
+    location.href=target;
+  };
+  const back=document.querySelector('[data-hidaya-back]');
+  if(back){
+    back.addEventListener('click',function(e){
+      e.preventDefault();
+      window.hidayaGoBack(back.getAttribute('data-fallback')||'index.html');
+    });
+  }
+  try{
+    const direction=sessionStorage.getItem(dirKey);
+    if(direction==='back') document.documentElement.classList.add('hidaya-motion-back');
+    sessionStorage.removeItem(dirKey);
+  }catch(_){ }
+  if('scrollRestoration' in history) history.scrollRestoration='auto';
+})();
+</script>
+
 </body></html>
