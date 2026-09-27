@@ -151,6 +151,12 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradi
   </div>
 
   <div class="setup" id="setup">
+    <div class="repeat-label">عدد التكرارات</div>
+    <div class="repeat-controls" id="repeatControls">
+      <button class="step" id="minusBtn" type="button">−</button><div class="target" id="targetCount">2</div><button class="step" id="plusBtn" type="button">+</button>
+    </div>
+    <button class="start-btn" id="startBtn" type="button"><span>▶</span> ابدأ الحفظ</button>
+    <div class="error hidden" id="audioError"></div>
     <div id="inlineReciter" class="hidden">
     <div class="section-label">اختر القارئ</div>
     <div class="reciters">
@@ -162,12 +168,6 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradi
       </button>
     </div>
     </div>
-    <div class="repeat-label">عدد التكرارات</div>
-    <div class="repeat-controls" id="repeatControls">
-      <button class="step" id="minusBtn" type="button">−</button><div class="target" id="targetCount">2</div><button class="step" id="plusBtn" type="button">+</button>
-    </div>
-    <button class="start-btn" id="startBtn" type="button"><span>▶</span> ابدأ الحفظ</button>
-    <div class="error hidden" id="audioError"></div>
   </div>
 
   <div class="session-state" id="recitation">
@@ -216,10 +216,10 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradi
     <button class="sheet-x" id="closeLock" type="button" style="position:absolute;right:18px;top:8px">×</button>
     <div style="font-size:38px;color:var(--gold2)">🔒</div>
     <h3 style="font:700 28px Amiri,serif;margin:8px 0">احفظ المزيد مع هداية</h3>
-    <p style="color:#aaa198;font:400 15px/1.8 Amiri,serif;margin:0">سورة الفاتحة متاحة للحفظ الآن. المزيد من السور قادم قريبًا على تطبيق هداية.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px">
-      <a href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener" style="padding:12px;border-radius:13px;border:1px solid rgba(255,255,255,.12);background:#12110f;font-size:11px"><br><b>App Store</b></a>
-      <a href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" style="padding:12px;border-radius:13px;border:1px solid rgba(255,255,255,.12);background:#12110f;font-size:11px">▶<br><b>Google Play</b></a>
+    <p style="color:#aaa198;font:400 15px/1.9 Amiri,serif;margin:0">للمزيد من السور وميزات الحفظ، برجاء تحميل تطبيق هداية.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px">
+      <a href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener" aria-label="تحميل هداية من Google Play" style="padding:13px 10px;border-radius:14px;border:1px solid rgba(245,184,61,.35);background:#12110f;font-size:11px;color:#fff;text-decoration:none">🤖<br><b>Google Play</b><br><span style="color:#8d877e">Android</span></a>
+      <a href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener" aria-label="تحميل هداية من App Store" style="padding:13px 10px;border-radius:14px;border:1px solid rgba(245,184,61,.35);background:#12110f;font-size:11px;color:#fff;text-decoration:none"><br><b>App Store</b><br><span style="color:#8d877e">iPhone</span></a>
     </div>
   </div>
 </div>
