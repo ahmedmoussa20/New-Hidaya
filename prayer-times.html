@@ -1498,13 +1498,22 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
   document.addEventListener('click',function(e){
     const a=e.target.closest&&e.target.closest('a');
     if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    // Back buttons have their own handler; do not let this forward-navigation
+    // listener overwrite the stored previous page with the page we are leaving.
+    if(a.hasAttribute('data-hidaya-back')) return;
     if(internal(a)){
       try{sessionStorage.setItem(key,current||'index.html');sessionStorage.setItem(dirKey,'forward');}catch(_){ }
     }
   },true);
   window.hidayaGoBack=function(fallback){
-    let target=fallback||'index.html';
-    try{target=sessionStorage.getItem(key)||target;sessionStorage.removeItem(key);sessionStorage.setItem(dirKey,'back');}catch(_){ }
+    const safeFallback=fallback||'index.html';
+    let target=safeFallback;
+    try{
+      const stored=sessionStorage.getItem(key);
+      target=(stored && stored!==current) ? stored : safeFallback;
+      sessionStorage.removeItem(key);
+      sessionStorage.setItem(dirKey,'back');
+    }catch(_){ }
     location.href=target;
   };
   const back=document.querySelector('[data-hidaya-back]');
