@@ -307,7 +307,29 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 @media(max-width:850px){.wrap{width:calc(100% - 28px)}.nav{height:76px}.links,.nav-right{display:none}.mobile-toggle{display:block;margin-left:auto;width:44px;height:44px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(15,12,10,.72);color:#fff;font-size:19px}.hero{padding:38px 0 20px}.hero p{font-size:14px}.controls{grid-template-columns:1fr 1fr;gap:7px;padding:10px;border-radius:18px}.field.page{grid-column:1/-1}.tool{min-width:0}.reader-layout{display:block;margin-top:10px}.side{display:none}.viewer-frame{border-radius:17px;min-height:0}.viewer-stage{height:calc(100vh - 285px);min-height:480px;padding:0;overflow:auto;touch-action:pan-y;align-items:flex-start}.mushaf-image{width:auto;max-width:100%;min-height:0;height:auto;max-height:100%;object-fit:contain;object-position:center top}.mushaf-fallback{height:100%;min-height:480px}.viewer-bottom{height:56px}.page-pill{min-width:105px}.note{margin-bottom:40px}.search-panel{margin-top:8px}.fullscreen .viewer-stage{height:calc(100vh - 102px)}}
 @media(max-width:520px){.logo{width:62px;height:62px;border-radius:13px}.logo b{font-size:16px}.logo span{font-size:12px}.hero h1{font-size:39px}.kicker{font-size:9px;letter-spacing:3px}.controls{grid-template-columns:1fr 1fr}.field.surah{grid-column:1/-1}.field.juz{grid-column:1}.field.page{grid-column:2}.tool{height:44px;font-size:10px}.tool.full{grid-column:1}.tool.night{grid-column:2}.viewer-top{height:40px}.viewer-stage{height:calc(100svh - 300px);min-height:430px;overflow:auto}.mushaf-image{max-height:100%;max-width:100%}.viewer-bottom{height:54px}.nav-btn{width:40px;height:38px}.page-pill{font-size:11px}.search-panel.open{flex-wrap:wrap}.search-panel input{flex-basis:100%}.search-panel button{flex:1}.note{font-size:9px}}
 </style>
-</head>
+<style>
+
+/* Hidaya Motion System — unified page/navigation motion */
+@view-transition { navigation: auto; }
+::view-transition-group(root){ animation-duration:.38s; animation-timing-function:cubic-bezier(.22,.61,.36,1); }
+::view-transition-old(root){ animation: hidaya-page-out .26s cubic-bezier(.4,0,1,1) both; }
+::view-transition-new(root){ animation: hidaya-page-in .38s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes hidaya-page-out{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(-8px)}}
+@keyframes hidaya-page-in{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+html.hidaya-motion-back ::view-transition-old(root){animation-name:hidaya-page-out-back;}
+html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-in-back;}
+@keyframes hidaya-page-out-back{from{opacity:1;transform:translateY(0)}to{opacity:.0;transform:translateY(8px)}}
+@keyframes hidaya-page-in-back{from{opacity:.0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.hidaya-page-back{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;padding:8px 12px;border:1px solid rgba(245,184,61,.25);border-radius:999px;color:#f5b83d;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.02em;transition:transform .2s ease,background .2s ease,border-color .2s ease;position:relative;z-index:4;}
+.hidaya-page-back:hover{transform:translateX(-3px);background:rgba(245,184,61,.07);border-color:rgba(245,184,61,.55);}
+.hidaya-page-back:active{transform:translateX(-1px) scale(.98);}
+@media(max-width:700px){.hidaya-page-back{margin:8px 12px 0;font-size:11px;padding:7px 11px;}}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important;}
+  .hidaya-page-back{transition:none!important;}
+}
+
+</style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script></head>
 <body>
 <div class="bg"></div>
 <div class="standalone-nav"><div class="wrap"><header class="nav">
@@ -315,7 +337,7 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 <nav class="links" aria-label="Primary navigation"><a href="index.html#about">About</a><a href="prayer-times.html">Prayer Times</a><a href="index.html#qibla">Qibla</a><a href="quran.html">Quran</a><a href="index.html#screenshots">Screenshots</a><a href="index.html#faq">FAQ</a></nav>
 <div class="nav-right"><button class="lang" id="langBtn" type="button">English⌄</button><a class="download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener">Download App ↓</a></div>
 <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open menu">☰</button>
-</header></div></div>
+</header></div></div><a class="hidaya-page-back" href="quran.html" data-hidaya-back data-fallback="quran.html" aria-label="Back to Quran">← <span>Back to Quran</span></a>
 <main class="wrap">
 <section class="hero"><div class="kicker">QURAN READER</div><h1>Read the <span>Holy Quran</span></h1><p>A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.</p></section>
 
@@ -471,5 +493,51 @@ $('langBtn').addEventListener('click',()=>{const ar=document.documentElement.lan
 fillControls();const urlPage=Number(new URLSearchParams(location.search).get('page'));if(urlPage)page=clamp(urlPage);setPage(page,false);
 })();
 </script>
+
+<script>
+(function(){
+  const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const isHome=current===''||current==='index.html';
+  const key='hidayaMotionPrevious';
+  const dirKey='hidayaMotionDirection';
+  const normalize=(href)=>{
+    try{return new URL(href,location.href)}catch(e){return null}
+  };
+  const internal=(a)=>{
+    if(!a||!a.href) return false;
+    const u=normalize(a.getAttribute('href'));
+    if(!u||u.origin!==location.origin) return false;
+    if(a.target==='_blank') return false;
+    const path=(u.pathname.split('/').pop()||'index.html').toLowerCase();
+    return path.endsWith('.html') && path!==current;
+  };
+  document.addEventListener('click',function(e){
+    const a=e.target.closest&&e.target.closest('a');
+    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(internal(a)){
+      try{sessionStorage.setItem(key,current||'index.html');sessionStorage.setItem(dirKey,'forward');}catch(_){ }
+    }
+  },true);
+  window.hidayaGoBack=function(fallback){
+    let target=fallback||'index.html';
+    try{target=sessionStorage.getItem(key)||target;sessionStorage.removeItem(key);sessionStorage.setItem(dirKey,'back');}catch(_){ }
+    location.href=target;
+  };
+  const back=document.querySelector('[data-hidaya-back]');
+  if(back){
+    back.addEventListener('click',function(e){
+      e.preventDefault();
+      window.hidayaGoBack(back.getAttribute('data-fallback')||'index.html');
+    });
+  }
+  try{
+    const direction=sessionStorage.getItem(dirKey);
+    if(direction==='back') document.documentElement.classList.add('hidaya-motion-back');
+    sessionStorage.removeItem(dirKey);
+  }catch(_){ }
+  if('scrollRestoration' in history) history.scrollRestoration='auto';
+})();
+</script>
+
 </body>
 </html>
