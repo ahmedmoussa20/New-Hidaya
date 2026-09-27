@@ -1182,7 +1182,8 @@ body.rtl .quran-search input{text-align:right}
         <div class="adhan-setting">
           <label for="hidayaAdhanVoice">Adhan voice</label>
           <select id="hidayaAdhanVoice">
-            <option value="cairo">Cairo Adhan</option>
+            <option value="cairo">Cairo — Mahmoud Al-Hussary</option>
+            <option value="cairo_fajr">Cairo — Fajr Adhan</option>
             <option value="madinah">Al-Madinah Adhan</option>
             <option value="riyadh">Riyadh Adhan</option>
           </select>
@@ -1289,7 +1290,8 @@ body.rtl .quran-search input{text-align:right}
 (function(){
   const AUDIO_BASE='https://cdn.jsdelivr.net/gh/Kiwifu/adhan-mp3@main/';
   const audioFiles={
-    cairo:'Adhan_Cairo_Egypt_(أذان_القاهرة_مصر).mp3',
+    cairo:'Mahmoud_Khalil_Al_Hussary_-_Cairo_(محمود_خليل_الحصري_-_القاهرة).mp3',
+    cairo_fajr:'Adhan_Fajr_Cairo_Egypt_(أذان_الفجر_القاهرة_مصر).mp3',
     madinah:'Adhan_Al_Haram_Al_Madani_-_Al_Madinah_1_(أذان_الحرم_المدني_-_المدينة_المنورة).mp3',
     riyadh:'Adhan_Riyadh_Saudi_Arabia_(أذان_الرياض_السعودية).mp3'
   };
@@ -1336,9 +1338,9 @@ body.rtl .quran-search input{text-align:right}
     audio.src=audioUrl();
     const p=audio.play();
     if(p && p.catch){
-      p.catch(()=>{statusEl.textContent='Tap “Test Adhan” once to allow audio playback on this browser.';});
+      p.catch((err)=>{statusEl.textContent=err && err.name==='NotAllowedError'?'Tap Test Adhan to enable browser audio.':'Could not load this Adhan recording. Try another voice.';testBtn.textContent='▶ Test Adhan';});
     }
-    if(reason==='test') statusEl.textContent='Playing test Adhan…';
+    if(reason==='test'){statusEl.textContent='Loading Adhan…';testBtn.textContent='■ Stop Adhan';}
   }
   function requestNotificationPermission(){
     if(!('Notification' in window)) return;
@@ -1371,7 +1373,10 @@ body.rtl .quran-search input{text-align:right}
   enabledEl.addEventListener('change',()=>{saveSettings();if(enabledEl.checked) requestNotificationPermission();});
   voiceEl.addEventListener('change',saveSettings);
   prayerInputs.forEach(i=>i.addEventListener('change',saveSettings));
-  testBtn.addEventListener('click',()=>{requestNotificationPermission();playAdhan('test');});
+  testBtn.addEventListener('click',()=>{if(!audio.paused){audio.pause();audio.currentTime=0;testBtn.textContent='▶ Test Adhan';renderStatus();return;}requestNotificationPermission();playAdhan('test');});
+  audio.addEventListener('playing',()=>{statusEl.textContent='Playing '+voiceEl.options[voiceEl.selectedIndex].text+'…';});
+  audio.addEventListener('ended',()=>{testBtn.textContent='▶ Test Adhan';renderStatus();});
+  audio.addEventListener('error',()=>{testBtn.textContent='▶ Test Adhan';statusEl.textContent='Audio unavailable. Please select another Adhan voice.';});
 
   // The existing prayer-time renderer keeps this object updated.
   window.__hidayaPrayerTimes={};
@@ -1448,20 +1453,6 @@ body.rtl .quran-search input{text-align:right}
   document.documentElement.lang=current;document.documentElement.dir=current==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',current==='ar');
 })();
 </script>
-<script>
-(function(){
-  const target=window.setInterval(function(){
-    if(window.__hidayaPrayerBridgeReady) return;
-    const names=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
-    const out={};
-    names.forEach(n=>{
-      const el=document.getElementById('hidaya'+n);
-      if(el) out[n]=el.textContent.trim();
-    });
-    window.__hidayaPrayerTimes=out;
-  },1000);
-  window.__hidayaPrayerBridgeReady=true;
-})();
-</script>
+
 
 </body></html>
