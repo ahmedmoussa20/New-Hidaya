@@ -57,7 +57,7 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 </section>
 <aside class="info"><div class="info-head">Current Page</div><div class="info-card"><small>Page</small><strong id="infoPage">1</strong><span>of 604 pages</span></div><div class="info-card"><small>Surah</small><strong id="infoSurah">Al-Fatihah</strong><span id="infoSurahAr">الفاتحة</span></div><div class="info-card"><small>Bookmark</small><strong id="infoBookmark">Not saved</strong><span>Saved on this device</span></div><div class="info-card"><small>Quick Navigation</small><div class="quick"><button id="infoPrev">Previous</button><button id="infoNext">Next</button><button id="bookmarkInfo">Bookmark</button><button id="infoTop">Top</button></div></div></aside>
 </div>
-<p class="note">Mushaf pages are served through the high-resolution page renderer with a fallback to <a href="https://alquran.cloud/mushaf/1" target="_blank" rel="noopener">Al Quran Cloud's 604-page Mushaf</a>. The reader does not load or replace your separate Listen Quran page.</p>
+<p class="note">Mushaf pages are served as Hafs/KFQC high-resolution SVG pages with a fallback to <a href="https://alquran.cloud/mushaf/1" target="_blank" rel="noopener">Al Quran Cloud's 604-page Mushaf</a>. The reader does not load or replace your separate Listen Quran page.</p>
 </main>
 <script>
 (function(){
@@ -84,7 +84,7 @@ function currentJuz(){let j=1;for(let i=0;i<juzPages.length;i++){if(juzPages[i]<
 function fillControls(){surahSelect.innerHTML=surahs.map((s,i)=>`<option value="${i+1}">${i+1}. ${s[0]} — ${s[1]}</option>`).join('');juzSelect.innerHTML=juzPages.map((p,i)=>`<option value="${i+1}">Juz ${i+1}</option>`).join('');surahList.innerHTML=surahs.map((s,i)=>`<button type="button" data-index="${i}"><em>${i+1}</em><span>${s[0]}</span><small>${s[1]}</small></button>`).join('');surahList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setPage(pageForSurah(Number(b.dataset.index)+1))))}
 function updateBookmark(){const marked=localStorage.getItem(BOOKMARK_KEY)===String(page);$('bookmarkBtn').classList.toggle('marked',marked);$('infoBookmark').textContent=marked?'Saved':'Not saved'}
 function toggleBookmark(){if(localStorage.getItem(BOOKMARK_KEY)===String(page)){localStorage.removeItem(BOOKMARK_KEY)}else{localStorage.setItem(BOOKMARK_KEY,String(page))}updateBookmark()}
-function imageUrl(p){return `https://api.islamic.app/v1/mushaf/page/${p}.svg?font=uthmani&theme=light&width=1200`}
+function imageUrl(p){return `https://cdn.quran.ws/svg/pages/v1.1.1/hafs-kfqc/${String(p).padStart(3,"0")}.svg`}
 function loadPageImage(){const request=++imageRequest;loading.classList.remove('hidden');error.classList.remove('open');image.style.display='block';image.removeAttribute('src');image.onload=function(){if(request!==imageRequest)return;loading.classList.add('hidden')};image.onerror=function(){if(request!==imageRequest)return;loading.classList.add('hidden');error.classList.add('open');image.style.display='none'};image.src=imageUrl(page)}
 function openFallback(){const src=`https://alquran.cloud/mushaf/${page}`;window.open(src,'_blank','noopener,noreferrer')}
 function goNext(){if(page<TOTAL)setPage(page+1)}function goPrev(){if(page>1)setPage(page-1)}
