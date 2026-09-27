@@ -929,37 +929,38 @@ body.rtl .quran-search input{text-align:right}
 </div>
 </section><script>
 (function(){
-  const cards=[...document.querySelectorAll('.shot-card')];
+  const cards=[...document.querySelectorAll('#shotStage .shot-card')];
   const dotsWrap=document.getElementById('shotDots');
   const counter=document.getElementById('shotCounter');
   const progress=document.getElementById('shotProgress');
-  const prev=document.querySelector('.shot-arrow.prev');
-  const next=document.querySelector('.shot-arrow.next');
+  const prev=document.querySelector('#shotStage .shot-arrow.prev');
+  const next=document.querySelector('#shotStage .shot-arrow.next');
+  const stage=document.getElementById('shotStage');
   if(!cards.length || !dotsWrap || !counter || !progress || !prev || !next) return;
 
   let current=0;
   let timer=null;
   const total=cards.length;
+  const DELAY=10000;
 
   cards.forEach((_,i)=>{
     const dot=document.createElement('button');
     dot.className='shot-dot'+(i===0?' active':'');
     dot.type='button';
     dot.setAttribute('aria-label','Show screenshot '+(i+1));
-    dot.addEventListener('click',()=>goTo(i,true));
+    dot.addEventListener('click',()=>goTo(i));
     dotsWrap.appendChild(dot);
   });
-
   const dots=[...dotsWrap.children];
 
-  function normalize(n){return (n+total)%total}
+  function normalize(n){ return ((n%total)+total)%total; }
 
   function render(){
     cards.forEach((card,i)=>{
       let diff=i-current;
       if(diff>total/2) diff-=total;
       if(diff<-total/2) diff+=total;
-      card.className='shot-card';
+      card.classList.remove('is-active','is-left','is-right','is-far-left','is-far-right','is-hidden');
       if(diff===0) card.classList.add('is-active');
       else if(diff===-1) card.classList.add('is-left');
       else if(diff===1) card.classList.add('is-right');
@@ -974,45 +975,40 @@ body.rtl .quran-search input{text-align:right}
     progress.classList.add('running');
   }
 
-  function startTimer(){
-    clearInterval(timer);
-    timer=setInterval(()=>goTo(current+1,false),10000);
+  function stopTimer(){
+    if(timer!==null){ clearTimeout(timer); timer=null; }
   }
 
-  function goTo(index,restart){
+  function startTimer(){
+    stopTimer();
+    timer=window.setTimeout(function tick(){
+      current=normalize(current+1);
+      render();
+      startTimer();
+    },DELAY);
+  }
+
+  function goTo(index){
     current=normalize(index);
     render();
-    if(restart) startTimer();
+    startTimer();
   }
 
-  prev.addEventListener('click',()=>goTo(current-1,true));
-  next.addEventListener('click',()=>goTo(current+1,true));
+  prev.addEventListener('click',()=>goTo(current-1));
+  next.addEventListener('click',()=>goTo(current+1));
 
-  let touchStartX=0;
-  let touchStartY=0;
-  let touchMoved=false;
-  const stage=document.getElementById('shotStage');
   if(stage){
+    let touchStartX=0, touchStartY=0;
     stage.addEventListener('touchstart',e=>{
       const t=e.changedTouches[0];
-      touchStartX=t.clientX; touchStartY=t.clientY; touchMoved=false;
-    },{passive:true});
-    stage.addEventListener('touchmove',e=>{
-      const t=e.changedTouches[0];
-      if(Math.abs(t.clientX-touchStartX)>10) touchMoved=true;
+      touchStartX=t.clientX; touchStartY=t.clientY;
     },{passive:true});
     stage.addEventListener('touchend',e=>{
       const t=e.changedTouches[0];
       const dx=t.clientX-touchStartX;
       const dy=t.clientY-touchStartY;
-      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){
-        goTo(current+(dx<0?1:-1),true);
-      }
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)) goTo(current+(dx<0?1:-1));
     },{passive:true});
-    stage.addEventListener('mouseenter',()=>clearInterval(timer));
-    stage.addEventListener('mouseleave',startTimer);
-    stage.addEventListener('focusin',()=>clearInterval(timer));
-    stage.addEventListener('focusout',startTimer);
   }
 
   render();
