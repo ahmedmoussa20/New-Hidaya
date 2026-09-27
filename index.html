@@ -897,7 +897,37 @@ body.rtl .quran-search input{text-align:right}
   window.addEventListener('hidayaLanguageChanged',apply); apply();
 })();
 </script>
-<script>
+
+<!-- =========================
+     FAQ
+     ========================= -->
+
+<script>(function(){if(location.hash==="#qibla"){setTimeout(function(){var b=document.getElementById("openQibla");if(b)b.click();},80);}})();</script><section aria-label="Hidaya app screenshots" class="screenshots" id="screenshots">
+<div class="screenshots-wrap">
+<div class="screenshots-heading">
+<div class="screenshots-kicker" data-i18n="screens_kicker">HIDAYA EXPERIENCE</div>
+<h2 data-i18n-html="screens_title">See Hidaya <span>in Action</span></h2>
+<p class="screenshots-lead" data-i18n="screens_lead">Explore the Quran, listening, memorization, radio and Qibla experience through the app.</p>
+</div>
+<div class="shot-stage" id="shotStage">
+<div class="shot-floor"></div>
+<button aria-label="Previous screenshot" class="shot-arrow prev" type="button">‹</button>
+<button aria-label="Next screenshot" class="shot-arrow next" type="button">›</button>
+<div class="shot-card" data-index="0"><img alt="Hidaya app screenshot 1" loading="eager" src="./assets/screenshot-01.jpg"/></div>
+<div class="shot-card" data-index="1"><img alt="Hidaya app screenshot 2" src="./assets/screenshot-02.jpg"/></div>
+<div class="shot-card" data-index="2"><img alt="Hidaya app screenshot 3" src="./assets/screenshot-03.jpg"/></div>
+<div class="shot-card" data-index="3"><img alt="Hidaya app screenshot 4" src="./assets/screenshot-04.jpg"/></div>
+<div class="shot-card" data-index="4"><img alt="Hidaya app screenshot 5" src="./assets/screenshot-05.jpg"/></div>
+<div class="shot-card" data-index="5"><img alt="Hidaya app screenshot 6" src="./assets/screenshot-06.jpg"/></div>
+<div class="shot-card" data-index="6"><img alt="Hidaya app screenshot 7" src="./assets/screenshot-07.jpg"/></div>
+</div>
+<div class="shot-bottom">
+<div class="shot-counter" id="shotCounter">01 / 07</div>
+<div aria-label="Screenshot navigation" class="shot-dots" id="shotDots"></div>
+<div class="shot-progress" id="shotProgress"><span></span></div>
+</div>
+</div>
+</section><script>
 (function(){
   const cards=[...document.querySelectorAll('.shot-card')];
   const dotsWrap=document.getElementById('shotDots');
@@ -905,7 +935,7 @@ body.rtl .quran-search input{text-align:right}
   const progress=document.getElementById('shotProgress');
   const prev=document.querySelector('.shot-arrow.prev');
   const next=document.querySelector('.shot-arrow.next');
-  if(!cards.length) return;
+  if(!cards.length || !dotsWrap || !counter || !progress || !prev || !next) return;
 
   let current=0;
   let timer=null;
@@ -958,40 +988,37 @@ body.rtl .quran-search input{text-align:right}
   prev.addEventListener('click',()=>goTo(current-1,true));
   next.addEventListener('click',()=>goTo(current+1,true));
 
+  let touchStartX=0;
+  let touchStartY=0;
+  let touchMoved=false;
+  const stage=document.getElementById('shotStage');
+  if(stage){
+    stage.addEventListener('touchstart',e=>{
+      const t=e.changedTouches[0];
+      touchStartX=t.clientX; touchStartY=t.clientY; touchMoved=false;
+    },{passive:true});
+    stage.addEventListener('touchmove',e=>{
+      const t=e.changedTouches[0];
+      if(Math.abs(t.clientX-touchStartX)>10) touchMoved=true;
+    },{passive:true});
+    stage.addEventListener('touchend',e=>{
+      const t=e.changedTouches[0];
+      const dx=t.clientX-touchStartX;
+      const dy=t.clientY-touchStartY;
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){
+        goTo(current+(dx<0?1:-1),true);
+      }
+    },{passive:true});
+    stage.addEventListener('mouseenter',()=>clearInterval(timer));
+    stage.addEventListener('mouseleave',startTimer);
+    stage.addEventListener('focusin',()=>clearInterval(timer));
+    stage.addEventListener('focusout',startTimer);
+  }
+
   render();
   startTimer();
 })();
-</script>
-<!-- =========================
-     FAQ
-     ========================= -->
-
-<script>(function(){if(location.hash==="#qibla"){setTimeout(function(){var b=document.getElementById("openQibla");if(b)b.click();},80);}})();</script><section aria-label="Hidaya app screenshots" class="screenshots" id="screenshots">
-<div class="screenshots-wrap">
-<div class="screenshots-heading">
-<div class="screenshots-kicker" data-i18n="screens_kicker">HIDAYA EXPERIENCE</div>
-<h2 data-i18n-html="screens_title">See Hidaya <span>in Action</span></h2>
-<p class="screenshots-lead" data-i18n="screens_lead">Explore the Quran, listening, memorization, radio and Qibla experience through the app.</p>
-</div>
-<div class="shot-stage" id="shotStage">
-<div class="shot-floor"></div>
-<button aria-label="Previous screenshot" class="shot-arrow prev" type="button">‹</button>
-<button aria-label="Next screenshot" class="shot-arrow next" type="button">›</button>
-<div class="shot-card" data-index="0"><img alt="Hidaya app screenshot 1" loading="eager" src="./assets/screenshot-01.jpg"/></div>
-<div class="shot-card" data-index="1"><img alt="Hidaya app screenshot 2" loading="lazy" src="./assets/screenshot-02.jpg"/></div>
-<div class="shot-card" data-index="2"><img alt="Hidaya app screenshot 3" loading="lazy" src="./assets/screenshot-03.jpg"/></div>
-<div class="shot-card" data-index="3"><img alt="Hidaya app screenshot 4" loading="lazy" src="./assets/screenshot-04.jpg"/></div>
-<div class="shot-card" data-index="4"><img alt="Hidaya app screenshot 5" loading="lazy" src="./assets/screenshot-05.jpg"/></div>
-<div class="shot-card" data-index="5"><img alt="Hidaya app screenshot 6" loading="lazy" src="./assets/screenshot-06.jpg"/></div>
-<div class="shot-card" data-index="6"><img alt="Hidaya app screenshot 7" loading="lazy" src="./assets/screenshot-07.jpg"/></div>
-</div>
-<div class="shot-bottom">
-<div class="shot-counter" id="shotCounter">01 / 07</div>
-<div aria-label="Screenshot navigation" class="shot-dots" id="shotDots"></div>
-<div class="shot-progress" id="shotProgress"><span></span></div>
-</div>
-</div>
-</section><section aria-label="About Hidaya" class="about" id="about">
+</script><section aria-label="About Hidaya" class="about" id="about">
 <div class="about-wrap">
 <div class="about-heading">
 <div class="about-kicker" data-i18n="about_kicker">ABOUT HIDAYA</div>
