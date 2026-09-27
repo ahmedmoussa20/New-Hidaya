@@ -995,6 +995,100 @@ body.rtl .quran-search input{text-align:right}
   .prayer-timeline-name,.prayer-timeline-time{font-size:8px}
 }
 
+
+/* =========================
+   ADHAN / PRAYER CALL
+   ========================= */
+.adhan-card{
+  margin-top:18px;
+  padding:22px;
+  border:1px solid rgba(245,184,61,.24);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(245,184,61,.10),transparent 25%),
+    linear-gradient(145deg,rgba(29,23,18,.92),rgba(9,8,7,.96));
+  box-shadow:0 20px 52px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.035);
+}
+.adhan-head{display:flex;align-items:center;gap:14px}
+.adhan-icon{
+  width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+  border:1px solid rgba(245,184,61,.35);background:rgba(245,184,61,.07);
+  font-size:20px;flex:none
+}
+.adhan-copy{min-width:0;flex:1}
+.adhan-kicker{font-size:9px;letter-spacing:3px;color:var(--gold);font-weight:800}
+.adhan-copy h3{margin:3px 0 3px;font-family:"Playfair Display",Georgia,serif;font-size:25px}
+.adhan-copy p{margin:0;color:rgba(255,255,255,.50);font-size:11px;line-height:1.5}
+.adhan-switch{position:relative;display:block;width:48px;height:28px;flex:none;cursor:pointer}
+.adhan-switch input{position:absolute;opacity:0;pointer-events:none}
+.adhan-switch span{
+  position:absolute;inset:0;border-radius:999px;background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);transition:.2s ease
+}
+.adhan-switch span:after{
+  content:"";position:absolute;left:4px;top:4px;width:18px;height:18px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35);transition:.2s ease
+}
+.adhan-switch input:checked + span{background:rgba(245,184,61,.25);border-color:rgba(245,184,61,.65)}
+.adhan-switch input:checked + span:after{transform:translateX(20px);background:var(--gold)}
+.adhan-settings{
+  display:grid;grid-template-columns:minmax(220px,.7fr) minmax(300px,1.3fr);
+  gap:12px;margin-top:18px
+}
+.adhan-setting{
+  padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:15px;
+  background:rgba(255,255,255,.025)
+}
+.adhan-setting>label{display:block;color:rgba(255,255,255,.48);font-size:9px;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:9px}
+.adhan-setting select{
+  width:100%;height:42px;border:1px solid rgba(245,184,61,.22);border-radius:11px;
+  background:#17120e;color:#fff;padding:0 12px;font:600 12px "DM Sans",Arial,sans-serif;outline:none
+}
+.adhan-setting select:focus{border-color:rgba(245,184,61,.60);box-shadow:0 0 0 3px rgba(245,184,61,.07)}
+.adhan-prayers{display:flex;flex-wrap:wrap;gap:7px}
+.adhan-prayers label{position:relative;cursor:pointer}
+.adhan-prayers input{position:absolute;opacity:0;pointer-events:none}
+.adhan-prayers span{
+  display:inline-flex;align-items:center;justify-content:center;min-width:65px;height:36px;
+  padding:0 10px;border:1px solid rgba(255,255,255,.10);border-radius:10px;
+  background:rgba(255,255,255,.025);color:rgba(255,255,255,.58);
+  font-size:10px;font-weight:700;transition:.18s ease
+}
+.adhan-prayers input:checked + span{
+  color:var(--gold);border-color:rgba(245,184,61,.40);background:rgba(245,184,61,.07)
+}
+.adhan-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:13px}
+.adhan-status{font-size:11px;color:rgba(255,255,255,.45)}
+.adhan-status.on{color:var(--gold)}
+.adhan-test-btn{padding:10px 15px}
+.adhan-note{
+  display:flex;align-items:flex-start;gap:8px;margin-top:13px;color:rgba(255,255,255,.36);
+  font-size:9px;line-height:1.55
+}
+.adhan-note span{
+  width:15px;height:15px;border:1px solid rgba(245,184,61,.30);border-radius:50%;
+  display:grid;place-items:center;color:var(--gold);font-size:9px;flex:none
+}
+@media(max-width:700px){
+  .adhan-card{margin-top:12px;padding:16px;border-radius:19px}
+  .adhan-head{gap:10px}
+  .adhan-icon{width:42px;height:42px;border-radius:13px;font-size:17px}
+  .adhan-copy h3{font-size:21px}
+  .adhan-copy p{font-size:10px}
+  .adhan-settings{grid-template-columns:1fr;margin-top:14px}
+  .adhan-setting{padding:12px}
+  .adhan-prayers{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .adhan-prayers span{min-width:0;width:100%;height:34px;padding:0 4px;font-size:8px}
+  .adhan-foot{margin-top:10px}
+  .adhan-status{font-size:10px}
+  .adhan-test-btn{padding:9px 12px;font-size:10px}
+  .adhan-note{font-size:8px}
+}
+@media(max-width:380px){
+  .adhan-prayers span{font-size:7px}
+  .adhan-copy p{max-width:190px}
+}
+
 </style>
 <style>
 /* Standalone feature pages */
@@ -1069,6 +1163,54 @@ body.rtl .quran-search input{text-align:right}
       </div>
     </div>
 
+
+    <section class="adhan-card" id="hidayaAdhan" aria-label="Hidaya Adhan settings">
+      <div class="adhan-head">
+        <div class="adhan-icon">🔊</div>
+        <div class="adhan-copy">
+          <div class="adhan-kicker">ADHAN</div>
+          <h3>Prayer Call</h3>
+          <p>Let Hidaya remind you when each prayer begins.</p>
+        </div>
+        <label class="adhan-switch" aria-label="Enable Adhan">
+          <input type="checkbox" id="hidayaAdhanEnabled">
+          <span></span>
+        </label>
+      </div>
+
+      <div class="adhan-settings">
+        <div class="adhan-setting">
+          <label for="hidayaAdhanVoice">Adhan voice</label>
+          <select id="hidayaAdhanVoice">
+            <option value="cairo">Cairo Adhan</option>
+            <option value="madinah">Al-Madinah Adhan</option>
+            <option value="riyadh">Riyadh Adhan</option>
+          </select>
+        </div>
+
+        <div class="adhan-setting">
+          <label>Prayer alerts</label>
+          <div class="adhan-prayers">
+            <label><input type="checkbox" data-adhan-prayer="Fajr" checked><span>Fajr</span></label>
+            <label><input type="checkbox" data-adhan-prayer="Dhuhr" checked><span>Dhuhr</span></label>
+            <label><input type="checkbox" data-adhan-prayer="Asr" checked><span>Asr</span></label>
+            <label><input type="checkbox" data-adhan-prayer="Maghrib" checked><span>Maghrib</span></label>
+            <label><input type="checkbox" data-adhan-prayer="Isha" checked><span>Isha</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="adhan-foot">
+        <div class="adhan-status" id="hidayaAdhanStatus">Adhan is off</div>
+        <button class="prayer-btn adhan-test-btn" type="button" id="hidayaTestAdhan">▶ Test Adhan</button>
+      </div>
+
+      <div class="adhan-note">
+        <span>i</span>
+        Keep this page open for web playback. On mobile browsers, automatic audio can be restricted until you interact with the page.
+      </div>
+    </section>
+
     <div class="prayer-bottom">
       <div class="prayer-bottom-item">
         <div class="prayer-bottom-icon">⌖</div>
@@ -1142,7 +1284,132 @@ body.rtl .quran-search input{text-align:right}
   document.getElementById('hidayaChangeCity').addEventListener('click',()=>{const city=prompt('Enter city and country, for example: Cairo, Egypt');if(!city)return;setStatus('Loading '+city+'…');fetch('https://api.aladhan.com/v1/timingsByAddress?address='+encodeURIComponent(city)+'&method='+method+'&school=0',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(j=>{if(!j.data||!j.data.timings)throw new Error();Object.assign(times,j.data.timings);els.location.textContent=city;const bl=document.getElementById('hidayaBottomLocation');if(bl)bl.textContent=city;renderTimes();updateNext();setStatus('');}).catch(()=>setStatus('Could not find this city. Try again.',true));});
   updateDate(); loadCairo(); clearInterval(timer); timer=setInterval(()=>{updateDate();updateNext();},1000);
 })();
-</script><script>
+</script>
+<script>
+(function(){
+  const AUDIO_BASE='https://cdn.jsdelivr.net/gh/Kiwifu/adhan-mp3@main/';
+  const audioFiles={
+    cairo:'Adhan_Cairo_Egypt_(أذان_القاهرة_مصر).mp3',
+    madinah:'Adhan_Al_Haram_Al_Madani_-_Al_Madinah_1_(أذان_الحرم_المدني_-_المدينة_المنورة).mp3',
+    riyadh:'Adhan_Riyadh_Saudi_Arabia_(أذان_الرياض_السعودية).mp3'
+  };
+  const prayerNames=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+  const enabledEl=document.getElementById('hidayaAdhanEnabled');
+  const voiceEl=document.getElementById('hidayaAdhanVoice');
+  const statusEl=document.getElementById('hidayaAdhanStatus');
+  const testBtn=document.getElementById('hidayaTestAdhan');
+  const prayerInputs=[...document.querySelectorAll('[data-adhan-prayer]')];
+  if(!enabledEl || !voiceEl || !statusEl || !testBtn) return;
+
+  let audio=new Audio();
+  audio.preload='none';
+  let lastPlayedKey='';
+  const STORAGE='hidayaAdhanSettings';
+
+  function readSettings(){
+    try{
+      const s=JSON.parse(localStorage.getItem(STORAGE)||'{}');
+      enabledEl.checked=!!s.enabled;
+      if(s.voice && audioFiles[s.voice]) voiceEl.value=s.voice;
+      prayerInputs.forEach(i=>{if(s.prayers && typeof s.prayers[i.dataset.adhanPrayer]==='boolean') i.checked=s.prayers[i.dataset.adhanPrayer]});
+    }catch(e){}
+    renderStatus();
+  }
+  function saveSettings(){
+    const prayers={};
+    prayerInputs.forEach(i=>prayers[i.dataset.adhanPrayer]=i.checked);
+    localStorage.setItem(STORAGE,JSON.stringify({
+      enabled:enabledEl.checked,voice:voiceEl.value,prayers
+    }));
+    renderStatus();
+  }
+  function renderStatus(){
+    statusEl.textContent=enabledEl.checked?'Adhan is enabled':'Adhan is off';
+    statusEl.classList.toggle('on',enabledEl.checked);
+  }
+  function audioUrl(){
+    return AUDIO_BASE+encodeURIComponent(audioFiles[voiceEl.value]).replace(/%28/g,'(').replace(/%29/g,')').replace(/%27/g,"'").replace(/%2C/g,',');
+  }
+  function playAdhan(reason){
+    audio.pause();
+    audio.currentTime=0;
+    audio.src=audioUrl();
+    const p=audio.play();
+    if(p && p.catch){
+      p.catch(()=>{statusEl.textContent='Tap “Test Adhan” once to allow audio playback on this browser.';});
+    }
+    if(reason==='test') statusEl.textContent='Playing test Adhan…';
+  }
+  function requestNotificationPermission(){
+    if(!('Notification' in window)) return;
+    if(Notification.permission==='default') Notification.requestPermission().catch(()=>{});
+  }
+  function checkPrayer(){
+    if(!enabledEl.checked) return;
+    const now=new Date();
+    const hh=String(now.getHours()).padStart(2,'0');
+    const mm=String(now.getMinutes()).padStart(2,'0');
+    const keyDate=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+    prayerNames.forEach(name=>{
+      const selected=prayerInputs.find(i=>i.dataset.adhanPrayer===name);
+      const raw=window.__hidayaPrayerTimes && window.__hidayaPrayerTimes[name];
+      if(!selected || !selected.checked || !raw) return;
+      const match=String(raw).match(/^(\d{1,2}):(\d{2})/);
+      if(!match) return;
+      const target=String(+match[1]).padStart(2,'0')+':'+match[2];
+      const key=keyDate+'|'+name;
+      if(hh+':'+mm===target && lastPlayedKey!==key){
+        lastPlayedKey=key;
+        playAdhan('auto');
+        if('Notification' in window && Notification.permission==='granted'){
+          try{new Notification('Hidaya — '+name+' Prayer',{body:'It is time for '+name+' prayer.'});}catch(e){}
+        }
+      }
+    });
+  }
+
+  enabledEl.addEventListener('change',()=>{saveSettings();if(enabledEl.checked) requestNotificationPermission();});
+  voiceEl.addEventListener('change',saveSettings);
+  prayerInputs.forEach(i=>i.addEventListener('change',saveSettings));
+  testBtn.addEventListener('click',()=>{requestNotificationPermission();playAdhan('test');});
+
+  // The existing prayer-time renderer keeps this object updated.
+  window.__hidayaPrayerTimes={};
+  const originalRenderTimes=window.renderTimes;
+  // The page's prayer script is isolated, so read its visible values instead.
+  setInterval(()=>{
+    window.__hidayaPrayerTimes={};
+    prayerNames.forEach(name=>{
+      const el=document.getElementById('hidaya'+name);
+      if(el) window.__hidayaPrayerTimes[name]=el.textContent.replace(/\s*(AM|PM)\s*$/,'').trim();
+    });
+    // Visible 12-hour text is not reliable for matching; derive from the timeline text.
+    prayerNames.forEach(name=>{
+      const el=document.querySelector('[data-timeline-time="'+name+'"]');
+      if(el) window.__hidayaPrayerTimes[name]=el.textContent.trim();
+    });
+    // Match current minute against the displayed 12-hour time.
+    const now=new Date();
+    const current12=(now.getHours()%12||12)+':'+String(now.getMinutes()).padStart(2,'0')+' '+(now.getHours()>=12?'PM':'AM');
+    prayerNames.forEach(name=>{
+      const selected=prayerInputs.find(i=>i.dataset.adhanPrayer===name);
+      const shown=window.__hidayaPrayerTimes[name];
+      if(!enabledEl.checked || !selected?.checked || !shown) return;
+      const normalized=shown.replace(/\s+/g,' ').trim();
+      if(normalized===current12 && lastPlayedKey!==(now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'|'+name)){
+        lastPlayedKey=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'|'+name;
+        playAdhan('auto');
+        if('Notification' in window && Notification.permission==='granted'){
+          try{new Notification('Hidaya — '+name+' Prayer',{body:'It is time for '+name+' prayer.'});}catch(e){}
+        }
+      }
+    });
+  },1000);
+
+  readSettings();
+})();
+</script>
+<script>
 (function(){
   const toggle=document.getElementById('mobileMenuToggle');
   const menu=document.getElementById('mobileMenu');
@@ -1180,4 +1447,21 @@ body.rtl .quran-search input{text-align:right}
   document.addEventListener('click',()=>{langMenu?.classList.remove('open');mobileMenu?.classList.remove('open')});
   document.documentElement.lang=current;document.documentElement.dir=current==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',current==='ar');
 })();
-</script></body></html>
+</script>
+<script>
+(function(){
+  const target=window.setInterval(function(){
+    if(window.__hidayaPrayerBridgeReady) return;
+    const names=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+    const out={};
+    names.forEach(n=>{
+      const el=document.getElementById('hidaya'+n);
+      if(el) out[n]=el.textContent.trim();
+    });
+    window.__hidayaPrayerTimes=out;
+  },1000);
+  window.__hidayaPrayerBridgeReady=true;
+})();
+</script>
+
+</body></html>
