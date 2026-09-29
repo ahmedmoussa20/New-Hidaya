@@ -1,0 +1,51 @@
+/* Hidaya shared UI layer — additive styles only; feature-specific layouts remain in each page. */
+:root{
+  --hidaya-gold:#f5c451;
+  --hidaya-gold-soft:rgba(245,196,81,.24);
+  --hidaya-motion:cubic-bezier(.22,.61,.36,1);
+}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{ -webkit-tap-highlight-color:transparent; text-rendering:optimizeLegibility; }
+img,video,canvas,svg{max-width:100%}
+img{height:auto}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+:where(button,a,input,select,textarea):focus-visible{
+  outline:2px solid var(--hidaya-gold,#f5c451);
+  outline-offset:3px;
+}
+a,button{transition-property:color,background-color,border-color,box-shadow,opacity,transform;transition-duration:.2s;transition-timing-function:var(--hidaya-motion)}
+.back,[data-hidaya-back]{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:44px;min-width:44px;height:44px;min-height:44px;padding:0!important;
+  border:1px solid rgba(245,196,81,.42)!important;border-radius:14px!important;
+  background:linear-gradient(145deg,rgba(245,196,81,.13),rgba(18,15,11,.92))!important;
+  color:#ffe19a!important;font-size:26px!important;line-height:1!important;
+  text-decoration:none!important;box-shadow:0 5px 20px rgba(0,0,0,.16);
+  cursor:pointer;flex:0 0 auto;
+}
+.back:hover,[data-hidaya-back]:hover{border-color:var(--hidaya-gold,#f5c451)!important;transform:translateY(-1px)}
+.back:active,[data-hidaya-back]:active{transform:scale(.96)}
+/* Keep mobile content clear of device cutouts and the home indicator. */
+@supports(padding:max(0px)){
+  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+}
+@media(max-width:760px){
+  html{scroll-padding-top:72px}
+  input,select,textarea{font-size:16px}
+  .back,[data-hidaya-back]{width:44px;min-width:44px;height:44px;min-height:44px;border-radius:13px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+/* Native cross-document transitions where supported; other browsers simply navigate normally. */
+@view-transition{navigation:auto}
+::view-transition-group(root){animation-duration:.28s;animation-timing-function:var(--hidaya-motion)}
+::view-transition-old(root){animation: hidaya-shared-out .18s ease both}
+::view-transition-new(root){animation: hidaya-shared-in .28s var(--hidaya-motion) both}
+@keyframes hidaya-shared-out{to{opacity:0;transform:translateY(-4px)}}
+@keyframes hidaya-shared-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none!important}
+}
