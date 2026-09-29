@@ -300,6 +300,140 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
 }
 @supports (height: 100svh) { @media screen and (max-width: 899px) { .app { min-height:100svh; } } }
 
+
+/* Android Chrome/WebView touch-scroll and locked-surah dialog hardening */
+@media (max-width: 899px) {
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  body {
+    position: relative !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+  .app, .main, .workspace, #surahView, #practiceView {
+    height: auto !important;
+    min-height: 0;
+    max-height: none !important;
+    overflow: visible !important;
+    touch-action: pan-y pinch-zoom;
+  }
+  .app { min-height: 100vh !important; min-height: 100dvh !important; }
+  #surahView .surah-list { overflow: visible !important; }
+  #practiceView .practice-tools { position: static !important; }
+  #practiceView .verse-pills {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+  #lockOverlay { overscroll-behavior: contain; touch-action: pan-y; }
+  #lockOverlay .lock-sheet {
+    max-height: calc(100vh - env(safe-area-inset-top) - 8px) !important;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 8px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+  #lockOverlay .lock-close {
+    z-index: 10 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+#lockOverlay .lock-close { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+
+/* Final Android touch-scroll and modal close fix (document is the only vertical scroller). */
+@media screen and (max-width: 899px) {
+  html {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto !important;
+  }
+  body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    position: static !important;
+    touch-action: auto !important;
+    overscroll-behavior-y: auto !important;
+  }
+  .app, .main, .workspace, #surahView, #practiceView {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+  .app { min-height: 100vh !important; min-height: 100dvh !important; }
+  #surahView .surah-list { overflow: visible !important; touch-action: pan-y !important; }
+  #surahView .surah-card { touch-action: pan-y !important; }
+  #practiceView:not(.hidden) { padding-bottom: calc(32px + env(safe-area-inset-bottom)) !important; }
+  #practiceView .practice-tools { position: static !important; }
+  #practiceView .verse-pills {
+    max-width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x !important;
+  }
+  #lockOverlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483000 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    align-items: flex-end !important;
+    pointer-events: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  #lockOverlay.show { display: flex !important; }
+  #lockOverlay .lock-sheet {
+    position: relative !important;
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: calc(100vh - env(safe-area-inset-top) - 6px) !important;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 6px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y !important;
+    overscroll-behavior: contain;
+    padding-top: 8px;
+  }
+  #lockOverlay .lock-close {
+    position: absolute !important;
+    top: max(10px, env(safe-area-inset-top)) !important;
+    right: 14px !important;
+    z-index: 2147483647 !important;
+    display: grid !important;
+    place-items: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 </style></head>
 <body><div class="app">
 <header class="top"><a class="brand" href="index.html">Hidaya <span>هداية</span></a><button class="back" id="backBtn" aria-label="رجوع">‹</button></header>
@@ -329,8 +463,8 @@ let surahFilter='all';
 function renderSurahs(){const q=($('surahSearch')?.value||'').trim().toLocaleLowerCase('ar');const filtered=SURAHS.filter(([n,ar,en])=>{const matchesQuery=!q||String(n).includes(q)||ar.toLocaleLowerCase('ar').includes(q)||en.toLocaleLowerCase('en').includes(q);const matchesFilter=surahFilter==='all'||(surahFilter==='available'?n===1:n!==1);return matchesQuery&&matchesFilter;});$('surahList').innerHTML=filtered.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahEmpty').classList.toggle('hidden',filtered.length!==0);$('surahList').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>Number(b.dataset.num)===1?openPractice():openLock()));}
 function setSurahFilter(filter){surahFilter=filter;document.querySelectorAll('.surah-filter').forEach(btn=>{const active=btn.dataset.filter===filter;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});renderSurahs();}
 function openPractice(){ document.querySelector('.app').classList.add('practice-active');$('surahView').classList.add('hidden');$('practiceView').classList.remove('hidden');renderPills();renderAyah();window.scrollTo({top:0,behavior:'smooth'});}
-function openLock(){ $('lockOverlay').classList.add('show');}
-function closeLock(){ $('lockOverlay').classList.remove('show');}
+function openLock(){ document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';$('lockOverlay').classList.add('show');}
+function closeLock(){ $('lockOverlay').classList.remove('show');document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';document.body.style.position='relative';}
 function renderPills(){ $('versePills').innerHTML=ayahs.map((_,i)=>`<button class="verse-pill ${i===currentAyah?'active':''}" data-ayah="${i}" type="button">${i+1}</button>`).join('');$('versePills').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{stopRecognition(true);currentAyah=Number(b.dataset.ayah);renderPills();renderAyah();}));}
 function renderAyah(){const a=ayahs[currentAyah];$('verseCounter').textContent=`الآية ${currentAyah+1} من ${ayahs.length}`;$('verseText').textContent=a[0];$('verseTranslation').textContent=a[1];$('verseText').classList.toggle('hidden',!showText);$('verseTranslation').classList.toggle('hidden',!showText);$('versePlaceholder').classList.toggle('hidden',showText);$('toggleText').textContent=showText?'◉ إخفاء الآية':'◉ إظهار الآية';$('nextVerse').textContent=currentAyah===ayahs.length-1?'العودة للسور ←':'الآية التالية ←';document.querySelector('.progress i').style.width=`${((currentAyah+1)/ayahs.length)*100}%`;$('resultBox').classList.add('hidden');$('recognizedText').innerHTML='';lastTranscript='';finalRecognitionSegments=[];$('statusBox').textContent='اقرأ الآية من حفظك، ثم اضغط على زر الميكروفون لإيقاف التسجيل ومراجعة الكلمات.';}
 function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
@@ -381,5 +515,5 @@ function startRecognition(){
  try{recognition.start();isRecording=true;$('micBtn').classList.add('recording');$('micBtn').textContent='■';$('micLabel').textContent='جارٍ الاستماع… اضغط للإيقاف';$('statusBox').textContent='جارٍ الاستماع. اقرأ الآية بوضوح ثم اضغط زر الميكروفون للإيقاف.';}
  catch(e){recognition=null;isRecording=false;$('statusBox').textContent='تعذر بدء الميكروفون. حاول إعادة تحميل الصفحة والسماح بالوصول للميكروفون.';}
 }
-$('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));$('closeLock').addEventListener('click',closeLock);$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock()});$('backBtn').addEventListener('click',()=>{stopRecognition(true);if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition(true);renderAyah()});$('nextVerse').addEventListener('click',()=>{stopRecognition(true);if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{stopRecognition(true);if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
+$('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));const closeLockButton=$('closeLock');const activateLockClose=e=>{if(e){e.preventDefault();e.stopPropagation();}closeLock();};closeLockButton.addEventListener('click',activateLockClose);closeLockButton.addEventListener('pointerup',e=>{if(e.pointerType==='touch')activateLockClose(e);});closeLockButton.addEventListener('touchend',e=>{activateLockClose(e);},{passive:false});$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock();});$('backBtn').addEventListener('click',()=>{stopRecognition(true);if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition(true);renderAyah()});$('nextVerse').addEventListener('click',()=>{stopRecognition(true);if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{stopRecognition(true);if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
 </script></body></html>
