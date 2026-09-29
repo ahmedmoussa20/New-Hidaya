@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090807">
+<meta name="description" content="اعثر على المساجد القريبة منك في هداية، مرتبة حسب المسافة وافتح موقع المسجد على Google Maps.">
+<title>المساجد القريبة منك | Hidaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#090807;--panel:#141310;--panel2:#1b1914;--gold:#f5b83d;--gold2:#ffd36a;--text:#fffaf0;--muted:#aaa69c;--line:rgba(245,184,61,.19);--green:#9bc9a7}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -12%,rgba(245,184,61,.13),transparent 42%),var(--bg);color:var(--text);font-family:"DM Sans",Arial,sans-serif;overflow-x:hidden}.page{width:min(900px,100% - 32px);margin:0 auto;padding:26px 0 54px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(245,184,61,.38);background:linear-gradient(145deg,#332512,#15110a);color:var(--gold2);font-size:25px}.brand-name{font-weight:800;font-size:19px;letter-spacing:.4px}.brand-sub{font-size:11px;color:var(--muted);margin-top:3px}.back{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--gold2);border:1px solid var(--line);background:#15130f;text-decoration:none;font-size:22px}.hero{position:relative;overflow:hidden;padding:29px 26px 25px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(135deg,rgba(51,38,17,.77),rgba(18,16,12,.95) 58%);box-shadow:0 18px 55px rgba(0,0,0,.22)}.hero:after{content:"۞";position:absolute;left:-5px;bottom:-54px;font-family:Amiri,serif;font-size:180px;color:rgba(245,184,61,.045);pointer-events:none}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:10px}.hero h1{font-family:Amiri,serif;font-size:clamp(32px,5vw,44px);line-height:1.2;margin:0 0 9px;font-weight:700}.hero p{margin:0;color:#c7c0b2;font-size:14px;line-height:1.9;max-width:560px}.location-panel{position:relative;z-index:1;margin-top:23px;padding:14px 15px;display:flex;align-items:center;gap:12px;border-radius:16px;background:rgba(8,8,7,.42);border:1px solid rgba(255,255,255,.08)}.location-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:rgba(245,184,61,.1);color:var(--gold2);font-size:22px;flex:none}.location-copy{flex:1;min-width:0}.location-title{font-size:13px;font-weight:700}.location-status{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.6}.btn{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:11px 14px;font:600 12px "DM Sans",Arial,sans-serif;white-space:nowrap;transition:transform .18s ease,filter .18s ease}.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}.btn:active{transform:scale(.98)}.btn-gold{color:#21170a;background:linear-gradient(135deg,var(--gold2),#edaa21);box-shadow:0 7px 20px rgba(245,184,61,.12)}.btn-quiet{color:#f2d48a;background:#201b11;border:1px solid rgba(245,184,61,.25)}.toolbar{display:flex;align-items:center;gap:10px;margin:23px 0 15px}.search{position:relative;flex:1;min-width:0}.search span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px;pointer-events:none}.search input{width:100%;height:46px;border:1px solid rgba(255,255,255,.1);border-radius:13px;background:#151411;color:var(--text);padding:0 43px 0 13px;font:14px "DM Sans",Arial,sans-serif}.search input::placeholder{color:#817d74}.sort-select{height:46px;max-width:145px;border:1px solid rgba(245,184,61,.22);border-radius:13px;background:#151411;color:#e9d49c;padding:0 10px;font:12px "DM Sans",Arial,sans-serif}.list-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 2px 13px}.list-head h2{font-size:17px;margin:0;font-weight:700}.count{color:var(--muted);font-size:12px}.results{display:grid;gap:11px}.mosque-card{display:grid;grid-template-columns:54px minmax(0,1fr) auto;align-items:center;gap:13px;padding:16px;border-radius:18px;background:linear-gradient(145deg,#191814,#11100e);border:1px solid rgba(255,255,255,.075);transition:border-color .2s ease,transform .2s ease}.mosque-card:hover{border-color:rgba(245,184,61,.32);transform:translateY(-1px)}.mosque-symbol{height:54px;width:54px;display:grid;place-items:center;border-radius:15px;border:1px solid rgba(245,184,61,.2);background:rgba(245,184,61,.07);color:var(--gold2);font-size:27px}.mosque-info{min-width:0}.mosque-name{font-size:15px;font-weight:700;line-height:1.55;overflow-wrap:anywhere}.mosque-address{font-size:11px;color:var(--muted);line-height:1.7;margin-top:4px;overflow-wrap:anywhere}.distance{display:inline-flex;align-items:center;gap:5px;color:var(--gold2);font-size:12px;font-weight:700;margin-top:7px;direction:ltr}.card-actions{display:flex;align-items:center;gap:8px}.maps-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 12px;text-decoration:none;border:1px solid rgba(245,184,61,.36);border-radius:11px;background:rgba(245,184,61,.09);color:#ffda83;font-size:11px;font-weight:700;white-space:nowrap}.maps-btn:hover{background:rgba(245,184,61,.16)}.state{padding:29px 20px;text-align:center;border:1px dashed rgba(245,184,61,.2);border-radius:18px;background:rgba(255,255,255,.018)}.state-icon{font-size:31px;color:var(--gold2);margin-bottom:9px}.state h3{font-size:15px;margin:0 0 8px}.state p{font-size:12px;line-height:1.8;color:var(--muted);margin:0 auto 15px;max-width:460px}.spinner{width:22px;height:22px;border:2px solid rgba(245,184,61,.22);border-top-color:var(--gold2);border-radius:50%;margin:0 auto 12px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.footer-note{text-align:center;color:#777268;font-size:11px;line-height:1.8;margin:22px 8px 0}.footer-note a{color:#d5b45f}.hidden{display:none!important}
+@media(min-width:720px){.page{padding-top:38px}.hero{padding:36px 34px}.results{grid-template-columns:1fr}.mosque-card{padding:18px}.mosque-name{font-size:16px}}
+@media(max-width:520px){.page{width:calc(100% - 24px);padding:16px 0 35px}.topbar{margin-bottom:18px}.hero{padding:23px 17px 18px;border-radius:21px}.hero h1{font-size:34px}.hero p{font-size:13px}.location-panel{align-items:flex-start;padding:12px;gap:9px}.location-icon{width:38px;height:38px}.location-title{font-size:12px}.location-status{font-size:11px}.location-panel .btn{padding:10px 9px;font-size:11px}.toolbar{align-items:stretch;flex-wrap:wrap;margin-top:18px}.search{flex-basis:100%}.sort-select{max-width:none;flex:1}.toolbar>.btn{flex:0 0 auto}.mosque-card{grid-template-columns:45px minmax(0,1fr);gap:11px;padding:13px}.mosque-symbol{width:45px;height:45px;font-size:23px;border-radius:13px}.mosque-name{font-size:14px}.card-actions{grid-column:2;justify-content:flex-start}.maps-btn{padding:9px 11px}.list-head{margin-top:20px}.count{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">۞</div><div><div class="brand-name">Hidaya</div><div class="brand-sub">رحلتك مع القرآن</div></div></div>
+    <a class="back" href="index.html" aria-label="العودة للرئيسية" title="العودة للرئيسية">›</a>
+  </header>
+  <section class="hero" aria-labelledby="page-title">
+    <div class="eyebrow">NEARBY MOSQUES</div>
+    <h1 id="page-title">المساجد القريبة منك</h1>
+    <p>اعثر على أقرب مسجد إليك، وتصفّح المساجد مرتبة حسب المسافة، ثم افتح موقع المسجد مباشرةً على Google Maps.</p>
+    <div class="location-panel">
+      <div class="location-icon" aria-hidden="true">⌖</div>
+      <div class="location-copy"><div class="location-title">موقعك الحالي</div><div class="location-status" id="locationStatus" role="status" aria-live="polite">نحتاج إلى إذن الموقع لعرض المساجد الأقرب إليك.</div></div>
+      <button class="btn btn-gold" id="locateBtn" type="button">تحديد موقعي</button>
+    </div>
+  </section>
+  <section id="browser" class="hidden" aria-label="قائمة المساجد">
+    <div class="toolbar">
+      <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="ابحث باسم المسجد أو المنطقة" aria-label="ابحث باسم المسجد أو المنطقة" autocomplete="off"></label>
+      <select class="sort-select" id="sortSelect" aria-label="ترتيب المساجد"><option value="distance">الأقرب أولًا</option><option value="name">الاسم أبجديًا</option></select>
+      <select class="sort-select" id="radiusSelect" aria-label="نطاق البحث"><option value="5">نطاق 5 كم</option><option value="10">نطاق 10 كم</option><option value="20">نطاق 20 كم</option></select>
+      <button class="btn btn-quiet" id="refreshBtn" type="button">تحديث الموقع</button>
+    </div>
+    <div class="list-head"><h2>المساجد القريبة</h2><span class="count" id="resultsCount">جارٍ البحث...</span></div>
+    <div id="results" class="results" aria-live="polite"></div>
+  </section>
+  <section id="initialState" class="state" style="margin-top:18px">
+    <div class="state-icon" aria-hidden="true">⌖</div><h3>ابدأ بتحديد موقعك</h3><p>سنستخدم موقعك الحالي للعثور على المساجد القريبة منك وترتيبها حسب المسافة. لن يتم عرض موقعك على الآخرين.</p><button class="btn btn-gold" id="startBtn" type="button">اعثر على المساجد</button>
+  </section>
+  <p class="footer-note">بيانات المساجد مقدمة من <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>. قد تختلف البيانات المتاحة حسب المنطقة. المسافة تقريبية وليست مسافة الطريق.</p>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const locationStatus = $('locationStatus');
+  const locateBtn = $('locateBtn');
+  const refreshBtn = $('refreshBtn');
+  const startBtn = $('startBtn');
+  const browser = $('browser');
+  const initialState = $('initialState');
+  const results = $('results');
+  const resultsCount = $('resultsCount');
+  const searchInput = $('searchInput');
+  const sortSelect = $('sortSelect');
+  const radiusSelect = $('radiusSelect');
+  const OVERPASS_ENDPOINTS = [
+    'https://overpass-api.de/api/interpreter',
+    'https://overpass.kumi.systems/api/interpreter'
+  ];
+  let currentPosition = null;
+  let allMosques = [];
+  let requestToken = 0;
+  let isBusy = false;
+
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+  function distanceMeters(aLat, aLon, bLat, bLon) {
+    const rad = (d) => d * Math.PI / 180;
+    const dLat = rad(bLat - aLat), dLon = rad(bLon - aLon);
+    const x = Math.sin(dLat/2)**2 + Math.cos(rad(aLat))*Math.cos(rad(bLat))*Math.sin(dLon/2)**2;
+    return 6371000 * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(Math.max(0, 1-x)));
+  }
+  function formatDistance(meters) {
+    if (meters < 1000) return `${Math.max(10, Math.round(meters / 10) * 10)} متر`;
+    const km = meters / 1000;
+    return `${km < 10 ? km.toFixed(1) : Math.round(km)} كم`;
+  }
+  function mapsUrl(lat, lon) {
+    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${lat},${lon}`)}&travelmode=walking`;
+  }
+  function setBusy(busy) {
+    isBusy = busy;
+    [locateBtn, refreshBtn, startBtn].forEach((button) => {
+      if (button) button.disabled = busy;
+    });
+    locateBtn.textContent = busy ? 'جارٍ التحديد…' : 'تحديد موقعي';
+    if (refreshBtn) refreshBtn.textContent = busy ? 'جارٍ التحديث…' : 'تحديث الموقع';
+    if (startBtn) startBtn.textContent = busy ? 'جارٍ البحث…' : 'اعثر على المساجد';
+  }
+  function showState(title, message, icon = 'ⓘ', retry = true) {
+    browser.classList.remove('hidden');
+    initialState.classList.add('hidden');
+    results.innerHTML = `<div class="state"><div class="state-icon" aria-hidden="true">${icon}</div><h3>${escapeHTML(title)}</h3><p>${escapeHTML(message)}</p>${retry ? '<button class="btn btn-gold" id="retryBtn" type="button">حاول مرة أخرى</button>' : ''}</div>`;
+    resultsCount.textContent = '—';
+    const retryBtn = $('retryBtn');
+    if (retryBtn) retryBtn.addEventListener('click', findNearbyMosques);
+  }
+  async function fetchOverpass(lat, lon, radius, signal) {
+    const query = `[out:json][timeout:20];(nwr(around:${radius},${lat},${lon})["amenity"="place_of_worship"]["religion"~"muslim|islam",i];nwr(around:${radius},${lat},${lon})["building"="mosque"];nwr(around:${radius},${lat},${lon})["amenity"="mosque"];);out center tags;`;
+    let lastError;
+    for (const endpoint of OVERPASS_ENDPOINTS) {
+      try {
+        const response = await fetch(endpoint, {method:'POST', body:new URLSearchParams({data:query}), signal, headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}});
+        if (!response.ok) throw new Error(`Overpass HTTP ${response.status}`);
+        const data = await response.json();
+        if (!data || !Array.isArray(data.elements)) throw new Error('Invalid data');
+        return data.elements;
+      } catch (error) {
+        if (error && error.name === 'AbortError') throw error;
+        lastError = error;
+      }
+    }
+    throw lastError || new Error('Overpass unavailable');
+  }
+  function normalizeMosques(elements, lat, lon) {
+    const seen = new Set();
+    const list = [];
+    for (const element of elements) {
+      const tags = element.tags || {};
+      const pointLat = Number(element.lat ?? element.center?.lat);
+      const pointLon = Number(element.lon ?? element.center?.lon);
+      if (!Number.isFinite(pointLat) || !Number.isFinite(pointLon)) continue;
+      const key = `${element.type}/${element.id}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const name = tags['name:ar'] || tags.name || tags['name:en'] || 'مسجد بدون اسم';
+      const addressParts = [tags['addr:street'] || tags['addr:place'], tags['addr:suburb'] || tags['addr:neighbourhood'], tags['addr:city'] || tags['addr:town']];
+      const address = addressParts.filter(Boolean).join('، ');
+      list.push({id:key, name, address, lat:pointLat, lon:pointLon, distance:distanceMeters(lat, lon, pointLat, pointLon)});
+    }
+    const unique = new Map();
+    for (const mosque of list) {
+      const fingerprint = `${mosque.name.toLocaleLowerCase()}|${mosque.lat.toFixed(5)}|${mosque.lon.toFixed(5)}`;
+      if (!unique.has(fingerprint)) unique.set(fingerprint, mosque);
+    }
+    return [...unique.values()].sort((a,b) => a.distance - b.distance);
+  }
+  function renderResults() {
+    const query = searchInput.value.trim().toLocaleLowerCase();
+    const sortBy = sortSelect.value;
+    const filtered = allMosques.filter((mosque) => `${mosque.name} ${mosque.address}`.toLocaleLowerCase().includes(query));
+    filtered.sort(sortBy === 'name' ? (a,b) => a.name.localeCompare(b.name, 'ar') : (a,b) => a.distance - b.distance);
+    resultsCount.textContent = `${filtered.length} مسجد`;
+    if (!filtered.length) {
+      results.innerHTML = `<div class="state"><div class="state-icon" aria-hidden="true">⌕</div><h3>${query ? 'لا توجد نتائج مطابقة' : 'لم نعثر على مساجد في النطاق القريب'}</h3><p>${query ? 'جرّب البحث باسم مختلف أو امسح عبارة البحث.' : 'قد لا تكون بيانات المساجد القريبة متاحة في OpenStreetMap لهذه المنطقة. جرّب تحديث موقعك أو البحث في وقت لاحق.'}</p>${query ? '<button class="btn btn-quiet" id="clearSearchBtn" type="button">مسح البحث</button>' : '<button class="btn btn-gold" id="retryBtn" type="button">إعادة المحاولة</button>'}</div>`;
+      const clear = $('clearSearchBtn'); if (clear) clear.addEventListener('click', () => {searchInput.value='';renderResults();});
+      const retry = $('retryBtn'); if (retry) retry.addEventListener('click', findNearbyMosques);
+      return;
+    }
+    results.innerHTML = filtered.map((mosque, index) => `<article class="mosque-card" aria-label="${escapeHTML(mosque.name)}"><div class="mosque-symbol" aria-hidden="true">⌂</div><div class="mosque-info"><div class="mosque-name">${escapeHTML(mosque.name)}</div>${mosque.address ? `<div class="mosque-address">${escapeHTML(mosque.address)}</div>` : '<div class="mosque-address">الموقع على الخريطة</div>'}<div class="distance"><span aria-hidden="true">●</span><span>${escapeHTML(formatDistance(mosque.distance))}</span><span style="color:var(--muted);font-weight:400">من موقعك</span></div></div><div class="card-actions"><a class="maps-btn" href="${mapsUrl(mosque.lat,mosque.lon)}" target="_blank" rel="noopener noreferrer" aria-label="View on Google Maps: ${escapeHTML(mosque.name)}"><span aria-hidden="true">↗</span> View on Google Maps</a></div></article>`).join('');
+  }
+  function getPosition() {
+    return new Promise((resolve, reject) => {
+      if (!('geolocation' in navigator)) return reject(new Error('unsupported'));
+      navigator.geolocation.getCurrentPosition(resolve, reject, {enableHighAccuracy:true, timeout:15000, maximumAge:120000});
+    });
+  }
+  async function findNearbyMosques() {
+    if (isBusy) return;
+    const token = ++requestToken;
+    setBusy(true);
+    browser.classList.remove('hidden');
+    initialState.classList.add('hidden');
+    results.innerHTML = '<div class="state"><div class="spinner" aria-hidden="true"></div><h3>جارٍ العثور على المساجد القريبة</h3><p>نحدد موقعك ونبحث عن المساجد حولك. قد يستغرق ذلك بضع ثوانٍ.</p></div>';
+    resultsCount.textContent = 'جارٍ البحث…';
+    locationStatus.textContent = 'جارٍ طلب موقعك الحالي…';
+    let controller;
+    try {
+      const position = await getPosition();
+      if (token !== requestToken) return;
+      currentPosition = {lat:position.coords.latitude, lon:position.coords.longitude};
+      const radiusKm = Number(radiusSelect.value) || 5;
+      locationStatus.textContent = `تم تحديد موقعك. جارٍ البحث ضمن نطاق ${radiusKm} كم…`;
+      controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 28000);
+      let elements;
+      try { elements = await fetchOverpass(currentPosition.lat, currentPosition.lon, radiusKm * 1000, controller.signal); }
+      finally { clearTimeout(timeout); }
+      if (token !== requestToken) return;
+      allMosques = normalizeMosques(elements, currentPosition.lat, currentPosition.lon);
+      locationStatus.textContent = 'تم تحديد موقعك بنجاح. المساجد مرتبة حسب المسافة.';
+      if (!allMosques.length) {
+        showState('لم نعثر على مساجد قريبة', `لم تُرجع قاعدة بيانات OpenStreetMap مساجد ضمن ${radiusKm} كم من موقعك. جرّب توسيع نطاق البحث أو أعد المحاولة لاحقًا.`, '⌖', true);
+      } else {
+        renderResults();
+      }
+    } catch (error) {
+      if (token !== requestToken) return;
+      if (error && error.name === 'AbortError') {
+        locationStatus.textContent = 'انتهت مهلة البحث عن المساجد.';
+        showState('البحث استغرق وقتًا طويلًا', 'تعذر الاتصال بمصدر بيانات المساجد حاليًا. تحقق من الإنترنت ثم حاول مرة أخرى.', '◷', true);
+      } else if (error && typeof error.code === 'number') {
+        let message = 'لم نتمكن من تحديد موقعك. فعّل إذن الموقع في المتصفح ثم حاول مرة أخرى.';
+        if (error.code === 1) message = 'لم يتم السماح بالوصول إلى موقعك. اسمح للموقع باستخدام الموقع من إعدادات المتصفح ثم حاول مرة أخرى.';
+        if (error.code === 2) message = 'موقعك غير متاح حاليًا. تأكد من تشغيل خدمات الموقع وحاول مرة أخرى.';
+        if (error.code === 3) message = 'استغرق تحديد موقعك وقتًا طويلًا. تأكد من تفعيل GPS وحاول مرة أخرى.';
+        locationStatus.textContent = 'نحتاج إلى إذن الموقع لعرض المساجد الأقرب إليك.';
+        showState('تعذر تحديد موقعك', message, '⌖', true);
+      } else {
+        locationStatus.textContent = 'تعذر تحميل بيانات المساجد حاليًا.';
+        showState('تعذر تحميل المساجد', 'قد يكون مصدر البيانات مشغولًا أو الاتصال غير متاح. حاول مرة أخرى بعد قليل.', '⌁', true);
+      }
+    } finally {
+      if (token === requestToken) setBusy(false);
+    }
+  }
+  locateBtn.addEventListener('click', findNearbyMosques);
+  refreshBtn.addEventListener('click', findNearbyMosques);
+  startBtn.addEventListener('click', findNearbyMosques);
+  searchInput.addEventListener('input', renderResults);
+  sortSelect.addEventListener('change', renderResults);
+  radiusSelect.addEventListener('change', findNearbyMosques);
+})();
+</script>
+</body>
+</html>
