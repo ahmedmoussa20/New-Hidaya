@@ -428,11 +428,11 @@ button,a{-webkit-tap-highlight-color:transparent}
 .qibla-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(340px,78vw);text-align:center;z-index:3;pointer-events:none}
 .qibla-ring{width:min(270px,68vw);aspect-ratio:1;margin:0 auto 18px;border:1px solid rgba(245,184,61,.42);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(245,184,61,.10),rgba(0,0,0,.08) 58%,rgba(0,0,0,.28));box-shadow:0 0 0 12px rgba(245,184,61,.025),0 0 45px rgba(245,184,61,.10)}
 .qibla-ring:before,.qibla-ring:after{content:"";position:absolute;inset:14px;border:1px dashed rgba(245,184,61,.24);border-radius:50%}.qibla-ring:after{inset:31px;border-style:solid;border-color:rgba(255,255,255,.08)}
-.qibla-arrow{width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:78px solid var(--gold);filter:drop-shadow(0 0 14px rgba(245,184,61,.65));transform-origin:50% 82%;transition:transform .08s linear;position:relative}.qibla-arrow:after{content:"";position:absolute;left:-6px;top:58px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.75)}
-.qibla-direction{font-size:13px;color:rgba(255,255,255,.68)}.qibla-direction strong{display:block;color:var(--gold);font-size:22px;margin-top:4px}.qibla-turn-hint{min-height:20px;margin:7px auto 0;color:var(--gold);font-size:13px;font-weight:700;letter-spacing:.2px}.qibla-turn-hint:empty{display:none}.qibla-turn-hint.warning{color:#ffd08a}.qibla-turn-hint.aligned{color:#7df0ad}.qibla-status{margin:12px auto 0;max-width:300px;padding:10px 13px;border:1px solid rgba(245,184,61,.18);border-radius:13px;background:rgba(255,255,255,.025);color:rgba(255,255,255,.72);font-size:13px;line-height:1.55}.qibla-status.error{color:#ffb2a8;border-color:rgba(255,120,100,.35)}.qibla-status.aligned{color:#7df0ad;border-color:rgba(47,211,113,.65);background:rgba(22,120,63,.16);box-shadow:0 0 24px rgba(22,180,86,.12)}.qibla-modal:has(.qibla-status.aligned) .qibla-ring{border-color:#28d979;box-shadow:0 0 0 12px rgba(40,217,121,.06),0 0 42px rgba(40,217,121,.18)}.qibla-tip{display:block;color:rgba(255,255,255,.55);font-size:11px;line-height:1.55;margin-top:8px}
+.qibla-arrow{display:block;width:clamp(76px,22vw,112px);height:clamp(104px,30vw,150px);overflow:visible;filter:drop-shadow(0 0 12px rgba(245,184,61,.32));transform-origin:50% 50%;transition:transform .14s ease-out;will-change:transform;flex:none}.qibla-ring.is-aligned{border-color:#28d979;background:radial-gradient(circle,rgba(34,180,92,.18),rgba(0,0,0,.08) 60%,rgba(0,0,0,.25));box-shadow:0 0 0 10px rgba(40,217,121,.07),0 0 38px rgba(40,217,121,.2)}.qibla-ring.is-aligned:before{border-color:rgba(40,217,121,.5)}.qibla-modal.is-aligned .qibla-arrow{filter:drop-shadow(0 0 14px rgba(40,217,121,.55))}.qibla-direction strong{font-variant-numeric:tabular-nums}.qibla-turn-hint{min-height:24px;padding-inline:8px}.qibla-turn-hint.aligned{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:7px 13px;border:1px solid rgba(40,217,121,.5);border-radius:999px;background:rgba(22,120,63,.16)}
+.qibla-direction{font-size:13px;color:rgba(255,255,255,.68)}.qibla-direction strong{display:block;color:var(--gold);font-size:22px;margin-top:4px}.qibla-turn-hint{min-height:20px;margin:7px auto 0;color:var(--gold);font-size:13px;font-weight:700;letter-spacing:.2px}.qibla-turn-hint:empty{display:none}.qibla-turn-hint.warning{color:#ffd08a}.qibla-turn-hint.aligned{color:#7df0ad}.qibla-status{margin:12px auto 0;max-width:300px;padding:10px 13px;border:1px solid rgba(245,184,61,.18);border-radius:13px;background:rgba(255,255,255,.025);color:rgba(255,255,255,.72);font-size:13px;line-height:1.55}.qibla-status.error{color:#ffb2a8;border-color:rgba(255,120,100,.35)}.qibla-status.aligned{color:#7df0ad;border-color:rgba(47,211,113,.65);background:rgba(22,120,63,.16);box-shadow:0 0 24px rgba(22,180,86,.12)}.qibla-tip{display:block;color:rgba(255,255,255,.55);font-size:11px;line-height:1.55;margin-top:8px}
 .qibla-bottom{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:3;width:min(560px,calc(100% - 32px));padding:15px 18px;border:1px solid rgba(245,184,61,.22);border-radius:18px;background:rgba(9,8,7,.72);backdrop-filter:blur(16px);text-align:center}.qibla-bottom small{display:block;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:1.6px;text-transform:uppercase}.qibla-bottom strong{display:block;color:var(--gold);font-size:15px;margin-top:4px}.qibla-note{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:7px}
-@media(max-width:600px){.qibla-top{padding:calc(14px + env(safe-area-inset-top)) 16px 12px}.qibla-top-copy strong{font-size:21px}.qibla-center{top:47%;width:min(340px,calc(100vw - 28px))}.qibla-ring{width:min(250px,64vw);margin-bottom:15px}.qibla-bottom{bottom:calc(12px + env(safe-area-inset-bottom));padding:12px 14px}.qibla-arrow{border-left-width:14px;border-right-width:14px;border-bottom-width:65px}.qibla-direction strong{font-size:20px}.qibla-status{font-size:12px;padding:9px 10px}}
-@media(max-height:700px){.qibla-center{top:46%}.qibla-ring{width:min(210px,52vw);margin-bottom:10px}.qibla-arrow{border-bottom-width:58px}.qibla-bottom{padding:9px 12px}.qibla-note{font-size:9px}}
+@media(max-width:600px){.qibla-top{padding:calc(14px + env(safe-area-inset-top)) 16px 12px}.qibla-top-copy strong{font-size:21px}.qibla-center{top:46%;width:min(340px,calc(100vw - 28px));max-height:calc(100dvh - 170px)}.qibla-ring{width:min(250px,64vw);margin-bottom:12px}.qibla-arrow{width:clamp(70px,21vw,96px);height:clamp(96px,28vw,128px)}.qibla-direction strong{font-size:22px}.qibla-status{font-size:12px;padding:9px 10px}.qibla-tip{max-width:300px;margin-inline:auto}}
+@media(max-height:700px){.qibla-center{top:45%;width:min(310px,calc(100vw - 28px))}.qibla-ring{width:min(210px,52vw);margin-bottom:8px}.qibla-arrow{width:68px;height:94px}.qibla-bottom{padding:9px 12px}.qibla-note{font-size:9px}.qibla-status{margin-top:7px;padding:7px 9px}.qibla-tip{margin-top:5px}}
 @media(prefers-reduced-motion:reduce){.qibla-arrow{transition:none}}
 
 
@@ -512,6 +512,53 @@ body.rtl .quran-search input{text-align:right}
 
 .hifz-nav{color:#f5b83d!important;font-weight:700!important;padding:8px 13px;border:1px solid rgba(245,184,61,.5);border-radius:999px;background:rgba(245,184,61,.07);box-shadow:0 0 18px rgba(245,184,61,.06)}
 .hifz-nav::before{content:"✦";font-size:10px;margin-right:5px}.mobile-hifz{color:#f5b83d!important;font-weight:700!important}
+
+/* Qibla compass visual refresh — preserves heading calculation and sensor logic */
+.qibla-modal{background:#070806}
+.qibla-shade{background:radial-gradient(ellipse at 50% 45%,rgba(245,184,61,.12),transparent 36%),radial-gradient(ellipse at 50% 100%,rgba(18,88,54,.12),transparent 42%),linear-gradient(180deg,#0c0d0a,#050605 76%)}
+.qibla-top-copy strong{font-family:inherit;font-weight:800;letter-spacing:0;color:#f7e8bd}
+.qibla-center{width:min(390px,88vw)}
+.qibla-ring{width:min(300px,72vw);border:1px solid rgba(245,184,61,.78);background:radial-gradient(circle at center,rgba(245,184,61,.13) 0,rgba(0,0,0,.08) 44%,rgba(0,0,0,.35) 70%),repeating-conic-gradient(from 0deg,rgba(245,184,61,.8) 0deg .55deg,transparent .55deg 10deg);box-shadow:0 0 0 8px rgba(245,184,61,.045),0 0 0 16px rgba(245,184,61,.018),0 0 55px rgba(245,184,61,.13),inset 0 0 28px rgba(245,184,61,.09)}
+.qibla-ring:before{inset:10px;border:0;background:repeating-conic-gradient(from 0deg,rgba(255,225,151,.9) 0deg .7deg,transparent .7deg 5deg);mask:radial-gradient(circle,transparent 0 76%,#000 77% 80%,transparent 81%);-webkit-mask:radial-gradient(circle,transparent 0 76%,#000 77% 80%,transparent 81%)}
+.qibla-ring:after{inset:34px;border:1px solid rgba(245,184,61,.14);background:radial-gradient(circle,rgba(245,184,61,.035),transparent 70%)}
+.qibla-arrow{display:block;position:absolute!important;left:50%;top:50%;width:74px;height:120px;border:0!important;border-radius:0!important;background:none!important;filter:drop-shadow(0 5px 10px rgba(245,184,61,.36));transform-origin:50% 50%;transition:transform .12s linear;z-index:2;overflow:visible}
+.qibla-arrow:after{content:none!important;display:none!important}
+.qibla-cardinal{position:absolute;z-index:3;font:700 12px/1 "DM Sans",Arial,sans-serif;color:#f5d477;text-shadow:0 0 12px rgba(245,184,61,.32);pointer-events:none}
+.qibla-cardinal.north{top:13%;left:50%;transform:translateX(-50%);color:#fff0b0}
+.qibla-cardinal.east{right:12%;top:50%;transform:translateY(-50%)}
+.qibla-cardinal.south{bottom:13%;left:50%;transform:translateX(-50%)}
+.qibla-cardinal.west{left:12%;top:50%;transform:translateY(-50%)}
+.qibla-direction{font-size:13px;color:rgba(255,255,255,.74)}
+.qibla-direction strong{font-size:30px;letter-spacing:.5px;text-shadow:0 0 20px rgba(245,184,61,.15)}
+.qibla-turn-hint{font-size:14px;min-height:22px}
+.qibla-status{border-radius:15px;background:rgba(20,21,17,.78);border-color:rgba(245,184,61,.23);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.qibla-bottom{width:min(560px,calc(100% - 32px));border-color:rgba(245,184,61,.32);background:linear-gradient(145deg,rgba(21,22,17,.9),rgba(8,9,7,.88));box-shadow:0 12px 38px rgba(0,0,0,.22)}
+.qibla-bottom strong{font-size:17px}
+.qibla-close{transition:background .2s,border-color .2s,transform .2s}
+.qibla-close:hover{background:rgba(245,184,61,.12);border-color:rgba(245,184,61,.7);transform:rotate(90deg)}
+@media(max-width:600px){
+ .qibla-top{padding:calc(16px + env(safe-area-inset-top)) 18px 12px}
+ .qibla-center{top:46%;width:calc(100vw - 30px)}
+ .qibla-ring{width:min(270px,70vw);margin-bottom:14px}
+ .qibla-arrow{width:65px;height:106px}
+ .qibla-direction strong{font-size:27px}
+ .qibla-status{max-width:330px;font-size:12px;line-height:1.65}
+ .qibla-bottom{bottom:calc(14px + env(safe-area-inset-bottom));padding:13px 15px}
+ .qibla-note{line-height:1.5}
+}
+@media(max-height:700px){
+ .qibla-center{top:45%}
+ .qibla-ring{width:min(220px,54vw);margin-bottom:8px}
+ .qibla-arrow{width:54px;height:88px}
+ .qibla-direction strong{font-size:24px}
+ .qibla-status{margin-top:8px;padding:7px 10px}
+ .qibla-bottom{padding:9px 12px}
+}
+@media(max-width:600px){.qibla-arrow{margin-left:-32.5px;margin-top:-53px}}
+@media(max-height:700px){.qibla-arrow{margin-left:-27px;margin-top:-44px}}
+@media(min-width:601px) and (min-height:701px){.qibla-arrow{margin-left:-37px;margin-top:-60px}}
+@media(prefers-reduced-motion:reduce){.qibla-arrow,.qibla-close{transition:none}}
+
 </style>
 
 <style id="mobile-start-layout-final">
@@ -755,7 +802,28 @@ body.rtl .quran-search input{text-align:right}
   <button aria-label="Close Qibla" class="qibla-close" id="closeQibla" type="button">×</button>
 </div>
 <div class="qibla-center">
-  <div class="qibla-ring" aria-label="Live Qibla direction indicator"><div aria-hidden="true" class="qibla-arrow" id="qiblaArrow"></div></div>
+  <div class="qibla-ring" aria-label="Live Qibla direction indicator">
+    <span class="qibla-cardinal north">N</span><span class="qibla-cardinal east">E</span><span class="qibla-cardinal south">S</span><span class="qibla-cardinal west">W</span>
+    <svg class="qibla-arrow" id="qiblaArrow" viewBox="0 0 100 140" role="img" aria-label="Kaaba direction marker" focusable="false">
+      <defs>
+        <linearGradient id="kaabaGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b4"/><stop offset=".48" stop-color="#f3c653"/><stop offset="1" stop-color="#b77b1b"/></linearGradient>
+        <linearGradient id="kaabaFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25241e"/><stop offset="1" stop-color="#080908"/></linearGradient>
+      </defs>
+      <!-- Small north-pointing marker keeps the Kaaba icon usable as a direction indicator. -->
+      <path d="M50 2 L61 22 L50 18 L39 22 Z" fill="url(#kaabaGold)" stroke="#fff0b0" stroke-width="1" stroke-linejoin="round"/>
+      <!-- Isometric Kaaba body -->
+      <path d="M17 43 L50 25 L83 43 L50 62 Z" fill="url(#kaabaGold)" stroke="#fff0b0" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M17 43 L50 62 L50 127 L17 106 Z" fill="url(#kaabaFront)" stroke="#d8aa42" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M50 62 L83 43 L83 106 L50 127 Z" fill="#11120f" stroke="#d8aa42" stroke-width="1.2" stroke-linejoin="round"/>
+      <!-- Kiswa gold belt -->
+      <path d="M18 54 L50 72 L82 54 L82 63 L50 81 L18 63 Z" fill="url(#kaabaGold)" stroke="#fff0b0" stroke-width=".8"/>
+      <path d="M18 67 L50 85 L82 67" fill="none" stroke="#b78320" stroke-width="1.4"/>
+      <!-- Door detail -->
+      <path d="M35 91 L43 96 L43 113 L35 108 Z" fill="url(#kaabaGold)" stroke="#f9df8d" stroke-width=".8"/>
+      <circle cx="40" cy="102" r="1.2" fill="#fff4c4"/>
+      <path d="M50 127 L50 136" stroke="url(#kaabaGold)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
   <div class="qibla-direction"><span id="qiblaBearingLabel">Qibla direction</span><strong id="qiblaBearing">--°</strong></div>
   <div class="qibla-turn-hint" id="qiblaTurnHint" aria-live="polite"></div>
   <div class="qibla-status" id="qiblaStatus" role="status" aria-live="polite">Allow location and compass access to find the Qibla.</div>
@@ -891,16 +959,18 @@ body.rtl .quran-search input{text-align:right}
     arrow.style.transform='rotate('+delta+'deg)';
     const distance=Math.abs(signedDelta);
     if(compassAccuracy!=null&&(compassAccuracy<0||compassAccuracy>20)){
+      aligned=false;modal.classList.remove('is-aligned');document.querySelector('.qibla-ring').classList.remove('is-aligned');
       turnHint.className='qibla-turn-hint warning';
       turnHint.textContent=t('turnCalibrate');
     }else if(distance<=5){
       turnHint.className='qibla-turn-hint aligned';
-      turnHint.textContent=t('turnAligned');
+      turnHint.textContent='✓ '+t('turnAligned');
+      modal.classList.add('is-aligned');document.querySelector('.qibla-ring').classList.add('is-aligned');
       if(!aligned){aligned=true;setStatus('statusAligned','aligned');vibrateOnce();}
     }else{
       turnHint.className='qibla-turn-hint';
       turnHint.textContent=(signedDelta>0?t('turnRight'):t('turnLeft')).replace('{deg}',String(Math.round(distance)));
-      if(distance>=8){aligned=false;setStatus('statusRotate');}
+      if(distance>=8){aligned=false;modal.classList.remove('is-aligned');document.querySelector('.qibla-ring').classList.remove('is-aligned');setStatus('statusRotate');}
     }
   }
   function handleOrientation(e,absoluteEvent){
@@ -963,7 +1033,7 @@ body.rtl .quran-search input{text-align:right}
     window.removeEventListener('deviceorientationabsolute',absoluteOrientationHandler,true);
     window.removeEventListener('deviceorientation',relativeOrientationHandler,true);
     if(orientationTimer){clearTimeout(orientationTimer);orientationTimer=null;}
-    orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;orientationSamples=0;compassAccuracy=null;
+    orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;orientationSamples=0;compassAccuracy=null;modal.classList.remove('is-aligned');document.querySelector('.qibla-ring').classList.remove('is-aligned');
     if(turnHint){turnHint.textContent='';turnHint.className='qibla-turn-hint';}
     arrow.style.transform='rotate(0deg)';bearingEl.textContent='--°';
     modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';
@@ -982,6 +1052,7 @@ body.rtl .quran-search input{text-align:right}
     stop();
     modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
     titleEl.textContent=t('title');bearingLabel.textContent=t('bearing');locationLabel.textContent=t('locLabel');locationEl.textContent=t('locWait');tipEl.textContent=t('tip');accuracyNote.textContent=t('accuracy');if(turnHint){turnHint.textContent='';turnHint.className='qibla-turn-hint';}
+    modal.classList.remove('is-aligned');document.querySelector('.qibla-ring').classList.remove('is-aligned');
     setStatus('statusStart');
     try{
       // Permission prompts are initiated from this user click; no camera is requested.
@@ -998,7 +1069,7 @@ body.rtl .quran-search input{text-align:right}
       window.removeEventListener('deviceorientationabsolute',absoluteOrientationHandler,true);
       window.removeEventListener('deviceorientation',relativeOrientationHandler,true);
       if(orientationTimer){clearTimeout(orientationTimer);orientationTimer=null;}
-      orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;
+      orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;modal.classList.remove('is-aligned');document.querySelector('.qibla-ring').classList.remove('is-aligned');
       setStatus(errorMessage(err),'error');locationEl.textContent=t('retry');
     }
   }
