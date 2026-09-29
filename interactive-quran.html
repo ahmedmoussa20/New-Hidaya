@@ -288,6 +288,18 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
 }
 @media(prefers-reduced-motion:reduce){.surah-card,#practiceView *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+
+/* Android/WebView scroll safety: allow document-level vertical scrolling on all mobile browsers. */
+@media screen and (max-width: 899px) {
+  html { height:auto !important; min-height:100%; overflow-x:clip; overflow-y:auto; scroll-behavior:auto; }
+  body { height:auto !important; min-height:100%; overflow-x:clip !important; overflow-y:visible !important; position:static !important; touch-action:pan-y; overscroll-behavior-y:auto; }
+  .app { height:auto !important; min-height:100vh; min-height:100dvh; max-height:none !important; overflow:visible !important; }
+  .main, .workspace, #practiceView, #surahView { height:auto !important; max-height:none; overflow:visible; }
+  #practiceView:not(.hidden) { padding-bottom:calc(28px + env(safe-area-inset-bottom)); }
+  #practiceView .verse-pills { overscroll-behavior-x:contain; }
+}
+@supports (height: 100svh) { @media screen and (max-width: 899px) { .app { min-height:100svh; } } }
+
 </style></head>
 <body><div class="app">
 <header class="top"><a class="brand" href="index.html">Hidaya <span>هداية</span></a><button class="back" id="backBtn" aria-label="رجوع">‹</button></header>
@@ -311,7 +323,7 @@ const ayahs=[
 ['اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ','Guide us to the straight path.'],
 ['صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ','The path of those upon whom You have bestowed Your favor, not of those who are astray.']
 ];
-const $=id=>document.getElementById(id);let currentAyah=0,recognition=null,isRecording=false,showText=true,lastTranscript='',audio=null;
+const $=id=>document.getElementById(id);let currentAyah=0,recognition=null,isRecording=false,showText=true,lastTranscript='',audio=null,finalRecognitionSegments=[],discardRecognitionResult=false;
 const normalize=s=>s.normalize('NFD').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/[^\u0621-\u064A\s]/g,' ').replace(/\s+/g,' ').trim();
 let surahFilter='all';
 function renderSurahs(){const q=($('surahSearch')?.value||'').trim().toLocaleLowerCase('ar');const filtered=SURAHS.filter(([n,ar,en])=>{const matchesQuery=!q||String(n).includes(q)||ar.toLocaleLowerCase('ar').includes(q)||en.toLocaleLowerCase('en').includes(q);const matchesFilter=surahFilter==='all'||(surahFilter==='available'?n===1:n!==1);return matchesQuery&&matchesFilter;});$('surahList').innerHTML=filtered.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahEmpty').classList.toggle('hidden',filtered.length!==0);$('surahList').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>Number(b.dataset.num)===1?openPractice():openLock()));}
@@ -319,11 +331,55 @@ function setSurahFilter(filter){surahFilter=filter;document.querySelectorAll('.s
 function openPractice(){ document.querySelector('.app').classList.add('practice-active');$('surahView').classList.add('hidden');$('practiceView').classList.remove('hidden');renderPills();renderAyah();window.scrollTo({top:0,behavior:'smooth'});}
 function openLock(){ $('lockOverlay').classList.add('show');}
 function closeLock(){ $('lockOverlay').classList.remove('show');}
-function renderPills(){ $('versePills').innerHTML=ayahs.map((_,i)=>`<button class="verse-pill ${i===currentAyah?'active':''}" data-ayah="${i}" type="button">${i+1}</button>`).join('');$('versePills').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{currentAyah=Number(b.dataset.ayah);renderPills();renderAyah();}));}
-function renderAyah(){const a=ayahs[currentAyah];$('verseCounter').textContent=`الآية ${currentAyah+1} من ${ayahs.length}`;$('verseText').textContent=a[0];$('verseTranslation').textContent=a[1];$('verseText').classList.toggle('hidden',!showText);$('verseTranslation').classList.toggle('hidden',!showText);$('versePlaceholder').classList.toggle('hidden',showText);$('toggleText').textContent=showText?'◉ إخفاء الآية':'◉ إظهار الآية';$('nextVerse').textContent=currentAyah===ayahs.length-1?'العودة للسور ←':'الآية التالية ←';document.querySelector('.progress i').style.width=`${((currentAyah+1)/ayahs.length)*100}%`;$('resultBox').classList.add('hidden');$('recognizedText').innerHTML='';lastTranscript='';$('statusBox').textContent='اقرأ الآية من حفظك، ثم اضغط على زر الميكروفون لإيقاف التسجيل ومراجعة الكلمات.';}
+function renderPills(){ $('versePills').innerHTML=ayahs.map((_,i)=>`<button class="verse-pill ${i===currentAyah?'active':''}" data-ayah="${i}" type="button">${i+1}</button>`).join('');$('versePills').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{stopRecognition(true);currentAyah=Number(b.dataset.ayah);renderPills();renderAyah();}));}
+function renderAyah(){const a=ayahs[currentAyah];$('verseCounter').textContent=`الآية ${currentAyah+1} من ${ayahs.length}`;$('verseText').textContent=a[0];$('verseTranslation').textContent=a[1];$('verseText').classList.toggle('hidden',!showText);$('verseTranslation').classList.toggle('hidden',!showText);$('versePlaceholder').classList.toggle('hidden',showText);$('toggleText').textContent=showText?'◉ إخفاء الآية':'◉ إظهار الآية';$('nextVerse').textContent=currentAyah===ayahs.length-1?'العودة للسور ←':'الآية التالية ←';document.querySelector('.progress i').style.width=`${((currentAyah+1)/ayahs.length)*100}%`;$('resultBox').classList.add('hidden');$('recognizedText').innerHTML='';lastTranscript='';finalRecognitionSegments=[];$('statusBox').textContent='اقرأ الآية من حفظك، ثم اضغط على زر الميكروفون لإيقاف التسجيل ومراجعة الكلمات.';}
 function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
-function stopRecognition(){if(recognition){try{recognition.stop()}catch(e){}}isRecording=false;$('micBtn').classList.remove('recording');$('micBtn').textContent='🎙';$('micLabel').textContent='اضغط لبدء التلاوة';}
+function stopRecognition(discardResult=false){if(discardResult)discardRecognitionResult=true;if(recognition){try{recognition.stop()}catch(e){}}isRecording=false;$('micBtn').classList.remove('recording');$('micBtn').textContent='🎙';$('micLabel').textContent='اضغط لبدء التلاوة';}
+function mergeRecognitionSegments(segments){
+ const output=[];
+ for(const raw of segments){
+  const words=String(raw||'').trim().split(/\s+/).filter(Boolean);
+  if(!words.length)continue;
+  const norm=words.map(w=>normalize(w));
+  let overlap=0;
+  const max=Math.min(output.length,norm.length,8);
+  for(let n=max;n>0;n--){let same=true;for(let j=0;j<n;j++){if(normalize(output[output.length-n+j])!==norm[j]){same=false;break;}}if(same){overlap=n;break;}}
+  // Android speech services sometimes return the same finalized phrase again at a new index.
+  if(overlap===0 && output.length && norm.length && output.slice(-norm.length).map(normalize).join(' ')==norm.join(' '))continue;
+  output.push(...words.slice(overlap));
+ }
+ return output.join(' ').trim();
+}
 function compareWords(transcript){const target=normalize(ayahs[currentAyah][0]).split(' '),heard=normalize(transcript).split(' ');let html='';const max=Math.max(target.length,heard.length);for(let i=0;i<max;i++){if(i>=heard.length)html+=`<span class="word-missing" title="لم تُلتقط هذه الكلمة">${target[i]}</span> `;else if(i>=target.length)html+=`<span class="word-wrong" title="كلمة إضافية التقطها المتصفح">${heard[i]}</span> `;else if(target[i]===heard[i])html+=`<span class="word-correct" title="مطابقة للنص">${heard[i]}</span> `;else html+=`<span class="word-wrong" title="الكلمة المتوقعة: ${target[i]}">${heard[i]} <small style="display:block;font:11px Amiri,serif;color:#ffe5a0;text-decoration:none">المتوقع: ${target[i]}</small></span> `;}return html.trim();}
-function startRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('statusBox').textContent='المتصفح الحالي لا يدعم التعرف على الكلام. جرّب Chrome على جهاز مدعوم أو استخدم الاستماع والمراجعة اليدوية.';return;}recognition=new SR();recognition.lang='ar-SA';recognition.continuous=true;recognition.interimResults=true;lastTranscript='';recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)lastTranscript+=` ${t}`;else interim+=t;}$('statusBox').textContent=lastTranscript.trim()||interim?`تم التقاط: ${(lastTranscript+' '+interim).trim()}`:'أستمع إليك…';};recognition.onerror=e=>{$('statusBox').textContent=e.error==='not-allowed'?'لم يتم السماح باستخدام الميكروفون. فعّل الإذن من إعدادات المتصفح.':'تعذر التعرف على التلاوة في هذه المحاولة. حاول مرة أخرى في مكان هادئ.';stopRecognition();};recognition.onend=()=>{const heard=lastTranscript.trim();if(heard){$('recognizedText').innerHTML=compareWords(heard);$('resultBox').classList.remove('hidden');$('statusBox').textContent='انتهت المراجعة الأولية. راجع الكلمات الملوّنة؛ قد تكون بعض الفروق بسبب التعرف الصوتي.';}stopRecognition();};try{recognition.start();isRecording=true;$('micBtn').classList.add('recording');$('micBtn').textContent='■';$('micLabel').textContent='جارٍ الاستماع… اضغط للإيقاف';$('statusBox').textContent='جارٍ الاستماع. اقرأ الآية بوضوح ثم اضغط زر الميكروفون للإيقاف.';}catch(e){$('statusBox').textContent='تعذر بدء الميكروفون. حاول إعادة تحميل الصفحة والسماح بالوصول للميكروفون.';}}
-$('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));$('closeLock').addEventListener('click',closeLock);$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock()});$('backBtn').addEventListener('click',()=>{if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition();renderAyah()});$('nextVerse').addEventListener('click',()=>{if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
+function startRecognition(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){$('statusBox').textContent='المتصفح الحالي لا يدعم التعرف على الكلام. جرّب Chrome على جهاز مدعوم أو استخدم الاستماع والمراجعة اليدوية.';return;}
+ if(audio){audio.pause();audio=null;}
+ finalRecognitionSegments=[];lastTranscript='';discardRecognitionResult=false;
+ recognition=new SR();recognition.lang='ar-SA';recognition.continuous=true;recognition.interimResults=true;
+ recognition.onresult=e=>{
+  let interimParts=[];
+  // Results are indexed and can be re-sent by Chrome on Android. Replace each index instead of appending it repeatedly.
+  for(let i=e.resultIndex;i<e.results.length;i++){
+   const item=e.results[i],transcript=(item[0]?.transcript||'').trim();
+   if(item.isFinal){finalRecognitionSegments[i]=transcript;}else if(transcript){interimParts.push(transcript);}
+  }
+  lastTranscript=mergeRecognitionSegments(finalRecognitionSegments.filter(Boolean));
+  const interim=interimParts.join(' ');
+  const preview=[lastTranscript,interim].filter(Boolean).join(' ').trim();
+  $('statusBox').textContent=preview?`تم التقاط: ${preview}`:'أستمع إليك…';
+ };
+ recognition.onerror=e=>{
+  $('statusBox').textContent=e.error==='not-allowed'?'لم يتم السماح باستخدام الميكروفون. فعّل الإذن من إعدادات المتصفح.':'تعذر التعرف على التلاوة في هذه المحاولة. حاول مرة أخرى في مكان هادئ.';
+  stopRecognition(true);
+ };
+ recognition.onend=()=>{
+  const heard=discardRecognitionResult?'':mergeRecognitionSegments(finalRecognitionSegments.filter(Boolean));
+  if(heard){$('recognizedText').innerHTML=compareWords(heard);$('resultBox').classList.remove('hidden');$('statusBox').textContent='انتهت المراجعة الأولية. راجع الكلمات الملوّنة؛ قد تكون بعض الفروق بسبب التعرف الصوتي.';}
+  recognition=null;isRecording=false;$('micBtn').classList.remove('recording');$('micBtn').textContent='🎙';$('micLabel').textContent='اضغط لبدء التلاوة';discardRecognitionResult=false;
+ };
+ try{recognition.start();isRecording=true;$('micBtn').classList.add('recording');$('micBtn').textContent='■';$('micLabel').textContent='جارٍ الاستماع… اضغط للإيقاف';$('statusBox').textContent='جارٍ الاستماع. اقرأ الآية بوضوح ثم اضغط زر الميكروفون للإيقاف.';}
+ catch(e){recognition=null;isRecording=false;$('statusBox').textContent='تعذر بدء الميكروفون. حاول إعادة تحميل الصفحة والسماح بالوصول للميكروفون.';}
+}
+$('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));$('closeLock').addEventListener('click',closeLock);$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock()});$('backBtn').addEventListener('click',()=>{stopRecognition(true);if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition(true);renderAyah()});$('nextVerse').addEventListener('click',()=>{stopRecognition(true);if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{stopRecognition(true);if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
 </script></body></html>
