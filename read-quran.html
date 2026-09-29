@@ -306,7 +306,6 @@ body.night .viewer-frame{background:#17120e}body.night .mushaf-image{filter:brig
 @media(max-width:1180px){.reader-layout{grid-template-columns:210px minmax(0,1fr)}.info{display:none}.controls{grid-template-columns:1.2fr 1fr .8fr repeat(4,auto)}}
 @media(max-width:850px){.wrap{width:calc(100% - 28px)}.nav{height:76px}.links,.nav-right{display:none}.mobile-toggle{display:block;margin-left:auto;width:44px;height:44px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(15,12,10,.72);color:#fff;font-size:19px}.hero{padding:38px 0 20px}.hero p{font-size:14px}.controls{grid-template-columns:1fr 1fr;gap:7px;padding:10px;border-radius:18px}.field.page{grid-column:1/-1}.tool{min-width:0}.reader-layout{display:block;margin-top:10px}.side{display:none}.viewer-frame{border-radius:17px;min-height:0}.viewer-stage{height:calc(100vh - 285px);min-height:480px;padding:0;overflow:auto;touch-action:pan-y;align-items:flex-start}.mushaf-image{width:auto;max-width:100%;min-height:0;height:auto;max-height:100%;object-fit:contain;object-position:center top}.mushaf-fallback{height:100%;min-height:480px}.viewer-bottom{height:56px}.page-pill{min-width:105px}.note{margin-bottom:40px}.search-panel{margin-top:8px}.fullscreen .viewer-stage{height:calc(100vh - 102px)}}
 @media(max-width:520px){.logo{width:62px;height:62px;border-radius:13px}.logo b{font-size:16px}.logo span{font-size:12px}.hero h1{font-size:39px}.kicker{font-size:9px;letter-spacing:3px}.controls{grid-template-columns:1fr 1fr}.field.surah{grid-column:1/-1}.field.juz{grid-column:1}.field.page{grid-column:2}.tool{height:44px;font-size:10px}.tool.full{grid-column:1}.tool.night{grid-column:2}.viewer-top{height:40px}.viewer-stage{height:calc(100svh - 300px);min-height:430px;overflow:auto}.mushaf-image{max-height:100%;max-width:100%}.viewer-bottom{height:54px}.nav-btn{width:40px;height:38px}.page-pill{font-size:11px}.search-panel.open{flex-wrap:wrap}.search-panel input{flex-basis:100%}.search-panel button{flex:1}.note{font-size:9px}}
-
 .interactive-quran-nav{color:#f5b83d!important;font-weight:700!important;white-space:nowrap}.interactive-quran-nav::before{content:"✧";font-size:10px;margin-right:5px}.mobile-interactive-quran{color:#f5b83d!important;font-weight:700!important}
 </style>
 <style>
@@ -331,10 +330,34 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
   .hidaya-page-back{transition:none!important;}
 }
 
-</style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script></head>
+</style><script>(function(){try{if(sessionStorage.getItem('hidayaMotionDirection')==='back')document.documentElement.classList.add('hidaya-motion-back')}catch(e){}})();</script>
+<style>
+/* Clean, single responsive navigation for the Quran Reading page */
+.standalone-nav{position:relative;z-index:100}
+.nav{position:relative;gap:clamp(14px,2vw,28px)}
+.links{align-items:center;gap:clamp(12px,1.65vw,24px);flex-wrap:nowrap}
+.links a{white-space:nowrap}
+.mobile-nav{display:none;align-items:center;gap:8px;margin-left:auto}
+.mobile-nav button{width:42px;height:42px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(15,12,10,.9);color:#fff;font-size:17px}
+.lang-wrap,.mobile-lang{position:relative}
+.lang-menu,.mobile-lang-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;min-width:130px;padding:6px;border:1px solid rgba(245,184,61,.24);border-radius:13px;background:#100d0a;box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:120}
+.lang-menu.open,.mobile-lang-menu.open{display:grid;gap:4px}
+.lang-menu button,.mobile-lang-menu button{width:100%;height:38px;border:0;border-radius:8px;background:transparent;color:#fff;text-align:left;padding:0 10px;font-size:12px}
+.lang-menu button:hover,.mobile-lang-menu button:hover{background:rgba(245,184,61,.1);color:var(--gold)}
+.mobile-menu{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;z-index:110;padding:10px;border:1px solid rgba(245,184,61,.2);border-top:0;border-radius:0 0 16px 16px;background:rgba(13,11,9,.98);box-shadow:0 20px 45px rgba(0,0,0,.45);gap:4px}
+.mobile-menu.open{display:grid}
+.mobile-menu a{display:block;padding:12px 14px;border-radius:10px;color:rgba(255,255,255,.88);text-decoration:none;font-size:13px;font-weight:600}
+.mobile-menu a:hover,.mobile-menu .mobile-hifz{background:rgba(245,184,61,.08);color:var(--gold)}
+.mobile-menu .mobile-download{margin-top:4px;background:linear-gradient(135deg,var(--gold2),#efad2b);color:#1b1408;text-align:center}
+@media(max-width:1100px){.nav{gap:18px}.links{gap:13px}.links a{font-size:12px}.logo{flex:0 0 70px;width:70px;height:70px}}
+@media(max-width:850px){.nav{height:76px;gap:12px}.links,.nav-right{display:none!important}.mobile-nav{display:flex}.logo{width:62px;height:62px;flex:0 0 62px}.mobile-lang-menu{right:0}}
+@media(min-width:851px){.mobile-menu,.mobile-nav{display:none!important}}
+</style>
+
+</head>
 <body>
 <div class="bg"></div>
-<div class="standalone-nav"><div class="wrap"><header class="nav"><a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a><nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="hifz-nav" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="interactive-quran-nav" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav><div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div><div class="mobile-nav"><div class="mobile-lang"><button aria-label="Language" id="mobileLangToggle" type="button">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" id="mobileMenuToggle" type="button">☰</button></div><div aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="mobile-hifz" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="mobile-interactive-quran" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a><a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a></div></header></div></div><a aria-label="Back to Quran" class="hidaya-page-back" data-fallback="quran.html" data-hidaya-back="" href="quran.html">← <span>Back to Quran</span></a>
+<div class="standalone-nav"><div class="wrap"><header class="nav"><a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a><nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="hifz-nav" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="interactive-quran-nav" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav><div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div><div class="mobile-nav"><div class="mobile-lang"><button aria-label="Language" id="mobileLangToggle" type="button">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" id="mobileMenuToggle" type="button">☰</button></div><div aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="mobile-hifz" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="mobile-interactive-quran" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a><a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a></div></header></div></div>
 <main class="wrap">
 <section class="hero"><div class="kicker">QURAN READER</div><h1>Read the <span>Holy Quran</span></h1><p>A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.</p></section>
 <div aria-label="Mobile Quran reader controls" class="mobile-reader-bar">
@@ -419,23 +442,69 @@ function currentJuz(){let j=1;for(let i=0;i<juzPages.length;i++){if(juzPages[i]<
 function fillControls(){surahSelect.innerHTML=surahs.map((s,i)=>`<option value="${i+1}">${i+1}. ${s[0]} — ${s[1]}</option>`).join('');juzSelect.innerHTML=juzPages.map((p,i)=>`<option value="${i+1}">Juz ${i+1}</option>`).join('');surahList.innerHTML=surahs.map((s,i)=>`<button type="button" data-index="${i}"><em>${i+1}</em><span>${s[0]}</span><small>${s[1]}</small></button>`).join('');surahList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setPage(pageForSurah(Number(b.dataset.index)+1))))}
 function updateBookmark(){const marked=localStorage.getItem(BOOKMARK_KEY)===String(page);$('bookmarkBtn').classList.toggle('marked',marked);$('infoBookmark').textContent=marked?'Saved':'Not saved';if(typeof updateDrawerStates==='function')updateDrawerStates()}
 function toggleBookmark(){if(localStorage.getItem(BOOKMARK_KEY)===String(page)){localStorage.removeItem(BOOKMARK_KEY)}else{localStorage.setItem(BOOKMARK_KEY,String(page))}updateBookmark()}
-function imageUrl(p){return `https://cdn.quran.ws/svg/pages/v1.1.1/hafs-kfqc/${String(p).padStart(3,"0")}.svg`}
+function imageUrls(p){
+  const pageNo=String(p).padStart(3,'0');
+  // Try the high-resolution Hafs/KFQC SVG first, then a PNG mirror if the primary CDN is unavailable.
+  return [
+    `https://cdn.quran.ws/svg/pages/v1.1.1/hafs-kfqc/${pageNo}.svg`,
+    `https://cdn.islamic.network/quran/images/high-resolution/${p}.png`
+  ];
+}
 function fitMushafPage(){
   if(!image.naturalWidth || !image.naturalHeight)return;
   const stage=stageEl;
   const sw=Math.max(1,stage.clientWidth);
   const sh=Math.max(1,stage.clientHeight);
   const ratio=image.naturalWidth/image.naturalHeight;
-  const widthFit=sw;
-  const heightFit=sh;
-  const fitWidth=Math.min(widthFit,heightFit*ratio);
+  const fitWidth=Math.min(sw,sh*ratio);
   const fitHeight=fitWidth/ratio;
   image.style.width=fitWidth+'px';
   image.style.height=fitHeight+'px';
   image.style.maxWidth='100%';
   image.style.maxHeight='100%';
 }
-function loadPageImage(){const request=++imageRequest;loading.classList.remove('hidden');error.classList.remove('open');image.style.display='block';image.removeAttribute('src');image.onload=function(){if(request!==imageRequest)return;loading.classList.add('hidden');fitMushafPage()};image.onerror=function(){if(request!==imageRequest)return;loading.classList.add('hidden');error.classList.add('open');image.style.display='none'};image.src=imageUrl(page)}
+function loadPageImage(){
+  const request=++imageRequest;
+  const sources=imageUrls(page);
+  let sourceIndex=0;
+  let loadTimer;
+  loading.classList.remove('hidden');
+  error.classList.remove('open');
+  image.style.display='block';
+  image.removeAttribute('src');
+  const showError=()=>{
+    if(request!==imageRequest)return;
+    clearTimeout(loadTimer);
+    loading.classList.add('hidden');
+    image.style.display='none';
+    error.classList.add('open');
+  };
+  const tryNextSource=()=>{
+    if(request!==imageRequest)return;
+    clearTimeout(loadTimer);
+    if(sourceIndex>=sources.length){showError();return;}
+    image.src=sources[sourceIndex++];
+    // Some CDNs stall instead of returning an image error; move to the mirror after 12 seconds.
+    loadTimer=setTimeout(()=>{
+      if(request!==imageRequest)return;
+      if(sourceIndex<sources.length)tryNextSource();
+      else showError();
+    },12000);
+  };
+  image.onload=()=>{
+    if(request!==imageRequest)return;
+    clearTimeout(loadTimer);
+    loading.classList.add('hidden');
+    error.classList.remove('open');
+    image.style.display='block';
+    fitMushafPage();
+  };
+  image.onerror=()=>{
+    if(request!==imageRequest)return;
+    tryNextSource();
+  };
+  tryNextSource();
+}
 function openFallback(){const src=`https://alquran.cloud/mushaf/${page}`;window.open(src,'_blank','noopener,noreferrer')}
 function goNext(){if(page<TOTAL)setPage(page+1)}function goPrev(){if(page>1)setPage(page-1)}
 $('prevBtn').addEventListener('click',goPrev);$('nextBtn').addEventListener('click',goNext);$('infoPrev').addEventListener('click',goPrev);$('infoNext').addEventListener('click',goNext);pageInput.addEventListener('change',()=>setPage(pageInput.value));$('goPage').addEventListener('click',()=>setPage(pageInput.value));surahSelect.addEventListener('change',()=>setPage(pageForSurah(Number(surahSelect.value))));juzSelect.addEventListener('change',()=>setPage(juzPages[Number(juzSelect.value)-1]));$('bookmarkBtn').addEventListener('click',toggleBookmark);$('bookmarkInfo').addEventListener('click',toggleBookmark);$('fallbackBtn').addEventListener('click',openFallback);$('infoTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
@@ -479,8 +548,32 @@ $('drawerFullscreenBtn').addEventListener('click',()=>{closeReaderDrawer();$('fu
 mobilePageInput.addEventListener('change',()=>setPage(mobilePageInput.value));
 mobilePageInput.addEventListener('keydown',e=>{if(e.key==='Enter'){setPage(mobilePageInput.value);mobilePageInput.blur()}});
 
-$('mobileToggle').addEventListener('click',()=>{const open=document.querySelector('.mobile-menu');if(open)open.remove();else{const m=document.createElement('div');m.className='mobile-menu';m.style.cssText='position:fixed;top:82px;right:14px;left:14px;z-index:200;padding:10px;border:1px solid rgba(245,184,61,.2);border-radius:16px;background:#0d0b09;box-shadow:0 20px 50px rgba(0,0,0,.5);display:grid;gap:4px';m.innerHTML='<a href="index.html#about" style="color:#fff;text-decoration:none;padding:12px">About</a><a href="prayer-times.html" style="color:#fff;text-decoration:none;padding:12px">Prayer Times</a><a href="index.html#qibla" style="color:#fff;text-decoration:none;padding:12px">Qibla</a><a href="quran.html" style="color:#fff;text-decoration:none;padding:12px">Quran</a><a href="index.html#screenshots" style="color:#fff;text-decoration:none;padding:12px">Screenshots</a><a href="index.html#faq" style="color:#fff;text-decoration:none;padding:12px">FAQ</a>';document.body.appendChild(m)}});
-$('langBtn').addEventListener('click',()=>{const ar=document.documentElement.lang!=='ar';document.documentElement.lang=ar?'ar':'en';document.documentElement.dir=ar?'rtl':'ltr';$('langBtn').textContent=ar?'العربية⌄':'English⌄';document.querySelector('.hero p').textContent=ar?'تجربة هادئة وعالية الجودة لقراءة المصحف، مع تنقّل سريع بين الصفحات، واللمس، والحفظ، ووضع ملء الشاشة والوضع الليلي.':'A calm, high-quality Mushaf experience with fast page navigation, swipe-friendly reading, bookmarks, fullscreen and night mode.'});
+// One responsive navigation menu: reuse the existing markup instead of injecting duplicates.
+const mobileMenu=$('mobileMenu');
+const mobileMenuToggle=$('mobileMenuToggle');
+const closeMobileMenu=()=>{mobileMenu.classList.remove('open');mobileMenuToggle.setAttribute('aria-expanded','false');mobileMenuToggle.setAttribute('aria-label','Open menu');mobileMenuToggle.textContent='☰'};
+mobileMenuToggle.addEventListener('click',()=>{
+  const open=mobileMenu.classList.toggle('open');
+  mobileMenuToggle.setAttribute('aria-expanded',String(open));
+  mobileMenuToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+  mobileMenuToggle.textContent=open?'×':'☰';
+});
+mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileMenu));
+const langToggle=$('langToggle'),langMenu=$('langMenu'),mobileLangToggle=$('mobileLangToggle'),mobileLangMenu=$('mobileLangMenu');
+const closeLanguageMenus=()=>{langMenu.classList.remove('open');mobileLangMenu.classList.remove('open')};
+langToggle.addEventListener('click',()=>{langMenu.classList.toggle('open');mobileLangMenu.classList.remove('open')});
+mobileLangToggle.addEventListener('click',()=>{mobileLangMenu.classList.toggle('open');langMenu.classList.remove('open')});
+document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{
+  const language=button.dataset.lang;
+  document.documentElement.lang=language;
+  document.documentElement.dir=language==='ar'?'rtl':'ltr';
+  $('langLabel').textContent=language==='ar'?'العربية':'English';
+  closeLanguageMenus();
+}));
+document.addEventListener('click',event=>{
+  if(!event.target.closest('.lang-wrap')&&!event.target.closest('.mobile-lang'))closeLanguageMenus();
+  if(!event.target.closest('.nav')&&!event.target.closest('.mobile-menu'))closeMobileMenu();
+});
 fillControls();const urlPage=Number(new URLSearchParams(location.search).get('page'));if(urlPage)page=clamp(urlPage);setPage(page,false);
 })();
 </script>
