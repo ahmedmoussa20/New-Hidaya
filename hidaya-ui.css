@@ -15,7 +15,7 @@ button,a{touch-action:manipulation}
   outline-offset:3px;
 }
 a,button{transition-property:color,background-color,border-color,box-shadow,opacity,transform;transition-duration:.2s;transition-timing-function:var(--hidaya-motion)}
-.back,[data-hidaya-back]{
+.back,.back-icon,[data-hidaya-back]{
   display:inline-flex!important;align-items:center!important;justify-content:center!important;
   width:44px;min-width:44px;height:44px;min-height:44px;padding:0!important;
   border:1px solid rgba(245,196,81,.42)!important;border-radius:14px!important;
@@ -24,8 +24,8 @@ a,button{transition-property:color,background-color,border-color,box-shadow,opac
   text-decoration:none!important;box-shadow:0 5px 20px rgba(0,0,0,.16);
   cursor:pointer;flex:0 0 auto;
 }
-.back:hover,[data-hidaya-back]:hover{border-color:var(--hidaya-gold,#f5c451)!important;transform:translateY(-1px)}
-.back:active,[data-hidaya-back]:active{transform:scale(.96)}
+.back:hover,.back-icon:hover,[data-hidaya-back]:hover{border-color:var(--hidaya-gold,#f5c451)!important;transform:translateY(-1px)}
+.back:active,.back-icon:active,[data-hidaya-back]:active{transform:scale(.96)}
 /* Keep mobile content clear of device cutouts and the home indicator. */
 @supports(padding:max(0px)){
   body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
@@ -33,7 +33,7 @@ a,button{transition-property:color,background-color,border-color,box-shadow,opac
 @media(max-width:760px){
   html{scroll-padding-top:72px}
   input,select,textarea{font-size:16px}
-  .back,[data-hidaya-back]{width:44px;min-width:44px;height:44px;min-height:44px;border-radius:13px!important}
+  .back,.back-icon,[data-hidaya-back]{width:44px;min-width:44px;height:44px;min-height:44px;border-radius:13px!important}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto!important}
