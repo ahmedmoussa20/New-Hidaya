@@ -1,4 +1,4 @@
-/* Hidaya shared navigation helpers. Deliberately leaves feature/audio logic untouched. */
+/* Shared navigation helper. Only controls explicitly marked for shared back behavior are intercepted. */
 (function(){
   "use strict";
   function sameOriginReferrer(){
@@ -6,19 +6,11 @@
     catch(_){return false;}
   }
   document.addEventListener("click",function(event){
-    const control=event.target && event.target.closest
-      ? event.target.closest("a.back,button.back,[data-hidaya-back],#backBtn")
-      : null;
-    if(!control)return;
-    // Respect controls explicitly marked as non-navigation.
-    if(control.hasAttribute("data-hidaya-no-back"))return;
+    const control=event.target && event.target.closest ? event.target.closest("[data-hidaya-back]") : null;
+    if(!control || control.hasAttribute("data-hidaya-no-back"))return;
     event.preventDefault();
-    event.stopImmediatePropagation();
-    const fallback=control.getAttribute("data-fallback") || control.getAttribute("href") || "index.html";
-    if(sameOriginReferrer() && history.length>1){
-      history.back();
-    }else{
-      location.href=fallback;
-    }
-  },true);
+    const fallback=control.getAttribute("data-fallback") || "index.html";
+    if(sameOriginReferrer() && history.length>1) history.back();
+    else location.href=fallback;
+  });
 })();
