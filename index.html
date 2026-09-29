@@ -1467,5 +1467,15 @@ body.rtl .quran-search input{text-align:right}
 <h2 data-i18n="faq_title" style="font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,58px);margin:0 0 15px">Frequently Asked Questions</h2>
 <p data-i18n="faq_text" style="color:rgba(255,255,255,.58);line-height:1.7">Have a question about Hidaya? We are preparing the full FAQ experience here.</p>
 </div>
-</section></body>
+</section><script>
+/* Register Hidaya's same-origin cache; safe no-op in unsupported browsers. */
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function (error) {
+      console.warn("Hidaya offline cache could not be registered:", error);
+    });
+  }, { once: true });
+}
+</script>
+</body>
 </html>
