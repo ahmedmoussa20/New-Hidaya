@@ -170,11 +170,131 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--iq-gold);outline-of
 }
 @media (prefers-reduced-motion:reduce){#practiceView *,#surahView *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+
+/* Responsive premium UI refresh — scoped to this page to avoid regressions */
+:root{color-scheme:dark}
+html{min-height:100%;scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiased}
+.app{width:100%;max-width:1600px;min-height:100vh;min-height:100svh;margin-inline:auto;border-inline:1px solid rgba(231,188,72,.14);background:radial-gradient(ellipse at 50% -12%,rgba(210,163,51,.11),transparent 42%),#060706}
+.top{position:sticky;top:0;z-index:20;min-height:68px;padding:12px clamp(14px,3vw,38px);gap:12px;background:rgba(7,8,7,.9);border-bottom:1px solid rgba(229,186,71,.15);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.brand{font-size:clamp(19px,2vw,24px);white-space:nowrap}
+.back{width:42px;height:42px;min-width:42px;border-radius:13px;touch-action:manipulation}
+.main{width:100%;max-width:1480px;margin-inline:auto;padding:clamp(14px,2.5vw,34px)}
+.workspace{width:100%;min-width:0}
+#surahView,#practiceView{min-width:0}
+#surahView .hero{padding:clamp(12px,2vw,22px) 0 10px}
+#surahView .hero h1{font-size:clamp(29px,4vw,43px);line-height:1.35}
+#surahView .hero p{font-size:clamp(13px,1.5vw,16px);line-height:1.9}
+.surah-tools{display:flex;align-items:center;gap:10px;margin:0 0 16px;min-width:0}
+.surah-search{display:flex;align-items:center;gap:8px;flex:1;min-width:0;min-height:46px;padding:0 13px;border:1px solid rgba(238,194,83,.22);border-radius:14px;background:rgba(255,255,255,.035);color:#e7c86d}
+.surah-search span{font-size:25px;line-height:1}
+.surah-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font:inherit;font-size:14px}
+.surah-search input::placeholder{color:#8e8a7e}
+.surah-filters{display:flex;gap:5px;flex-shrink:0;padding:4px;border:1px solid rgba(238,194,83,.16);border-radius:13px;background:#0c0e0c}
+.surah-filter{min-height:36px;padding:7px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:#bdb8aa;font:inherit;font-size:12px;touch-action:manipulation}
+.surah-filter.active{background:linear-gradient(135deg,#ffe6a0,#e6b43a);color:#17130a;font-weight:800}
+.surah-filter:focus-visible,.surah-search:focus-within,.btn:focus-visible,.mic:focus-visible,.verse-pill:focus-visible{outline:2px solid #f4cf6d;outline-offset:3px}
+.surah-empty{padding:22px 12px;text-align:center;color:#b8b1a0;border:1px dashed rgba(238,194,83,.2);border-radius:14px}
+.surah-card{min-width:0;touch-action:manipulation}
+.surah-copy{min-width:0}
+.surah-copy strong{overflow-wrap:anywhere}
+#practiceView .practice-hero h1{font-size:clamp(27px,3.2vw,40px);line-height:1.35}
+#practiceView .practice-hero p{line-height:1.85}
+#practiceView .practice-layout{min-width:0}
+#practiceView .verse-workspace,#practiceView .practice-tools{min-width:0;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+#practiceView .verse-text{font-size:clamp(27px,3.3vw,42px);line-height:2.1;overflow-wrap:break-word;word-break:normal}
+#practiceView .verse-translation{line-height:1.8;overflow-wrap:anywhere}
+#practiceView .verse-controls .btn,#practiceView .tool-controls .btn{touch-action:manipulation;min-width:0}
+#practiceView .recognized{min-width:0;overflow-wrap:anywhere}
+#practiceView .recognized>span{max-width:100%;overflow-wrap:anywhere}
+#practiceView .status{overflow-wrap:anywhere}
+.hidden{display:none!important}
+@media(min-width:1100px){
+ .app:not(.practice-active) #surahView{max-width:1080px;margin-inline:auto}
+ .app:not(.practice-active) #surahView .surah-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .app.practice-active .workspace{grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:22px}
+ .app.practice-active #surahView{max-height:calc(100svh - 105px);top:86px}
+ .app.practice-active #practiceView .practice-layout{grid-template-columns:minmax(0,1.5fr) minmax(255px,.78fr);gap:18px}
+}
+@media(min-width:768px) and (max-width:1099px){
+ .app:not(.practice-active) #surahView .surah-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .app.practice-active .workspace{display:block}
+ .app.practice-active #surahView{display:none!important}
+ .app.practice-active #practiceView .practice-layout{grid-template-columns:minmax(0,1.25fr) minmax(235px,.8fr);gap:14px}
+ .app.practice-active #practiceView .verse-text{font-size:clamp(27px,3.6vw,36px)}
+}
+@media(max-width:767px){
+ .app{border-inline:0}
+ .top{min-height:60px;padding:9px 13px}
+ .main{padding:16px 12px calc(22px + env(safe-area-inset-bottom))}
+ #surahView .hero{padding:9px 0 10px;text-align:center}
+ #surahView .hero h1{font-size:30px;margin:5px 0}
+ #surahView .hero p{max-width:380px;margin-inline:auto;font-size:13px;line-height:1.8}
+ #surahView .progress{margin:12px 0 20px}
+ #surahView .section-label{gap:8px;align-items:center}
+ .surah-tools{flex-direction:column;align-items:stretch;gap:9px;margin-bottom:12px}
+ .surah-search{min-height:46px;width:100%}
+ .surah-filters{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ .surah-filter{min-width:0;padding:7px 5px}
+ #surahView .surah-list{grid-template-columns:minmax(0,1fr);gap:8px}
+ #surahView .surah-card{grid-template-columns:36px minmax(0,1fr) 27px;gap:10px;min-height:66px;padding:10px 11px}
+ #surahView .surah-copy small{display:block;overflow-wrap:anywhere;line-height:1.5}
+ #practiceView:not(.hidden){width:100%;min-width:0}
+ #practiceView .practice-hero{text-align:center;margin:0 0 12px}
+ #practiceView .practice-hero h1{font-size:clamp(26px,7vw,32px);margin:4px 0}
+ #practiceView .practice-hero p{font-size:13px;line-height:1.75;padding-inline:4px;margin-inline:auto}
+ #practiceView .surah-banner{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 12px;margin-bottom:11px;min-height:54px}
+ #practiceView .surah-banner h2{font-size:clamp(18px,5vw,22px);white-space:normal}
+ #practiceView .surah-banner small{font-size:10px;white-space:nowrap}
+ #practiceView .practice-layout{display:flex!important;flex-direction:column;gap:11px;width:100%}
+ #practiceView .verse-workspace,#practiceView .practice-tools{width:100%;padding:12px;border-radius:16px}
+ #practiceView .section-label{font-size:14px;margin-bottom:9px}
+ #practiceView .section-label small{font-size:11px}
+ #practiceView .verse-pills{gap:8px;padding-bottom:11px;scroll-snap-type:x proximity}
+ #practiceView .verse-pill{flex:0 0 39px;width:39px;height:39px;scroll-snap-align:start}
+ #practiceView .verse-box{min-height:135px;padding:22px 10px 18px}
+ #practiceView .verse-text{font-size:clamp(25px,7.1vw,33px);line-height:2.1}
+ #practiceView .verse-translation{font-size:11px;line-height:1.75}
+ #practiceView .verse-controls,#practiceView .tool-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #practiceView .btn{min-height:46px;padding:9px 6px;font-size:12px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
+ #practiceView .practice-tools{padding:12px;background:linear-gradient(150deg,#141711,#0a0c0a)}
+ #practiceView .tools-title{text-align:center;font-size:16px;padding-bottom:9px}
+ #practiceView .mic-wrap{padding:15px 0 10px}
+ #practiceView .mic{width:88px;height:88px;font-size:29px}
+ #practiceView .mic-label{font-size:12px;line-height:1.6;margin-top:9px}
+ #practiceView .status{font-size:12px;line-height:1.8;padding:10px;margin-top:10px}
+ #practiceView .tool-note,#practiceView .practice-footnote{font-size:10px;line-height:1.8}
+ #practiceView .recognized{display:flex;flex-wrap:wrap;gap:6px;font-size:19px;line-height:1.9}
+ #practiceView .recognized>span{padding:2px 6px}
+ #practiceView .recognized small{font-size:10px!important}
+ #practiceView .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:10px}
+ #practiceView .legend span{font-size:10px;padding:6px 7px;gap:5px}
+ #practiceView .dot{width:8px;height:8px;flex-basis:8px}
+}
+@media(max-width:360px){
+ .main{padding-inline:9px}
+ #surahView .surah-card{grid-template-columns:32px minmax(0,1fr) 23px;gap:7px;padding:9px}
+ #surahView .surah-copy strong{font-size:16px}
+ #practiceView .verse-workspace,#practiceView .practice-tools{padding:10px}
+ #practiceView .verse-text{font-size:clamp(23px,7vw,27px);line-height:2.05}
+ #practiceView .btn{font-size:11px;padding-inline:4px}
+ #practiceView .legend span{font-size:9px;padding:5px 6px}
+}
+@media(orientation:landscape) and (max-height:520px) and (max-width:950px){
+ .top{position:relative}
+ #practiceView .mic{width:68px;height:68px}
+ #practiceView .mic-wrap{padding:8px 0}
+ #practiceView .practice-layout{gap:9px}
+}
+@media(prefers-reduced-motion:reduce){.surah-card,#practiceView *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
 </style></head>
 <body><div class="app">
 <header class="top"><a class="brand" href="index.html">Hidaya <span>هداية</span></a><button class="back" id="backBtn" aria-label="رجوع">‹</button></header>
 <main class="main"><div class="workspace">
-<section id="surahView"><div class="hero"><div class="eyebrow">HIDAYA · LEARN & RECITE</div><h1>القرآن التفاعلي</h1><p>اقرأ من حفظك، واستمع إلى تلاوتك وراجع الكلمات التي تحتاج إلى مراجعة.</p></div><div class="progress"><i></i></div><div class="section-label"><span>اختر السورة</span><small>سورة واحدة متاحة حاليًا</small></div><div class="surah-list" id="surahList"></div><p class="footnote">ابدأ بسورة الفاتحة، وسيتم إتاحة باقي السور تدريجيًا.</p></section>
+<section id="surahView"><div class="hero"><div class="eyebrow">HIDAYA · LEARN & RECITE</div><h1>القرآن التفاعلي</h1><p>اقرأ من حفظك، واستمع إلى تلاوتك وراجع الكلمات التي تحتاج إلى مراجعة.</p></div><div class="progress"><i></i></div><div class="section-label"><span>اختر السورة</span><small>سورة واحدة متاحة حاليًا</small></div>
+<div class="surah-tools" dir="rtl"><label class="surah-search"><span aria-hidden="true">⌕</span><input id="surahSearch" type="search" placeholder="ابحث عن سورة..." autocomplete="off" aria-label="ابحث عن سورة" /></label><div class="surah-filters" role="group" aria-label="تصفية السور"><button type="button" class="surah-filter active" data-filter="all" aria-pressed="true">الكل</button><button type="button" class="surah-filter" data-filter="available" aria-pressed="false">متاحة</button><button type="button" class="surah-filter" data-filter="locked" aria-pressed="false">مقفولة</button></div></div>
+<div class="surah-list" id="surahList" aria-live="polite"></div><p class="surah-empty hidden" id="surahEmpty">لا توجد سورة مطابقة لبحثك.</p><p class="footnote">ابدأ بسورة الفاتحة، وسيتم إتاحة باقي السور تدريجيًا.</p></section>
 <section id="practiceView" class="hidden"><div class="hero practice-hero"><div class="eyebrow">HIDAYA · RECITATION PRACTICE</div><h1>القرآن التفاعلي</h1><p>اقرأ الآية من حفظك، ثم راجع نتيجة التعرّف على الكلمات.</p></div><div class="surah-banner"><small>سورة رقم ١ · ٧ آيات</small><h2>سورة الفاتحة</h2></div><div class="practice-layout"><div class="verse-workspace"><div class="section-label"><span>اختر الآية</span><small id="verseCounter">الآية 1 من 7</small></div><div class="verse-pills" id="versePills"></div><div class="verse-box"><div id="verseText" class="verse-text"></div><div id="versePlaceholder" class="verse-hidden hidden">النص مخفي — جرّب القراءة من حفظك</div><div id="verseTranslation" class="verse-translation"></div></div><div class="controls verse-controls"><button class="btn" id="toggleText">◉ إخفاء الآية</button><button class="btn" id="playVerse">▶ استمع للآية</button></div><div class="result hidden" id="resultBox"><h3>مراجعة الكلمات</h3><div class="recognized" id="recognizedText"></div><div class="legend"><span><i class="dot" style="background:#79d58c"></i>مطابقة للنص</span><span><i class="dot" style="background:#ff7979"></i>اختلاف محتمل</span><span><i class="dot" style="background:#ffcf69"></i>لم تُلتقط</span></div></div></div><aside class="practice-tools"><div class="tools-title">أدوات التسميع</div><div class="mic-wrap"><button class="mic" id="micBtn" aria-label="ابدأ التسجيل">🎙</button><div class="mic-label" id="micLabel">اضغط لبدء التلاوة</div></div><div class="controls tool-controls"><button class="btn" id="resetBtn">إعادة المحاولة ↻</button><button class="btn primary" id="nextVerse">الآية التالية ←</button></div><div class="status" id="statusBox" role="status">اقرأ الآية من حفظك، ثم اضغط زر الميكروفون لمراجعة الكلمات.</div><div class="tool-note">المراجعة الصوتية أولية وقد تتأثر بجودة الصوت والمتصفح.</div></aside></div><p class="footnote practice-footnote">ملاحظة: هذه نسخة أولية تستخدم التعرف الصوتي المتاح في المتصفح، وقد يخطئ في الكلمات القرآنية. لا تقيّم أحكام التجويد أو مخارج الحروف.</p></section>
 </div></main></div>
 <div class="lock-overlay" id="lockOverlay" role="dialog" aria-modal="true" aria-labelledby="lockTitle"><div class="lock-sheet"><div class="lock-handle"></div><button class="lock-close" id="closeLock" aria-label="إغلاق">×</button><div class="lock-hero"><div class="lock-symbol">♙</div></div><div class="lock-copy"><span class="lock-eyebrow">HIDAYA · هداية</span><h3 id="lockTitle">افتح رحلتك مع القرآن</h3><p>سورة الفاتحة متاحة الآن في القرآن التفاعلي. سيتم فتح باقي السور في التحديثات القادمة.</p></div><div class="lock-store-grid"><a class="lock-store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener"><span>●</span><span class="store-label"><small>حمّل الآن من</small><b>App Store</b><em>iPhone</em></span></a><a class="lock-store" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener"><span>▶</span><span class="store-label"><small>متاح على</small><b>Google Play</b><em>Android</em></span></a></div><div class="lock-features"><div class="lock-feature"><span>♫</span><b>استمع للقرآن</b><small>بصوت القراء</small></div><div class="lock-feature"><span>✦</span><b>تدرّب يوميًا</b><small>آية بآية</small></div><div class="lock-feature"><span>✓</span><b>راجع حفظك</b><small>خطوة بخطوة</small></div><div class="lock-feature"><span>🔒</span><b>سور قادمة</b><small>قريبًا</small></div></div><div class="lock-footer">✧ ابدأ رحلتك مع القرآن مع هداية ✧</div></div></div><div class="toast" id="toast"></div>
@@ -193,7 +313,9 @@ const ayahs=[
 ];
 const $=id=>document.getElementById(id);let currentAyah=0,recognition=null,isRecording=false,showText=true,lastTranscript='',audio=null;
 const normalize=s=>s.normalize('NFD').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/[^\u0621-\u064A\s]/g,' ').replace(/\s+/g,' ').trim();
-function renderSurahs(){ $('surahList').innerHTML=SURAHS.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahList').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>Number(b.dataset.num)===1?openPractice():openLock()));}
+let surahFilter='all';
+function renderSurahs(){const q=($('surahSearch')?.value||'').trim().toLocaleLowerCase('ar');const filtered=SURAHS.filter(([n,ar,en])=>{const matchesQuery=!q||String(n).includes(q)||ar.toLocaleLowerCase('ar').includes(q)||en.toLocaleLowerCase('en').includes(q);const matchesFilter=surahFilter==='all'||(surahFilter==='available'?n===1:n!==1);return matchesQuery&&matchesFilter;});$('surahList').innerHTML=filtered.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahEmpty').classList.toggle('hidden',filtered.length!==0);$('surahList').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>Number(b.dataset.num)===1?openPractice():openLock()));}
+function setSurahFilter(filter){surahFilter=filter;document.querySelectorAll('.surah-filter').forEach(btn=>{const active=btn.dataset.filter===filter;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});renderSurahs();}
 function openPractice(){ document.querySelector('.app').classList.add('practice-active');$('surahView').classList.add('hidden');$('practiceView').classList.remove('hidden');renderPills();renderAyah();window.scrollTo({top:0,behavior:'smooth'});}
 function openLock(){ $('lockOverlay').classList.add('show');}
 function closeLock(){ $('lockOverlay').classList.remove('show');}
@@ -203,5 +325,5 @@ function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('sho
 function stopRecognition(){if(recognition){try{recognition.stop()}catch(e){}}isRecording=false;$('micBtn').classList.remove('recording');$('micBtn').textContent='🎙';$('micLabel').textContent='اضغط لبدء التلاوة';}
 function compareWords(transcript){const target=normalize(ayahs[currentAyah][0]).split(' '),heard=normalize(transcript).split(' ');let html='';const max=Math.max(target.length,heard.length);for(let i=0;i<max;i++){if(i>=heard.length)html+=`<span class="word-missing" title="لم تُلتقط هذه الكلمة">${target[i]}</span> `;else if(i>=target.length)html+=`<span class="word-wrong" title="كلمة إضافية التقطها المتصفح">${heard[i]}</span> `;else if(target[i]===heard[i])html+=`<span class="word-correct" title="مطابقة للنص">${heard[i]}</span> `;else html+=`<span class="word-wrong" title="الكلمة المتوقعة: ${target[i]}">${heard[i]} <small style="display:block;font:11px Amiri,serif;color:#ffe5a0;text-decoration:none">المتوقع: ${target[i]}</small></span> `;}return html.trim();}
 function startRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('statusBox').textContent='المتصفح الحالي لا يدعم التعرف على الكلام. جرّب Chrome على جهاز مدعوم أو استخدم الاستماع والمراجعة اليدوية.';return;}recognition=new SR();recognition.lang='ar-SA';recognition.continuous=true;recognition.interimResults=true;lastTranscript='';recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)lastTranscript+=` ${t}`;else interim+=t;}$('statusBox').textContent=lastTranscript.trim()||interim?`تم التقاط: ${(lastTranscript+' '+interim).trim()}`:'أستمع إليك…';};recognition.onerror=e=>{$('statusBox').textContent=e.error==='not-allowed'?'لم يتم السماح باستخدام الميكروفون. فعّل الإذن من إعدادات المتصفح.':'تعذر التعرف على التلاوة في هذه المحاولة. حاول مرة أخرى في مكان هادئ.';stopRecognition();};recognition.onend=()=>{const heard=lastTranscript.trim();if(heard){$('recognizedText').innerHTML=compareWords(heard);$('resultBox').classList.remove('hidden');$('statusBox').textContent='انتهت المراجعة الأولية. راجع الكلمات الملوّنة؛ قد تكون بعض الفروق بسبب التعرف الصوتي.';}stopRecognition();};try{recognition.start();isRecording=true;$('micBtn').classList.add('recording');$('micBtn').textContent='■';$('micLabel').textContent='جارٍ الاستماع… اضغط للإيقاف';$('statusBox').textContent='جارٍ الاستماع. اقرأ الآية بوضوح ثم اضغط زر الميكروفون للإيقاف.';}catch(e){$('statusBox').textContent='تعذر بدء الميكروفون. حاول إعادة تحميل الصفحة والسماح بالوصول للميكروفون.';}}
-$('surahList');$('closeLock').addEventListener('click',closeLock);$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock()});$('backBtn').addEventListener('click',()=>{if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition();renderAyah()});$('nextVerse').addEventListener('click',()=>{if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
+$('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));$('closeLock').addEventListener('click',closeLock);$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock()});$('backBtn').addEventListener('click',()=>{if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition();renderAyah()});$('nextVerse').addEventListener('click',()=>{if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
 </script></body></html>
