@@ -416,23 +416,24 @@ button,a{-webkit-tap-highlight-color:transparent}
 }
 
 /* =========================
-   QIBLA AR CAMERA
+   QIBLA DIGITAL COMPASS
    ========================= */
 .qibla-feature-action{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;border-radius:999px;border:1px solid rgba(245,184,61,.35);background:rgba(245,184,61,.06);color:var(--gold);font:700 12px "DM Sans",Arial,sans-serif;cursor:pointer;transition:.2s ease}
 .qibla-feature-action:hover{background:rgba(245,184,61,.12);border-color:rgba(245,184,61,.62);transform:translateY(-1px)}
 .qibla-modal{position:fixed;inset:0;z-index:9999;display:none;background:#050403;color:#fff}
 .qibla-modal.open{display:block}
-.qibla-camera{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#090807}
-.qibla-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.06) 35%,rgba(0,0,0,.18) 65%,rgba(0,0,0,.82));pointer-events:none}
+.qibla-shade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(245,184,61,.075),transparent 40%),linear-gradient(180deg,#0b0907,#050403 72%);pointer-events:none}
 .qibla-top{position:absolute;top:0;left:0;right:0;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;z-index:3}
 .qibla-top-copy small{display:block;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px}.qibla-top-copy strong{font-family:"Playfair Display",Georgia,serif;font-size:25px}.qibla-close{width:44px;height:44px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(10,9,8,.62);color:#fff;font-size:25px;cursor:pointer;backdrop-filter:blur(10px)}
 .qibla-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(340px,78vw);text-align:center;z-index:3;pointer-events:none}
-.qibla-ring{width:min(250px,58vw);aspect-ratio:1;margin:0 auto 22px;border:1px solid rgba(245,184,61,.34);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(245,184,61,.08),rgba(0,0,0,.08) 58%,rgba(0,0,0,.28));box-shadow:0 0 0 18px rgba(245,184,61,.025),0 0 55px rgba(245,184,61,.12)}
+.qibla-ring{width:min(270px,68vw);aspect-ratio:1;margin:0 auto 18px;border:1px solid rgba(245,184,61,.42);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(245,184,61,.10),rgba(0,0,0,.08) 58%,rgba(0,0,0,.28));box-shadow:0 0 0 12px rgba(245,184,61,.025),0 0 45px rgba(245,184,61,.10)}
 .qibla-ring:before,.qibla-ring:after{content:"";position:absolute;inset:14px;border:1px dashed rgba(245,184,61,.24);border-radius:50%}.qibla-ring:after{inset:31px;border-style:solid;border-color:rgba(255,255,255,.08)}
 .qibla-arrow{width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:78px solid var(--gold);filter:drop-shadow(0 0 14px rgba(245,184,61,.65));transform-origin:50% 82%;transition:transform .08s linear;position:relative}.qibla-arrow:after{content:"";position:absolute;left:-6px;top:58px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.75)}
-.qibla-direction{font-size:14px;color:rgba(255,255,255,.76)}.qibla-direction strong{display:block;color:#fff;font-size:18px;margin-top:4px}.qibla-status{margin-top:8px;color:rgba(255,255,255,.52);font-size:12px;line-height:1.5}.qibla-status.error{color:#ffb2a8}
+.qibla-direction{font-size:13px;color:rgba(255,255,255,.68)}.qibla-direction strong{display:block;color:var(--gold);font-size:22px;margin-top:4px}.qibla-status{margin:12px auto 0;max-width:300px;padding:10px 13px;border:1px solid rgba(245,184,61,.18);border-radius:13px;background:rgba(255,255,255,.025);color:rgba(255,255,255,.72);font-size:13px;line-height:1.55}.qibla-status.error{color:#ffb2a8;border-color:rgba(255,120,100,.35)}.qibla-status.aligned{color:#7df0ad;border-color:rgba(47,211,113,.65);background:rgba(22,120,63,.16);box-shadow:0 0 24px rgba(22,180,86,.12)}.qibla-modal:has(.qibla-status.aligned) .qibla-ring{border-color:#28d979;box-shadow:0 0 0 12px rgba(40,217,121,.06),0 0 42px rgba(40,217,121,.18)}.qibla-tip{display:block;color:rgba(255,255,255,.55);font-size:11px;line-height:1.55;margin-top:8px}
 .qibla-bottom{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:3;width:min(560px,calc(100% - 32px));padding:15px 18px;border:1px solid rgba(245,184,61,.22);border-radius:18px;background:rgba(9,8,7,.72);backdrop-filter:blur(16px);text-align:center}.qibla-bottom small{display:block;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:1.6px;text-transform:uppercase}.qibla-bottom strong{display:block;color:var(--gold);font-size:15px;margin-top:4px}.qibla-note{display:block;color:rgba(255,255,255,.42);font-size:10px;margin-top:7px}
-@media(max-width:600px){.qibla-top{padding:16px}.qibla-top-copy strong{font-size:21px}.qibla-center{top:48%}.qibla-ring{margin-bottom:17px}.qibla-bottom{bottom:14px;padding:13px 14px}.qibla-arrow{border-left-width:14px;border-right-width:14px;border-bottom-width:65px}}
+@media(max-width:600px){.qibla-top{padding:calc(14px + env(safe-area-inset-top)) 16px 12px}.qibla-top-copy strong{font-size:21px}.qibla-center{top:47%;width:min(340px,calc(100vw - 28px))}.qibla-ring{width:min(250px,64vw);margin-bottom:15px}.qibla-bottom{bottom:calc(12px + env(safe-area-inset-bottom));padding:12px 14px}.qibla-arrow{border-left-width:14px;border-right-width:14px;border-bottom-width:65px}.qibla-direction strong{font-size:20px}.qibla-status{font-size:12px;padding:9px 10px}}
+@media(max-height:700px){.qibla-center{top:46%}.qibla-ring{width:min(210px,52vw);margin-bottom:10px}.qibla-arrow{border-bottom-width:58px}.qibla-bottom{padding:9px 12px}.qibla-note{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.qibla-arrow{transition:none}}
 
 
 /* =========================
@@ -745,24 +746,24 @@ body.rtl .quran-search input{text-align:right}
      ========================= -->
 
 <!-- =========================
-     QIBLA AR CAMERA
+     QIBLA DIGITAL COMPASS (NO CAMERA)
      ========================= -->
-<div aria-hidden="true" class="qibla-modal" id="qiblaModal">
-<video autoplay="" class="qibla-camera" id="qiblaCamera" muted="" playsinline=""></video>
+<div aria-hidden="true" class="qibla-modal" id="qiblaModal" role="dialog" aria-modal="true" aria-labelledby="qiblaTitle">
 <div class="qibla-shade"></div>
 <div class="qibla-top">
-<div class="qibla-top-copy"><small>QIBLA</small><strong>Find Your Direction</strong></div>
-<button aria-label="Close Qibla" class="qibla-close" id="closeQibla" type="button">×</button>
+  <div class="qibla-top-copy"><small>HIDAYA · QIBLA</small><strong id="qiblaTitle">Find Your Direction</strong></div>
+  <button aria-label="Close Qibla" class="qibla-close" id="closeQibla" type="button">×</button>
 </div>
 <div class="qibla-center">
-<div class="qibla-ring"><div aria-hidden="true" class="qibla-arrow" id="qiblaArrow"></div></div>
-<div class="qibla-direction">Qibla bearing <strong id="qiblaBearing">--°</strong></div>
-<div class="qibla-status" id="qiblaStatus">Allow camera, location and motion access to use the live Qibla compass.</div>
+  <div class="qibla-ring" aria-label="Live Qibla direction indicator"><div aria-hidden="true" class="qibla-arrow" id="qiblaArrow"></div></div>
+  <div class="qibla-direction"><span id="qiblaBearingLabel">Qibla direction</span><strong id="qiblaBearing">--°</strong></div>
+  <div class="qibla-status" id="qiblaStatus" role="status" aria-live="polite">Allow location and compass access to find the Qibla.</div>
+  <span class="qibla-tip" id="qiblaTip">Hold your phone flat with the screen facing up, then rotate slowly.</span>
 </div>
 <div class="qibla-bottom">
-<small>Location</small>
-<strong id="qiblaLocation">Finding your location…</strong>
-<span class="qibla-note">Hold your phone upright and slowly rotate until the gold arrow points straight ahead.</span>
+  <small id="qiblaLocationLabel">LOCATION</small>
+  <strong id="qiblaLocation">Waiting for location permission…</strong>
+  <span class="qibla-note" id="qiblaAccuracyNote">Compass accuracy can vary by device. Move away from metal objects if the direction is unstable.</span>
 </div>
 </div>
 <!-- =========================
@@ -842,100 +843,166 @@ body.rtl .quran-search input{text-align:right}
 </script>
 <script>
 (function(){
+  'use strict';
   const openBtn=document.getElementById('openQibla');
   const modal=document.getElementById('qiblaModal');
   const closeBtn=document.getElementById('closeQibla');
-  const video=document.getElementById('qiblaCamera');
   const arrow=document.getElementById('qiblaArrow');
   const bearingEl=document.getElementById('qiblaBearing');
+  const bearingLabel=document.getElementById('qiblaBearingLabel');
   const statusEl=document.getElementById('qiblaStatus');
   const locationEl=document.getElementById('qiblaLocation');
-  if(!openBtn||!modal) return;
+  const titleEl=document.getElementById('qiblaTitle');
+  const tipEl=document.getElementById('qiblaTip');
+  const locationLabel=document.getElementById('qiblaLocationLabel');
+  const accuracyNote=document.getElementById('qiblaAccuracyNote');
+  if(!openBtn||!modal||!arrow||!statusEl) return;
 
   const KAABA={lat:21.422487,lon:39.826206};
-  let stream=null, heading=null, qiblaBearing=null, watchId=null, orientationHandler=null;
-
+  const copy={
+    en:{title:'Find Your Direction',bearing:'Qibla direction',locLabel:'LOCATION',locWait:'Waiting for location permission…',locFound:'Location detected',statusStart:'Finding your location and starting the compass…',statusRotate:'Rotate your phone slowly until the arrow points straight ahead.',statusAligned:'You are facing the Qibla',statusNoAbsolute:'Your browser is not providing a reliable compass heading. Try Chrome on Android, check sensor permissions, and move away from magnetic objects.',statusNoSensor:'This device or browser does not provide compass data. Try an updated mobile browser on a device with a compass sensor.',statusNoSecure:'For privacy and sensor access, open this page over HTTPS.',statusLocationDenied:'Location permission was denied. Allow location access in your browser settings and try again.',statusLocationUnavailable:'Could not determine your location. Check location services and try again.',statusOrientationDenied:'Compass permission was denied. Allow motion/orientation access and try again.',statusFailed:'The compass could not start. Close this screen and try again.',tip:'Hold your phone flat with the screen facing up, then rotate slowly.',accuracy:'Compass accuracy varies by device. If the direction jumps, move away from metal objects and gently move the phone in a figure-eight to calibrate it.',retry:'Please allow location and compass access to continue.'},
+    ar:{title:'حدد اتجاه القبلة',bearing:'اتجاه القبلة',locLabel:'الموقع',locWait:'في انتظار إذن تحديد الموقع…',locFound:'تم تحديد موقعك',statusStart:'جارٍ تحديد موقعك وتشغيل البوصلة…',statusRotate:'أدر الهاتف ببطء حتى يشير السهم إلى الأمام.',statusAligned:'أنت باتجاه القبلة',statusNoAbsolute:'المتصفح لا يوفّر اتجاه بوصلة موثوقًا حاليًا. جرّب Chrome على أندرويد، وتأكد من أذونات المستشعرات وابتعد عن الأجسام المغناطيسية.',statusNoSensor:'هذا الجهاز أو المتصفح لا يوفّر بيانات البوصلة. جرّب متصفحًا حديثًا على هاتف يحتوي على مستشعر بوصلة.',statusNoSecure:'للوصول الآمن إلى الموقع والمستشعرات، افتح الصفحة عبر HTTPS.',statusLocationDenied:'تم رفض إذن الموقع. اسمح بالوصول إلى الموقع من إعدادات المتصفح ثم حاول مرة أخرى.',statusLocationUnavailable:'تعذّر تحديد موقعك. تحقق من خدمات الموقع ثم حاول مرة أخرى.',statusOrientationDenied:'تم رفض إذن البوصلة. اسمح بالوصول إلى مستشعرات الحركة والاتجاه ثم حاول مرة أخرى.',statusFailed:'تعذّر تشغيل البوصلة. أغلق هذه الشاشة وحاول مرة أخرى.',tip:'ضع الهاتف بشكل أفقي والشاشة لأعلى، ثم أدره ببطء.',accuracy:'تختلف دقة البوصلة حسب الجهاز. إذا كان الاتجاه غير مستقر، ابتعد عن المعادن وحرّك الهاتف برفق على شكل رقم ٨ لمعايرة البوصلة.',retry:'يرجى السماح بالوصول إلى الموقع والبوصلة للمتابعة.'}
+  };
+  const isArabic=()=>((localStorage.getItem('hidayaLang')||document.documentElement.lang||'en').toLowerCase().startsWith('ar'));
+  const t=k=>copy[isArabic()?'ar':'en'][k]||copy.en[k]||k;
   const norm=n=>((n%360)+360)%360;
+  const angleDiff=(a,b)=>((a-b+540)%360)-180;
+  let heading=null,qiblaBearing=null,watchId=null,orientationStarted=false,orientationSamples=0,aligned=false,orientationTimer=null,lastVibration=0;
   function bearingToKaaba(lat,lon){
-    const p1=lat*Math.PI/180,p2=KAABA.lat*Math.PI/180;
-    const dl=(KAABA.lon-lon)*Math.PI/180;
+    const p1=lat*Math.PI/180,p2=KAABA.lat*Math.PI/180,dl=(KAABA.lon-lon)*Math.PI/180;
     const y=Math.sin(dl)*Math.cos(p2);
     const x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
     return norm(Math.atan2(y,x)*180/Math.PI);
   }
-  function setStatus(msg,error){statusEl.textContent=msg;statusEl.classList.toggle('error',!!error)}
+  function setStatus(key,kind=''){statusEl.textContent=t(key);statusEl.classList.toggle('error',kind==='error');statusEl.classList.toggle('aligned',kind==='aligned');}
+  function vibrateOnce(){
+    const now=Date.now();
+    if(now-lastVibration<1800)return;
+    lastVibration=now;
+    try{if(typeof navigator.vibrate==='function')navigator.vibrate([100,55,100]);}catch(_e){}
+  }
   function render(){
-    if(qiblaBearing!=null) bearingEl.textContent=Math.round(qiblaBearing)+'°';
-    if(qiblaBearing==null||heading==null) return;
+    if(qiblaBearing!=null)bearingEl.textContent=Math.round(qiblaBearing)+'°';
+    if(qiblaBearing==null||heading==null)return;
     const delta=norm(qiblaBearing-heading);
     arrow.style.transform='rotate('+delta+'deg)';
-    const distance=Math.min(delta,360-delta);
-    setStatus(distance<8?'You are facing the Qibla.':'Rotate your phone until the gold arrow points straight ahead.');
+    const distance=Math.abs(angleDiff(qiblaBearing,heading));
+    if(distance<=6){
+      if(!aligned){aligned=true;setStatus('statusAligned','aligned');vibrateOnce();}
+    }else if(distance>=10){aligned=false;setStatus('statusRotate');}
   }
-  function handleOrientation(e){
+  function handleOrientation(e,absoluteEvent){
+    if(!e)return;
     let h=null;
-    if(typeof e.webkitCompassHeading==='number' && isFinite(e.webkitCompassHeading)){
+    // iOS Safari exposes a calibrated compass heading on this property.
+    if(typeof e.webkitCompassHeading==='number'&&Number.isFinite(e.webkitCompassHeading)){
       h=e.webkitCompassHeading;
-    }else if(typeof e.alpha==='number' && isFinite(e.alpha)){
-      h=360-e.alpha;
-      if(e.absolute===false && screen.orientation && typeof screen.orientation.angle==='number'){
-        h+=screen.orientation.angle;
-      }
+    }else if(typeof e.alpha==='number'&&Number.isFinite(e.alpha)&&(absoluteEvent||e.absolute===true)){
+      // Do not treat relative alpha as a compass: it has no reliable north reference.
+      const screenAngle=(screen.orientation&&typeof screen.orientation.angle==='number')?screen.orientation.angle:(typeof window.orientation==='number'?window.orientation:0);
+      h=360-e.alpha+screenAngle;
     }
-    if(h!=null){heading=norm(h);render();}
+    if(h!=null){
+      const next=norm(h);
+      // Circular smoothing prevents sensor noise from making the needle flicker.
+      heading=heading==null?next:norm(heading+angleDiff(next,heading)*0.22);
+      orientationSamples++;render();
+    }
   }
   async function requestOrientation(){
-    if(typeof DeviceOrientationEvent==='undefined') throw new Error('This device does not provide a compass sensor.');
+    if(!window.isSecureContext){throw new Error('insecure-context');}
+    if(typeof DeviceOrientationEvent==='undefined')throw new Error('no-sensor');
     if(typeof DeviceOrientationEvent.requestPermission==='function'){
-      const permission=await DeviceOrientationEvent.requestPermission(true);
-      if(permission!=='granted') throw new Error('Motion permission was not granted.');
+      let permission;
+      try{permission=await DeviceOrientationEvent.requestPermission(true);}catch(_e){throw new Error('orientation-denied');}
+      if(permission!=='granted')throw new Error('orientation-denied');
     }
-    window.addEventListener('deviceorientationabsolute',handleOrientation,true);
-    window.addEventListener('deviceorientation',handleOrientation,true);
-    orientationHandler=true;
+    orientationSamples=0;
+    window.addEventListener('deviceorientationabsolute',absoluteOrientationHandler,true);
+    window.addEventListener('deviceorientation',relativeOrientationHandler,true);
+    orientationStarted=true;
+    if(orientationTimer)clearTimeout(orientationTimer);
+    orientationTimer=setTimeout(()=>{
+      if(modal.classList.contains('open')&&heading==null)setStatus('statusNoAbsolute','error');
+    },4500);
   }
+  function absoluteOrientationHandler(e){handleOrientation(e,true);}
+  function relativeOrientationHandler(e){handleOrientation(e,false);}
   function getLocation(){
     return new Promise((resolve,reject)=>{
-      if(!navigator.geolocation) return reject(new Error('Location is not supported by this browser.'));
-      navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
+      if(!navigator.geolocation)return reject(new Error('location-unavailable'));
+      navigator.geolocation.getCurrentPosition(resolve,error=>{
+        if(error&&error.code===1){reject(new Error('location-denied'));return;}
+        // Some Android devices take too long to return a high-accuracy GPS fix; retry with network location.
+        navigator.geolocation.getCurrentPosition(resolve,e=>reject(new Error(e&&e.code===1?'location-denied':'location-unavailable')),{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
+      },{enableHighAccuracy:true,timeout:12000,maximumAge:300000});
     });
   }
-  async function startCamera(){
-    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('Camera access is not supported in this browser.');
-    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
-    video.srcObject=stream;
-    await video.play();
-  }
   function stop(){
-    if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
     if(watchId!=null){navigator.geolocation.clearWatch(watchId);watchId=null;}
-    window.removeEventListener('deviceorientationabsolute',handleOrientation,true);
-    window.removeEventListener('deviceorientation',handleOrientation,true);
-    heading=null;qiblaBearing=null;
-    video.srcObject=null;
-    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
+    window.removeEventListener('deviceorientationabsolute',absoluteOrientationHandler,true);
+    window.removeEventListener('deviceorientation',relativeOrientationHandler,true);
+    if(orientationTimer){clearTimeout(orientationTimer);orientationTimer=null;}
+    orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;orientationSamples=0;
+    arrow.style.transform='rotate(0deg)';bearingEl.textContent='--°';
+    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';
+    try{if(typeof navigator.vibrate==='function')navigator.vibrate(0);}catch(_e){}
+  }
+  function errorMessage(err){
+    const key=err&&err.message;
+    if(key==='insecure-context')return 'statusNoSecure';
+    if(key==='no-sensor')return 'statusNoSensor';
+    if(key==='orientation-denied'||key==='NotAllowedError')return 'statusOrientationDenied';
+    if(key==='location-denied'||(err&&err.code===1))return 'statusLocationDenied';
+    if(key==='location-unavailable'||(err&&err.code))return 'statusLocationUnavailable';
+    return 'statusFailed';
   }
   async function start(){
+    stop();
     modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
-    setStatus('Requesting camera, location and compass access…');locationEl.textContent='Finding your location…';
+    titleEl.textContent=t('title');bearingLabel.textContent=t('bearing');locationLabel.textContent=t('locLabel');locationEl.textContent=t('locWait');tipEl.textContent=t('tip');accuracyNote.textContent=t('accuracy');
+    setStatus('statusStart');
     try{
-      const [position]=await Promise.all([getLocation(),startCamera(),requestOrientation()]);
+      // Permission prompts are initiated from this user click; no camera is requested.
+      const locationPromise=getLocation();
+      const orientationPromise=requestOrientation();
+      // Attach a rejection handler immediately while location permission is pending.
+      orientationPromise.catch(()=>{});
+      const position=await locationPromise;
       qiblaBearing=bearingToKaaba(position.coords.latitude,position.coords.longitude);
-      locationEl.textContent='Location detected';
-      bearingEl.textContent=Math.round(qiblaBearing)+'°';
-      render();
-      watchId=navigator.geolocation.watchPosition(pos=>{qiblaBearing=bearingToKaaba(pos.coords.latitude,pos.coords.longitude);render();},()=>{}, {enableHighAccuracy:true,maximumAge:300000,timeout:15000});
+      locationEl.textContent=t('locFound');bearingEl.textContent=Math.round(qiblaBearing)+'°';render();
+      await orientationPromise;
+      if(heading==null)setStatus('statusStart');
     }catch(err){
-      const msg=err&&err.message?err.message:'Permission was not granted.';
-      setStatus(msg+' You can close this view and try again.',true);
-      locationEl.textContent='Permission required';
+      window.removeEventListener('deviceorientationabsolute',absoluteOrientationHandler,true);
+      window.removeEventListener('deviceorientation',relativeOrientationHandler,true);
+      if(orientationTimer){clearTimeout(orientationTimer);orientationTimer=null;}
+      orientationStarted=false;heading=null;qiblaBearing=null;aligned=false;
+      setStatus(errorMessage(err),'error');locationEl.textContent=t('retry');
     }
   }
   openBtn.addEventListener('click',start);
+  // Keep Qibla cards/nav usable while starting sensors directly from the user's tap.
+  document.addEventListener('click',e=>{
+    const link=e.target&&e.target.closest?e.target.closest('a[href$="#qibla"]'):null;
+    if(!link)return;
+    const target=new URL(link.href,location.href);
+    const cleanPath=path=>path.replace(/index\.html$/,'').replace(/\/$/,'');
+    if(target.origin===location.origin&&cleanPath(target.pathname)===cleanPath(location.pathname)){
+      e.preventDefault();
+      if(location.hash!=='#qibla')history.replaceState(null,'','#qibla');
+      start();
+    }
+  });
   closeBtn.addEventListener('click',stop);
-  modal.addEventListener('click',e=>{if(e.target===modal) stop();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')) stop();});
+  modal.addEventListener('click',e=>{if(e.target===modal)stop();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))stop();});
+  window.addEventListener('pagehide',stop);
+  window.addEventListener('hidayaLanguageChanged',()=>{
+    if(!modal.classList.contains('open'))return;
+    titleEl.textContent=t('title');bearingLabel.textContent=t('bearing');locationLabel.textContent=t('locLabel');tipEl.textContent=t('tip');accuracyNote.textContent=t('accuracy');
+    if(aligned)setStatus('statusAligned','aligned');else if(heading!=null&&qiblaBearing!=null)setStatus('statusRotate');
+  });
 })();
 </script>
 <script>
@@ -1083,7 +1150,7 @@ body.rtl .quran-search input{text-align:right}
      FAQ
      ========================= -->
 
-<script>(function(){if(location.hash==="#qibla"){setTimeout(function(){var b=document.getElementById("openQibla");if(b)b.click();},80);}})();</script><section aria-label="Hidaya app screenshots" class="screenshots" id="screenshots">
+<section aria-label="Hidaya app screenshots" class="screenshots" id="screenshots">
 <div class="screenshots-wrap">
 <div class="screenshots-heading">
 <div class="screenshots-kicker" data-i18n="screens_kicker">HIDAYA EXPERIENCE</div>
