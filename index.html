@@ -856,7 +856,7 @@ body.rtl .quran-search input{text-align:right}
   const tipEl=document.getElementById('qiblaTip');
   const locationLabel=document.getElementById('qiblaLocationLabel');
   const accuracyNote=document.getElementById('qiblaAccuracyNote');
-  if(!openBtn||!modal||!arrow||!statusEl) return;
+  if(!modal||!arrow||!statusEl) return;
 
   const KAABA={lat:21.422487,lon:39.826206};
   const copy={
@@ -981,7 +981,7 @@ body.rtl .quran-search input{text-align:right}
       setStatus(errorMessage(err),'error');locationEl.textContent=t('retry');
     }
   }
-  openBtn.addEventListener('click',start);
+  document.addEventListener('click',e=>{const trigger=e.target&&e.target.closest?e.target.closest('#openQibla'):null;if(trigger)start();});
   // Keep Qibla cards/nav usable while starting sensors directly from the user's tap.
   document.addEventListener('click',e=>{
     const link=e.target&&e.target.closest?e.target.closest('a[href$="#qibla"]'):null;
