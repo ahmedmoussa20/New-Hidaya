@@ -516,4 +516,14 @@ function startRecognition(){
  catch(e){recognition=null;isRecording=false;$('statusBox').textContent='تعذر بدء الميكروفون. حاول إعادة تحميل الصفحة والسماح بالوصول للميكروفون.';}
 }
 $('surahSearch').addEventListener('input',renderSurahs);document.querySelectorAll('.surah-filter').forEach(btn=>btn.addEventListener('click',()=>setSurahFilter(btn.dataset.filter)));const closeLockButton=$('closeLock');const activateLockClose=e=>{if(e){e.preventDefault();e.stopPropagation();}closeLock();};closeLockButton.addEventListener('click',activateLockClose);closeLockButton.addEventListener('pointerup',e=>{if(e.pointerType==='touch')activateLockClose(e);});closeLockButton.addEventListener('touchend',e=>{activateLockClose(e);},{passive:false});$('lockOverlay').addEventListener('click',e=>{if(e.target===$('lockOverlay'))closeLock();});$('backBtn').addEventListener('click',()=>{stopRecognition(true);if(!$('practiceView').classList.contains('hidden')){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');stopRecognition();window.scrollTo({top:0,behavior:'smooth'});}else location.href='index.html';});$('toggleText').addEventListener('click',()=>{showText=!showText;renderAyah()});$('micBtn').addEventListener('click',()=>isRecording?stopRecognition():startRecognition());$('resetBtn').addEventListener('click',()=>{stopRecognition(true);renderAyah()});$('nextVerse').addEventListener('click',()=>{stopRecognition(true);if(currentAyah===ayahs.length-1){$('practiceView').classList.add('hidden');$('surahView').classList.remove('hidden');document.querySelector('.app').classList.remove('practice-active');currentAyah=0;showText=true;window.scrollTo({top:0,behavior:'smooth'});}else{currentAyah++;renderPills();renderAyah();}});$('playVerse').addEventListener('click',()=>{stopRecognition(true);if(audio){audio.pause();audio=null;}$('statusBox').textContent='جاري تحميل تلاوة الآية…';audio=new Audio(`https://everyayah.com/data/Alafasy_128kbps/001${String(currentAyah+1).padStart(3,'0')}.mp3`);audio.play().then(()=>$('statusBox').textContent='استمع إلى الآية ثم جرّب قراءتها من حفظك.').catch(()=>$('statusBox').textContent='تعذر تشغيل التلاوة الآن. تحقق من الاتصال بالإنترنت.');});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLock()});renderSurahs();
-</script></body></html>
+</script><script>
+/* Register Hidaya's same-origin cache; safe no-op in unsupported browsers. */
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function (error) {
+      console.warn("Hidaya offline cache could not be registered:", error);
+    });
+  }, { once: true });
+}
+</script>
+</body></html>
