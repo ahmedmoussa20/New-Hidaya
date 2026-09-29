@@ -1285,7 +1285,7 @@ body.rtl .quran-search input{text-align:right}
       if(!o)return; el.dataset.baseText=o;
       if(ar && T.ar[o]) el.textContent=T.ar[o]; else if(!ar) el.textContent=o;
     });
-    const h=document.querySelector('h1'); if(h){ if(ar){h.innerHTML='قرآنك.<br>رحلتك.<br><span>هدايتك.</span>'} else {h.innerHTML='Your Quran.<br>Your Journey.<br><span>Your Hidaya.</span>'} }
+    const h=document.querySelector('.hero h1'); if(h){ if(ar){h.innerHTML='قرآنك.<br>رحلتك.<br><span>هدايتك.</span>'} else {h.innerHTML='Your Quran.<br>Your Journey.<br><span>Your Hidaya.</span>'} }
   }
   window.addEventListener('hidayaLanguageChanged',apply); apply();
 })();
