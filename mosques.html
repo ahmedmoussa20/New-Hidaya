@@ -15,6 +15,26 @@
 @media(min-width:720px){.page{padding-top:38px}.hero{padding:36px 34px}.results{grid-template-columns:1fr}.mosque-card{padding:18px}.mosque-name{font-size:16px}}
 @media(max-width:520px){.page{width:calc(100% - 24px);padding:16px 0 35px}.topbar{margin-bottom:18px}.hero{padding:23px 17px 18px;border-radius:21px}.hero h1{font-size:34px}.hero p{font-size:13px}.location-panel{align-items:flex-start;padding:12px;gap:9px}.location-icon{width:38px;height:38px}.location-title{font-size:12px}.location-status{font-size:11px}.location-panel .btn{padding:10px 9px;font-size:11px}.toolbar{align-items:stretch;flex-wrap:wrap;margin-top:18px}.search{flex-basis:100%}.sort-select{max-width:none;flex:1}.toolbar>.btn{flex:0 0 auto}.mosque-card{grid-template-columns:45px minmax(0,1fr);gap:11px;padding:13px}.mosque-symbol{width:45px;height:45px;font-size:23px;border-radius:13px}.mosque-name{font-size:14px}.card-actions{grid-column:2;justify-content:flex-start}.maps-btn{padding:9px 11px}.list-head{margin-top:20px}.count{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Nearby mosques visual refinement — location and maps behavior unchanged */
+.page{padding-top:22px}
+.topbar{padding-bottom:16px;border-bottom:1px solid rgba(245,184,61,.12)}
+.hero{margin-top:26px}
+.hero h1{letter-spacing:-.45px;text-wrap:balance}
+.hero p{line-height:1.7}
+.location-panel{border-color:rgba(245,184,61,.22);box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.location-title{line-height:1.4}
+.toolbar{gap:10px}
+.search,.sort-select{transition:border-color .18s ease,box-shadow .18s ease}
+.search:focus-within,.sort-select:focus{border-color:rgba(245,184,61,.65);box-shadow:0 0 0 3px rgba(245,184,61,.07);outline:none}
+.list-head{padding-bottom:12px;border-bottom:1px solid rgba(245,184,61,.12)}
+.mosque-card{box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.mosque-card:hover{box-shadow:0 12px 28px rgba(0,0,0,.2)}
+.btn,.btn-gold,.btn-quiet,.maps-btn{transition:filter .18s ease,transform .18s ease,background .18s ease,border-color .18s ease}
+.btn-gold:hover,.maps-btn:hover{filter:brightness(1.06)}
+@media(max-width:520px){.page{width:calc(100% - 22px);padding-top:14px}.topbar{margin-bottom:20px}.hero{margin-top:20px}.mosque-card{grid-template-columns:44px minmax(0,1fr);gap:10px;padding:12px}.mosque-symbol{width:44px;height:44px}.card-actions{grid-column:1/-1;display:flex;justify-content:flex-start;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.mosque-card,.btn,.btn-gold,.btn-quiet,.maps-btn{transition:none!important}}
+
 </style>
 <link rel="stylesheet" href="./hidaya-ui.css">
 </head>
