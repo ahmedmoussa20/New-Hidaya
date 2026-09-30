@@ -144,3 +144,10 @@
  .hd-card-action{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){.hd-welcome-copy,.hd-banner-dot,.hd-feature-card,.hd-feature-card .hd-card-photo{transition:none!important}}
+
+/* Final alignment pass: reserve the left controls for one clean toolbar. */
+.hd-side-foot{display:none!important}
+.hd-top-actions{direction:ltr}
+.hd-lang-mini{order:0}
+.hd-search{order:1}
+.hd-nav-download{order:2}
