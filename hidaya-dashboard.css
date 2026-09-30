@@ -390,3 +390,171 @@
  .hidaya-dashboard .hd-welcome{margin-bottom:96px!important}
  .hd-showcase-cards{bottom:-68px}
 }
+
+
+/* Hero refresh: keep the carousel image as a soft, moving backdrop and put real sections first. */
+.hidaya-dashboard .hd-welcome{
+  height:700px!important;
+  min-height:700px!important;
+  margin:0 0 34px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border-radius:22px;
+  background:#070706;
+}
+.hidaya-dashboard .hd-welcome:before{
+  inset:-10px!important;
+  z-index:0!important;
+  background-size:cover!important;
+  background-position:center 48%!important;
+  filter:blur(4px) brightness(.66) saturate(.88);
+  transform:scale(1.035);
+  animation:hdHeroSlowPan 24s ease-in-out infinite alternate;
+}
+.hidaya-dashboard .hd-welcome:after{
+  inset:0!important;
+  z-index:1!important;
+  border-radius:inherit;
+  background:linear-gradient(180deg,rgba(3,3,3,.22),rgba(3,3,3,.08) 40%,rgba(3,3,3,.68) 100%)!important;
+}
+/* Keep the existing carousel content in the DOM for its language and accessibility logic. */
+.hidaya-dashboard .hd-welcome-copy,
+.hidaya-dashboard .hd-welcome-art{display:none!important}
+.hd-showcase-cards{
+  position:absolute!important;
+  top:38px!important;
+  bottom:auto!important;
+  left:clamp(18px,8%,120px)!important;
+  right:clamp(18px,8%,120px)!important;
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  grid-auto-rows:155px;
+  gap:16px!important;
+  direction:rtl;
+  overflow:visible!important;
+  padding:0!important;
+}
+.hd-showcase-card{
+  grid-column:span 2;
+  height:155px!important;
+  min-height:155px;
+  padding:17px!important;
+  border:1px solid rgba(255,218,125,.7)!important;
+  border-radius:17px!important;
+  background:rgba(7,7,6,.66)!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.08)!important;
+  backdrop-filter:blur(8px);
+}
+.hd-showcase-card:nth-child(4){grid-column:2 / span 2}
+.hd-showcase-card:nth-child(5){grid-column:4 / span 2}
+.hd-showcase-card img{filter:brightness(.82);opacity:.7!important}
+.hd-showcase-card:after{background:linear-gradient(180deg,rgba(4,4,4,.03),rgba(4,4,4,.34) 38%,rgba(4,4,4,.94))!important}
+.hd-showcase-title{font-size:clamp(18px,1.5vw,24px)!important}
+.hd-showcase-cta{font-size:12px!important}
+.hd-hero-actions{
+  position:absolute;
+  z-index:9;
+  left:clamp(18px,4%,58px);
+  right:clamp(18px,4%,58px);
+  bottom:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  direction:ltr;
+}
+.hd-hero-action{
+  min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  padding:0 21px;
+  border-radius:13px;
+  border:1px solid rgba(255,220,133,.78);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:800;
+  box-shadow:0 9px 25px rgba(0,0,0,.35);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.hd-hero-action:hover{transform:translateY(-2px);box-shadow:0 13px 30px rgba(0,0,0,.42)}
+.hd-hero-read{background:linear-gradient(135deg,#ffe5a0,#e7b33e);color:#171109}
+.hd-hero-download{background:rgba(8,8,7,.82);color:#ffe4a0;backdrop-filter:blur(10px)}
+.hidaya-dashboard .hd-banner-controls{
+  bottom:91px!important;
+  z-index:10;
+  background:rgba(4,4,4,.76);
+  border-color:rgba(255,218,125,.42);
+}
+.hidaya-dashboard .hd-section-head{margin-top:24px!important}
+@media(max-width:1050px) and (min-width:701px){
+  .hidaya-dashboard .hd-welcome{height:650px!important;min-height:650px!important}
+  .hd-showcase-cards{left:4%!important;right:4%!important;top:32px!important;gap:12px!important;grid-auto-rows:145px}
+  .hd-showcase-card{height:145px!important;min-height:145px}
+  .hd-showcase-title{font-size:18px!important}
+  .hd-hero-action{min-height:48px;padding:0 15px;font-size:13px}
+}
+@media(max-width:700px){
+  /* Mobile hero intentionally contains only the blurred banner, category cards and carousel dots. */
+  .hidaya-dashboard .hd-content{padding:12px 12px 24px!important}
+  .hidaya-dashboard .hd-welcome{
+    height:auto!important;
+    min-height:0!important;
+    margin:0 0 22px!important;
+    padding:0 10px 13px!important;
+    overflow:hidden!important;
+    border-radius:18px!important;
+  }
+  .hidaya-dashboard .hd-welcome:before{
+    inset:-8px!important;
+    background-position:center center!important;
+    filter:blur(3px) brightness(.55)!important;
+    transform:scale(1.04);
+    animation:none!important;
+  }
+  .hidaya-dashboard .hd-welcome:after{
+    background:linear-gradient(180deg,rgba(2,2,2,.26),rgba(2,2,2,.58))!important;
+  }
+  .hd-showcase-cards{
+    position:relative!important;
+    inset:auto!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-rows:142px;
+    gap:10px!important;
+    margin:0!important;
+    padding:12px 0 46px!important;
+    overflow:visible!important;
+  }
+  .hd-showcase-card{
+    grid-column:auto!important;
+    height:142px!important;
+    min-height:142px;
+    padding:12px!important;
+    border-radius:14px!important;
+    backdrop-filter:blur(5px);
+  }
+  .hd-showcase-card:nth-child(5){grid-column:1 / -1!important;max-width:calc(50% - 5px);width:100%;justify-self:center}
+  .hd-showcase-icon{width:32px!important;height:32px!important;top:9px!important;right:9px!important;font-size:18px!important}
+  .hd-showcase-title{font-size:clamp(15px,4.2vw,18px)!important;line-height:1.3!important}
+  .hd-showcase-cta{font-size:10px!important}
+  .hd-hero-actions{display:none!important}
+  .hidaya-dashboard .hd-banner-controls{
+    bottom:10px!important;
+    top:auto!important;
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    gap:8px!important;
+    padding:6px 10px!important;
+  }
+  .hidaya-dashboard .hd-section-head{margin-top:22px!important}
+}
+@media(max-width:380px){
+  .hd-showcase-cards{grid-auto-rows:128px;gap:8px!important}
+  .hd-showcase-card{height:128px!important;min-height:128px;padding:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hidaya-dashboard .hd-welcome:before{animation:none!important}
+  .hd-hero-action,.hd-showcase-card,.hd-showcase-card img{transition:none!important}
+}
