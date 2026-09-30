@@ -318,3 +318,10 @@
  .hidaya-dashboard .hd-welcome .hd-primary-cta,.hd-secondary-cta{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.hd-showcase-nav a,.hd-welcome-copy,.hd-feature-card .hd-card-photo,.hd-welcome .hd-primary-cta{transition:none!important}}
+
+/* Carousel arrows sit at the outer edges; slide dots stay centered. */
+.hidaya-dashboard .hd-welcome .hd-banner-controls{left:50%;right:auto;bottom:17px;transform:translateX(-50%);width:auto;display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid rgba(245,196,81,.26);border-radius:30px;background:rgba(4,4,3,.68);z-index:8}
+.hd-banner-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:9;width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(255,211,106,.7);border-radius:50%;background:rgba(8,8,7,.72);color:#ffe09a;font-size:36px;line-height:1;cursor:pointer;transition:background .2s,transform .2s}
+.hd-banner-arrow:hover{background:rgba(214,163,47,.2);transform:translateY(-50%) scale(1.04)}
+.hd-banner-prev{left:20px}.hd-banner-next{right:20px}
+@media(max-width:600px){.hd-banner-arrow{width:36px;height:36px;font-size:27px;top:48%}.hd-banner-prev{left:8px}.hd-banner-next{right:8px}.hidaya-dashboard .hd-welcome .hd-banner-controls{bottom:10px}}
