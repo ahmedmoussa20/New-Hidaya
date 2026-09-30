@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -987,7 +987,7 @@ body.rtl .quran-search input{text-align:right}
 </head>
 <body><section class="hidaya-dashboard" id="hidayaDashboard" aria-label="Hidaya home dashboard">
 <aside class="hd-sidebar" id="hdSidebar" aria-label="Main menu">
-<a class="hd-brand" href="index.html"><span class="hd-brand-mark">ه</span><span><strong data-hd-en="Hidaya" data-hd-ar="هداية">Hidaya</strong><small>YOUR QURAN · YOUR JOURNEY</small></span></a>
+<a class="hd-brand" href="index.html"><span class="hd-brand-mark">ه</span><span><strong data-hd-en="Hidaya" data-hd-ar="هداية">Hidaya</strong><small data-hd-en="YOUR QURAN · YOUR JOURNEY" data-hd-ar="رحلتك مع القرآن">رحلتك مع القرآن</small></span></a>
 <nav class="hd-side-links" aria-label="Main navigation">
 <a class="is-active" href="#hidayaDashboard"><span>⌂</span><b data-hd-en="Home" data-hd-ar="الرئيسية">Home</b></a>
 <a href="quran.html"><span>▤</span><b data-hd-en="Holy Quran" data-hd-ar="القرآن الكريم">Holy Quran</b></a>
@@ -1506,7 +1506,7 @@ body.rtl .quran-search input{text-align:right}
   const prev=document.getElementById('quranPrev');
   const next=document.getElementById('quranNext');
   if(!select||!versesEl)return;
-  let surahs=[]; let current=1; let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'en';
+  let surahs=[]; let current=1; let verses=[]; let audioList=[]; let audioIndex=-1; let player=new Audio(); let currentLang=localStorage.getItem('hidayaLang')||'ar';
   const ui={
     en:{quran_kicker:'THE HOLY QURAN',quran_title:'Read. Listen. <span>Reflect.</span>',quran_lead:'Explore the Holy Quran with Arabic verses, translation and recitation in one focused reading experience.',quran_search:'Search in this Surah',quran_play_all:'▶ Play Surah',quran_prev:'← Previous',quran_next:'Next →',quran_loading:'Loading Quran…',quran_error:'Could not load Quran content. Please try again.',faq_kicker:'FAQ',faq_title:'Frequently Asked Questions',faq_text:'Have a question about Hidaya? We are preparing the full FAQ experience here.',nav_about:'About',nav_prayer:'Prayer Times',nav_qibla:'Qibla',nav_hifz:'Hifz',nav_quran:'Quran',nav_interactive:'Interactive Quran',nav_radio:'Hidaya Radio',nav_screenshots:'Screenshots',nav_faq:'FAQ',download_app:'Download App',hero_eyebrow:'YOUR ISLAMIC COMPANION',hero_sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',start_kicker:'YOUR HIDAYA JOURNEY',start_read:'Read Quran',start_read_sub:'Read the Holy Quran',start_listen:'Listen to Quran',start_listen_sub:'Explore reciters and audio',quick_kicker:'YOUR HIDAYA JOURNEY',quick_title:'Explore Hidaya <span>Features</span>',quick_lead:'Choose how you want to connect with the Quran today.',start_title:'Start Your<br><span>Journey</span>',start_lead:'Choose where you want to begin.',start_quran:'Quran',start_quran_sub:'Read. Listen. Reflect.',start_prayer:'Prayer Times',start_prayer_sub:'Never miss a prayer',start_qibla:'Qibla',start_qibla_sub:'Find your direction',start_hifz:'Hifz',start_hifz_sub:'Memorize the Quran, ayah by ayah',start_interactive:'Interactive Quran',start_interactive_sub:'Practice recitation, ayah by ayah',start_athkar:'Athkar & Duas',start_athkar_sub:'Be closer to Allah',start_radio:'Hidaya Radio',start_radio_sub:'Live Quran radio from Arab countries',start_kids:'Kids',start_kids_sub:'Stories. Duas. Learning.',start_learn:'Learn Quran',start_learn_sub:'Step by step',start_appstore_small:'Download on the',start_google_small:'Get it on',about_kicker:'ABOUT HIDAYA',about_lead:'A complete Islamic experience designed to keep the Quran, prayer, learning and your daily spiritual life within reach.',about_foot:'A JOURNEY CLOSER TO ALLAH',prayer_kicker:'PRAYER TIMES',prayer_title:'Stay Connected <span>With Every Prayer</span>',prayer_lead:'Accurate prayer times, wherever your day takes you — with a clear view of the next prayer and a live countdown.',screens_kicker:'HIDAYA EXPERIENCE',screens_title:'See Hidaya <span>in Action</span>',screens_lead:'Explore the Quran, listening, memorization, radio and Qibla experience through the app.'},
     ar:{quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'استكشف القرآن الكريم مع الآيات العربية والترجمة والتلاوة في تجربة قراءة متكاملة.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.',faq_kicker:'الأسئلة الشائعة',faq_title:'الأسئلة الشائعة',faq_text:'هل لديك سؤال عن هداية؟ نجهّز هنا تجربة الأسئلة الشائعة الكاملة.',nav_about:'عن هداية',nav_prayer:'مواقيت الصلاة',nav_qibla:'القبلة',nav_hifz:'احفظ',nav_quran:'القرآن',nav_interactive:'القرآن التفاعلي',nav_radio:'راديو هداية',nav_screenshots:'صور التطبيق',nav_faq:'الأسئلة الشائعة',download_app:'حمّل التطبيق',hero_eyebrow:'رفيقك الإسلامي',hero_sub:'اقرأ واستمع وتعلّم وتواصل مع القرآن أينما أخذتك رحلتك.',start_kicker:'رحلتك مع هداية',start_read:'اقرأ القرآن',start_read_sub:'اقرأ القرآن الكريم',start_listen:'استمع للقرآن',start_listen_sub:'اكتشف القرّاء والتلاوات',quick_kicker:'رحلتك مع هداية',quick_title:'اكتشف <span>مزايا هداية</span>',quick_lead:'اختر كيف تريد أن تتصل بالقرآن اليوم.',start_title:'ابدأ <br><span>رحلتك</span>',start_lead:'اختر من أين تريد أن تبدأ.',start_quran:'القرآن',start_quran_sub:'اقرأ. استمع. تدبّر.',start_prayer:'مواقيت الصلاة',start_prayer_sub:'لا تفوّت صلاتك',start_qibla:'القبلة',start_qibla_sub:'اعرف اتجاه القبلة',start_hifz:'احفظ',start_hifz_sub:'احفظ القرآن آيةً آية',start_interactive:'القرآن التفاعلي',start_interactive_sub:'تدرّب على التلاوة آيةً آية',start_athkar:'الأذكار والدعاء',start_athkar_sub:'كن أقرب إلى الله',start_radio:'إذاعة هداية',start_radio_sub:'إذاعات قرآنية مباشرة من الدول العربية',start_kids:'الأطفال',start_kids_sub:'قصص ودعاء وتعلّم',start_learn:'تعلم القرآن',start_learn_sub:'خطوة بخطوة',start_appstore_small:'حمّل من',start_google_small:'احصل عليه من',about_kicker:'عن هداية',about_lead:'تجربة إسلامية متكاملة تضع القرآن والصلاة والتعلّم وحياتك الروحية اليومية بين يديك.',about_foot:'رحلة أقرب إلى الله',prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',screens_kicker:'تجربة هداية',screens_title:'شاهد هداية <span>عن قرب</span>',screens_lead:'استكشف القرآن والاستماع والحفظ والراديو والقبلة من خلال التطبيق.'}
@@ -1557,7 +1557,7 @@ body.rtl .quran-search input{text-align:right}
   next.addEventListener('click',()=>{if(current<114)loadSurah(current+1)});
   playAll.addEventListener('click',()=>{if(audioIndex>=0&&!player.paused){stopAudio();playAll.textContent=t('quran_play_all');return}audioIndex=0;playCurrent();playAll.textContent=lang()==='ar'?'■ إيقاف':'■ Stop'});
   searchEl.addEventListener('input',renderVerses);
-  window.addEventListener('hidayaLanguageChanged',()=>{currentLang=localStorage.getItem('hidayaLang')||'en';applyLanguage();loadSurah(current)});
+  window.addEventListener('hidayaLanguageChanged',()=>{currentLang=localStorage.getItem('hidayaLang')||'ar';applyLanguage();loadSurah(current)});
   applyLanguage();loadSurahs();
 })();
 </script>
@@ -1565,7 +1565,7 @@ body.rtl .quran-search input{text-align:right}
 (function(){
   const langToggle=document.getElementById('langToggle'),langMenu=document.getElementById('langMenu');
   const mobileToggle=document.getElementById('mobileLangToggle'),mobileMenu=document.getElementById('mobileLangMenu');
-  let current=localStorage.getItem('hidayaLang')||'en';
+  let current=localStorage.getItem('hidayaLang')||'ar';
   function setLang(lang){current=lang==='ar'?'ar':'en';localStorage.setItem('hidayaLang',current);document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===current));document.documentElement.lang=current;document.documentElement.dir=current==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',current==='ar');if(langMenu)langMenu.classList.remove('open');if(mobileMenu)mobileMenu.classList.remove('open');window.dispatchEvent(new Event('hidayaLanguageChanged'));}
   langToggle?.addEventListener('click',e=>{e.stopPropagation();langMenu?.classList.toggle('open');mobileMenu?.classList.remove('open')});
   mobileToggle?.addEventListener('click',e=>{e.stopPropagation();mobileMenu?.classList.toggle('open');langMenu?.classList.remove('open')});
@@ -1585,7 +1585,7 @@ body.rtl .quran-search input{text-align:right}
     }
   };
   function apply(){
-    const ar=(localStorage.getItem('hidayaLang')||'en')==='ar';
+    const ar=(localStorage.getItem('hidayaLang')||'ar')==='ar';
     document.querySelectorAll('.feature-card h3').forEach(h=>{const original=h.dataset.original||h.textContent.trim();h.dataset.original=original;h.textContent=ar?(map.ar[original]||original):original});
     const pMap=ar?{
       'Read and listen to the Holy Quran with the voices of renowned reciters, wherever your journey takes you.':'اقرأ واستمع إلى القرآن الكريم بأصوات نخبة من القرّاء أينما أخذتك رحلتك.',
@@ -1620,7 +1620,7 @@ body.rtl .quran-search input{text-align:right}
     }
   };
   function apply(){
-    const ar=(localStorage.getItem('hidayaLang')||'en')==='ar';
+    const ar=(localStorage.getItem('hidayaLang')||'ar')==='ar';
     document.querySelectorAll('h1,h2,h3,p,small,strong,button,a,div,span').forEach(el=>{
       if(el.children.length) return;
       const o=el.dataset.baseText||el.textContent.trim();
@@ -1857,7 +1857,7 @@ body.rtl .quran-search input{text-align:right}
  {en:{eyebrow:'YOUR FAITH, EVERY DAY',title:'Discover more of Hidaya',desc:'Explore prayer times, Qibla, Athkar and Hidaya Radio in one place.',cta:'Discover Hidaya',live:'Hidaya app banner'},ar:{eyebrow:'هداية ترافق يومك',title:'كل ما يقربك<br><span>في مكان واحد</span>',desc:'اكتشف مواقيت الصلاة والقبلة والأذكار وإذاعة هداية.',cta:'حمّل تطبيق هداية',live:'بنر تطبيق هداية'},href:'https://play.google.com/store/apps/details?id=app.hidaya',bg:"app"}
  ];
  let active=0,timer=null,paused=false,touchStart=null;
- const lang=()=>((localStorage.getItem('hidayaLang')||'en')==='ar'?'ar':'en');
+ const lang=()=>((localStorage.getItem('hidayaLang')||'ar')==='ar'?'ar':'en');
  function show(n,manual){
   active=(n+slides.length)%slides.length;
   const sl=slides[active],t=sl[lang()];
