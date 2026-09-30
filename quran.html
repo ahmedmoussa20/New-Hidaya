@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -1159,14 +1159,14 @@ html.hidaya-motion-back ::view-transition-new(root){animation-name:hidaya-page-i
       prayer_kicker:'مواقيت الصلاة',prayer_title:'ابقَ متصلًا <span>مع كل صلاة</span>',prayer_lead:'مواقيت دقيقة للصلاة أينما كنت، مع عرض واضح للصلاة القادمة وعداد تنازلي مباشر.',
       quran_kicker:'القرآن الكريم',quran_title:'اقرأ. استمع. <span>تدبّر.</span>',quran_lead:'اختر الطريقة التي تحب أن تتصل بها بالقرآن الكريم.',quran_read_kicker:'قراءة',quran_read_title:'قراءة القرآن',quran_read_ar:'اقرأ المصحف',quran_read_desc:'اقرأ المصحف في تجربة هادئة ومركزة.',quran_listen_kicker:'استماع',quran_listen_title:'الاستماع إلى القرآن',quran_listen_ar:'استمع إلى التلاوات',quran_listen_desc:'استمع إلى تلاوات جميلة بأصوات قراء مميزين.',quran_gateway_footer:'اختر طريقتك للتواصل مع القرآن.',quran_search:'ابحث في السورة',quran_play_all:'▶ تشغيل السورة',quran_prev:'← السابقة',quran_next:'التالية →',quran_loading:'جاري تحميل القرآن…',quran_error:'تعذر تحميل محتوى القرآن. حاول مرة أخرى.'}
   };
-  function apply(){const ar=(localStorage.getItem('hidayaLang')||'en')==='ar';const m=ar?ui.ar:ui.en;document.querySelectorAll('[data-i18n]').forEach(el=>{if(m[el.dataset.i18n]!=null)el.textContent=m[el.dataset.i18n]});document.querySelectorAll('[data-i18n-html]').forEach(el=>{if(m[el.dataset.i18nHtml]!=null)el.innerHTML=m[el.dataset.i18nHtml]});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{if(m[el.dataset.i18nPlaceholder]!=null)el.placeholder=m[el.dataset.i18nPlaceholder]});document.documentElement.lang=ar?'ar':'en';document.documentElement.dir=ar?'rtl':'ltr';document.body.classList.toggle('rtl',ar);const l=document.getElementById('langLabel');if(l)l.textContent=ar?'العربية':'English';}
+  function apply(){const ar=(localStorage.getItem('hidayaLang')||'ar')==='ar';const m=ar?ui.ar:ui.en;document.querySelectorAll('[data-i18n]').forEach(el=>{if(m[el.dataset.i18n]!=null)el.textContent=m[el.dataset.i18n]});document.querySelectorAll('[data-i18n-html]').forEach(el=>{if(m[el.dataset.i18nHtml]!=null)el.innerHTML=m[el.dataset.i18nHtml]});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{if(m[el.dataset.i18nPlaceholder]!=null)el.placeholder=m[el.dataset.i18nPlaceholder]});document.documentElement.lang=ar?'ar':'en';document.documentElement.dir=ar?'rtl':'ltr';document.body.classList.toggle('rtl',ar);const l=document.getElementById('langLabel');if(l)l.textContent=ar?'العربية':'English';}
   window.addEventListener('hidayaLanguageChanged',apply);apply();
 })();
 </script><script>
 (function(){
   const langToggle=document.getElementById('langToggle'),langMenu=document.getElementById('langMenu');
   const mobileToggle=document.getElementById('mobileLangToggle'),mobileMenu=document.getElementById('mobileLangMenu');
-  let current=localStorage.getItem('hidayaLang')||'en';
+  let current=localStorage.getItem('hidayaLang')||'ar';
   function setLang(lang){current=lang==='ar'?'ar':'en';localStorage.setItem('hidayaLang',current);document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===current));document.documentElement.lang=current;document.documentElement.dir=current==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',current==='ar');if(langMenu)langMenu.classList.remove('open');if(mobileMenu)mobileMenu.classList.remove('open');window.dispatchEvent(new Event('hidayaLanguageChanged'));}
   langToggle?.addEventListener('click',e=>{e.stopPropagation();langMenu?.classList.toggle('open');mobileMenu?.classList.remove('open')});
   mobileToggle?.addEventListener('click',e=>{e.stopPropagation();mobileMenu?.classList.toggle('open');langMenu?.classList.remove('open')});
