@@ -558,3 +558,52 @@
   .hidaya-dashboard .hd-welcome:before{animation:none!important}
   .hd-hero-action,.hd-showcase-card,.hd-showcase-card img{transition:none!important}
 }
+
+
+/* Navbar alignment: reserve a clear lane for the left-side toolbar and keep links evenly spaced. */
+@media(min-width:761px){
+  .hidaya-dashboard .hd-sidebar{
+    gap:clamp(12px,1.6vw,24px)!important;
+    padding-inline:clamp(14px,1.8vw,28px)!important;
+  }
+  .hidaya-dashboard .hd-brand{gap:10px!important}
+  .hidaya-dashboard .hd-brand-mark{flex:0 0 auto}
+  .hidaya-dashboard .hd-side-links{
+    justify-content:flex-start!important;
+    gap:clamp(3px,.55vw,10px)!important;
+    padding-left:clamp(210px,22vw,270px)!important;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-width:none;
+  }
+  .hidaya-dashboard .hd-side-links::-webkit-scrollbar{display:none}
+  .hidaya-dashboard .hd-side-links a{
+    flex:0 0 auto;
+    padding-inline:clamp(5px,.65vw,10px)!important;
+    gap:6px!important;
+    font-size:clamp(10px,.82vw,13px)!important;
+    letter-spacing:0;
+  }
+  .hidaya-dashboard .hd-top-actions{gap:9px!important}
+}
+@media(min-width:761px) and (max-width:1050px){
+  .hidaya-dashboard .hd-sidebar{padding-inline:12px!important;gap:8px!important}
+  .hidaya-dashboard .hd-side-links{padding-left:220px!important;gap:3px!important}
+  .hidaya-dashboard .hd-side-links a{padding-inline:5px!important;font-size:10px!important}
+  .hidaya-dashboard .hd-nav-download{padding-inline:10px!important;font-size:11px!important}
+}
+@media(max-width:760px){
+  .hidaya-dashboard .hd-sidebar{
+    left:3%!important;right:3%!important;width:auto!important;
+    padding-inline:12px!important;gap:8px!important;
+    justify-content:space-between!important;
+  }
+  .hidaya-dashboard .hd-brand{gap:7px!important}
+  .hidaya-dashboard .hd-topbar{left:3%!important;right:3%!important}
+  .hidaya-dashboard .hd-top-actions{gap:6px!important}
+}
+/* Background slides change independently; foreground section cards remain unchanged. */
+.hidaya-dashboard .hd-welcome:before{transition:background-image .65s ease,background-position 6.5s ease-in-out}
+@media(prefers-reduced-motion:reduce){
+  .hidaya-dashboard .hd-welcome:before{transition:none!important}
+}
