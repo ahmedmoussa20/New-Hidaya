@@ -731,3 +731,116 @@ body > section.hero,
   .hidaya-dashboard .hd-feature-card{transition:none!important}
   .hidaya-dashboard .hd-feature-card:hover{transform:none!important}
 }
+
+
+/* Hidaya homepage refresh: feature cards first, no carousel banner, one hamburger menu. */
+.hidaya-dashboard{display:block!important;min-height:100vh!important}
+.hidaya-dashboard .hd-sidebar{
+  position:fixed!important;top:0!important;bottom:0!important;left:0!important;right:auto!important;
+  width:min(330px,88vw)!important;height:100dvh!important;min-height:0!important;
+  padding:24px 16px max(20px,env(safe-area-inset-bottom))!important;
+  overflow-y:auto!important;z-index:1002!important;
+  transform:translateX(-105%);visibility:hidden;transition:transform .26s ease,visibility .26s ease;
+  box-shadow:18px 0 55px rgba(0,0,0,.45)!important;border-right:1px solid rgba(245,196,81,.28)!important;
+}
+html[dir="rtl"] .hidaya-dashboard .hd-sidebar{left:auto!important;right:0!important;transform:translateX(105%)}
+.hidaya-dashboard.hd-menu-open .hd-sidebar{transform:translateX(0)!important;visibility:visible!important}
+.hidaya-dashboard.hd-menu-open:after{
+  content:"";position:fixed;inset:0;background:rgba(0,0,0,.66);backdrop-filter:blur(3px);
+  z-index:1001;cursor:pointer;
+}
+.hidaya-dashboard .hd-main{width:100%!important;min-width:0!important;margin:0!important}
+.hidaya-dashboard .hd-topbar{
+  position:sticky!important;top:0!important;z-index:1000!important;
+  display:flex!important;align-items:center!important;gap:12px!important;
+  min-height:76px!important;height:auto!important;padding:12px clamp(12px,3vw,34px)!important;
+  background:rgba(8,10,10,.94)!important;backdrop-filter:blur(16px)!important;
+  border-bottom:1px solid rgba(245,196,81,.18)!important;
+}
+.hidaya-dashboard .hd-menu-toggle{
+  display:flex!important;order:-1!important;flex:none!important;width:44px!important;height:44px!important;
+  padding:11px!important;flex-direction:column!important;justify-content:center!important;gap:5px!important;
+  border:1px solid rgba(245,196,81,.42)!important;border-radius:12px!important;
+  background:rgba(245,196,81,.07)!important;color:#ffe5a0!important;cursor:pointer!important;
+}
+.hidaya-dashboard .hd-menu-toggle span{display:block!important;width:20px!important;height:2px!important;border-radius:2px!important;background:#f5c451!important}
+.hidaya-dashboard .hd-mobile-brand{display:flex!important;align-items:center!important;gap:8px!important;flex:none!important}
+.hidaya-dashboard .hd-mobile-brand .hd-brand-mark{width:38px!important;height:38px!important;font-size:25px!important}
+.hidaya-dashboard .hd-mobile-brand strong{font-family:Amiri,Georgia,serif!important;font-size:23px!important;color:#ffe5a0!important}
+.hidaya-dashboard .hd-top-title{display:none!important}
+.hidaya-dashboard .hd-top-actions{margin-inline-start:auto!important;display:flex!important;align-items:center!important;gap:8px!important;min-width:0!important}
+.hidaya-dashboard .hd-search{max-width:clamp(120px,22vw,260px)!important;min-width:0!important}
+.hidaya-dashboard .hd-content{padding:clamp(16px,2.5vw,34px) clamp(12px,3vw,38px) 48px!important;max-width:1600px!important;margin:0 auto!important}
+.hidaya-dashboard .hd-welcome,
+.hidaya-dashboard .hd-banner-controls,
+.hidaya-dashboard .hd-hero-actions,
+.hidaya-dashboard .hd-showcase-cards{display:none!important}
+.hidaya-dashboard .hd-section-head{margin:0 0 18px!important}
+.hidaya-dashboard .hd-feature-grid{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:clamp(9px,1.4vw,18px)!important;margin:0!important;
+}
+.hidaya-dashboard .hd-feature-card{
+  min-height:clamp(142px,16vw,205px)!important;height:auto!important;
+  padding:clamp(13px,1.6vw,23px)!important;border-radius:17px!important;
+}
+.hidaya-dashboard .hd-feature-card .hd-feature-icon{width:clamp(36px,4vw,48px)!important;height:clamp(36px,4vw,48px)!important;min-width:clamp(36px,4vw,48px)!important}
+.hidaya-dashboard .hd-feature-card h3{font-size:clamp(16px,1.55vw,22px)!important;line-height:1.3!important}
+.hidaya-dashboard .hd-feature-card p{font-size:clamp(11px,.95vw,13px)!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon{
+  min-height:clamp(112px,12vw,150px)!important;justify-content:center!important;
+  align-items:flex-start!important;gap:7px!important;cursor:not-allowed!important;
+  background:linear-gradient(145deg,rgba(20,23,24,.96),rgba(10,12,13,.98))!important;
+  border-color:rgba(148,155,155,.22)!important;box-shadow:none!important;
+  color:#9da3a2!important;transform:none!important;opacity:.84!important;
+}
+.hidaya-dashboard .hd-feature-card.is-coming-soon:before{background:none!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon h3{color:#c2c5c1!important;margin:0!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon p{display:none!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon .hd-soon-lock{font-size:21px!important;color:#929998!important}
+.hidaya-dashboard .hd-soon-badge{
+  display:inline-flex!important;align-items:center!important;width:max-content!important;
+  padding:3px 9px!important;border:1px solid rgba(148,155,155,.28)!important;border-radius:99px!important;
+  background:rgba(148,155,155,.08)!important;color:#aeb4b2!important;
+  font:700 10px/1.5 "DM Sans",Arial,sans-serif!important;letter-spacing:.4px!important;
+}
+.hidaya-dashboard .hd-feature-card.is-coming-soon .hd-card-arrow{display:none!important}
+.hidaya-dashboard .hd-feature-card[hidden]{display:none!important}
+@media(min-width:1100px){.hidaya-dashboard .hd-feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:760px){
+ .hidaya-dashboard .hd-topbar{min-height:68px!important;padding:10px 12px!important;gap:9px!important}
+ .hidaya-dashboard .hd-menu-toggle{width:40px!important;height:40px!important;padding:9px!important}
+ .hidaya-dashboard .hd-mobile-brand strong{font-size:20px!important}
+ .hidaya-dashboard .hd-mobile-brand .hd-brand-mark{width:34px!important;height:34px!important;font-size:22px!important}
+ .hidaya-dashboard .hd-top-actions{gap:6px!important}
+ .hidaya-dashboard .hd-search{width:40px!important;max-width:40px!important;overflow:hidden!important}
+ .hidaya-dashboard .hd-search input{width:1px!important;min-width:0!important;opacity:0!important;padding:0!important}
+ .hidaya-dashboard .hd-search:focus-within{width:min(38vw,190px)!important;max-width:min(38vw,190px)!important;overflow:visible!important}
+ .hidaya-dashboard .hd-search:focus-within input{width:100%!important;opacity:1!important;padding:8px!important}
+ .hidaya-dashboard .hd-nav-download{display:none!important}
+ .hidaya-dashboard .hd-lang-mini{min-width:44px!important;padding:0 6px!important}
+ .hidaya-dashboard .hd-content{padding:14px 12px 32px!important}
+ .hidaya-dashboard .hd-section-head{margin:0 1px 13px!important}
+ .hidaya-dashboard .hd-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .hidaya-dashboard .hd-feature-card{min-height:150px!important;padding:13px 11px!important;border-radius:14px!important}
+ .hidaya-dashboard .hd-feature-card h3{font-size:clamp(15px,4.1vw,18px)!important;line-height:1.28!important}
+ .hidaya-dashboard .hd-feature-card p{font-size:11px!important;line-height:1.45!important}
+ .hidaya-dashboard .hd-feature-card .hd-feature-icon{width:37px!important;height:37px!important;min-width:37px!important;margin-bottom:10px!important;font-size:20px!important}
+ .hidaya-dashboard .hd-feature-card .hd-card-arrow{top:12px!important;inset-inline-end:10px!important}
+ .hidaya-dashboard .hd-feature-card.is-coming-soon{min-height:108px!important;padding:12px!important;gap:6px!important}
+ .hidaya-dashboard .hd-feature-card.is-coming-soon h3{font-size:14px!important}
+}
+@media(max-width:360px){
+ .hidaya-dashboard .hd-topbar{gap:6px!important;padding-inline:8px!important}
+ .hidaya-dashboard .hd-mobile-brand{gap:5px!important}
+ .hidaya-dashboard .hd-mobile-brand strong{font-size:18px!important}
+ .hidaya-dashboard .hd-top-actions{gap:4px!important}
+ .hidaya-dashboard .hd-feature-grid{gap:8px!important}
+ .hidaya-dashboard .hd-feature-card{min-height:142px!important;padding:11px 9px!important}
+ .hidaya-dashboard .hd-feature-card h3{font-size:14px!important}
+ .hidaya-dashboard .hd-feature-card p{font-size:10px!important}
+ .hidaya-dashboard .hd-feature-card.is-coming-soon{min-height:102px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hidaya-dashboard .hd-sidebar{transition:none!important}
+}
