@@ -94,7 +94,7 @@
       const raw=node.nodeValue, trimmed=raw.trim();
       if(!trimmed) continue;
       const translated=ar ? pageCopyReverse[trimmed] : pageCopy[trimmed];
-      if(translated) node.nodeValue=raw.replace(trimmed,translated);
+      if(translated && translated !== trimmed) node.nodeValue=raw.replace(trimmed,translated);
     }
     document.querySelectorAll("input[placeholder], [aria-label], [title]").forEach(el=>{
       ["placeholder","aria-label","title"].forEach(attr=>{
