@@ -1689,25 +1689,21 @@ body.rtl .quran-search input{text-align:right}
 /* Reference-matched Hidaya carousel: autoplay, arrows, dots, swipe, and language support. */
 (function(){
  const hero=document.querySelector('.hd-welcome');if(!hero)return;
- const copy=hero.querySelector('.hd-welcome-copy'),eyebrow=copy.querySelector('.hd-eyebrow'),heading=copy.querySelector('h1'),desc=copy.querySelector('p'),cta=copy.querySelector('.hd-primary-cta'),ctaLabel=cta.querySelector('[data-hd-en]'),dots=[...hero.querySelectorAll('[data-hd-slide]')],arrows=[...hero.querySelectorAll('[data-hd-step]')],live=document.getElementById('hdBannerLive');
+ const dots=[...hero.querySelectorAll('[data-hd-slide]')],arrows=[...hero.querySelectorAll('[data-hd-step]')],live=document.getElementById('hdBannerLive');
  const slides=[
  {en:{eyebrow:'ASSALAMU ALAIKUM',title:'Welcome to Hidaya',desc:'Read, listen and reflect on the Quran with Hidaya.',cta:'Explore the Quran',live:'Quran banner'},ar:{eyebrow:'السلام عليكم',title:'رحلتك مع القرآن<br><span>تبدأ من هنا</span>',desc:'اقرأ، استمع، وتدبّر آيات القرآن الكريم مع هداية.',cta:'اكتشف القرآن الآن',live:'بنر القرآن'},href:'quran.html',bg:"mosque"},
  {en:{eyebrow:'ONE AYAH AT A TIME',title:'Memorize the Quran',desc:'Build your memorization journey step by step, every day.',cta:'Start memorizing',live:'Memorization banner'},ar:{eyebrow:'آية بعد آية',title:'خطوة جديدة في<br><span>رحلة الحفظ</span>',desc:'خطوة بخطوة، ابنِ عادة يومية لحفظ القرآن الكريم.',cta:'ابدأ رحلة الحفظ',live:'بنر حفظ القرآن'},href:'hifz.html',bg:"hifz"},
  {en:{eyebrow:'YOUR FAITH, EVERY DAY',title:'Discover more of Hidaya',desc:'Explore prayer times, Qibla, Athkar and Hidaya Radio in one place.',cta:'Discover Hidaya',live:'Hidaya app banner'},ar:{eyebrow:'هداية ترافق يومك',title:'كل ما يقربك<br><span>في مكان واحد</span>',desc:'اكتشف مواقيت الصلاة والقبلة والأذكار وإذاعة هداية.',cta:'حمّل تطبيق هداية',live:'بنر تطبيق هداية'},href:'https://play.google.com/store/apps/details?id=app.hidaya',bg:"app"}
  ];
- let active=0,timer=null,paused=false,touchStart=null,changeTimeout=null;
+ let active=0,timer=null,paused=false,touchStart=null;
  const lang=()=>((localStorage.getItem('hidayaLang')||'en')==='ar'?'ar':'en');
  function show(n,manual){
-  active=(n+slides.length)%slides.length;const sl=slides[active],t=sl[lang()];
-  hero.dataset.hdSlide=String(active);copy.classList.add('hd-banner-changing');
-  if(changeTimeout)clearTimeout(changeTimeout);
-  changeTimeout=setTimeout(()=>{
-   eyebrow.textContent=t.eyebrow;heading.innerHTML=t.title;desc.textContent=t.desc;ctaLabel.textContent=t.cta;cta.href=sl.href;
-   eyebrow.dataset.hdEn=sl.en.eyebrow;eyebrow.dataset.hdAr=sl.ar.eyebrow;
-   heading.dataset.hdEn=sl.en.title.replace(/<br\s*\/?\s*>/g,' ').replace(/<[^>]*>/g,'');heading.dataset.hdAr=sl.ar.title.replace(/<br\s*\/?\s*>/g,' ').replace(/<[^>]*>/g,'');
-   desc.dataset.hdEn=sl.en.desc;desc.dataset.hdAr=sl.ar.desc;ctaLabel.dataset.hdEn=sl.en.cta;ctaLabel.dataset.hdAr=sl.ar.cta;
-   dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===active)));if(live)live.textContent=t.live;copy.classList.remove('hd-banner-changing');
-  },170);
+  active=(n+slides.length)%slides.length;
+  const sl=slides[active],t=sl[lang()];
+  // Rotate only the background; keep hero copy, CTA and all five section cards fixed.
+  hero.dataset.hdSlide=String(active);
+  dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===active)));
+  if(live)live.textContent=t.live;
   if(manual)start();
  }
  function stop(){if(timer)clearInterval(timer);timer=null}
