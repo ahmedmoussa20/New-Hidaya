@@ -35,6 +35,13 @@
 @media(max-width:520px){.page{width:calc(100% - 22px);padding-top:14px}.topbar{margin-bottom:20px}.hero{margin-top:20px}.mosque-card{grid-template-columns:44px minmax(0,1fr);gap:10px;padding:12px}.mosque-symbol{width:44px;height:44px}.card-actions{grid-column:1/-1;display:flex;justify-content:flex-start;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.mosque-card,.btn,.btn-gold,.btn-quiet,.maps-btn{transition:none!important}}
 
+
+/* Language switch controls for the Arabic-first standalone tools. */
+.top-actions{display:flex;align-items:center;gap:8px;flex:none}
+.page-lang-toggle{min-height:40px;padding:0 12px;border:1px solid rgba(245,184,61,.28);border-radius:12px;background:#141310;color:#ffd36a;font:600 12px system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.page-lang-toggle:focus-visible{outline:2px solid #ffd36a;outline-offset:3px}
+html[dir="ltr"] body{direction:ltr}
+html[dir="ltr"] .hero,html[dir="ltr"] .workspace{text-align:left}
 </style>
 <link rel="stylesheet" href="./hidaya-ui.css">
 </head>
@@ -42,7 +49,7 @@
 <main class="page">
   <header class="topbar">
     <div class="brand"><div class="brand-mark" aria-hidden="true">۞</div><div><div class="brand-name">Hidaya</div><div class="brand-sub">رحلتك مع القرآن</div></div></div>
-    <a class="back" href="index.html" data-hidaya-back="" data-fallback="index.html" aria-label="العودة للرئيسية" title="العودة للرئيسية">›</a>
+    <div class="top-actions"><button class="page-lang-toggle" id="hidayaPageLangToggle" type="button" aria-label="تغيير اللغة">English</button><a class="back" href="index.html" data-hidaya-back="" data-fallback="index.html" aria-label="العودة للرئيسية" title="العودة للرئيسية">›</a></div>
   </header>
   <section class="hero" aria-labelledby="page-title">
     <div class="eyebrow">NEARBY MOSQUES</div>
