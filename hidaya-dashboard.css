@@ -849,3 +849,55 @@ html[dir="rtl"] .hidaya-dashboard .hd-sidebar{left:auto!important;right:0!import
 .hidaya-dashboard .hd-side-links a.hd-nav-soon{opacity:.56!important;cursor:not-allowed!important}
 .hidaya-dashboard .hd-side-links a.hd-nav-soon:hover{background:transparent!important;border-color:transparent!important;transform:none!important}
 .hidaya-dashboard .hd-side-links a.hd-nav-soon em{margin-inline-start:auto!important;background:rgba(148,155,155,.12)!important;color:#aeb4b2!important}
+
+
+/* Visible feature artwork + collision-free compact search/language controls. */
+.hidaya-dashboard .hd-feature-card{isolation:isolate!important;overflow:hidden!important;position:relative!important;background:#101212!important}
+.hidaya-dashboard .hd-feature-card .hd-card-photo{
+ display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;object-position:center!important;opacity:.68!important;z-index:0!important;
+ transform:scale(1.01)!important;mask-image:none!important;pointer-events:none!important;
+}
+.hidaya-dashboard .hd-feature-card:before{
+ content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;
+ background:linear-gradient(90deg,rgba(4,5,5,.06) 0%,rgba(4,5,5,.30) 32%,rgba(4,5,5,.86) 70%,rgba(4,5,5,.97) 100%)!important;
+}
+.hidaya-dashboard .hd-feature-card>*:not(.hd-card-photo){position:relative!important;z-index:2!important}
+.hidaya-dashboard .hd-feature-card .hd-feature-icon,
+.hidaya-dashboard .hd-feature-card .hd-card-arrow{z-index:3!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon{background:#101212!important;opacity:1!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon .hd-card-photo{opacity:.19!important;filter:grayscale(1)!important}
+.hidaya-dashboard .hd-feature-card.is-coming-soon:before{
+ background:linear-gradient(90deg,rgba(8,10,11,.42),rgba(8,10,11,.84) 55%,rgba(8,10,11,.96))!important;
+}
+.hidaya-dashboard .hd-top-actions{flex:0 1 auto!important;min-width:0!important;gap:10px!important}
+.hidaya-dashboard .hd-search{
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 0 42px!important;width:42px!important;min-width:42px!important;height:42px!important;
+ padding:0!important;overflow:hidden!important;border-radius:12px!important;
+}
+.hidaya-dashboard .hd-search>span{display:grid!important;place-items:center!important;flex:0 0 40px!important;width:40px!important;height:40px!important;z-index:2!important;cursor:pointer!important}
+.hidaya-dashboard .hd-search input{
+ position:absolute!important;inset-inline-start:40px!important;top:0!important;width:0!important;min-width:0!important;
+ height:40px!important;opacity:0!important;padding:0!important;border:0!important;pointer-events:none!important;
+}
+.hidaya-dashboard .hd-search:focus-within{
+ flex:0 1 230px!important;width:min(230px,30vw)!important;min-width:42px!important;justify-content:flex-start!important;
+}
+.hidaya-dashboard .hd-search:focus-within input{
+ width:calc(100% - 42px)!important;opacity:1!important;padding:8px 10px!important;pointer-events:auto!important;
+}
+.hidaya-dashboard .hd-lang-mini{flex:0 0 auto!important;white-space:nowrap!important;position:relative!important;z-index:2!important}
+@media(max-width:760px){
+ .hidaya-dashboard .hd-top-actions{gap:7px!important;flex:0 1 auto!important}
+ .hidaya-dashboard .hd-search{flex-basis:40px!important;width:40px!important;min-width:40px!important;height:40px!important}
+ .hidaya-dashboard .hd-search>span{flex-basis:38px!important;width:38px!important;height:38px!important}
+ .hidaya-dashboard .hd-search:focus-within{flex:0 1 155px!important;width:min(155px,38vw)!important;max-width:38vw!important}
+ .hidaya-dashboard .hd-search:focus-within input{inset-inline-start:38px!important;width:calc(100% - 40px)!important;height:38px!important}
+ .hidaya-dashboard .hd-lang-mini{min-width:42px!important;height:40px!important;padding-inline:7px!important;font-size:11px!important}
+}
+@media(max-width:360px){
+ .hidaya-dashboard .hd-top-actions{gap:5px!important}
+ .hidaya-dashboard .hd-lang-mini{min-width:38px!important;padding-inline:5px!important;font-size:10px!important}
+ .hidaya-dashboard .hd-search:focus-within{width:34vw!important;max-width:34vw!important}
+}
