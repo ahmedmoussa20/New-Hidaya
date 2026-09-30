@@ -2,9 +2,10 @@
 (function(){
  const root=document.getElementById("hidayaDashboard"); if(!root)return;
  const enButton=document.getElementById("hdLanguageToggle"), mini=document.getElementById("hdLangMini"),label=document.getElementById("hdLanguageLabel"),search=document.getElementById("hdFeatureSearch");
- function lang(){return localStorage.getItem("hidayaLang")||"en"}
+ function lang(){return localStorage.getItem("hidayaLang")||"ar"}
  function applyLang(){
    const ar=lang()==="ar";
+   document.documentElement.lang=ar?"ar":"en";document.documentElement.dir=ar?"rtl":"ltr";document.body.classList.toggle("rtl",ar);
    root.querySelectorAll("[data-hd-en][data-hd-ar]").forEach(el=>{el.textContent=ar?el.dataset.hdAr:el.dataset.hdEn});
    if(label)label.textContent=ar?"AR":"EN";
    if(search)search.placeholder=ar?(search.dataset.hdPlaceholderAr||"ابحث في هداية..."):(search.dataset.hdPlaceholderEn||"Search Hidaya...");
