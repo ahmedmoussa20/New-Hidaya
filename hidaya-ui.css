@@ -165,3 +165,59 @@ a,button{transition-property:color,background-color,border-color,box-shadow,opac
   .top{padding-inline:14px}
   .top .brand{gap:5px}
 }
+
+
+/* Hidaya subpage visual system — phase 2.
+   Surface-only polish: no display/position/size changes to functional controls. */
+:where(.page,.wrap,.main,.landing,.workspace,.reader-layout,.practice-layout){
+  -webkit-font-smoothing:antialiased;
+}
+:where(.page,.main){isolation:isolate}
+:where(.hero,.practice-hero,.surah-banner,.location-panel,.adhan-card,.recitation-card,.practice-card,.complete-card,.viewer-frame,.info-card,.side,.reader-drawer,.lock-sheet,.player-dock){
+  box-shadow:0 14px 38px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.025);
+}
+:where(.surah-card,.station,.mosque-card,.feature-card,.reciter-option,.ayah-pill,.verse-pill,.prayer-card,.start-card){
+  transition:transform .2s var(--hidaya-motion),border-color .2s ease,box-shadow .2s ease,background-color .2s ease;
+}
+:where(.surah-card,.station,.mosque-card,.feature-card,.reciter-option):focus-within{
+  border-color:rgba(245,196,81,.48);
+}
+:where(.surah-card,.station,.mosque-card,.feature-card,.reciter-option):hover{
+  border-color:rgba(245,196,81,.42);
+  box-shadow:0 12px 28px rgba(0,0,0,.22),0 0 18px rgba(245,196,81,.045);
+}
+:where(.toolbar,.controls,.surah-tools,.section-head,.list-head,.drawer-head,.viewer-top,.viewer-bottom){
+  gap:12px;
+}
+:where(.search,.surah-search,.field input,.field select,.toolbar input,.toolbar select){
+  transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease;
+}
+:where(.search,.surah-search,.field input,.field select,.toolbar input,.toolbar select):focus{
+  border-color:rgba(245,196,81,.72);
+  box-shadow:0 0 0 3px rgba(245,196,81,.09);
+  outline:none;
+}
+:where(.btn,.btn-gold,.btn-quiet,.primary,.start-btn,.prayer-btn,.maps-btn,.download,.official-store){
+  transition:transform .18s var(--hidaya-motion),box-shadow .18s ease,filter .18s ease;
+}
+:where(.btn,.btn-gold,.btn-quiet,.primary,.start-btn,.prayer-btn,.maps-btn,.download,.official-store):active{
+  transform:scale(.985);
+}
+:where(.state,.empty,.surah-empty,.viewer-loading,.viewer-error){
+  border-radius:16px;
+}
+:where(.page,.app-shell,.app,.standalone-page) :where(button,a){
+  -webkit-tap-highlight-color:transparent;
+}
+@media(max-width:600px){
+  :where(.page,.main){scroll-margin-top:12px}
+  :where(.section-head,.list-head){align-items:center}
+  :where(.surah-card,.station,.mosque-card,.feature-card,.reciter-option):hover{
+    transform:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  :where(.surah-card,.station,.mosque-card,.feature-card,.reciter-option,.btn,.btn-gold,.btn-quiet,.primary,.start-btn,.prayer-btn,.maps-btn,.download,.official-store){
+    transition:none!important;
+  }
+}
