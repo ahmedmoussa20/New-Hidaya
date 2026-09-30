@@ -457,6 +457,13 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
 @media(max-width:480px){.top{padding-inline:14px}.main{padding:20px 14px 32px}.surah-card{gap:9px;padding:10px}.verse-text{line-height:2}}
 @media(prefers-reduced-motion:reduce){.surah-card,.btn,.primary{transition:none!important}}
 
+
+/* Language switch controls for the Arabic-first standalone tools. */
+.top-actions{display:flex;align-items:center;gap:8px;flex:none}
+.page-lang-toggle{min-height:40px;padding:0 12px;border:1px solid rgba(245,184,61,.28);border-radius:12px;background:#141310;color:#ffd36a;font:600 12px system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.page-lang-toggle:focus-visible{outline:2px solid #ffd36a;outline-offset:3px}
+html[dir="ltr"] body{direction:ltr}
+html[dir="ltr"] .hero,html[dir="ltr"] .workspace{text-align:left}
 </style><link rel="stylesheet" href="./hidaya-ui.css">
 <style id="store-badge-fix">
 .lock-store-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0}
@@ -470,7 +477,7 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
 </style>
 </head>
 <body><div class="app">
-<header class="top"><a class="brand" href="index.html">Hidaya <span>هداية</span></a><button class="back" id="backBtn" aria-label="رجوع">‹</button></header>
+<header class="top"><a class="brand" href="index.html">Hidaya <span>هداية</span></a><div class="top-actions"><button class="page-lang-toggle" id="hidayaPageLangToggle" type="button" aria-label="تغيير اللغة">English</button><button class="back" id="backBtn" aria-label="رجوع">‹</button></div></header>
 <main class="main"><div class="workspace">
 <section id="surahView"><div class="hero"><div class="eyebrow">HIDAYA · LEARN & RECITE</div><h1>القرآن التفاعلي</h1><p>اقرأ من حفظك، واستمع إلى تلاوتك وراجع الكلمات التي تحتاج إلى مراجعة.</p></div><div class="progress"><i></i></div><div class="section-label"><span>اختر السورة</span><small>سورة واحدة متاحة حاليًا</small></div>
 <div class="surah-tools" dir="rtl"><label class="surah-search"><span aria-hidden="true">⌕</span><input id="surahSearch" type="search" placeholder="ابحث عن سورة..." autocomplete="off" aria-label="ابحث عن سورة" /></label><div class="surah-filters" role="group" aria-label="تصفية السور"><button type="button" class="surah-filter active" data-filter="all" aria-pressed="true">الكل</button><button type="button" class="surah-filter" data-filter="available" aria-pressed="false">متاحة</button><button type="button" class="surah-filter" data-filter="locked" aria-pressed="false">مقفولة</button></div></div>
