@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b0b">
+<meta name="description" content="تابع التقويم الهجري والميلادي والمناسبات الإسلامية مع هداية.">
+<title>التقويم الهجري | هداية</title>
+<style>
+:root{color-scheme:dark;--bg:#090b0b;--panel:#111514;--panel2:#171b19;--gold:#e8bd58;--gold2:#ffdf8a;--line:rgba(225,184,82,.24);--muted:#a9ada5;--text:#f5f0e3;--green:#75bf79;--purple:#b79ae8}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:radial-gradient(ellipse at 80% 0%,rgba(156,105,28,.16),transparent 38%),linear-gradient(180deg,#0b0d0c,#090b0b 65%);min-height:100vh}
+a{color:inherit;text-decoration:none}button,select{font:inherit}button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(18px,calc((100vw - 1240px)/2));background:rgba(8,10,10,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:12px;color:var(--gold);font-size:23px}.brand-name{font-size:19px}.brand-name span{color:var(--gold)}
+.top-actions{display:flex;align-items:center;gap:8px}.btn,.select{min-height:42px;border:1px solid var(--line);border-radius:12px;background:#121614;color:var(--text);padding:9px 13px}.btn:hover{border-color:var(--gold);background:#1b1a14}.btn.gold{background:linear-gradient(135deg,#f4d37f,#dca93f);border-color:#eac35e;color:#19150b;font-weight:750}.btn:focus-visible,.select:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.wrap{width:min(1180px,calc(100% - 32px));margin:26px auto 64px}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,42px);background:radial-gradient(ellipse at 85% 5%,rgba(208,145,45,.19),transparent 34%),linear-gradient(110deg,rgba(9,12,11,.97),rgba(17,19,16,.92));}
+.hero:after{content:"☾";position:absolute;inset-inline-end:5%;top:-38px;color:rgba(232,189,88,.08);font-size:clamp(170px,24vw,300px);line-height:1;pointer-events:none}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}.hero h1{font-size:clamp(28px,4vw,44px);line-height:1.25;margin:8px 0}.hero p{color:#c7c8be;margin:0;max-width:640px}.hero-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:20px}.hero-icon{flex:0 0 auto;width:66px;height:66px;border-radius:20px;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);font-size:31px;background:rgba(232,189,88,.07)}
+.today-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;margin-top:28px}.today-card,.greg-card{border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(8,11,10,.72)}.today-card{background:linear-gradient(130deg,rgba(76,56,17,.45),rgba(12,15,13,.9));}.today-label{font-size:13px;color:#e8d9b1}.hijri-number{font-size:clamp(42px,7vw,66px);font-weight:800;color:var(--gold2);line-height:1.05;margin:8px 0}.hijri-long{font-size:clamp(18px,2.6vw,25px);font-weight:750}.small-muted{color:var(--muted);font-size:13px;margin-top:7px}.greg-card{display:flex;flex-direction:column;justify-content:center;gap:8px}.greg-card strong{font-size:clamp(18px,2.2vw,24px)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:26px 0 14px}.section-head h2{font-size:19px;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.calendar-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(260px,.8fr);gap:16px;align-items:start}.calendar-panel,.side-panel{border:1px solid var(--line);border-radius:20px;background:rgba(17,21,19,.94);padding:clamp(12px,2vw,20px);min-width:0}.month-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.month-title{text-align:center;min-width:0}.month-title h2{font-size:clamp(17px,2.5vw,22px);margin:0;color:var(--gold2)}.month-title p{margin:5px 0 0;font-size:12px;color:var(--muted)}.icon-btn{width:42px;height:42px;flex:0 0 42px;border-radius:50%;border:1px solid var(--line);background:#171b18;color:var(--gold2);font-size:20px;display:grid;place-items:center}.icon-btn:hover{border-color:var(--gold);background:#242014}.weekdays,.days-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.weekdays{margin-bottom:8px}.weekdays div{text-align:center;color:#c4b68e;font-size:12px;padding:8px 0}.day{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:76px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:#171b19;color:var(--text);padding:7px 2px;transition:border-color .15s,background .15s}.day:hover{border-color:var(--gold);background:#222118}.day .hday{font-weight:800;font-size:clamp(16px,2vw,21px);line-height:1.1}.day .gday{font-size:12px;color:#aeb3aa}.day.outside{opacity:.36}.day.today{border-color:var(--gold);background:linear-gradient(145deg,rgba(148,105,27,.5),rgba(32,29,20,.9));box-shadow:inset 0 0 0 1px rgba(232,189,88,.12)}.day.selected{outline:2px solid var(--gold2);outline-offset:1px}.event-dot{width:5px;height:5px;border-radius:50%;background:var(--green);position:absolute;top:7px;inset-inline-start:7px}.day.today .event-dot{background:var(--gold2)}.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;color:var(--muted);font-size:12px}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:50%;display:inline-block}.side-panel h3{font-size:17px;margin:2px 0 6px}.side-panel .intro{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 14px}.selected-card{border:1px solid var(--line);border-radius:15px;padding:15px;background:linear-gradient(135deg,rgba(70,54,20,.35),rgba(10,13,12,.6));margin-bottom:18px}.selected-card .big-date{font-size:36px;font-weight:800;color:var(--gold2)}.selected-card .selected-hijri{font-weight:750;font-size:17px}.selected-card .selected-greg{font-size:13px;color:#b9bdb4;margin-top:6px}.event-list{display:grid;gap:10px}.event-item{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:#151916}.event-mark{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:rgba(232,189,88,.1);color:var(--gold);font-size:17px}.event-item strong{display:block;font-size:13px}.event-item small{display:block;color:var(--muted);font-size:11px;margin-top:4px;line-height:1.5}.settings{display:grid;gap:10px;margin-top:18px}.settings label{font-size:12px;color:#d4d0c3;display:block;margin-bottom:6px}.select{width:100%;padding:9px 10px;min-width:0}.notice{margin-top:18px;padding:12px 14px;border:1px solid rgba(232,189,88,.16);border-radius:12px;color:#c0c0b5;background:rgba(232,189,88,.045);font-size:12px;line-height:1.8}.status{color:var(--muted);font-size:12px;min-height:18px}.status.error{color:#f0a5a5}.skeleton{min-height:350px;display:grid;place-items:center;text-align:center;color:var(--muted);line-height:1.8}.spinner{width:26px;height:26px;border:2px solid #39362a;border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}@keyframes spin{to{transform:rotate(360deg)}}.footer{color:#7f857b;text-align:center;font-size:11px;margin-top:24px}
+html[dir="ltr"] .hero-top,html[dir="ltr"] .month-head,html[dir="ltr"] .section-head{direction:ltr}html[dir="ltr"] .day .event-dot{left:7px;right:auto}
+@media(max-width:850px){.calendar-layout{grid-template-columns:1fr}.side-panel{display:grid;grid-template-columns:1fr 1fr;gap:16px}.side-panel>.side-intro{grid-column:1/-1}.settings{margin-top:0}.today-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.topbar{padding:10px 12px}.brand-mark{width:34px;height:34px}.brand-name{font-size:16px}.btn,.select{min-height:39px;padding:8px 10px;font-size:12px}.wrap{width:calc(100% - 20px);margin:14px auto 36px}.hero{padding:18px 14px;border-radius:18px}.hero-icon{width:48px;height:48px;border-radius:14px;font-size:23px}.hero p{font-size:13px;line-height:1.7}.today-grid{grid-template-columns:1fr;gap:9px;margin-top:18px}.today-card,.greg-card{padding:15px}.greg-card{min-height:105px}.calendar-layout{gap:12px}.calendar-panel{padding:10px 8px;border-radius:16px}.month-head{gap:5px}.icon-btn{width:35px;height:35px;flex-basis:35px}.month-title h2{font-size:16px}.month-title p{font-size:11px}.weekdays,.days-grid{gap:4px}.weekdays div{font-size:10px;padding:5px 0}.day{min-height:63px;border-radius:9px;gap:5px;padding:5px 1px}.day .hday{font-size:16px}.day .gday{font-size:10px}.event-dot{width:5px;height:5px;top:5px;inset-inline-start:5px}.legend{gap:8px;font-size:10px}.side-panel{display:block;padding:13px}.settings{margin-top:16px}.section-head{margin:20px 0 12px}.section-head h2{font-size:17px}.hide-mobile{display:none}}
+@media(max-width:360px){.day{min-height:56px}.day .hday{font-size:14px}.day .gday{font-size:9px}.weekdays div{font-size:9px}.month-title h2{font-size:14px}.top-actions{gap:5px}.topbar .btn{padding:7px 8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html" aria-label="Hidaya - الرئيسية"><span class="brand-mark">۞</span><span class="brand-name">HIDAYA <span>هداية</span></span></a>
+<div class="top-actions"><button class="btn" id="languageToggle" type="button">English</button><a class="btn" href="index.html" id="backHome">⌂ <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></div>
+</header>
+<main class="wrap">
+<section class="hero">
+<div class="hero-top"><div><div class="eyebrow" data-ar="HIDAYA · التقويم الإسلامي" data-en="HIDAYA · ISLAMIC CALENDAR">HIDAYA · التقويم الإسلامي</div><h1 data-ar="التقويم الهجري" data-en="Hijri Calendar">التقويم الهجري</h1><p data-ar="تابع أيامك ومناسباتك الإسلامية، مع التاريخ الهجري أولًا والميلادي بجواره." data-en="Keep track of Islamic dates and occasions, with the Hijri date first and Gregorian date alongside.">تابع أيامك ومناسباتك الإسلامية، مع التاريخ الهجري أولًا والميلادي بجواره.</p></div><div class="hero-icon" aria-hidden="true">☾</div></div>
+<div class="today-grid"><div class="today-card"><div class="today-label" data-ar="تاريخ اليوم الهجري" data-en="Today's Hijri date">تاريخ اليوم الهجري</div><div class="hijri-number" id="todayHijriDay">—</div><div class="hijri-long" id="todayHijriLong">جارٍ تحميل التاريخ...</div><div class="small-muted" id="todayHijriYear"></div></div><div class="greg-card"><div class="today-label" data-ar="التاريخ الميلادي" data-en="Gregorian date">التاريخ الميلادي</div><strong id="todayGregorian">—</strong><div class="small-muted" id="todayWeekday"></div><button class="btn gold" id="goToday" type="button" data-ar="الانتقال إلى اليوم" data-en="Go to today">الانتقال إلى اليوم</button></div></div>
+</section>
+<div class="section-head"><div><h2 data-ar="تقويم الشهر" data-en="Monthly calendar">تقويم الشهر</h2><p data-ar="اضغط على أي يوم لعرض تفاصيله" data-en="Select any day to view its details">اضغط على أي يوم لعرض تفاصيله</p></div><div class="status" id="loadStatus" role="status" aria-live="polite"></div></div>
+<section class="calendar-layout">
+<div class="calendar-panel">
+<div class="month-head"><button class="icon-btn" id="prevMonth" type="button" aria-label="الشهر السابق">‹</button><div class="month-title"><h2 id="monthTitle">—</h2><p id="gregorianRange">—</p></div><button class="icon-btn" id="nextMonth" type="button" aria-label="الشهر التالي">›</button></div>
+<div id="calendarContent"><div class="skeleton"><div><div class="spinner"></div><span data-ar="جارٍ تحميل التقويم الهجري..." data-en="Loading Hijri calendar...">جارٍ تحميل التقويم الهجري...</span></div></div></div>
+<div class="legend"><span><i class="dot" style="background:var(--gold)"></i><span data-ar="اليوم الحالي" data-en="Today">اليوم الحالي</span></span><span><i class="dot" style="background:var(--green)"></i><span data-ar="مناسبة إسلامية" data-en="Islamic occasion">مناسبة إسلامية</span></span></div>
+</div>
+<aside class="side-panel">
+<div class="side-intro"><h3 data-ar="تفاصيل اليوم" data-en="Selected day">تفاصيل اليوم</h3><p class="intro" data-ar="التاريخ الهجري هو الأساس، ويظهر التاريخ الميلادي للمساعدة في التخطيط." data-en="Hijri is the primary date; Gregorian is shown to help with planning.">التاريخ الهجري هو الأساس، ويظهر التاريخ الميلادي للمساعدة في التخطيط.</p>
+<div class="selected-card"><div class="today-label" data-ar="التاريخ الهجري" data-en="Hijri date">التاريخ الهجري</div><div class="big-date" id="selectedDay">—</div><div class="selected-hijri" id="selectedHijri">—</div><div class="selected-greg" id="selectedGregorian">—</div><div class="small-muted" id="selectedWeekday"></div></div>
+<h3 data-ar="مناسبة هذا اليوم" data-en="Occasion">مناسبة هذا اليوم</h3><div class="event-list" id="selectedEvents"><div class="event-item"><div class="event-mark">☾</div><div><strong data-ar="لا توجد مناسبة مسجلة" data-en="No occasion listed">لا توجد مناسبة مسجلة</strong><small data-ar="ستظهر المناسبات هنا عند توفرها." data-en="Occasions will appear here when available.">ستظهر المناسبات هنا عند توفرها.</small></div></div></div></div>
+<div><h3 data-ar="إعدادات التقويم" data-en="Calendar settings">إعدادات التقويم</h3><div class="settings"><div><label for="methodSelect" data-ar="مرجع حساب التاريخ الهجري" data-en="Hijri calendar method">مرجع حساب التاريخ الهجري</label><select class="select" id="methodSelect"><option value="HJCoSA" data-ar="المجلس القضائي الأعلى السعودي" data-en="Saudi High Judicial Council">المجلس القضائي الأعلى السعودي</option><option value="UAQ" data-ar="تقويم أم القرى" data-en="Umm al-Qura">تقويم أم القرى</option><option value="DIYANET" data-ar="رئاسة الشؤون الدينية التركية" data-en="Diyanet (Türkiye)">رئاسة الشؤون الدينية التركية</option><option value="MATHEMATICAL" data-ar="التقويم الحسابي" data-en="Mathematical calendar">التقويم الحسابي</option></select></div><p class="intro" data-ar="اختلاف المرجع قد يغيّر بداية الشهر الهجري يومًا أو أكثر. اختر المرجع الذي يناسبك." data-en="Different methods may shift the Hijri month start by a day or more. Choose the reference that suits you.">اختلاف المرجع قد يغيّر بداية الشهر الهجري يومًا أو أكثر. اختر المرجع الذي يناسبك.</p></div></div>
+</aside>
+</section>
+<div class="notice" data-ar="تنبيه: التواريخ المعروضة محسوبة وفق المرجع المختار، وقد تختلف بداية الشهر أو بعض المناسبات عن الإعلان الرسمي المحلي بعد تحرّي الهلال." data-en="Note: Dates follow the selected calendar method. Month starts and some occasions may differ from local official announcements following moon sighting.">تنبيه: التواريخ المعروضة محسوبة وفق المرجع المختار، وقد تختلف بداية الشهر أو بعض المناسبات عن الإعلان الرسمي المحلي بعد تحرّي الهلال.</div>
+<div class="footer">HIDAYA · <span data-ar="التقويم الهجري والميلادي" data-en="Hijri & Gregorian Calendar">التقويم الهجري والميلادي</span></div>
+</main>
+<script>
+(function(){
+"use strict";
+const API="https://api.aladhan.com/v1";
+const $=id=>document.getElementById(id);
+const monthNames={
+ ar:["مُحرَّم","صَفَر","ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الآخرة","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة"],
+ en:["Muharram","Safar","Rabi' al-Awwal","Rabi' al-Thani","Jumada al-Awwal","Jumada al-Thani","Rajab","Sha'ban","Ramadan","Shawwal","Dhu al-Qi'dah","Dhu al-Hijjah"]
+};
+const weekdays={ar:["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],en:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]};
+const events={
+ "1-1":{ar:"رأس السنة الهجرية",en:"Islamic New Year"},
+ "10-1":{ar:"يوم عاشوراء",en:"Day of Ashura"},
+ "12-3":{ar:"المولد النبوي الشريف (بحسب التقويم)",en:"Mawlid (calendar-based observance)"},
+ "27-7":{ar:"ليلة الإسراء والمعراج (بحسب التقويم)",en:"Isra and Mi'raj (calendar-based observance)"},
+ "15-8":{ar:"ليلة النصف من شعبان",en:"Mid-Sha'ban"},
+ "1-9":{ar:"بداية شهر رمضان",en:"Start of Ramadan"},
+ "17-9":{ar:"ذكرى غزوة بدر",en:"Battle of Badr"},
+ "27-9":{ar:"ليلة السابع والعشرين من رمضان",en:"27th night of Ramadan"},
+ "1-10":{ar:"عيد الفطر (بحسب التقويم)",en:"Eid al-Fitr (calendar-based)"},
+ "9-12":{ar:"يوم عرفة",en:"Day of Arafah"},
+ "10-12":{ar:"عيد الأضحى (بحسب التقويم)",en:"Eid al-Adha (calendar-based)"}
+};
+let lang=(localStorage.getItem("hidayaLang")||"ar")==="en"?"en":"ar";
+let method=localStorage.getItem("hidayaCalendarMethod")||"HJCoSA";
+let displayedMonth=null, monthData=[], selected=null, todayHijri=null, cache={};
+const methodSelect=$("methodSelect");methodSelect.value=method;
+function t(ar,en){return lang==="ar"?ar:en}
+function dateFromApi(g){const p=(g.date||"").split("-").map(Number);return p.length===3?new Date(Date.UTC(p[2],p[1]-1,p[0])):null}
+function keyOf(d){return d.getUTCFullYear()+"-"+String(d.getUTCMonth()+1).padStart(2,"0")+"-"+String(d.getUTCDate()).padStart(2,"0")}
+function parseApiDate(s){const p=String(s||"").split("-").map(Number);return p.length===3?new Date(Date.UTC(p[2],p[1]-1,p[0])):null}
+function formatGregorian(date){return new Intl.DateTimeFormat(lang==="ar"?"ar-EG":"en-GB",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(date)}
+function formatWeekday(date){return weekdays[lang][date.getUTCDay()]}
+function getHijriDay(item){return Number(item.hijri.day)||Number(String(item.hijri.date).split("-")[0])}
+function getHijriMonth(item){return Number(item.hijri.month.number)}
+function getHijriYear(item){return Number(item.hijri.year)}
+function eventFor(item){
+ const key=getHijriDay(item)+"-"+getHijriMonth(item);
+ const fixed=events[key];
+ const apiEvents=[...(item.hijri.holidays||[]),...(item.hijri.adjustedHolidays||[])].filter(Boolean);
+ if(fixed)return {...fixed,source:"common"};
+ if(apiEvents.length)return {ar:"مناسبة إسلامية",en:apiEvents[0],source:"api"};
+ return null;
+}
+function cacheKey(m,y){return "hidayaHijri:"+method+":"+m+":"+y}
+async function requestJson(url){
+ const key=url;
+ try{const saved=localStorage.getItem(key);if(saved){const obj=JSON.parse(saved);if(Date.now()-obj.at<86400000)return obj.data}}catch(e){}
+ const response=await fetch(url,{headers:{Accept:"application/json"}});
+ if(!response.ok)throw new Error("HTTP "+response.status);
+ const json=await response.json();if(json.code!==200||!Array.isArray(json.data))throw new Error("Invalid calendar response");
+ try{localStorage.setItem(key,JSON.stringify({at:Date.now(),data:json.data}))}catch(e){}
+ return json.data;
+}
+async function loadHijriMonth(month,year){
+ const data=await requestJson(API+"/hToGCalendar/"+month+"/"+year+"?calendarMethod="+encodeURIComponent(method));
+ return data.filter(x=>x&&x.hijri&&x.gregorian&&dateFromApi(x.gregorian));
+}
+function getGregorianToday(){const n=new Date();return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate()))}
+async function initialize(){
+ $("loadStatus").textContent=t("جارٍ تحميل التقويم...","Loading calendar...");
+ try{
+  const today=getGregorianToday();
+  const todayData=await requestJson(API+"/gToH/"+String(today.getUTCDate()).padStart(2,"0")+"-"+String(today.getUTCMonth()+1).padStart(2,"0")+"-"+today.getUTCFullYear()+"?calendarMethod="+encodeURIComponent(method));
+  const item=todayData[0]||todayData;
+  if(!item.hijri)throw new Error("Unable to resolve today's Hijri date");
+  todayHijri={month:getHijriMonth(item),year:getHijriYear(item),day:getHijriDay(item),gregorian:today};
+  renderToday(item,today);
+  await showMonth(todayHijri.month,todayHijri.year,today);
+ }catch(err){
+  $("loadStatus").textContent=t("تعذّر تحميل التاريخ. تحقق من اتصال الإنترنت ثم أعد المحاولة.","Could not load dates. Check your internet connection and retry.");
+  $("loadStatus").classList.add("error");
+  $("calendarContent").innerHTML='<div class="skeleton"><div><p>'+escapeHtml(t("لم نتمكن من جلب بيانات التقويم.","We couldn’t fetch calendar data."))+'</p><button class="btn gold" id="retryLoad">'+escapeHtml(t("إعادة المحاولة","Try again"))+'</button></div></div>';
+  $("retryLoad").addEventListener("click",initialize);
+ }
+}
+function renderToday(item,date){
+ $("todayHijriDay").textContent=getHijriDay(item).toLocaleString(lang==="ar"?"ar-EG":"en-US");
+ $("todayHijriLong").textContent=monthNames[lang][getHijriMonth(item)-1]||item.hijri.month[lang]||item.hijri.month.en;
+ $("todayHijriYear").textContent=(lang==="ar"?"هـ ":"AH ")+getHijriYear(item);
+ $("todayGregorian").textContent=formatGregorian(date);
+ $("todayWeekday").textContent=formatWeekday(date);
+}
+function monthTitle(data){
+ const first=data[0];if(!first)return "—";
+ return monthNames[lang][getHijriMonth(first)-1]+" "+getHijriYear(first)+(lang==="ar"?" هـ":" AH");
+}
+function renderCalendar(data){
+ const firstDate=dateFromApi(data[0].gregorian), offset=firstDate.getUTCDay();
+ const count=data.length;
+ let html='<div class="weekdays">'+weekdays[lang].map(d=>'<div>'+d+'</div>').join("")+'</div><div class="days-grid">';
+ for(let i=0;i<offset;i++)html+='<div aria-hidden="true"></div>';
+ data.forEach(item=>{
+  const date=dateFromApi(item.gregorian),day=getHijriDay(item),ev=eventFor(item),today=todayHijri&&day===todayHijri.day&&getHijriMonth(item)===todayHijri.month&&getHijriYear(item)===todayHijri.year;
+  const isSelected=selected&&keyOf(date)===keyOf(selected);
+  html+='<button class="day'+(today?' today':'')+(isSelected?' selected':'')+'" type="button" data-date="'+keyOf(date)+'" aria-label="'+escapeHtml(monthNames[lang][getHijriMonth(item)-1]+' '+day+', '+getHijriYear(item))+'">'+(ev?'<i class="event-dot" aria-hidden="true"></i>':'')+'<span class="hday">'+day.toLocaleString(lang==="ar"?"ar-EG":"en-US")+'</span><span class="gday">'+date.getUTCDate().toLocaleString(lang==="ar"?"ar-EG":"en-US")+'</span></button>';
+ });
+ html+='</div>';
+ $("calendarContent").innerHTML=html;
+ $("calendarContent").querySelectorAll(".day").forEach(btn=>btn.addEventListener("click",()=>{
+  selected=parseApiDate(btn.dataset.date);renderCalendar(data);const item=data.find(x=>keyOf(dateFromApi(x.gregorian))===keyOf(selected));if(item)renderSelected(item);
+ }));
+ $("monthTitle").textContent=monthTitle(data);
+ const firstG=dateFromApi(data[0].gregorian),lastG=dateFromApi(data[data.length-1].gregorian);
+ $("gregorianRange").textContent=formatGregorian(firstG)+" — "+formatGregorian(lastG);
+}
+function renderSelected(item){
+ const date=dateFromApi(item.gregorian),day=getHijriDay(item),month=getHijriMonth(item),year=getHijriYear(item),ev=eventFor(item);
+ $("selectedDay").textContent=day.toLocaleString(lang==="ar"?"ar-EG":"en-US");
+ $("selectedHijri").textContent=monthNames[lang][month-1]+" "+year+(lang==="ar"?" هـ":" AH");
+ $("selectedGregorian").textContent=formatGregorian(date);
+ $("selectedWeekday").textContent=formatWeekday(date);
+ $("selectedEvents").innerHTML=ev?'<div class="event-item"><div class="event-mark">☾</div><div><strong>'+escapeHtml(ev[lang]||ev.en)+'</strong><small>'+escapeHtml(t("تاريخ مناسبته قد يختلف حسب المرجع المحلي وثبوت الهلال.","The observed date may vary by local authority and moon sighting."))+'</small></div></div>':'<div class="event-item"><div class="event-mark">☾</div><div><strong>'+escapeHtml(t("لا توجد مناسبة مسجلة","No occasion listed"))+'</strong><small>'+escapeHtml(t("لا توجد مناسبة مضافة لهذا اليوم في قائمة هداية.","No Hidaya-listed occasion is assigned to this day."))+'</small></div></div>';
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function showMonth(month,year,selectedDate){
+ $("loadStatus").classList.remove("error");$("loadStatus").textContent=t("جارٍ تحميل الشهر...","Loading month...");
+ $("prevMonth").disabled=true;$("nextMonth").disabled=true;
+ try{
+  const data=await loadHijriMonth(month,year);if(!data.length)throw new Error("No days returned");
+  displayedMonth={month,year};monthData=data;
+  selected=selectedDate||dateFromApi(data[0].gregorian);
+  renderCalendar(data);
+  const current=data.find(x=>keyOf(dateFromApi(x.gregorian))===keyOf(selected))||data[0];selected=dateFromApi(current.gregorian);renderSelected(current);
+  $("loadStatus").textContent="";
+ }catch(err){
+  $("loadStatus").textContent=t("تعذّر تحميل هذا الشهر.","Could not load this month.");$("loadStatus").classList.add("error");
+  $("calendarContent").innerHTML='<div class="skeleton"><div>'+escapeHtml(t("تعذّر تحميل بيانات الشهر.","Unable to load this month."))+'<br><button class="btn gold" id="retryMonth">'+escapeHtml(t("إعادة المحاولة","Try again"))+'</button></div></div>';
+  $("retryMonth").addEventListener("click",()=>showMonth(month,year,selectedDate));
+ }finally{$("prevMonth").disabled=false;$("nextMonth").disabled=false}
+}
+function shiftMonth(delta){
+ if(!displayedMonth)return;
+ let m=displayedMonth.month+delta,y=displayedMonth.year;
+ if(m<1){m=12;y--}if(m>12){m=1;y++}
+ showMonth(m,y,null);
+}
+function applyLanguage(){
+ document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ $("languageToggle").textContent=lang==="ar"?"English":"العربية";
+ $("languageToggle").setAttribute("aria-label",lang==="ar"?"Switch to English":"التبديل إلى العربية");
+ document.querySelectorAll("[data-ar][data-en]").forEach(el=>{el.textContent=el.getAttribute("data-"+lang)});
+ $("prevMonth").setAttribute("aria-label",t("الشهر السابق","Previous month"));
+ $("nextMonth").setAttribute("aria-label",t("الشهر التالي","Next month"));
+ $("methodSelect").querySelectorAll("option").forEach(o=>{o.textContent=o.getAttribute("data-"+lang)||o.textContent});
+ if(monthData.length){renderCalendar(monthData);if(selected){const it=monthData.find(x=>keyOf(dateFromApi(x.gregorian))===keyOf(selected));if(it)renderSelected(it)}}
+ if(todayHijri){const it=monthData.find(x=>keyOf(dateFromApi(x.gregorian))===keyOf(todayHijri.gregorian));if(it)renderToday(it,todayHijri.gregorian)}
+}
+$("languageToggle").addEventListener("click",()=>{lang=lang==="ar"?"en":"ar";localStorage.setItem("hidayaLang",lang);applyLanguage();if(displayedMonth){$("monthTitle").textContent=monthTitle(monthData);$("gregorianRange").textContent=formatGregorian(dateFromApi(monthData[0].gregorian))+" — "+formatGregorian(dateFromApi(monthData[monthData.length-1].gregorian))}});
+$("prevMonth").addEventListener("click",()=>shiftMonth(-1));$("nextMonth").addEventListener("click",()=>shiftMonth(1));
+$("goToday").addEventListener("click",async()=>{await initialize();window.scrollTo({top:0,behavior:"smooth"})});
+methodSelect.addEventListener("change",()=>{method=methodSelect.value;localStorage.setItem("hidayaCalendarMethod",method);initialize()});
+applyLanguage();initialize();
+})();
+</script>
+</body>
+</html>
