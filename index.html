@@ -573,6 +573,25 @@ body.rtl .quran-search input{text-align:right}
 .radio-start-card .start-icon,.radio-start-card .desktop-quick-icon{color:#f5c85b}
 .radio-start-card{border-color:rgba(245,184,61,.42)!important}
 
+
+/* HIDAYA GOLDEN HERO CAROUSEL */
+.hero{background-color:#050403}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 35%,rgba(245,184,61,.09),transparent 48%)}
+.logo{background:#8e100d;border:1px solid rgba(255,211,106,.78);box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 0 0 5px rgba(25,4,3,.22);color:#ffda70}
+.logo .en{font-size:19px;letter-spacing:.5px}
+.logo .ar{font-family:"Amiri",serif;font-size:27px;margin-top:2px;text-shadow:0 1px 0 #6b3008}
+.hero .copy{transition:opacity .25s ease,transform .25s ease}
+.hero .copy.is-switching{opacity:0;transform:translateY(8px)}
+.hero-primary-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 24px;margin:0 0 22px;border-radius:9px;border:1px solid rgba(255,224,151,.8);background:linear-gradient(135deg,#ffdc7b,#e6a92c);color:#171009;text-decoration:none;font-weight:800;box-shadow:0 10px 28px rgba(0,0,0,.3);transition:transform .2s ease,box-shadow .2s ease}
+.hero-primary-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.4)}
+.hero-carousel-controls{position:absolute;z-index:12;left:50%;bottom:17px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid rgba(245,184,61,.26);border-radius:30px;background:rgba(4,4,3,.68);backdrop-filter:blur(12px)}
+.hero-carousel-dot{width:9px;height:9px;border:0;border-radius:50%;padding:0;background:rgba(255,255,255,.38);cursor:pointer;transition:width .25s ease,background .25s ease}
+.hero-carousel-dot[aria-current="true"]{width:27px;border-radius:8px;background:linear-gradient(90deg,#ffe29a,#e6a92c)}
+.hero-carousel-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:900px){.hero{min-height:0;padding-bottom:35px}.hero-grid{padding-bottom:20px}.hero-primary-cta{min-height:48px;padding:0 18px;margin-bottom:18px;font-size:14px}.hero-carousel-controls{bottom:8px}.hero-carousel-dot{width:8px;height:8px}.hero-carousel-dot[aria-current="true"]{width:24px}.mobile-start{margin-top:6px}}
+@media(max-width:520px){.logo .en{font-size:14px}.logo .ar{font-size:23px}.hero-primary-cta{width:100%;max-width:100%}.hero-carousel-controls{bottom:5px}}
+@media(prefers-reduced-motion:reduce){.hero .copy,.hero-primary-cta,.hero-carousel-dot{transition:none!important}}
+
 </style>
 
 <style id="mobile-start-layout-final">
@@ -863,6 +882,7 @@ body.rtl .quran-search input{text-align:right}
 <div class="eyebrow" data-i18n="hero_eyebrow">YOUR ISLAMIC COMPANION</div>
 <h1>Your Quran.<br/>Your Journey.<br/><span>Your Hidaya.</span></h1>
 <p class="sub" data-i18n="hero_sub">Read, listen, learn and connect with the Quran — wherever your journey takes you.</p>
+<a class="hero-primary-cta" id="heroPrimaryCta" href="quran.html"><span id="heroPrimaryCtaText">Explore the Quran</span><span aria-hidden="true">↗</span></a>
 <div class="stores">
 <a class="store" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank"><span class="play-icon">▶</span><span><span class="small">GET IT ON</span><span class="big">Google Play</span></span></a>
 <a class="store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" rel="noopener" target="_blank"><span class="apple-icon">●</span><span><span class="small">DOWNLOAD ON THE</span><span class="big">App Store</span></span></a>
@@ -879,6 +899,13 @@ body.rtl .quran-search input{text-align:right}
 <div class="phone left"><img alt="Hidaya Qibla screen" src="./assets/qibla-screen.jpg"/></div>
 <div class="phone right"><img alt="Hidaya Quran memorization screen" src="./assets/ehfaz-screen.jpg"/></div>
 </div>
+</div>
+
+<div class="hero-carousel-controls" role="group" aria-label="Hidaya featured banners" id="heroCarouselControls">
+<button class="hero-carousel-dot" type="button" aria-label="Show Quran banner" aria-current="true" data-hero-slide="0"></button>
+<button class="hero-carousel-dot" type="button" aria-label="Show Hifz banner" aria-current="false" data-hero-slide="1"></button>
+<button class="hero-carousel-dot" type="button" aria-label="Show Hidaya app banner" aria-current="false" data-hero-slide="2"></button>
+<span class="hero-carousel-status" id="heroCarouselStatus" aria-live="polite">Quran banner</span>
 </div>
 <!-- Mobile first-screen quick start -->
 <div aria-label="Start your Hidaya journey" class="mobile-start">
@@ -1588,6 +1615,52 @@ body.rtl .quran-search input{text-align:right}
 <p data-i18n="faq_text" style="color:rgba(255,255,255,.58);line-height:1.7">Have a question about Hidaya? We are preparing the full FAQ experience here.</p>
 </div>
 </section><script>
+/* 
+<script>
+/* Responsive Hidaya hero carousel: auto-advance, touch swipe, pause on interaction. */
+(function(){
+  const root=document.querySelector('.hero'),copy=root&&root.querySelector('.copy');
+  if(!root||!copy)return;
+  const heading=copy.querySelector('h1'),eyebrow=copy.querySelector('.eyebrow'),sub=copy.querySelector('.sub');
+  const cta=document.getElementById('heroPrimaryCta'),ctaText=document.getElementById('heroPrimaryCtaText');
+  const dots=[...document.querySelectorAll('[data-hero-slide]')],status=document.getElementById('heroCarouselStatus');
+  const phones=[...root.querySelectorAll('.phone img')];
+  const slides=[
+    {en:{eyebrow:'YOUR ISLAMIC COMPANION',title:'Your Quran.<br/>Your Journey.<br/><span>Your Hidaya.</span>',sub:'Read, listen, learn and connect with the Quran — wherever your journey takes you.',cta:'Explore the Quran',status:'Quran banner'},ar:{eyebrow:'رفيقك في رحلتك الإيمانية',title:'رحلتك مع القرآن<br/><span>تبدأ من هنا</span>',sub:'اقرأ واستمع وتعلّم وتدبّر آيات القرآن الكريم مع هداية، أينما كنت.',cta:'اكتشف القرآن الآن',status:'بنر القرآن'},href:'quran.html',images:['./assets/qibla-screen.jpg','./assets/ehfaz-screen.jpg']},
+    {en:{eyebrow:'ONE AYAH AT A TIME',title:'Make Hifz part<br/>of your <span>journey.</span>',sub:'Build a steady Quran memorization habit with a focused experience designed to help you progress.',cta:'Start memorizing',status:'Hifz banner'},ar:{eyebrow:'آية بعد آية',title:'خطوة جديدة في<br/><span>رحلة الحفظ</span>',sub:'اجعل حفظ القرآن عادة يومية مع تجربة تساعدك على التقدّم آية بعد آية.',cta:'ابدأ رحلة الحفظ',status:'بنر الحفظ'},href:'hifz.html',images:['./assets/ehfaz-screen.jpg','./assets/qibla-screen.jpg']},
+    {en:{eyebrow:'YOUR FAITH, EVERY DAY',title:'More of Hidaya.<br/><span>Every day.</span>',sub:'Explore Quran, prayer times, Qibla, Hidaya Radio and more in one connected experience.',cta:'Discover Hidaya',status:'Hidaya app banner'},ar:{eyebrow:'هداية ترافق يومك',title:'كل ما يقربك<br/><span>في مكان واحد</span>',sub:'اكتشف القرآن ومواقيت الصلاة والقبلة وإذاعة هداية والمزيد في تجربة واحدة.',cta:'اكتشف هداية',status:'بنر تطبيق هداية'},href:'https://play.google.com/store/apps/details?id=app.hidaya',images:['./assets/qibla-screen.jpg','./assets/ehfaz-screen.jpg']}
+  ];
+  let active=0,timer=null,paused=false,touchX=null;
+  const getLang=()=>document.documentElement.lang.toLowerCase().startsWith('ar')?'ar':'en';
+  function show(n,manual){
+    active=(n+slides.length)%slides.length;const slide=slides[active],text=slide[getLang()];
+    copy.classList.add('is-switching');
+    window.setTimeout(()=>{
+      eyebrow.textContent=text.eyebrow;heading.innerHTML=text.title;sub.textContent=text.sub;
+      cta.href=slide.href;ctaText.textContent=text.cta;
+      phones.forEach((img,i)=>{if(slide.images[i])img.src=slide.images[i]});
+      dots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===active)));
+      if(status)status.textContent=text.status;
+      copy.classList.remove('is-switching');
+    },180);
+    if(manual)restart();
+  }
+  function stop(){if(timer)window.clearInterval(timer);timer=null}
+  function start(){stop();if(!paused&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=window.setInterval(()=>show(active+1,false),6500)}
+  function restart(){start()}
+  dots.forEach(dot=>dot.addEventListener('click',()=>show(Number(dot.dataset.heroSlide),true)));
+  root.addEventListener('mouseenter',()=>{paused=true;stop()});
+  root.addEventListener('mouseleave',()=>{paused=false;start()});
+  root.addEventListener('focusin',()=>{paused=true;stop()});
+  root.addEventListener('focusout',()=>{paused=false;start()});
+  root.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX},{passive:true});
+  root.addEventListener('touchend',e=>{if(touchX===null)return;const delta=e.changedTouches[0].clientX-touchX;touchX=null;if(Math.abs(delta)>55)show(active+(delta<0?1:-1),true)},{passive:true});
+  new MutationObserver(()=>show(active,false)).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  show(0,false);start();
+})();
+</script>
+
+<script>
 /* Register Hidaya's same-origin cache; safe no-op in unsupported browsers. */
 if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
   window.addEventListener("load", function () {
