@@ -49,3 +49,93 @@ a,button{transition-property:color,background-color,border-color,box-shadow,opac
 @media(prefers-reduced-motion:reduce){
   ::view-transition-old(root),::view-transition-new(root){animation:none!important}
 }
+
+/* Hidaya cross-page navigation polish v2
+   Shared, additive rules: preserve each page's content and feature behavior. */
+:root{
+  --hidaya-motion:cubic-bezier(.22,.61,.36,1);
+  --hidaya-nav-height:76px;
+}
+.nav{
+  gap:clamp(14px,2vw,28px);
+  min-width:0;
+}
+.nav .logo{
+  margin-top:0;
+  flex:0 0 auto;
+}
+.nav .logo .en,
+.nav .logo .ar{
+  display:block;
+  line-height:1.12;
+}
+.nav .logo .ar{margin-top:3px!important}
+.nav .links{
+  align-items:center;
+  gap:clamp(12px,1.8vw,26px);
+  min-width:0;
+}
+.nav .links a{
+  white-space:nowrap;
+  text-underline-offset:5px;
+  transition:color .18s ease,opacity .18s ease;
+}
+.nav .links a:hover{color:var(--hidaya-gold,#f5c451)}
+.nav .nav-right{gap:9px;min-width:0}
+.topbar{
+  gap:12px;
+  min-width:0;
+}
+.topbar .brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+  text-decoration:none;
+}
+.topbar .brand-mark{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+}
+.topbar .brand-name,
+.topbar .brand strong{
+  line-height:1.18;
+}
+.topbar .brand-sub,
+.topbar .brand small{
+  display:block;
+  line-height:1.25;
+  margin-top:2px;
+}
+.brand-name,.brand-sub{overflow-wrap:anywhere}
+@media(max-width:1100px){
+  .nav{gap:14px}
+  .nav .links{gap:12px}
+  .nav .links a{font-size:12px}
+}
+@media(max-width:850px){
+  .nav{height:76px;gap:10px}
+  .nav .logo{width:62px;height:62px;flex:0 0 62px;border-radius:14px}
+  .nav .logo .en{font-size:16px}
+  .nav .logo .ar{font-size:13px;margin-top:2px!important}
+  .topbar .brand{gap:8px}
+}
+@media(max-width:380px){
+  .topbar{gap:8px}
+  .topbar .brand{gap:7px}
+}
+/* Cross-page motion is intentionally subtle: no horizontal movement or scaling
+   that could shift controls or disturb media/Quran feature layouts. */
+@view-transition{navigation:auto}
+::view-transition-group(root){
+  animation-duration:.24s;
+  animation-timing-function:var(--hidaya-motion);
+}
+::view-transition-old(root){animation:hidaya-crossfade-out .14s ease both}
+::view-transition-new(root){animation:hidaya-crossfade-in .24s var(--hidaya-motion) both}
+@keyframes hidaya-crossfade-out{to{opacity:0}}
+@keyframes hidaya-crossfade-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation:none!important}
+}
