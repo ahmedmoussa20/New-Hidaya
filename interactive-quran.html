@@ -434,6 +434,29 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
   }
 }
 
+
+/* Interactive Quran visual refinement — retain practice and recognition behavior */
+.app{box-shadow:0 0 70px rgba(0,0,0,.22);border-inline-color:rgba(245,196,81,.16)}
+.top{background:linear-gradient(180deg,rgba(12,13,10,.9),rgba(8,9,7,.35));border-bottom-color:rgba(245,196,81,.14)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px}
+.hero h1,.practice-hero h1{letter-spacing:-.4px;text-wrap:balance}
+.hero p,.practice-hero p{line-height:1.7}
+.workspace,.practice-layout{gap:14px}
+.surah-tools{gap:10px}
+.surah-search{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.10)}
+.surah-search:focus-within{border-color:rgba(245,196,81,.6);box-shadow:0 0 0 3px rgba(245,196,81,.07)}
+.surah-card{border-color:rgba(245,196,81,.14);box-shadow:0 7px 20px rgba(0,0,0,.12)}
+.surah-card:hover{border-color:rgba(245,196,81,.4);transform:translateY(-1px)}
+.surah-card.available{border-color:rgba(83,184,109,.5)}
+.verse-box,.verse-workspace,.practice-tools{box-shadow:0 12px 32px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025)}
+.verse-text{line-height:2.1}
+.verse-controls,.tool-controls{gap:9px}
+.btn,.primary{transition:filter .18s ease,transform .18s ease,box-shadow .18s ease}
+.btn:hover,.primary:hover{filter:brightness(1.05)}
+.result,.status{line-height:1.6}
+@media(max-width:480px){.top{padding-inline:14px}.main{padding:20px 14px 32px}.surah-card{gap:9px;padding:10px}.verse-text{line-height:2}}
+@media(prefers-reduced-motion:reduce){.surah-card,.btn,.primary{transition:none!important}}
+
 </style><link rel="stylesheet" href="./hidaya-ui.css">
 <style id="store-badge-fix">
 .lock-store-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0}
