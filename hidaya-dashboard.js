@@ -15,4 +15,5 @@
  enButton&&enButton.addEventListener("click",toggleLang);mini&&mini.addEventListener("click",toggleLang);
  search&&search.addEventListener("input",function(){const q=this.value.trim().toLowerCase();root.querySelectorAll(".hd-feature-card").forEach(card=>{const hay=(card.textContent+" "+(card.dataset.search||"")).toLowerCase();card.hidden=!!q&&!hay.includes(q)});});
  applyLang();
+ window.dispatchEvent(new Event("hidayaLanguageChanged"));
 })();
