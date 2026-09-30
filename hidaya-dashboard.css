@@ -151,3 +151,73 @@
 .hd-lang-mini{order:0}
 .hd-search{order:1}
 .hd-nav-download{order:2}
+
+
+/* Homepage concept: rotating photographic hero with a floating row of key product cards. */
+.hidaya-dashboard .hd-welcome{
+ position:relative;isolation:isolate;overflow:visible;min-height:650px;height:clamp(600px,49vw,730px);
+ margin:0 0 105px!important;padding:clamp(30px,4vw,64px);
+ border:1px solid rgba(245,196,81,.45);border-radius:24px;
+ background:#080706;box-shadow:0 24px 60px rgba(0,0,0,.4)
+}
+.hidaya-dashboard .hd-welcome:before{
+ content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;pointer-events:none;
+ background-image:linear-gradient(90deg,rgba(5,4,3,.16) 0%,rgba(5,4,3,.3) 35%,rgba(5,4,3,.88) 72%,rgba(5,4,3,.78) 100%),linear-gradient(0deg,rgba(5,4,3,.55),transparent 60%),url('./assets/hero-mosque-bg.png');
+ background-size:cover;background-position:center 52%;opacity:1;
+ animation:hdHeroSlowPan 22s ease-in-out infinite alternate
+}
+.hidaya-dashboard .hd-welcome:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 18% 70%,rgba(245,190,70,.12),transparent 35%)}
+.hidaya-dashboard .hd-welcome[data-hd-slide="1"]:before{
+ background-image:linear-gradient(90deg,rgba(5,4,3,.18),rgba(5,4,3,.35) 38%,rgba(5,4,3,.88) 75%),linear-gradient(0deg,rgba(5,4,3,.55),transparent 60%),url('./assets/qibla-screen.jpg')
+}
+.hidaya-dashboard .hd-welcome[data-hd-slide="2"]:before{
+ background-image:linear-gradient(90deg,rgba(5,4,3,.16),rgba(5,4,3,.35) 38%,rgba(5,4,3,.9) 75%),linear-gradient(0deg,rgba(5,4,3,.55),transparent 60%),url('./assets/ehfaz-screen.jpg')
+}
+.hidaya-dashboard .hd-welcome-copy{position:relative;z-index:2;width:min(49%,650px);max-width:650px;margin-inline-start:auto;text-align:start;padding:0 0 80px}
+.hidaya-dashboard .hd-welcome-art{z-index:1;opacity:.78}
+.hidaya-dashboard .hd-banner-controls{z-index:5;bottom:128px;left:50%;right:auto;transform:translateX(-50%)}
+.hidaya-dashboard .hd-banner-arrow{position:static;transform:none;width:31px;height:31px;font-size:24px;border-radius:50%;border:1px solid rgba(245,196,81,.42);background:rgba(8,8,7,.72);color:#ffe09a;cursor:pointer}
+.hidaya-dashboard .hd-banner-arrow:hover{transform:scale(1.05)}
+.hd-showcase-cards{position:absolute;z-index:8;left:20px;right:20px;bottom:-78px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;direction:rtl}
+.hd-showcase-card{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;height:176px;padding:15px;border:1px solid rgba(245,196,81,.48);border-radius:16px;overflow:hidden;background:#0c0b09;box-shadow:0 14px 28px rgba(0,0,0,.32);text-decoration:none;color:#fff;transition:transform .25s,border-color .25s,box-shadow .25s}
+.hd-showcase-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,4,4,.04) 0%,rgba(4,4,4,.38) 34%,rgba(4,4,4,.94) 100%)}
+.hd-showcase-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.76;transition:transform .5s,opacity .25s}
+.hd-showcase-card:hover{transform:translateY(-5px);border-color:#ffdc7a;box-shadow:0 20px 34px rgba(0,0,0,.42)}
+.hd-showcase-card:hover img{transform:scale(1.06);opacity:.9}
+.hd-showcase-icon{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,217,115,.62);border-radius:12px;background:rgba(6,6,5,.76);color:#ffda72;font-size:21px}
+.hd-showcase-title{display:block;margin-bottom:7px;color:#ffe5a0;font-family:Amiri,Georgia,serif;font-size:clamp(16px,1.45vw,23px);font-weight:700;line-height:1.25;text-shadow:0 2px 10px #000}
+.hd-showcase-cta{display:block;color:#fff;font-size:11px;line-height:1.4}
+.hidaya-dashboard .hd-section-head{margin-top:0}
+@keyframes hdHeroSlowPan{from{background-position:48% 50%}to{background-position:54% 50%}}
+@media(max-width:1050px){
+ .hidaya-dashboard .hd-welcome{min-height:590px;height:610px;padding:35px 28px;margin-bottom:115px!important}
+ .hidaya-dashboard .hd-welcome-copy{width:53%;padding-bottom:100px}
+ .hd-showcase-cards{left:12px;right:12px;gap:8px;bottom:-86px}
+ .hd-showcase-card{height:166px;padding:11px}
+ .hd-showcase-title{font-size:17px}
+ .hd-showcase-cta{font-size:10px}
+}
+@media(max-width:700px){
+ .hidaya-dashboard .hd-content{padding:94px 12px 30px}
+ .hidaya-dashboard .hd-welcome{height:auto;min-height:690px;padding:28px 17px 30px;margin-bottom:270px!important;border-radius:17px}
+ .hidaya-dashboard .hd-welcome:before{background-position:35% center}
+ .hidaya-dashboard .hd-welcome-copy{width:100%;max-width:none;text-align:right;margin:0;padding:0 0 20px}
+ .hidaya-dashboard .hd-welcome h1{font-size:clamp(34px,9vw,48px);line-height:1.2}
+ .hidaya-dashboard .hd-welcome p{font-size:15px;max-width:100%}
+ .hidaya-dashboard .hd-welcome-art{opacity:.42;right:-10px;bottom:0}
+ .hidaya-dashboard .hd-banner-controls{bottom:-235px;top:auto;left:50%;right:auto}
+ .hd-showcase-cards{left:0;right:0;bottom:-245px;grid-template-columns:repeat(5,minmax(148px,1fr));gap:9px;overflow-x:auto;overflow-y:hidden;padding:4px 1px 13px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#a77b2b #14120e}
+ .hd-showcase-card{height:174px;scroll-snap-align:center;border-radius:14px}
+ .hd-showcase-title{font-size:18px}
+ .hd-showcase-cta{font-size:10px}
+ .hidaya-dashboard .hd-section-head{margin-top:0}
+}
+@media(max-width:380px){
+ .hidaya-dashboard .hd-welcome{min-height:660px;padding-inline:13px}
+ .hd-showcase-cards{grid-template-columns:repeat(5,minmax(138px,1fr))}
+ .hd-showcase-card{height:162px;padding:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hidaya-dashboard .hd-welcome:before{animation:none}
+ .hd-showcase-card,.hd-showcase-card img{transition:none}
+}
