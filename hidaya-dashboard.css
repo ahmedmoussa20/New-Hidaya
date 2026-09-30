@@ -221,3 +221,160 @@
  .hidaya-dashboard .hd-welcome:before{animation:none}
  .hd-showcase-card,.hd-showcase-card img{transition:none}
 }
+
+
+/* === Final hero composition: rotating banner in the background, product cards layered in front === */
+.hidaya-dashboard .hd-welcome{
+  position:relative;
+  display:block;
+  isolation:isolate;
+  overflow:visible;
+  min-height:590px;
+  height:clamp(590px,48vw,700px);
+  margin:0 0 112px!important;
+  padding:clamp(30px,4vw,58px);
+  border:1px solid rgba(235,190,78,.52);
+  border-radius:24px;
+  background:#070706;
+}
+.hidaya-dashboard .hd-welcome:before{
+  inset:0;
+  z-index:0;
+  border-radius:inherit;
+  background-size:cover;
+  background-position:center 48%;
+  transition:background-position 6.5s ease-in-out,filter .7s ease;
+  animation:hdHeroSlowPan 20s ease-in-out infinite alternate;
+}
+.hidaya-dashboard .hd-welcome:after{
+  inset:0;
+  z-index:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(3,3,3,.08) 0%,rgba(3,3,3,.22) 28%,rgba(3,3,3,.78) 63%,rgba(3,3,3,.94) 100%),
+    linear-gradient(0deg,rgba(3,3,3,.7),transparent 44%,rgba(3,3,3,.14));
+}
+.hidaya-dashboard .hd-welcome-copy{
+  position:relative;
+  z-index:2;
+  width:min(48%,620px);
+  max-width:620px;
+  margin-inline-start:auto;
+  padding:0 0 90px;
+  text-align:start;
+}
+.hidaya-dashboard .hd-welcome h1{font-size:clamp(42px,4.5vw,72px);line-height:1.12}
+.hidaya-dashboard .hd-welcome p{font-size:clamp(16px,1.35vw,22px);line-height:1.7}
+.hidaya-dashboard .hd-welcome-art{z-index:1;pointer-events:none;opacity:.72}
+.hidaya-dashboard .hd-banner-controls{
+  z-index:6;
+  left:50%;
+  right:auto;
+  bottom:125px;
+  top:auto;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.hidaya-dashboard .hd-welcome .hd-banner-arrow{
+  position:static;
+  transform:none;
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(245,196,81,.45);
+  border-radius:50%;
+  background:rgba(5,5,4,.78);
+  color:#ffe09a;
+  font-size:24px;
+  cursor:pointer;
+}
+.hidaya-dashboard .hd-welcome .hd-banner-arrow:hover{transform:scale(1.06);background:#211806}
+.hd-showcase-cards{
+  position:absolute;
+  z-index:8;
+  left:20px;
+  right:20px;
+  bottom:-82px;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:13px;
+  direction:rtl;
+}
+.hd-showcase-card{
+  height:174px;
+  min-width:0;
+  padding:15px;
+  border:1px solid rgba(245,196,81,.52);
+  border-radius:16px;
+  background:#0b0a08;
+  box-shadow:0 14px 28px rgba(0,0,0,.34);
+  overflow:hidden;
+}
+.hd-showcase-card:after{
+  background:linear-gradient(180deg,rgba(4,4,4,.03) 0%,rgba(4,4,4,.25) 34%,rgba(4,4,4,.94) 100%);
+}
+.hd-showcase-card img{opacity:.78;object-fit:cover}
+.hd-showcase-icon{
+  top:12px;right:12px;
+  width:36px;height:36px;
+  border:1px solid rgba(255,217,115,.62);
+  border-radius:12px;
+  background:rgba(6,6,5,.8);
+  color:#ffda72;
+}
+.hd-showcase-title{font-size:clamp(16px,1.3vw,22px);margin-bottom:6px}
+.hd-showcase-cta{font-size:11px}
+.hidaya-dashboard .hd-section-head{margin-top:0}
+@media(max-width:1050px){
+  .hidaya-dashboard .hd-welcome{height:610px;min-height:610px;margin-bottom:118px!important;padding:32px 26px}
+  .hidaya-dashboard .hd-welcome-copy{width:52%;padding-bottom:95px}
+  .hd-showcase-cards{left:12px;right:12px;gap:8px;bottom:-88px}
+  .hd-showcase-card{height:166px;padding:11px}
+  .hd-showcase-title{font-size:17px}
+  .hd-showcase-cta{font-size:10px}
+}
+@media(max-width:700px){
+  .hidaya-dashboard .hd-content{padding:94px 12px 30px}
+  .hidaya-dashboard .hd-welcome{
+    height:auto;min-height:570px;
+    margin-bottom:250px!important;
+    padding:28px 17px 32px;
+    border-radius:17px;
+  }
+  .hidaya-dashboard .hd-welcome:before{background-position:35% center}
+  .hidaya-dashboard .hd-welcome:after{
+    background:linear-gradient(180deg,rgba(3,3,3,.65),rgba(3,3,3,.25) 48%,rgba(3,3,3,.18)),
+    linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,.28));
+  }
+  .hidaya-dashboard .hd-welcome-copy{width:100%;max-width:none;margin:0;padding:0 0 25px;text-align:right}
+  .hidaya-dashboard .hd-welcome h1{font-size:clamp(35px,9vw,48px);line-height:1.2}
+  .hidaya-dashboard .hd-welcome p{font-size:15px;line-height:1.6}
+  .hidaya-dashboard .hd-welcome-art{opacity:.38;right:-10px;bottom:0}
+  .hidaya-dashboard .hd-banner-controls{bottom:-220px;top:auto;left:50%;right:auto}
+  .hd-showcase-cards{
+    left:0;right:0;bottom:-228px;
+    grid-template-columns:repeat(5,minmax(148px,1fr));
+    gap:9px;
+    overflow-x:auto;overflow-y:hidden;
+    padding:4px 1px 13px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:thin;
+    scrollbar-color:#a77b2b #14120e;
+  }
+  .hd-showcase-card{height:174px;scroll-snap-align:center;border-radius:14px}
+  .hd-showcase-title{font-size:18px}
+  .hd-showcase-cta{font-size:10px}
+}
+@media(max-width:380px){
+  .hidaya-dashboard .hd-welcome{min-height:550px;padding-inline:13px}
+  .hd-showcase-cards{grid-template-columns:repeat(5,minmax(138px,1fr))}
+  .hd-showcase-card{height:162px;padding:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hidaya-dashboard .hd-welcome:before{animation:none;transition:none}
+  .hd-showcase-card,.hd-showcase-card img{transition:none}
+}
