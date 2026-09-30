@@ -15,28 +15,7 @@
  enButton&&enButton.addEventListener("click",toggleLang);mini&&mini.addEventListener("click",toggleLang);
  search&&search.addEventListener("input",function(){const q=this.value.trim().toLowerCase();root.querySelectorAll(".hd-feature-card").forEach(card=>{const hay=(card.textContent+" "+(card.dataset.search||"")).toLowerCase();card.hidden=!!q&&!hay.includes(q)});});
  
-// Automatic hero carousel; pauses while the tab is hidden and honors reduced-motion settings.
- const welcome=root.querySelector(".hd-welcome");
- const dots=welcome?Array.from(welcome.querySelectorAll(".hd-banner-dot")):[];
- const live=document.getElementById("hdBannerLive");
- let slide=0, carouselTimer=null;
- function showSlide(next){
-   if(!welcome||!dots.length)return;
-   slide=(next+dots.length)%dots.length;
-   welcome.dataset.hdSlide=String(slide);
-   dots.forEach((dot,index)=>dot.setAttribute("aria-current",String(index===slide)));
-   if(live)live.textContent=dots[slide].getAttribute("aria-label")||"Featured Hidaya banner";
- }
- function stopCarousel(){if(carouselTimer){window.clearInterval(carouselTimer);carouselTimer=null}}
- function startCarousel(){
-   stopCarousel();
-   if(!welcome||dots.length<2||window.matchMedia("(prefers-reduced-motion: reduce)").matches||document.hidden)return;
-   carouselTimer=window.setInterval(()=>showSlide(slide+1),6500);
- }
- dots.forEach((dot,index)=>dot.addEventListener("click",()=>{showSlide(index);startCarousel()}));
- welcome&&welcome.querySelectorAll("[data-hd-step]").forEach(button=>button.addEventListener("click",()=>{showSlide(slide+Number(button.dataset.hdStep||0));startCarousel()}));
- document.addEventListener("visibilitychange",()=>document.hidden?stopCarousel():startCarousel());
- showSlide(0);startCarousel();
+ // The homepage carousel is managed by the reference-matched inline controller in index.html.
  applyLang();
  window.dispatchEvent(new Event("hidayaLanguageChanged"));
 })();
