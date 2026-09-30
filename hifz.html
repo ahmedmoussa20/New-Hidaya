@@ -109,6 +109,25 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradi
 @media(min-width:700px){.app-shell{box-shadow:0 0 80px rgba(0,0,0,.45);border-radius:28px;margin:18px auto;min-height:calc(100dvh - 36px)}.chooser{position:absolute}.sheet{border-bottom:1px solid rgba(255,255,255,.1)}}
 
 .interactive-quran-nav{color:#f5b83d!important;font-weight:700!important;white-space:nowrap}.interactive-quran-nav::before{content:"✧";font-size:10px;margin-right:5px}.mobile-interactive-quran{color:#f5b83d!important;font-weight:700!important}
+
+/* Hifz page visual refinement — presentation only */
+.app-shell{border-inline-color:rgba(245,196,81,.16);box-shadow:0 0 70px rgba(0,0,0,.22)}
+.topbar{border-bottom:1px solid rgba(245,196,81,.13);background:linear-gradient(180deg,rgba(12,13,10,.86),rgba(8,9,7,.38))}
+.landing,.step-screen{position:relative;z-index:1}
+.step-title{letter-spacing:-.35px;text-wrap:balance}
+.step-subtitle{line-height:1.65}
+.surah-card{border-color:rgba(245,196,81,.14)}
+.surah-card{transition:border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.surah-card:hover{border-color:rgba(245,196,81,.42);background:linear-gradient(110deg,rgba(245,196,81,.06),#11110f)}
+.recitation-card,.practice-card,.complete-card{border-color:rgba(245,196,81,.17);box-shadow:0 14px 34px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.025)}
+.ayah-pills,.repeat-controls{gap:8px}
+.ayah-pill{transition:border-color .18s ease,background .18s ease,color .18s ease}
+.ayah-pill:focus-visible,.ayah-pill.active{box-shadow:0 0 0 3px rgba(245,196,81,.08)}
+.start-btn,.primary,.complete-actions button{transition:filter .18s ease,transform .18s ease,box-shadow .18s ease}
+.start-btn:hover,.primary:hover{filter:brightness(1.05);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+@media(max-width:480px){.app-shell{border-inline:0}.topbar{padding-inline:16px}.step-title{font-size:clamp(23px,6vw,30px)}}
+@media(prefers-reduced-motion:reduce){.surah-card,.ayah-pill,.start-btn,.primary,.complete-actions button{transition:none!important}}
+
 </style>
 <style>.nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 22px;max-width:1200px;margin:auto}.nav .logo{color:#fff;text-decoration:none;font-weight:800;font-size:22px}.nav .logo .ar{display:none}.nav .links{display:flex;gap:18px;align-items:center}.nav .links a{color:#eee;text-decoration:none;font-size:13px}.nav .hifz-nav{color:#f5b83d!important;font-weight:800}.nav-right{display:flex;align-items:center;gap:12px}.download{color:#111;background:#f5b83d;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:800;font-size:12px}.mobile-nav,.mobile-menu,.lang-wrap{display:none}@media(max-width:760px){.nav{padding:12px 14px}.nav .links,.nav-right{display:none}.mobile-nav{display:flex;align-items:center;gap:10px}.mobile-nav button{background:none;border:0;color:#fff;font-size:24px}.mobile-menu{position:absolute;top:60px;left:10px;right:10px;background:#0b0a08;border:1px solid rgba(245,184,61,.25);border-radius:16px;padding:12px}.mobile-menu a{display:block;color:#fff;text-decoration:none;padding:12px}.mobile-hifz{color:#f5b83d!important}.mobile-download{color:#f5b83d!important;font-weight:800}.mobile-lang{display:none}}</style><style>
 /* Promotional lock screen: isolated styles so the Hifz session logic stays unchanged. */
