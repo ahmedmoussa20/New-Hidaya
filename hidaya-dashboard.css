@@ -607,3 +607,127 @@
 @media(prefers-reduced-motion:reduce){
   .hidaya-dashboard .hd-welcome:before{transition:none!important}
 }
+
+
+/* === Unified Quick Access: one source of cards across phone, tablet and desktop === */
+/* The old landing hero and its separate quick-access row duplicated the dashboard features. */
+body > section.hero,
+.desktop-quick-access{display:none!important}
+.hd-showcase-cards{display:none!important}
+.hidaya-dashboard .hd-welcome{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  height:clamp(340px,32vw,430px)!important;min-height:340px!important;max-height:none!important;
+  margin:0 0 26px!important;padding:clamp(24px,4vw,54px)!important;
+  overflow:hidden!important;border:1px solid rgba(245,196,81,.42)!important;border-radius:22px!important;
+}
+.hidaya-dashboard .hd-welcome:before{
+  background-image:linear-gradient(90deg,rgba(4,4,3,.18) 0%,rgba(4,4,3,.48) 38%,rgba(4,4,3,.86) 100%),linear-gradient(0deg,rgba(4,4,3,.55),transparent 72%),url('./assets/hero-mosque-bg.png')!important;
+  background-size:cover!important;background-position:center 52%!important;
+}
+.hidaya-dashboard .hd-welcome:after{
+  background:radial-gradient(ellipse at 15% 80%,rgba(245,184,61,.10),transparent 42%),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.25))!important;
+}
+.hidaya-dashboard .hd-welcome-copy{
+  width:min(62%,680px)!important;max-width:680px!important;margin:0!important;
+  padding:0!important;text-align:start!important;align-self:center!important;
+}
+.hidaya-dashboard .hd-welcome h1{font-size:clamp(36px,4.2vw,62px)!important;line-height:1.12!important;margin:12px 0!important}
+.hidaya-dashboard .hd-welcome p{font-size:clamp(14px,1.3vw,19px)!important;line-height:1.6!important;max-width:580px!important}
+.hidaya-dashboard .hd-banner-controls{left:50%!important;right:auto!important;top:auto!important;bottom:15px!important;transform:translateX(-50%)!important}
+.hidaya-dashboard .hd-section-head{margin:26px 0 15px!important;align-items:flex-end!important;gap:14px!important}
+.hidaya-dashboard .hd-section-head>div>span{display:block;color:#f5c451;font-size:10px;letter-spacing:3px;font-weight:800;margin-bottom:7px}
+.hidaya-dashboard .hd-section-head h2{font-family:Amiri,Georgia,serif!important;font-size:clamp(25px,2.5vw,36px)!important;line-height:1.25!important;margin:0!important;color:#fff}
+.hidaya-dashboard .hd-section-head>a{color:#f5c451!important;font-size:12px!important;white-space:nowrap}
+.hidaya-dashboard .hd-feature-grid{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:13px!important;margin:0!important;direction:inherit!important;
+}
+.hidaya-dashboard .hd-feature-card{
+  min-width:0!important;min-height:164px!important;height:auto!important;
+  padding:19px 18px 18px!important;border:1px solid rgba(245,196,81,.24)!important;
+  border-radius:17px!important;position:relative!important;isolation:isolate!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  justify-content:flex-start!important;text-align:start!important;gap:0!important;
+  overflow:hidden!important;text-decoration:none!important;color:#fff!important;
+  background:linear-gradient(145deg,rgba(28,24,17,.98),rgba(10,12,11,.98))!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.035)!important;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+}
+.hidaya-dashboard .hd-feature-card:before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;
+  background:radial-gradient(circle at 100% 0%,rgba(245,196,81,.10),transparent 48%)!important;
+  pointer-events:none!important;
+}
+.hidaya-dashboard .hd-feature-card .hd-card-photo{display:none!important}
+.hidaya-dashboard .hd-feature-card .hd-feature-icon{
+  display:grid!important;place-items:center!important;width:43px!important;height:43px!important;
+  min-width:43px!important;margin:0 0 13px!important;border:1px solid rgba(245,196,81,.32)!important;
+  border-radius:13px!important;background:rgba(245,196,81,.075)!important;color:#ffe19a!important;
+  font-size:23px!important;line-height:1!important;backdrop-filter:none!important;
+}
+.hidaya-dashboard .hd-feature-card .hd-card-arrow{
+  position:absolute!important;top:16px!important;inset-inline-end:16px!important;
+  inset-inline-start:auto!important;bottom:auto!important;color:#d9b95f!important;font-size:17px!important;
+}
+.hidaya-dashboard .hd-feature-card h3{
+  min-width:0!important;width:100%!important;margin:0 0 5px!important;
+  color:#ffe5a0!important;font-family:Amiri,Georgia,serif!important;
+  font-size:clamp(17px,1.35vw,21px)!important;line-height:1.28!important;
+  overflow-wrap:anywhere!important;
+}
+.hidaya-dashboard .hd-feature-card p{
+  width:100%!important;margin:0!important;color:rgba(255,255,255,.68)!important;
+  font-size:12px!important;line-height:1.5!important;overflow-wrap:anywhere!important;
+}
+.hidaya-dashboard .hd-feature-card:hover,
+.hidaya-dashboard .hd-feature-card:focus-visible{
+  transform:translateY(-3px)!important;border-color:rgba(245,196,81,.62)!important;
+  box-shadow:0 15px 32px rgba(0,0,0,.28),0 0 24px rgba(245,196,81,.045)!important;outline:none!important;
+}
+.hidaya-dashboard .hd-feature-card:focus-visible{outline:2px solid rgba(245,196,81,.8)!important;outline-offset:3px!important}
+.hidaya-dashboard .hd-daily-row{display:none!important}
+@media(max-width:1100px){
+  .hidaya-dashboard .hd-feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important}
+  .hidaya-dashboard .hd-feature-card{min-height:160px!important;padding:17px 15px!important}
+  .hidaya-dashboard .hd-welcome{height:370px!important;min-height:340px!important;margin-bottom:23px!important}
+}
+@media(max-width:760px){
+  .hidaya-dashboard .hd-content{padding:16px 14px 30px!important}
+  .hidaya-dashboard .hd-welcome{
+    display:flex!important;align-items:flex-end!important;min-height:300px!important;height:auto!important;
+    margin:0 0 22px!important;padding:25px 18px 48px!important;border-radius:17px!important;
+  }
+  .hidaya-dashboard .hd-welcome:before{
+    background-image:linear-gradient(180deg,rgba(4,4,3,.20) 0%,rgba(4,4,3,.42) 32%,rgba(4,4,3,.91) 100%),url('./assets/hero-mosque-bg.png')!important;
+    background-size:cover!important;background-position:center center!important;
+  }
+  .hidaya-dashboard .hd-welcome:after{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.16))!important}
+  .hidaya-dashboard .hd-welcome-copy{width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;text-align:start!important}
+  .hidaya-dashboard .hd-welcome h1{font-size:clamp(34px,8.8vw,46px)!important;line-height:1.15!important;margin:8px 0!important}
+  .hidaya-dashboard .hd-welcome p{font-size:14px!important;line-height:1.55!important;margin-bottom:14px!important}
+  .hidaya-dashboard .hd-primary-cta{min-height:43px!important;padding:10px 14px!important;font-size:12px!important}
+  .hidaya-dashboard .hd-banner-controls{bottom:8px!important;gap:7px!important}
+  .hidaya-dashboard .hd-banner-arrow{width:27px!important;height:27px!important;font-size:20px!important}
+  .hidaya-dashboard .hd-section-head{margin:20px 2px 13px!important;align-items:flex-end!important}
+  .hidaya-dashboard .hd-section-head h2{font-size:25px!important}
+  .hidaya-dashboard .hd-section-head>div>span{font-size:9px!important;letter-spacing:2.5px!important}
+  .hidaya-dashboard .hd-section-head>a{max-width:115px!important;white-space:normal!important;text-align:end!important;line-height:1.35!important;font-size:10px!important}
+  .hidaya-dashboard .hd-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .hidaya-dashboard .hd-feature-card{min-height:153px!important;padding:14px 12px!important;border-radius:15px!important}
+  .hidaya-dashboard .hd-feature-card .hd-feature-icon{width:39px!important;height:39px!important;min-width:39px!important;border-radius:12px!important;font-size:21px!important;margin-bottom:11px!important}
+  .hidaya-dashboard .hd-feature-card .hd-card-arrow{top:12px!important;inset-inline-end:11px!important;font-size:15px!important}
+  .hidaya-dashboard .hd-feature-card h3{font-size:16px!important;line-height:1.3!important;margin-bottom:5px!important}
+  .hidaya-dashboard .hd-feature-card p{font-size:11px!important;line-height:1.4!important}
+}
+@media(max-width:380px){
+  .hidaya-dashboard .hd-content{padding-inline:10px!important}
+  .hidaya-dashboard .hd-welcome{min-height:285px!important;padding:22px 14px 44px!important}
+  .hidaya-dashboard .hd-feature-grid{gap:8px!important}
+  .hidaya-dashboard .hd-feature-card{min-height:148px!important;padding:12px 10px!important}
+  .hidaya-dashboard .hd-feature-card h3{font-size:15px!important}
+  .hidaya-dashboard .hd-feature-card p{font-size:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hidaya-dashboard .hd-feature-card{transition:none!important}
+  .hidaya-dashboard .hd-feature-card:hover{transform:none!important}
+}
