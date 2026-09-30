@@ -378,3 +378,15 @@
   .hidaya-dashboard .hd-welcome:before{animation:none;transition:none}
   .hd-showcase-card,.hd-showcase-card img{transition:none}
 }
+
+
+/* Mobile overlap correction: keep the five feature cards layered over the moving banner. */
+@media(max-width:700px){
+ .hidaya-dashboard .hd-welcome{margin-bottom:100px!important}
+ .hd-showcase-cards{bottom:-72px}
+ .hidaya-dashboard .hd-banner-controls{bottom:12px;top:auto}
+}
+@media(max-width:380px){
+ .hidaya-dashboard .hd-welcome{margin-bottom:96px!important}
+ .hd-showcase-cards{bottom:-68px}
+}
