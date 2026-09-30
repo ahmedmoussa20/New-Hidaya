@@ -18,6 +18,7 @@
  root.addEventListener("click",e=>{if(!root.classList.contains("hd-menu-open"))return;const link=e.target.closest(".hd-sidebar a");if(link)setMenu(false);if(e.target===root)setMenu(false)});
  document.addEventListener("keydown",e=>{if(e.key==="Escape")setMenu(false)});
  search&&search.addEventListener("input",function(){const q=this.value.trim().toLowerCase();root.querySelectorAll(".hd-feature-card").forEach(card=>{const hay=(card.textContent+" "+(card.dataset.search||"")).toLowerCase();card.hidden=!!q&&!hay.includes(q)});});
+ const searchLabel=root.querySelector(".hd-search");searchLabel&&searchLabel.addEventListener("click",()=>{if(search&&window.matchMedia("(max-width: 760px)").matches)search.focus()});
  root.querySelectorAll(".hd-feature-card.is-coming-soon").forEach(card=>card.addEventListener("click",e=>e.preventDefault()));
  
  // The homepage carousel is managed by the reference-matched inline controller in index.html.
