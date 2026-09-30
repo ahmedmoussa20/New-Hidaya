@@ -142,3 +142,26 @@ a,button{transition-property:color,background-color,border-color,box-shadow,opac
 @media(prefers-reduced-motion:reduce){
   ::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation:none!important}
 }
+
+/* Compact app-style headers used by Quran practice pages. */
+.top{
+  gap:12px;
+  min-width:0;
+}
+.top .brand{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+  line-height:1.2;
+}
+.top .brand span{
+  margin-inline-start:0!important;
+  line-height:1.2;
+}
+.top .brand,
+.top .brand *{min-width:0}
+@media(max-width:520px){
+  .top{padding-inline:14px}
+  .top .brand{gap:5px}
+}
