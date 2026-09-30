@@ -844,3 +844,8 @@ html[dir="rtl"] .hidaya-dashboard .hd-sidebar{left:auto!important;right:0!import
 @media(prefers-reduced-motion:reduce){
  .hidaya-dashboard .hd-sidebar{transition:none!important}
 }
+
+/* Future navigation entries are visible but not interactive until released. */
+.hidaya-dashboard .hd-side-links a.hd-nav-soon{opacity:.56!important;cursor:not-allowed!important}
+.hidaya-dashboard .hd-side-links a.hd-nav-soon:hover{background:transparent!important;border-color:transparent!important;transform:none!important}
+.hidaya-dashboard .hd-side-links a.hd-nav-soon em{margin-inline-start:auto!important;background:rgba(148,155,155,.12)!important;color:#aeb4b2!important}
