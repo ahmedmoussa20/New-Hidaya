@@ -986,7 +986,7 @@ body.rtl .quran-search input{text-align:right}
 
 </head>
 <body><section class="hidaya-dashboard" id="hidayaDashboard" aria-label="Hidaya home dashboard">
-<aside class="hd-sidebar">
+<aside class="hd-sidebar" id="hdSidebar" aria-label="Main menu">
 <a class="hd-brand" href="index.html"><span class="hd-brand-mark">ه</span><span><strong data-hd-en="Hidaya" data-hd-ar="هداية">Hidaya</strong><small>YOUR QURAN · YOUR JOURNEY</small></span></a>
 <nav class="hd-side-links" aria-label="Main navigation">
 <a class="is-active" href="#hidayaDashboard"><span>⌂</span><b data-hd-en="Home" data-hd-ar="الرئيسية">Home</b></a>
@@ -1001,7 +1001,7 @@ body.rtl .quran-search input{text-align:right}
 <div class="hd-side-foot"><button type="button" class="hd-language" id="hdLanguageToggle"><span>◎</span><span data-hd-en="Language" data-hd-ar="اللغة">Language</span><b id="hdLanguageLabel">EN</b></button><a href="#about" class="hd-about"><span>ⓘ</span><span data-hd-en="About Hidaya" data-hd-ar="عن هداية">About Hidaya</span></a></div>
 </aside>
 <div class="hd-main">
-<header class="hd-topbar"><a class="hd-mobile-brand" href="index.html"><span class="hd-brand-mark">ه</span><strong data-hd-en="Hidaya" data-hd-ar="هداية">Hidaya</strong></a><div class="hd-top-title"><span data-hd-en="YOUR DAILY COMPANION" data-hd-ar="رفيقك اليومي">YOUR DAILY COMPANION</span><strong data-hd-en="Peace begins here." data-hd-ar="هنا تبدأ الطمأنينة">Peace begins here.</strong></div><div class="hd-top-actions"><label class="hd-search"><span>⌕</span><input id="hdFeatureSearch" type="search" placeholder="Search Hidaya..." data-hd-placeholder-en="Search Hidaya..." data-hd-placeholder-ar="ابحث في هداية..." aria-label="Search Hidaya features"></label><a class="hd-nav-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener"><span aria-hidden="true">⇩</span><span data-hd-en="Download App" data-hd-ar="حمّل التطبيق">Download App</span></a><button type="button" class="hd-lang-mini" id="hdLangMini" aria-label="Change language">EN / ع</button></div></header>
+<header class="hd-topbar"><a class="hd-mobile-brand" href="index.html"><span class="hd-brand-mark">ه</span><strong data-hd-en="Hidaya" data-hd-ar="هداية">Hidaya</strong></a><button class="hd-menu-toggle" id="hdMenuToggle" type="button" aria-label="Open navigation menu" aria-controls="hdSidebar" aria-expanded="false"><span></span><span></span><span></span></button><div class="hd-top-title"><span data-hd-en="YOUR DAILY COMPANION" data-hd-ar="رفيقك اليومي">YOUR DAILY COMPANION</span><strong data-hd-en="Peace begins here." data-hd-ar="هنا تبدأ الطمأنينة">Peace begins here.</strong></div><div class="hd-top-actions"><label class="hd-search"><span>⌕</span><input id="hdFeatureSearch" type="search" placeholder="Search Hidaya..." data-hd-placeholder-en="Search Hidaya..." data-hd-placeholder-ar="ابحث في هداية..." aria-label="Search Hidaya features"></label><a class="hd-nav-download" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener"><span aria-hidden="true">⇩</span><span data-hd-en="Download App" data-hd-ar="حمّل التطبيق">Download App</span></a><button type="button" class="hd-lang-mini" id="hdLangMini" aria-label="Change language">EN / ع</button></div></header>
 <main class="hd-content">
 <section class="hd-welcome"><div class="hd-welcome-copy"><span class="hd-eyebrow" data-hd-en="ASSALAMU ALAIKUM" data-hd-ar="السلام عليكم">ASSALAMU ALAIKUM</span><h1 data-hd-en="Welcome to Hidaya" data-hd-ar="مرحبًا بك في هداية">Welcome to Hidaya</h1><p data-hd-en="Make space for faith in every moment of your day." data-hd-ar="اجعل للإيمان مساحة في كل لحظة من يومك.">Make space for faith in every moment of your day.</p><a class="hd-primary-cta" href="quran.html"><span>▤</span><span data-hd-en="Start reading Quran" data-hd-ar="ابدأ قراءة القرآن">Start reading Quran</span><span>↗</span></a></div><div class="hd-welcome-art" aria-hidden="true"><span class="hd-moon">☾</span><span class="hd-star hd-star-one">✦</span><span class="hd-star hd-star-two">✧</span><span class="hd-minaret hd-minaret-one"></span><span class="hd-minaret hd-minaret-two"></span><span class="hd-dome"></span></div>
 <div class="hd-showcase-cards" aria-label="Hidaya main sections" hidden>
@@ -1060,29 +1060,29 @@ body.rtl .quran-search input{text-align:right}
 <span class="hd-feature-icon" aria-hidden="true">⌖</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
 <h3 data-hd-en="Qibla Direction" data-hd-ar="اتجاه القبلة">Qibla Direction</h3>
 <p data-hd-en="Find the direction of the Kaaba." data-hd-ar="اعرف اتجاه الكعبة المشرفة.">Find the direction of the Kaaba.</p></a>
-<a class="hd-feature-card" href="#duas-nasheeds" data-search="duas athkar nasheeds azkar الأذكار الأدعية الأناشيد">
-<span class="hd-feature-icon" aria-hidden="true">☾</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Duas, Athkar & Nasheeds" data-hd-ar="الأدعية والأذكار والأناشيد">Duas, Athkar & Nasheeds</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="duas athkar nasheeds azkar الأذكار الأدعية الأناشيد">
+<span class="hd-feature-icon" aria-hidden="true">☾</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Duas, Athkar & Nasheeds" data-hd-ar="الأدعية والأذكار والأناشيد">Duas, Athkar & Nasheeds</h3>
 <p data-hd-en="Daily remembrance and meaningful words." data-hd-ar="أذكار يومية وكلمات إيمانية.">Daily remembrance and meaningful words.</p></a>
-<a class="hd-feature-card" href="#kids-section" data-search="kids children prayer wudu الأطفال تعليم الصلاة الوضوء">
-<span class="hd-feature-icon" aria-hidden="true">✧</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Kids Section" data-hd-ar="قسم الأطفال">Kids Section</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="kids children prayer wudu الأطفال تعليم الصلاة الوضوء">
+<span class="hd-feature-icon" aria-hidden="true">✧</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Kids Section" data-hd-ar="قسم الأطفال">Kids Section</h3>
 <p data-hd-en="Help children learn prayer and wudu." data-hd-ar="ساعد الأطفال على تعلّم الصلاة والوضوء.">Help children learn prayer and wudu.</p></a>
-<a class="hd-feature-card" href="#hijri-calendar" data-search="hijri calendar islamic dates التقويم الهجري">
-<span class="hd-feature-icon" aria-hidden="true">◷</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Hijri Calendar" data-hd-ar="التقويم الهجري">Hijri Calendar</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="hijri calendar islamic dates التقويم الهجري">
+<span class="hd-feature-icon" aria-hidden="true">◷</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Hijri Calendar" data-hd-ar="التقويم الهجري">Hijri Calendar</h3>
 <p data-hd-en="Keep track of important Islamic dates." data-hd-ar="تابع المناسبات والتواريخ الهجرية المهمة.">Keep track of important Islamic dates.</p></a>
-<a class="hd-feature-card" href="#nearby-mosques" data-search="nearby mosques masjid map المساجد القريبة">
-<span class="hd-feature-icon" aria-hidden="true">⌖</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Nearby Mosques" data-hd-ar="المساجد القريبة">Nearby Mosques</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="nearby mosques masjid map المساجد القريبة">
+<span class="hd-feature-icon" aria-hidden="true">⌖</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Nearby Mosques" data-hd-ar="المساجد القريبة">Nearby Mosques</h3>
 <p data-hd-en="Discover mosques around you." data-hd-ar="اكتشف المساجد القريبة منك.">Discover mosques around you.</p></a>
-<a class="hd-feature-card" href="#reels" data-search="reels short videos islamic content مقاطع ريلز فيديوهات إسلامية">
-<span class="hd-feature-icon" aria-hidden="true">▷</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Reels" data-hd-ar="ريلز">Reels</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="reels short videos islamic content مقاطع ريلز فيديوهات إسلامية">
+<span class="hd-feature-icon" aria-hidden="true">▷</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Reels" data-hd-ar="ريلز">Reels</h3>
 <p data-hd-en="Short, meaningful Islamic videos." data-hd-ar="مقاطع إسلامية قصيرة وهادفة.">Short, meaningful Islamic videos.</p></a>
-<a class="hd-feature-card" href="#learn-quran" data-search="learn quran education recitation تعلّم القرآن">
-<span class="hd-feature-icon" aria-hidden="true">◇</span><span class="hd-card-arrow" aria-hidden="true">↗</span>
-<h3 data-hd-en="Learn Quran" data-hd-ar="تعلّم القرآن">Learn Quran</h3>
+<a class="hd-feature-card is-coming-soon" href="#" aria-disabled="true" tabindex="-1" data-search="learn quran education recitation تعلّم القرآن">
+<span class="hd-feature-icon" aria-hidden="true">◇</span><span class="hd-soon-lock" aria-hidden="true">▣</span>
+<span class="hd-soon-badge" data-hd-en="Soon" data-hd-ar="قريبًا">Soon</span><h3 data-hd-en="Learn Quran" data-hd-ar="تعلّم القرآن">Learn Quran</h3>
 <p data-hd-en="Improve your recitation and understanding." data-hd-ar="طوّر تلاوتك وفهمك للقرآن الكريم.">Improve your recitation and understanding.</p></a>
 </section>
 <section class="hd-daily-row"><article class="hd-daily-verse"><span class="hd-eyebrow" data-hd-en="A MOMENT OF REFLECTION" data-hd-ar="لحظة تدبّر">A MOMENT OF REFLECTION</span><div class="hd-verse-ar" lang="ar" dir="rtl">وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا</div><p data-hd-en="And whoever is mindful of Allah, He will make a way out for them." data-hd-ar="ومن يتق الله يجعل له مخرجًا">And whoever is mindful of Allah, He will make a way out for them.</p><small data-hd-en="Surah At-Talaq · 65:2" data-hd-ar="سورة الطلاق · ٢">Surah At-Talaq · 65:2</small></article><a class="hd-prayer-promo" href="prayer-times.html"><span class="hd-promo-moon">☾</span><span class="hd-eyebrow" data-hd-en="MAKE TIME FOR WHAT MATTERS" data-hd-ar="اجعل وقتًا لما يهم">MAKE TIME FOR WHAT MATTERS</span><strong data-hd-en="Your prayers, your peace." data-hd-ar="صلاتك مصدر طمأنينتك">Your prayers, your peace.</strong><span data-hd-en="Open prayer times ↗" data-hd-ar="افتح مواقيت الصلاة ↗">Open prayer times ↗</span></a></section>
