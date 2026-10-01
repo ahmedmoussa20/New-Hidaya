@@ -1788,7 +1788,7 @@ body.rtl .quran-search input{text-align:right}
 <h3>Quran Search</h3>
 <p>Find verses and surahs faster, with a focused search experience that connects Quranic content with relevant topics.</p>
 </article>
-<article class="feature-card kids-feature" id="kids-section">
+<article class="feature-card kids-feature" id="kids-section" role="link" tabindex="0" aria-label="افتح قسم الأطفال" style="cursor:pointer">
 <div class="feature-top"><span class="feature-num">03</span><span class="feature-icon">♧</span></div>
 <h3>Kids Section</h3>
 <p>A joyful learning space for little ones, starting with Quran Teacher for ages 3–6.</p>
@@ -1881,6 +1881,23 @@ body.rtl .quran-search input{text-align:right}
 })();
 </script>
 
+<script>
+(function(){
+  const card=document.getElementById("kids-section");
+  if(!card) return;
+  const target="kids-section.html";
+  card.addEventListener("click",function(event){
+    if(event.target.closest("a,button")) return;
+    window.location.href=target;
+  });
+  card.addEventListener("keydown",function(event){
+    if((event.key==="Enter"||event.key===" ") && event.target===card){
+      event.preventDefault();
+      window.location.href=target;
+    }
+  });
+})();
+</script>
 <script>
 /* Register Hidaya's same-origin cache; safe no-op in unsupported browsers. */
 if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
