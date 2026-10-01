@@ -28,6 +28,14 @@
 @media(max-width:720px){.letters-section{padding:17px}.letter-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.letters-heading h2{font-size:19px}}
 @media(max-width:390px){.letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.letter-word{font-size:14px}}
 
+
+/* Prophets stories entry */
+.stories-entry{margin:24px 0 30px;padding:clamp(20px,4vw,34px);border:1px solid var(--line);border-radius:26px;background:linear-gradient(120deg,rgba(168,230,207,.09),rgba(245,184,61,.08)),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:22px;overflow:hidden;position:relative}
+.stories-entry:after{content:"✦";position:absolute;left:24px;bottom:-36px;font-size:130px;color:rgba(245,184,61,.08);pointer-events:none}
+.stories-entry-copy{position:relative;z-index:1}.stories-entry-kicker{color:var(--mint);font-size:11px;font-weight:800;letter-spacing:1.5px}.stories-entry h2{margin:8px 0;font-size:clamp(20px,3vw,28px)}.stories-entry p{color:var(--muted);line-height:1.9;font-size:14px;margin:0;max-width:580px}
+.stories-entry-link{position:relative;z-index:1;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:14px 19px;border-radius:16px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#201609;font-weight:800;font-size:13px}
+@media(max-width:600px){.stories-entry{align-items:flex-start;flex-direction:column}.stories-entry-link{width:100%;justify-content:center}}
+
 </style>
 </head>
 <body>
@@ -51,6 +59,10 @@
   <p class="letters-intro">اضغط على أي حرف علشان تسمع اسمه وكلمة تبدأ بيه. اتعلموا حرفًا أو حرفين كل مرة وخلوها لعبة لطيفة!</p>
   <div class="letter-grid" id="letterGrid"></div>
   <div class="letter-actions"><button class="letter-speak" id="speakLetterBtn" type="button">🔊 اسمع الحرف</button><div class="letter-status" id="letterStatus" role="status" aria-live="polite">اختار حرفًا من الشبكة وابدأ التعلّم 💛</div></div>
+</section>
+<section class="stories-entry" id="prophets-stories-card" aria-label="قصص الأنبياء للأطفال">
+  <div class="stories-entry-copy"><div class="stories-entry-kicker">📖 حكايات نتعلم منها</div><h2>قصص الأنبياء للأطفال</h2><p>حكايات قصيرة بلغة بسيطة عن الصبر، والثقة بالله، والتسامح — مناسبة لوقت هادئ مع الأهل، مع آيات من القرآن للاستزادة.</p></div>
+  <a class="stories-entry-link" href="prophets-stories.html">يلا نقرأ القصص <span aria-hidden="true">←</span></a>
 </section>
 </main><footer class="footer">هداية — نكبر مع القرآن آيةً آيةً<br>الصوت يحتاج اتصالًا بالإنترنت.</footer>
 </div>
