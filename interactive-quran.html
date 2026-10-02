@@ -380,7 +380,7 @@ body{min-width:0;overscroll-behavior-y:contain;-webkit-font-smoothing:antialiase
   }
   .app { min-height: 100vh !important; min-height: 100dvh !important; }
   #surahView .surah-list { overflow: visible !important; touch-action: pan-y !important; }
-  #surahView .surah-card { touch-action: pan-y !important; }
+  #surahView .surah-card { touch-action: manipulation !important; pointer-events:auto !important; cursor:pointer; -webkit-tap-highlight-color:rgba(245,200,94,.14); }
   #practiceView:not(.hidden) { padding-bottom: calc(32px + env(safe-area-inset-bottom)) !important; }
   #practiceView .practice-tools { position: static !important; }
   #practiceView .verse-pills {
@@ -507,7 +507,10 @@ const ayahs=[
 const $=id=>document.getElementById(id);let currentAyah=0,recognition=null,isRecording=false,showText=true,lastTranscript='',audio=null,finalRecognitionSegments=[],discardRecognitionResult=false;
 const normalize=s=>s.normalize('NFD').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/[^\u0621-\u064A\s]/g,' ').replace(/\s+/g,' ').trim();
 let surahFilter='all';
-function renderSurahs(){const q=($('surahSearch')?.value||'').trim().toLocaleLowerCase('ar');const filtered=SURAHS.filter(([n,ar,en])=>{const matchesQuery=!q||String(n).includes(q)||ar.toLocaleLowerCase('ar').includes(q)||en.toLocaleLowerCase('en').includes(q);const matchesFilter=surahFilter==='all'||(surahFilter==='available'?n===1:n!==1);return matchesQuery&&matchesFilter;});$('surahList').innerHTML=filtered.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahEmpty').classList.toggle('hidden',filtered.length!==0);$('surahList').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>Number(b.dataset.num)===1?openPractice():openLock()));}
+function renderSurahs(){const q=($('surahSearch')?.value||'').trim().toLocaleLowerCase('ar');const filtered=SURAHS.filter(([n,ar,en])=>{const matchesQuery=!q||String(n).includes(q)||ar.toLocaleLowerCase('ar').includes(q)||en.toLocaleLowerCase('en').includes(q);const matchesFilter=surahFilter==='all'||(surahFilter==='available'?n===1:n!==1);return matchesQuery&&matchesFilter;});$('surahList').innerHTML=filtered.map(([n,ar,en,count])=>`<button class="surah-card ${n===1?'available':''}" data-num="${n}" type="button"><span class="surah-num">${n}</span><span class="surah-copy"><strong>${ar}</strong><small>${en} · ${count} آيات${n===1?' · متاحة الآن':' · مقفولة'}</small></span><span class="surah-status">${n===1?'✓':'🔒'}</span></button>`).join('');$('surahEmpty').classList.toggle('hidden',filtered.length!==0);}
+function handleSurahActivate(event){const card=event.target.closest?.('.surah-card');if(!card||!$('surahList').contains(card))return;event.preventDefault();event.stopPropagation();Number(card.dataset.num)===1?openPractice():openLock();}
+$('surahList').addEventListener('click',handleSurahActivate);
+$('surahList').addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){const card=event.target.closest?.('.surah-card');if(card){event.preventDefault();handleSurahActivate(event);}}});
 function setSurahFilter(filter){surahFilter=filter;document.querySelectorAll('.surah-filter').forEach(btn=>{const active=btn.dataset.filter===filter;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});renderSurahs();}
 function openPractice(){ document.querySelector('.app').classList.add('practice-active');$('surahView').classList.add('hidden');$('practiceView').classList.remove('hidden');renderPills();renderAyah();window.scrollTo({top:0,behavior:'smooth'});}
 function openLock(){ document.documentElement.style.overflowY='auto';document.body.style.overflowY='auto';$('lockOverlay').classList.add('show');}
