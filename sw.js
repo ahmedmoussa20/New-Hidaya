@@ -1,5 +1,5 @@
 /* Hidaya performance cache — bump CACHE_VERSION when releasing changes. */
-const CACHE_VERSION = "hidaya-cache-v4";
+const CACHE_VERSION = "hidaya-cache-v5";
 const STATIC_CACHE = CACHE_VERSION + "-static";
 const PAGE_CACHE = CACHE_VERSION + "-pages";
 self.addEventListener("install", event => {
