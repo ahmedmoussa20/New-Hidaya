@@ -102,6 +102,16 @@
   const pageToggle=document.getElementById("hidayaPageLangToggle");
   if(pageToggle) pageToggle.addEventListener("click",()=>{localStorage.setItem("hidayaLang",(localStorage.getItem("hidayaLang")||"ar")==="ar"?"en":"ar");applyPageLanguage()});
   window.addEventListener("hidayaLanguageChanged",applyPageLanguage);
-  if(pageToggle){applyPageLanguage();const pageObserver=new MutationObserver(()=>applyPageLanguage());pageObserver.observe(document.body,{childList:true,subtree:true,characterData:true});}
+  if(pageToggle){applyPageLanguage();let languageUpdateQueued=false;
+  const pageObserver=new MutationObserver(()=>{
+    if(languageUpdateQueued)return;
+    languageUpdateQueued=true;
+    requestAnimationFrame(()=>{
+      languageUpdateQueued=false;
+      applyPageLanguage();
+    });
+  });
+  /* Watch structural changes only. Watching characterData here can create a self-triggering loop because applyPageLanguage updates text nodes. */
+  pageObserver.observe(document.body,{childList:true,subtree:true});}
 
 })();
