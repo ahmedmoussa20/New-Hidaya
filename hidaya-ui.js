@@ -102,16 +102,29 @@
   const pageToggle=document.getElementById("hidayaPageLangToggle");
   if(pageToggle) pageToggle.addEventListener("click",()=>{localStorage.setItem("hidayaLang",(localStorage.getItem("hidayaLang")||"ar")==="ar"?"en":"ar");applyPageLanguage()});
   window.addEventListener("hidayaLanguageChanged",applyPageLanguage);
-  if(pageToggle){applyPageLanguage();let languageUpdateQueued=false;
-  const pageObserver=new MutationObserver(()=>{
-    if(languageUpdateQueued)return;
-    languageUpdateQueued=true;
-    requestAnimationFrame(()=>{
-      languageUpdateQueued=false;
-      applyPageLanguage();
-    });
-  });
-  /* Watch structural changes only. Watching characterData here can create a self-triggering loop because applyPageLanguage updates text nodes. */
-  pageObserver.observe(document.body,{childList:true,subtree:true});}
+  if(pageToggle){
+    let languageUpdateQueued=false;
+    let applyingLanguage=false;
+    let pageObserver=null;
+    const scheduleLanguageUpdate=()=>{
+      if(languageUpdateQueued || applyingLanguage)return;
+      languageUpdateQueued=true;
+      requestAnimationFrame(()=>{
+        languageUpdateQueued=false;
+        if(!pageObserver)return;
+        applyingLanguage=true;
+        pageObserver.disconnect();
+        try{applyPageLanguage();}finally{
+          applyingLanguage=false;
+          pageObserver.observe(document.body,{childList:true,subtree:true});
+        }
+      });
+    };
+    applyPageLanguage();
+    pageObserver=new MutationObserver(scheduleLanguageUpdate);
+    /* Observe structural changes only, and disconnect while applying translations so
+       text/attribute updates cannot trigger a self-sustaining observer loop. */
+    pageObserver.observe(document.body,{childList:true,subtree:true});
+  }
 
 })();
