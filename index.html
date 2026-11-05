@@ -984,6 +984,77 @@ body.rtl .quran-search input{text-align:right}
 }
 </style>
 
+<style id="hidaya-hero-promo">
+/* Hero-only redesign: animated promotional slides with persistent store links. */
+.hero{height:auto;min-height:0;max-height:none;background:#041d19 url('./assets/hero-mosque-bg.png') center/cover no-repeat;overflow:visible;padding-bottom:0}
+.hero:after{background:linear-gradient(90deg,rgba(2,16,14,.9),rgba(2,16,14,.5) 56%,rgba(2,16,14,.18))}
+.hero>.wrap{height:auto;width:min(1540px,calc(100% - 80px))}
+.hero-promo{position:relative;color:#fff;padding:0;isolation:isolate}
+.hero-promo-inner{min-height:690px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:center;padding:24px 20px 68px}
+.hero-promo-stage{position:relative;min-height:560px;overflow:hidden}
+.hero-promo-slides{position:relative;min-height:560px}
+.hero-promo-slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);align-items:center;gap:24px;opacity:0;visibility:hidden;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease,visibility .7s}
+.hero-promo-slide.is-active{opacity:1;visibility:visible;transform:translateX(0);z-index:1}
+.hero-promo-copy{max-width:680px;position:relative;z-index:2;padding:20px 18px}
+.hero-promo-eyebrow{display:block;color:#f3c65f;font-weight:800;letter-spacing:.16em;font-size:13px;margin-bottom:18px}
+.hero-promo-copy h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(42px,4.3vw,70px);line-height:1.04;letter-spacing:-1.4px;margin:0 0 22px;text-shadow:0 5px 25px #0008}
+.hero-promo-copy h1 span{color:#f4bf4c}
+.hero-promo-copy p{font-size:clamp(16px,1.3vw,20px);line-height:1.65;color:rgba(255,255,255,.9);max-width:570px;margin:0 0 28px}
+.hero-promo-features{display:flex;flex-wrap:wrap;gap:14px 22px;color:#f8d98d;font-size:14px}
+.hero-promo-features span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.hero-promo-features b{color:#fff;font-weight:600}
+.hero-promo-art{min-height:470px;display:grid;place-items:center;position:relative}
+.hero-promo-orb{position:absolute;width:min(440px,35vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(239,184,65,.26),rgba(239,184,65,.08) 48%,transparent 72%);filter:blur(8px)}
+.hero-promo-image-placeholder{position:relative;width:min(100%,460px);height:460px;border:1px dashed rgba(255,213,116,.5);border-radius:44% 44% 28px 28px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(3,27,23,.48));box-shadow:0 24px 70px #0008,inset 0 0 50px #f4c65f12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:#f5d487;backdrop-filter:blur(5px)}
+.hero-promo-image-placeholder span{font-size:12px;letter-spacing:.24em}.hero-promo-image-placeholder strong{font-family:'Playfair Display',serif;font-size:34px;color:#fff}.hero-promo-image-placeholder small{font-size:12px;color:#ffffff9c}
+.hero-promo-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid #f4c65f88;background:#071d19b8;color:#fff;font-size:30px;cursor:pointer;backdrop-filter:blur(8px)}
+.hero-promo-arrow:hover{background:#d9a936;color:#10130d}.hero-promo-arrow.prev{left:0}.hero-promo-arrow.next{right:0}
+.hero-promo-dots{position:absolute;z-index:6;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:9px}
+.hero-promo-dots button{width:9px;height:9px;border:0;border-radius:20px;padding:0;background:#ffffff77;cursor:pointer;transition:all .25s ease}
+.hero-promo-dots button[aria-current=true]{width:26px;background:#f4bf4c}
+.hero-promo-downloads{align-self:center;display:flex;flex-direction:column;gap:15px;position:relative;z-index:8}
+.hero-promo-download-title{color:#f3c65f;font-size:13px;font-weight:800;letter-spacing:.15em;text-align:center}
+.hero-promo-store{display:flex;align-items:center;justify-content:center;gap:10px;min-height:68px;padding:10px 14px;border:1px solid #f5cd71;border-radius:14px;background:rgba(2,13,11,.7);color:#fff;text-decoration:none;font-size:18px;font-weight:800;box-shadow:0 10px 28px #0005,0 0 18px #eeb74322;transition:transform .2s ease,box-shadow .2s ease}
+.hero-promo-store:hover{transform:translateY(-3px);box-shadow:0 15px 34px #0007,0 0 24px #eeb74344}
+.hero-promo-store img{width:34px;height:34px;object-fit:contain}
+.hero-promo-wave{height:100px;position:relative;z-index:4;margin-top:-48px;pointer-events:none}
+.hero-promo-wave svg{width:100%;height:100%;display:block}
+.hero-promo-wave .wave-gold{fill:#c89532}
+.hero-promo-wave .wave-cream{fill:#f7f1e7;transform:translateY(8px)}
+.hero-promo-explore{background:#f7f1e7;color:#07342c;text-align:center;padding:5px 20px 34px;margin-top:-1px}
+.hero-promo-explore a{display:inline-flex;align-items:center;flex-direction:column;gap:0;text-decoration:none;color:#07342c}
+.hero-promo-explore a span{font-size:32px;color:#c89532;line-height:1}
+.hero-promo-explore strong{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,3vw,42px)}
+@media(max-width:1100px){.hero-promo-inner{grid-template-columns:minmax(0,1fr) 230px;gap:12px;padding-left:0;padding-right:0}.hero-promo-slide{grid-template-columns:minmax(0,1fr) minmax(280px,.9fr)}.hero-promo-image-placeholder{height:390px}.hero-promo-art{min-height:410px}.hero-promo-copy h1{font-size:clamp(36px,4vw,54px)}}
+@media(max-width:760px){
+ .hero>.wrap{width:100%}.hero{min-height:0}
+ .hero-promo-inner{display:flex;flex-direction:column;gap:0;min-height:0;padding:4px 18px 0}
+ .hero-promo-stage{width:100%;min-height:0}
+ .hero-promo-slides{min-height:0}
+ .hero-promo-slide{position:relative;display:none;grid-template-columns:1fr;gap:0;text-align:center;padding:12px 0 18px}
+ .hero-promo-slide.is-active{display:flex;flex-direction:column;opacity:1;visibility:visible;transform:none}
+ .hero-promo-copy{order:2;padding:10px 0 14px}
+ .hero-promo-eyebrow{font-size:10px;letter-spacing:.13em;margin-bottom:8px}
+ .hero-promo-copy h1{font-size:clamp(30px,8.6vw,42px);line-height:1.13;margin-bottom:12px}
+ .hero-promo-copy p{font-size:14px;line-height:1.55;margin:0 auto 12px;max-width:95%}
+ .hero-promo-features{justify-content:center;gap:9px 14px;font-size:11px}
+ .hero-promo-art{order:1;width:100%;min-height:0;height:clamp(230px,65vw,330px)}
+ .hero-promo-image-placeholder{height:100%;width:min(78vw,310px);border-radius:38% 38% 22px 22px}
+ .hero-promo-image-placeholder strong{font-size:27px}
+ .hero-promo-arrow{top:36%;width:38px;height:38px;font-size:25px}
+ .hero-promo-arrow.prev{left:0}.hero-promo-arrow.next{right:0}
+ .hero-promo-dots{bottom:3px}
+ .hero-promo-downloads{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:16px 0 42px}
+ .hero-promo-download-title{grid-column:1/-1}
+ .hero-promo-store{min-height:58px;font-size:13px;gap:6px;padding:8px 7px;border-radius:11px}
+ .hero-promo-store img{width:25px;height:25px}
+ .hero-promo-wave{height:66px;margin-top:-26px}
+ .hero-promo-explore{padding:0 16px 25px}
+ .hero-promo-explore a span{font-size:25px}
+ .hero-promo-explore strong{font-size:27px}
+}
+@media(prefers-reduced-motion:reduce){.hero-promo-slide,.hero-promo-store,.hero-promo-dots button{transition:none!important}}
+</style>
 </head>
 <body><section class="hidaya-dashboard" id="hidayaDashboard" aria-label="Hidaya home dashboard">
 <aside class="hd-sidebar" id="hdSidebar" aria-label="Main menu">
@@ -1110,30 +1181,22 @@ body.rtl .quran-search input{text-align:right}
 <section aria-label="Hidaya hero" class="hero">
 <div class="wrap">
 <header class="nav"><a aria-label="Hidaya home" class="logo" href="index.html"><span class="en">Hidaya</span><span class="ar">هداية</span></a><nav aria-label="Primary navigation" class="links"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="hifz-nav" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="interactive-quran-nav" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a class="radio-nav" data-i18n="nav_radio" href="radio-hidaya.html">Hidaya Radio</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a></nav><div class="nav-right"><div class="lang-wrap"><button class="lang" id="langToggle" type="button"><span class="globe">◎</span><span id="langLabel">English</span><span class="chev">⌄</span></button><div class="lang-menu" id="langMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><a class="download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App <span aria-hidden="true">↓</span></a></div><div class="mobile-nav"><div class="mobile-lang"><button aria-label="Language" id="mobileLangToggle" type="button">◉</button><div class="mobile-lang-menu" id="mobileLangMenu"><button data-lang="en" type="button">English</button><button data-lang="ar" type="button">العربية</button></div></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" id="mobileMenuToggle" type="button">☰</button></div><div aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu"><a data-i18n="nav_about" href="index.html#about">About</a><a data-i18n="nav_prayer" href="prayer-times.html">Prayer Times</a><a data-i18n="nav_qibla" href="index.html#qibla">Qibla</a><a data-i18n="nav_quran" href="quran.html">Quran</a><a class="mobile-hifz" data-i18n="nav_hifz" href="hifz.html">Hifz ✦</a><a class="mobile-interactive-quran" data-i18n="nav_interactive" href="interactive-quran.html">Interactive Quran</a><a class="mobile-radio-nav" data-i18n="nav_radio" href="radio-hidaya.html">Hidaya Radio</a><a data-i18n="nav_screenshots" href="index.html#screenshots">Screenshots</a><a data-i18n="nav_faq" href="index.html#faq">FAQ</a><a class="mobile-download" data-i18n="download_app" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank">Download App ↓</a></div></header>
-<div class="hero-grid">
-<div class="copy">
-<div class="eyebrow" data-i18n="hero_eyebrow">YOUR ISLAMIC COMPANION</div>
-<h1>Your Quran.<br/>Your Journey.<br/><span>Your Hidaya.</span></h1>
-<p class="sub" data-i18n="hero_sub">Read, listen, learn and connect with the Quran — wherever your journey takes you.</p>
-<div class="stores">
-<a class="store" href="https://play.google.com/store/apps/details?id=app.hidaya" rel="noopener" target="_blank"><span class="play-icon">▶</span><span><span class="small">GET IT ON</span><span class="big">Google Play</span></span></a>
-<a class="store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" rel="noopener" target="_blank"><span class="apple-icon">●</span><span><span class="small">DOWNLOAD ON THE</span><span class="big">App Store</span></span></a>
+<section class="hero-promo" aria-label="Hidaya introduction">
+<div class="hero-promo-inner">
+<div class="hero-promo-stage" id="heroPromoStage" aria-roledescription="carousel" aria-label="Hidaya highlights">
+<div class="hero-promo-slides">
+<article class="hero-promo-slide is-active" data-slide="0" aria-hidden="false">
+<div class="hero-promo-copy"><span class="hero-promo-eyebrow" data-en="YOUR ISLAMIC COMPANION" data-ar="رفيقك في رحلتك الإيمانية">YOUR ISLAMIC COMPANION</span><h1 data-en-html="Your Islamic Journey<br><span>Starts From Here</span>" data-ar-html="رحلتك الإسلامية<br><span>تبدأ من هنا</span>">Your Islamic Journey<br><span>Starts From Here</span></h1><p data-en="Read, listen, learn and stay closer to Allah, anytime, anywhere." data-ar="اقرأ واستمع وتعلّم، وابقَ أقرب إلى الله في كل وقت وأينما كنت.">Read, listen, learn and stay closer to Allah, anytime, anywhere.</p><div class="hero-promo-features"><span>▤ <b data-en="Read Quran" data-ar="قراءة القرآن">Read Quran</b></span><span>♫ <b data-en="Listen to Radio" data-ar="استمع للراديو">Listen to Radio</b></span><span>☾ <b data-en="Prayer Times" data-ar="مواقيت الصلاة">Prayer Times</b></span><span>✧ <b data-en="And More" data-ar="والمزيد">And More</b></span></div></div>
+<div class="hero-promo-art"><div class="hero-promo-orb"></div><div class="hero-promo-image-placeholder"><span>HIDAYA</span><strong>Slide 01</strong><small>Replace with final artwork</small></div></div></article>
+<article class="hero-promo-slide" data-slide="1" aria-hidden="true"><div class="hero-promo-copy"><span class="hero-promo-eyebrow" data-en="LIVE WITH THE QURAN" data-ar="عِش مع القرآن">LIVE WITH THE QURAN</span><h1 data-en-html="A Closer Connection<br><span>With The Quran</span>" data-ar-html="صلة أقرب<br><span>بكتاب الله</span>">A Closer Connection<br><span>With The Quran</span></h1><p data-en="Read, listen and reflect with beautiful recitations and tools that support your Quran journey." data-ar="اقرأ واستمع وتدبّر مع تلاوات عذبة وأدوات ترافق رحلتك مع القرآن الكريم.">Read, listen and reflect with beautiful recitations and tools that support your Quran journey.</p><div class="hero-promo-features"><span>▤ <b data-en="Quran Reading" data-ar="قراءة القرآن">Quran Reading</b></span><span>♫ <b data-en="Recitations" data-ar="التلاوات">Recitations</b></span><span>✦ <b data-en="Memorization" data-ar="الحفظ">Memorization</b></span></div></div><div class="hero-promo-art"><div class="hero-promo-orb"></div><div class="hero-promo-image-placeholder"><span>AL-QURAN</span><strong>Slide 02</strong><small>Replace with final artwork</small></div></div></article>
+<article class="hero-promo-slide" data-slide="2" aria-hidden="true"><div class="hero-promo-copy"><span class="hero-promo-eyebrow" data-en="YOUR DAILY SPIRITUAL COMPANION" data-ar="رفيقك الإيماني كل يوم">YOUR DAILY SPIRITUAL COMPANION</span><h1 data-en-html="Faith In Every Moment<br><span>Of Your Day</span>" data-ar-html="الإيمان في كل لحظة<br><span>من يومك</span>">Faith In Every Moment<br><span>Of Your Day</span></h1><p data-en="Prayer times, Qibla, daily Athkar, Duas and Hidaya Radio — all in one place." data-ar="مواقيت الصلاة والقبلة والأذكار والأدعية وإذاعة هداية، كلها في مكان واحد.">Prayer times, Qibla, daily Athkar, Duas and Hidaya Radio — all in one place.</p><div class="hero-promo-features"><span>☾ <b data-en="Prayer Times" data-ar="مواقيت الصلاة">Prayer Times</b></span><span>⌖ <b data-en="Qibla" data-ar="القبلة">Qibla</b></span><span>♫ <b data-en="Hidaya Radio" data-ar="راديو هداية">Hidaya Radio</b></span></div></div><div class="hero-promo-art"><div class="hero-promo-orb"></div><div class="hero-promo-image-placeholder"><span>HIDAYA DAILY</span><strong>Slide 03</strong><small>Replace with final artwork</small></div></div></article>
 </div>
-<div aria-label="Hidaya statistics" class="stats">
-<div class="stat"><span class="stat-icon">⇩</span><span><strong>1M+</strong><small>Downloads</small></span></div>
-<div class="stat"><span class="stat-icon">♟</span><span><strong>350K+</strong><small>Active Users</small></span></div>
-<div class="stat"><span class="stat-icon">◎</span><span><strong>8</strong><small>Languages</small></span></div>
-<div class="stat"><span class="stat-icon">☆</span><span><strong>4.7</strong><small>App Rating</small></span></div>
+<button class="hero-promo-arrow prev" type="button" aria-label="Previous slide">‹</button><button class="hero-promo-arrow next" type="button" aria-label="Next slide">›</button>
+<div class="hero-promo-dots" role="group" aria-label="Choose a slide"><button type="button" aria-label="Show slide 1" aria-current="true"></button><button type="button" aria-label="Show slide 2" aria-current="false"></button><button type="button" aria-label="Show slide 3" aria-current="false"></button></div>
 </div>
-</div>
-<div aria-label="Hidaya app screenshots" class="phones">
-<div class="phone-floor"></div>
-<div class="phone left"><img alt="Hidaya Qibla screen" src="./assets/qibla-screen.jpg"/></div>
-<div class="phone right"><img alt="Hidaya Quran memorization screen" src="./assets/ehfaz-screen.jpg"/></div>
-</div>
-</div>
-
-<!-- Mobile first-screen quick start -->
+<aside class="hero-promo-downloads" aria-label="Download Hidaya"><div class="hero-promo-download-title" data-en="GET THE APP" data-ar="حمّل التطبيق">GET THE APP</div><a class="hero-promo-store" href="https://apps.apple.com/eg/app/quran-hidaya-%D9%82%D8%B1%D8%A2%D9%86-%D9%87%D8%AF%D8%A7%D9%8A%D8%A9/id1566553099?l=ar" target="_blank" rel="noopener"><img src="./assets/app-store-logo.png" alt=""><span>App Store</span></a><a class="hero-promo-store" href="https://play.google.com/store/apps/details?id=app.hidaya" target="_blank" rel="noopener"><img src="./assets/google-play-logo.png" alt=""><span>Google Play</span></a></aside>
+</div></section>
+<div class="hero-promo-wave" aria-hidden="true"><svg viewBox="0 0 1440 150" preserveAspectRatio="none"><path class="wave-gold" d="M0 45 C220 -20 310 110 560 90 S980 12 1160 70 S1320 118 1440 46 L1440 150 L0 150 Z"/><path class="wave-cream" d="M0 55 C220 -10 310 120 560 100 S980 22 1160 80 S1320 128 1440 56 L1440 150 L0 150 Z"/></svg></div><div class="hero-promo-explore" id="heroExploreMore"><a href="#about"><span aria-hidden="true">⌄</span><strong data-en="Explore More" data-ar="اكتشف المزيد">Explore More</strong></a></div><!-- Mobile first-screen quick start -->
 <div aria-label="Start your Hidaya journey" class="mobile-start">
 <div class="mobile-start-head">
 <div class="mobile-start-kicker" data-i18n="start_kicker">YOUR HIDAYA JOURNEY</div>
@@ -1910,5 +1973,8 @@ if ("serviceWorker" in navigator && (location.protocol === "https:" || location.
 </script>
 <script src="./hidaya-ui.js" defer></script>
 <script src="./hidaya-dashboard.js" defer></script>
+<script id="hidaya-hero-promo-carousel">
+(function(){const root=document.getElementById('heroPromoStage');if(!root)return;const slides=[...root.querySelectorAll('.hero-promo-slide')],dots=[...root.querySelectorAll('.hero-promo-dots button')],prev=root.querySelector('.hero-promo-arrow.prev'),next=root.querySelector('.hero-promo-arrow.next');let active=0,timer=null,paused=false,touchX=null;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');const language=()=>((localStorage.getItem('hidayaLang')||'en').toLowerCase().startsWith('ar')?'ar':'en');function applyLanguage(){const ar=language()==='ar';root.querySelectorAll('[data-en],[data-ar]').forEach(el=>el.textContent=ar?el.dataset.ar:el.dataset.en);root.querySelectorAll('[data-en-html],[data-ar-html]').forEach(el=>el.innerHTML=ar?el.dataset.arHtml:el.dataset.enHtml);}function render(n){active=(n+slides.length)%slides.length;slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===active);slide.setAttribute('aria-hidden',String(i!==active));});dots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===active)));}function stop(){if(timer){clearInterval(timer);timer=null;}}function start(){stop();if(!paused&&!reduced.matches)timer=setInterval(()=>render(active+1),10000);}function go(n){render(n);start();}prev.addEventListener('click',()=>go(active-1));next.addEventListener('click',()=>go(active+1));dots.forEach((dot,i)=>dot.addEventListener('click',()=>go(i)));root.addEventListener('mouseenter',()=>{paused=true;stop();});root.addEventListener('mouseleave',()=>{paused=false;start();});root.addEventListener('focusin',()=>{paused=true;stop();});root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget)){paused=false;start();}});root.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;},{passive:true});root.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;touchX=null;if(Math.abs(dx)>45)go(active+(dx<0?1:-1));},{passive:true});window.addEventListener('hidayaLanguageChanged',applyLanguage);window.addEventListener('storage',e=>{if(e.key==='hidayaLang')applyLanguage();});reduced.addEventListener?.('change',()=>reduced.matches?stop():start());applyLanguage();render(0);start();})();
+</script>
 </body>
 </html>
